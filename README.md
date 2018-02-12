@@ -3,3 +3,7 @@ En este espacio se encuentra toda la documentación correspondiente a los proces
 
 ## Incepción
 * [Definición del Projecto]()
+
+--
+
+Última edición: @pirty6 febrero 12, 2018
