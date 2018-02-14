@@ -3,7 +3,7 @@ En este espacio se encuentra toda la documentación correspondiente a los proces
 
 ## Incepción
 * [Definición del Projecto](https://github.com/CaveLabs-1/Libelulas/blob/master/documentacion/Project-Definition.pdf)
-* [Propuesta de Proyecto](https://github.com/CaveLabs-1/Libelulas/blob/master/documentacion/Project Proposal.pdf)
+* [Propuesta de Proyecto](https://github.com/CaveLabs-1/Libelulas/blob/master/documentacion/Project-Proposal.pdf)
 * [Matriz de requerimientos]()
 * [Matriz de trazabilidad]()
 
