@@ -1,1 +1,1 @@
-Este Archivo contiene todo lo que se necestia instalar para el ambiente (se asume que ya django esta instalado)
+Este Archivo contiene todo lo que se necestia instalar para el ambiente (se asume que ya django esta instalado y el virtualenv)
