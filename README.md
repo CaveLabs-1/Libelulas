@@ -6,6 +6,8 @@ En este espacio se encuentra toda la documentación correspondiente a los proces
 * [Propuesta de Proyecto](https://github.com/CaveLabs-1/Libelulas/blob/master/documentacion/Project-Proposal.pdf)
 * [Matriz de requerimientos]()
 * [Matriz de trazabilidad]()
+* [Modelo Entidad Relacion](https://github.com/CaveLabs-1/Libelulas/blob/master/documentacion/MER_LIBELULAS.pdf)
+* [Componentes del Sistema](https://github.com/CaveLabs-1/Libelulas/blob/master/documentacion/Componentes_del_Sistema_Libelula.pdf)
 
 
 --
