@@ -2,6 +2,7 @@ Este Archivo contiene todo lo que se necestia instalar para el ambiente (se asum
 
 #pip
 pip install psycopg2
+pip install psycopg2-binary
 
 #instalar en su computadora (UBUNTU)
 POSTGRES:
