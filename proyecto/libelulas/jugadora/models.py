@@ -9,5 +9,5 @@ class Jugadora(models.Model):
     Nacimiento = models.DateField(default='', verbose_name='Fecha de Nacimiento')
     Numero = models.IntegerField(default='', verbose_name='Número')
     Posicion = models.IntegerField(default='', verbose_name='Posición')
-    Notas = models.CharField(max_length=150, default='', verbose_name='Comentarios')
+    Notas = models.TextField(max_length=150, default='', verbose_name='Comentarios')
     Imagen = ImageField(upload_to='media/jugadora' , default='', verbose_name='Foto')

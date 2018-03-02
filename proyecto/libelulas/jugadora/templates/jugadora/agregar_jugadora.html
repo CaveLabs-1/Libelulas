@@ -1,5 +1,26 @@
-<form method="POST" novalidate>
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Enviar</button>
-</form>
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block main %}
+<div class="form-container">
+  <div class="image-column">
+    <div class="image-circle upload">
+      <div class="generic-photo">
+      </div>
+      <div class="absolute-icons">
+        <img class="camera-icon" src="{% static 'media/photo-camera.svg' %}"/>
+        <span>Cambiar foto</span>
+      </div>
+    </div>
+  </div>
+  <div class="form-column">
+    <form method="POST" novalidate>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="container-button">
+        <button class="cancel">Cancelar</button>
+        <button class="submit" type="submit">Enviar</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
