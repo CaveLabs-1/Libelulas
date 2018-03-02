@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block main %}
-<form method="POST" novalidate>
+<form method="POST" novalidate action="/jugadora/agregar_jugadora/">
   {% csrf_token %}
   <div class="image-column">
     <div class="image-circle upload">
@@ -15,18 +15,18 @@
     </div>
   </div>
   <div class="form-column">
-    <!-- {{ form.as_p }}  -->
+    <!-- {{ form.as_p }} -->
     <p>
       <label for="id_Nombre">Nombre:</label>
       <input type="text" name="Nombre" id="id_Nombre" maxlength="50" required="">
     </p>
     <p>
-      <label for="id_Apellido">Apellido:</label>
+      <label for="id_Apellido">Apellidos:</label>
       <input type="text" name="Apellido" id="id_Apellido" maxlength="50" required="">
     </p>
     <p>
       <label for="id_Nacimiento">Fecha de Nacimiento:</label>
-      <input type="text" name="Nacimiento" value="" id="id_Nacimiento" required="">
+      <input type="date" name="Nacimiento" value="" id="id_Nacimiento" required="">
     </p>
     <p>
       <label for="id_Numero">Número:</label>

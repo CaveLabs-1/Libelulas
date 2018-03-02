@@ -9,8 +9,12 @@ def agregar_jugadora(request):
         if form.is_valid():
             jugadora = form.save()
             jugadora.save()
-            return redirect('agregar_jugadora')
+            print("hola")
+            return reverse('agregar_jugadora')
+        else:
+            print("no valido")
     else:
+            print("hola2")
             form = jugadoraForm()
 
     return render(request, 'jugadora/agregar_jugadora.html', {'form':form})

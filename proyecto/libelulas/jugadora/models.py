@@ -11,3 +11,6 @@ class Jugadora(models.Model):
     Posicion = models.IntegerField(default='', verbose_name='Posición')
     Notas = models.TextField(max_length=150, default='', verbose_name='Comentarios')
     Imagen = ImageField(upload_to='media/jugadora' , default='', verbose_name='Foto')
+
+    def __str__(self):
+        return self.Nombre

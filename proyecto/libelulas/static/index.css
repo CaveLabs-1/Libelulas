@@ -7,7 +7,9 @@ body {
   background-color: #f7f8fb;
   display: flex;
   justify-content: center;
-  min-height: 100vh;
+  min-height: calc(100vh - 6em);
+  padding-bottom: 3em;
+  padding-top: 3em;
   width: 100%;
 }
 
@@ -36,12 +38,13 @@ form  .container-button {
   align-self: flex-end;
   display: flex;
   justify-content: space-between;
+  margin-top: 2em;
   width: 50%;
 }
 
 .cancel {
   background-color: transparent;
-  border: solid 4px #ff7178;
+  border: solid 2px #ff7178;
   border-radius: 50px;
   box-shadow: 0 8px 6px 0 rgba(239, 239, 239, 0.47);
   color: #ff7178;
@@ -114,12 +117,16 @@ form  p > input {
 textarea {
   border: solid 1px #b4c0c6;
   border-radius: 20px;
+  padding: 1em;
 }
 
 .inputfile {
+  cursor: pointer;
   height: 100%;
-  visibility: hidden;
+  opacity: 0;
+  /* visibility: hidden; */
   width:100%;
+  /* background-color: #000; */
 }
 
 .absolute-icons {
