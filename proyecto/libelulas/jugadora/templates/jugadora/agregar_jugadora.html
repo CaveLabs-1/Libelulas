@@ -1,26 +1,49 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block main %}
-<div class="form-container">
+<form method="POST" novalidate>
+  {% csrf_token %}
   <div class="image-column">
     <div class="image-circle upload">
       <div class="generic-photo">
+        <img class="camera-icon" src="{% static 'media/photo-camera.svg' %}"/>
+        <span>Agregar Foto</span>
       </div>
       <div class="absolute-icons">
-        <img class="camera-icon" src="{% static 'media/photo-camera.svg' %}"/>
-        <span>Cambiar foto</span>
+        <input class="inputfile" type="file" name="Imagen" id="id_Imagen" required="">
       </div>
     </div>
   </div>
   <div class="form-column">
-    <form method="POST" novalidate>
-      {% csrf_token %}
-      {{ form.as_p }}
-      <div class="container-button">
-        <button class="cancel">Cancelar</button>
-        <button class="submit" type="submit">Enviar</button>
-      </div>
-    </form>
+    <!-- {{ form.as_p }}  -->
+    <p>
+      <label for="id_Nombre">Nombre:</label>
+      <input type="text" name="Nombre" id="id_Nombre" maxlength="50" required="">
+    </p>
+    <p>
+      <label for="id_Apellido">Apellido:</label>
+      <input type="text" name="Apellido" id="id_Apellido" maxlength="50" required="">
+    </p>
+    <p>
+      <label for="id_Nacimiento">Fecha de Nacimiento:</label>
+      <input type="text" name="Nacimiento" value="" id="id_Nacimiento" required="">
+    </p>
+    <p>
+      <label for="id_Numero">Número:</label>
+      <input type="number" name="Numero" id="id_Numero" required="">
+    </p>
+    <p>
+      <label for="id_Posicion">Posición:</label>
+      <input type="number" name="Posicion" id="id_Posicion" required="">
+    </p>
+    <p>
+      <label for="id_Notas">Comentarios:</label>
+      <textarea name="Notas" rows="10" id="id_Notas" cols="40" maxlength="150" required=""></textarea>
+    </p>
+    <div class="container-button">
+      <button class="cancel">Cancelar</button>
+      <button class="submit" type="submit">Enviar</button>
+    </div>
   </div>
-</div>
+</form>
 {% endblock %}
