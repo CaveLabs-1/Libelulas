@@ -26,7 +26,8 @@ SECRET_KEY = 'kwq*0&t1gx2rhs2k3^+ij1&*7etjyf7!8u^1emx^q@t639#_gx'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'plidi-ianroses.c9users.io'    
+    'plidi-ianroses.c9users.io',
+    '127.0.0.1'
 ]
 
 
