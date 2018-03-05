@@ -1,0 +1,77 @@
+<!doctype html>
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block main %}
+{% if messages %}
+{% for message in messages %}
+  <div class="{{ message.tags }} messages">
+      <span class="">{{ message }}</span>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<form method="POST" enctype="multipart/form-data" novalidate action="{% url 'jugadora:agregar_jugadora' %}">
+  {% csrf_token %}
+  <div class="image-column">
+    <div class="image-circle upload">
+      <div class="generic-photo">
+        <img class="camera-icon" src="{% static 'media/photo-camera.svg' %}"/>
+        <span>Agregar Foto</span>
+      </div>
+      <div class="absolute-icons">
+        <img src="{{ jugadora.Imagen.url }}" alt="{{ jugadora.Imagen.url }}">
+          <!-- {{ form.Imagen }} -->
+      </div>
+    </div>
+    {{ form.Imagen.errors }}
+  </div>
+  <div class="form-column">
+      <p>
+        <label>
+          {{ form.Nombre.label_tag }}
+        </label>
+        {{ form.Nombre }}
+      </p>
+      {{ form.Nombre.errors }}
+      <p>
+        <label>
+          {{ form.Apellido.label_tag }}
+        </label>
+        {{ form.Apellido }}
+      </p>
+      {{ form.Apellido.errors }}
+      <p>
+        <label>
+          {{ form.Nacimiento.label_tag }}
+        </label>
+        {{ form.Nacimiento }}
+      </p>
+      {{ form.Nacimiento.errors }}
+      <p>
+        <label>
+          {{ form.Numero.label_tag }}
+        </label>
+        {{ form.Numero }}
+      </p>
+      {{ form.Numero.errors }}
+      <p>
+        <label>
+          {{ form.Posicion.label_tag }}
+        </label>
+        {{ form.Posicion }}
+      </p>
+      {{ form.Posicion.errors }}
+      <p>
+        <label>
+          {{ form.Notas.label_tag }}
+        </label>
+        {{ form.Notas }}
+      </p>
+      {{ form.Notas.errors }}
+    <div class="container-button">
+      <button class="cancel">Cancelar</button>
+      <button class="submit" type="submit">Enviar</button>
+    </div>
+  </div>
+</form>
+{% endblock %}
