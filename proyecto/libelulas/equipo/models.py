@@ -10,40 +10,53 @@ import sys
 # Create your models here.
 
 class Equipo(models.Model):
-    Nombre = models.CharField(
+    nombre = models.CharField(
         max_length=64, 
         unique=True, 
         default='', 
         verbose_name='Nombre')
-    Representante = models.CharField(
+    representante = models.CharField(
         max_length=64, 
         default='', 
         verbose_name='Representante')
     phone_regex = RegexValidator(
         regex=r'^\+?1?\d{9,15}$', 
         message="El numero de telefono debe estar en este formato: '+999999999'. Con 15 digitos maximos permitidos.")
-    Telefono = models.CharField(
+    telefono = models.CharField(
         validators=[phone_regex], 
         max_length=17, 
         default='', 
         verbose_name='Telefono')
-    Correo = models.EmailField(
+    correo = models.EmailField(
         max_length=128, 
         default='', 
         verbose_name='Correo Electronico' )
-    Logo = models.ImageField(
+    logo = models.ImageField(
         upload_to='media/equipo',
         default='',
         verbose_name='Logo')
-    ColorVisitante = models.CharField(
-        max_length=7,
-        default='',
-        verbose_name='Color de Visitante')
-    ColorLocal  = models.CharField(
-        max_length=7, 
-        default='', 
+    COLORES = (
+        (1, 'Blanco'),
+        (2, 'Gris'),
+        (3, 'Negro'),
+        (4, 'Rojo'),
+        (5, 'Naranja'),
+        (6, 'Amarillo'),
+        (7, 'Verde'),
+        (8, 'Azul'),
+        (9, 'Morado'),
+        (10, 'Rosa'),
+        (11, 'Cafe'),
+    )
+    colorLocal  = models.IntegerField(
+        choices=COLORES,
+        default=1, 
         verbose_name='Color de Local')
-    Cancha = models.CharField(
+    colorVisitante = models.IntegerField(
+        choices=COLORES,
+        default=1,
+        verbose_name='Color de Visitante')
+    cancha = models.CharField(
         max_length=128, 
         default='', 
         verbose_name='Cancha del Equipo')
@@ -56,10 +69,13 @@ class Equipo(models.Model):
         (6, 'Sabado'),
         (7, 'Domingo'),
     )
-    Dia = models.IntegerField(
+    dia = models.IntegerField(
         choices=DIAS_DE_JUEGO,
-        default=1)
-    Hora = models.TimeField()
+        default=1,
+        verbose_name='Dia de Juego')
+    hora = models.TimeField(
+        verbose_name='Hora de Juego',
+        )
         
 
     def __str__(self):
