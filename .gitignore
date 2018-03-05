@@ -1,2 +1,6 @@
 
+env/
+
 proyecto/libelulas/media/
+
+proyecto/libelulas/libelulas/__pycache__/
