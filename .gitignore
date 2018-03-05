@@ -4,3 +4,7 @@ env/
 proyecto/libelulas/media/
 
 proyecto/libelulas/libelulas/__pycache__/
+
+proyecto/libelulas/jugadora/__pycache__/
+
+proyecto/libelulas/jugadora/migrations/__pycache__/
