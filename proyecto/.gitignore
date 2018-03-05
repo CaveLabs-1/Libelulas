@@ -1,1 +1,32 @@
+
+# Add any directories, files, or patterns you don't want to be tracked by version control
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+migrations/
+__init__.py
+media/
+
+.env
+.DS_Store
+db.sqlite3
+.cpython-36.pyc
 libVenv/
+venv/
+env/
+
