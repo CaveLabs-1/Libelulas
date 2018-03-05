@@ -11,6 +11,7 @@ body {
   padding-bottom: 3em;
   padding-top: 3em;
   width: 100%;
+  position: relative;
 }
 
 form {
@@ -78,6 +79,7 @@ form  .container-button {
 
 .image-circle {
   border-radius: 50%;
+  margin-bottom: 8px;
 }
 
 
@@ -111,7 +113,7 @@ form  p > label {
 form  p > input {
   border: none;
   border-bottom: 1px solid  #b4c0c6;
-  padding: 8px;
+  padding: 3px 0px 3px 0px;
 }
 
 textarea {
@@ -124,9 +126,7 @@ textarea {
   cursor: pointer;
   height: 100%;
   opacity: 0;
-  /* visibility: hidden; */
   width:100%;
-  /* background-color: #000; */
 }
 
 .absolute-icons {
@@ -141,4 +141,38 @@ textarea {
   position: absolute;
   right: 0;
   width: 100%;
+}
+
+.messages {
+  align-items: center;
+  display: flex;
+  color: #fff;
+  justify-content: center;
+  height: 48px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.success {
+  background-color: #71cf74;
+}
+
+.warning {
+  background-color: #ff7178;
+}
+
+select {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid  #b4c0c6;
+  padding: 3px 0px 3px 0px;
+}
+
+.errorlist {
+  color: #ff7178;
+  list-style-type: none;
+  padding: 0;
+  margin-top: 0;
 }

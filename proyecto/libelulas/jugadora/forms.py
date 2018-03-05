@@ -7,6 +7,7 @@ class jugadoraForm(ModelForm):
         super(jugadoraForm, self).__init__(*args, **kwargs)
         self.fields['Imagen'].widget.attrs['class'] = 'inputfile'
         self.fields['Nacimiento'].widget.input_type = 'date'
+        self.fields['Numero'].widget.attrs['min'] = '0'
 
     class Meta:
         model = Jugadora

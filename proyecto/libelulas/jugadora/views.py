@@ -2,8 +2,10 @@ from django.shortcuts import render
 from .forms import jugadoraForm
 from django.urls import reverse
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 
 # Create your views here.
+
 
 def agregar_jugadora(request):
     if request.method == "POST":
@@ -11,12 +13,11 @@ def agregar_jugadora(request):
         if form.is_valid():
             jugadora = form.save()
             jugadora.save()
-            print("hola")
+            messages.success(request, 'Jugadora agregada exitosamente')
             return HttpResponseRedirect(reverse('jugadora:agregar_jugadora'))
         else:
-            print("no valido")
+            messages.warning(request, 'Hubo un error en la forma')
     else:
-            print("hola2")
             form = jugadoraForm()
 
-    return render(request, 'jugadora/agregar_jugadora.html', {'form':form})
+    return render(request, 'jugadora/agregar_jugadora.html', {'form': form})
