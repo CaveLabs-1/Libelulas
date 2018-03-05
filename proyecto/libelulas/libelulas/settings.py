@@ -25,7 +25,9 @@ SECRET_KEY = 'kwq*0&t1gx2rhs2k3^+ij1&*7etjyf7!8u^1emx^q@t639#_gx'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'plidi-ianroses.c9users.io'    
+]
 
 
 # Application definition
@@ -37,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'equipo'
 ]
 
 MIDDLEWARE = [
