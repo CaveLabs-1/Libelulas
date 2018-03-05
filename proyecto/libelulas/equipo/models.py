@@ -26,7 +26,7 @@ class Equipo(models.Model):
         validators=[phone_regex], 
         max_length=17, 
         default='', 
-        verbose_name='Telefono')
+        verbose_name='Teléfono')
     correo = models.EmailField(
         max_length=128, 
         default='', 
@@ -79,11 +79,11 @@ class Equipo(models.Model):
         
 
     def __str__(self):
-        return self.Nombre
+        return self.nombre
 
     def save(self):
         # Opening the uploaded image
-        im = Image.open(self.Imagen)
+        im = Image.open(self.logo)
 
         output = BytesIO()
 
@@ -93,6 +93,6 @@ class Equipo(models.Model):
         output.seek(0)
 
         # change the imagefield value to be the newley modifed image value
-        self.Logo = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.Imagen.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
+        self.logo = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.logo.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
 
         super(Equipo, self).save()
