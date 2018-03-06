@@ -1,0 +1,8 @@
+
+    <form  action="{% url 'equipo:editar_equipo' equipo.id %}" method="POST" enctype="multipart/form-data">`
+
+
+  {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update" />
+</form>

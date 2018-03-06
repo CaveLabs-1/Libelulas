@@ -80,7 +80,7 @@ class Equipo(models.Model):
 
     def __str__(self):
         return self.nombre
-
+'''
     def save(self):
         # Opening the uploaded image
         im = Image.open(self.logo)
@@ -96,3 +96,5 @@ class Equipo(models.Model):
         self.logo = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.logo.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
 
         super(Equipo, self).save()
+
+        '''
