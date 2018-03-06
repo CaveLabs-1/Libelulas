@@ -28,11 +28,12 @@ def editar_jugadora(request, jugadora_id):
     instance = get_object_or_404(Jugadora, id=jugadora_id)
     form = jugadoraForm(request.POST or None, instance=instance)
     if request.method == "POST":
-        form = jugadoraForm(request.POST, request.FILES)
+        form = jugadoraForm(request.POST, request.FILES, instance=instance)
         if form.is_valid():
             jugadora = form.save()
+
             jugadora.save()
-            messages.success(request, 'Jugadora agregada exitosamente')
+            messages.success(request, 'Jugadora editada exitosamente')
             return HttpResponseRedirect(reverse('jugadora:agregar_jugadora'))
         else:
             messages.warning(request, 'Hubo un error en la forma')

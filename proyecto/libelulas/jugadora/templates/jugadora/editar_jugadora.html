@@ -10,17 +10,18 @@
   </div>
 {% endif %}
 
-<form method="POST" enctype="multipart/form-data" novalidate action="{% url 'jugadora:agregar_jugadora' %}">
+<form method="POST" enctype="multipart/form-data" novalidate action="{% url 'jugadora:editar_jugadora' jugadora.id %}">
   {% csrf_token %}
   <div class="image-column">
     <div class="image-circle upload">
+      <img class="upload-change" src="{{ jugadora.Imagen.url }}" alt="{{ jugadora.Imagen.url }}">
+      <img id="upload" class="upload-change"/>
       <div class="generic-photo">
         <img class="camera-icon" src="{% static 'media/photo-camera.svg' %}"/>
-        <span>Agregar Foto</span>
+        <span>Cambiar Foto</span>
       </div>
       <div class="absolute-icons">
-        <img src="{{ jugadora.Imagen.url }}" alt="{{ jugadora.Imagen.url }}">
-          <!-- {{ form.Imagen }} -->
+          {{ form.Imagen }}
       </div>
     </div>
     {{ form.Imagen.errors }}
