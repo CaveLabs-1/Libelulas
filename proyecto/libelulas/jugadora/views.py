@@ -13,13 +13,8 @@ def agregar_jugadora(request):
     if request.method == "POST":
         form = jugadoraForm(request.POST, request.FILES)
         if form.is_valid():
-            if 'Imagen' in request.POST:
-                jugadora = form.save()
-                jugadora.save2()
-
-            else:
-                jugadora = form.save()
-                jugadora.save()
+            jugadora = form.save()
+            jugadora.save()
             messages.success(request, 'Jugadora agregada exitosamente')
             return HttpResponseRedirect(reverse('jugadora:agregar_jugadora'))
         else:
