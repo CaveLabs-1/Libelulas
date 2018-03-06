@@ -150,11 +150,21 @@ textarea {
   display: flex;
   color: #fff;
   justify-content: center;
-  height: 48px;
   position: fixed;
-  top: 0;
+  height: 48px;
   width: 100%;
   z-index: 10;
+  animation: hide 1s forwards;
+  animation-play-state: paused;
+}
+
+@keyframes hide {
+  from  {
+    top: 0
+  }
+  to {
+    top:-48px
+  }
 }
 
 .success {
