@@ -11,7 +11,7 @@
   </div>
 {% endif %}
 
-<form method="POST" enctype="multipart/form-data" novalidate action="{% url 'equipo:agregar_equipo' %}">
+    <form  action="{% url 'equipo:editar_equipo' equipo.id %}" method="POST" enctype="multipart/form-data">`
   {% csrf_token %}
   <div class="image-column">
     <div class="image-circle upload">
@@ -88,14 +88,14 @@
         <label>
           {{ form.hora.label_tag }}
         </label>
-        {{ form.hora }}
+
+        <input type="time" name="{{form.hora.html_name}}" required="" value='{{ form.hora.value|time:"H:i" }}' id="{{form.hora.id_for_label}}">
       </p>
       {{ form.hora.errors }}
     <div class="container-button">
       <button class="cancel">Cancelar</button>
-      <button class="submit" type="submit">Enviar</button>
+      <button class="submit" type="submit">Actualizar</button>
     </div>
   </div>
 </form>
 {% endblock %}
-
