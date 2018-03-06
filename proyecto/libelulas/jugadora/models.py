@@ -21,12 +21,12 @@ class Jugadora(models.Model):
     Numero = models.IntegerField(default='', verbose_name='Número', validators=[MinValueValidator(0)])
     Posicion = models.IntegerField(default='', choices=POSICION, verbose_name='Posición')
     Notas = models.TextField(max_length=150, default='', verbose_name='Comentarios', null=True, blank=True)
-    Imagen = models.ImageField(upload_to='jugadora', default='', verbose_name='Foto', null=True, blank=True)
+    Imagen = models.ImageField(upload_to='jugadora', verbose_name='Foto', null=True, blank=True)
 
     def __str__(self):
         return self.Nombre + str(self.pk)
 
-    def save(self):
+    def save2(self):
         # Opening the uploaded image
         im = Image.open(self.Imagen)
 
