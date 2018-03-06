@@ -2,6 +2,10 @@ body {
   margin: 0;
 }
 
+nav .nav-wrapper {
+  background-color: #ffffff;
+  box-shadow: 0 10px 6px 0 rgba(239, 239, 239, 0.16);
+}
 .main {
   align-items: center;
   background-color: #f7f8fb;
