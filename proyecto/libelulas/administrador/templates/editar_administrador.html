@@ -10,24 +10,24 @@
     {% endfor %}
 {% endif %}
 
-<form method="POST" enctype="multipart/form-data" novalidate action="{% url 'administrador:agregar_administrador' %}">
+<form method="POST" enctype="multipart/form-data" novalidate action="{% url 'administrador:editar_administrador'  %}">
     {% csrf_token %}
     <div class="container">
         <div class="row">
             <div class="input-field col s12 m6 l6">
-                <input type="text" name="{{form.first_name.html_name}}" id="{{form.first_name.id_for_label}}" class="validate">
+                <input type="text" name="{{form.first_name.html_name}}" value="{{administrador.first_name}}" id="{{form.first_name.id_for_label}}" class="validate">
                 <label for="{{form.first_name.id_for_label}}">{{form.first_name.label_tag}}</label>
             </div>
             <div class="input-field col s12 m6 l6">
-                <input type="text" name="{{form.username.html_name}}" id="{{form.username.id_for_label}}" class="validate">
+                <input type="text" name="{{form.username.html_name}}" value="{{administrador.username}}" id="{{form.username.id_for_label}}" class="validate">
                 <label for="{{form.username.id_for_label}}">{{form.username.label_tag}}</label>
             </div>
             <div class="input-field col s12 m6 l6">
-                <input type="email" name="{{form.email.html_name}}" id="{{form.email.id_for_label}}" class="validate">
+                <input type="email" name="{{form.email.html_name}}" value="{{administrador.email}}" id="{{form.email.id_for_label}}" class="validate">
                 <label for="{{form.email.id_for_label}}">{{form.email.label_tag}}</label>
             </div>
             <div class="input-field col s12 m6 l6">
-                <input type="password" name="{{form.password.html_name}}" id="{{form.password.id_for_label}}" class="validate">
+                <input type="password" name="{{form.password.html_name}}" value="{{administrador.password}}" id="{{form.password.id_for_label}}" class="validate">
                 <label for="{{form.password.id_for_label}}">{{form.password.label_tag}}</label>
             </div>
         </div>
