@@ -13,7 +13,7 @@ def agregar_jugadora(request):
     if request.method == "POST":
         form = jugadoraForm(request.POST, request.FILES)
         if form.is_valid():
-            jugadora = form.save()
+            jugadora = form
             jugadora.save()
             messages.success(request, 'Jugadora agregada exitosamente')
             return HttpResponseRedirect(reverse('jugadora:agregar_jugadora'))
@@ -31,7 +31,6 @@ def editar_jugadora(request, jugadora_id):
         form = jugadoraForm(request.POST, request.FILES, instance=instance)
         if form.is_valid():
             jugadora = form.save()
-
             jugadora.save()
             messages.success(request, 'Jugadora editada exitosamente')
             return HttpResponseRedirect(reverse('jugadora:agregar_jugadora'))

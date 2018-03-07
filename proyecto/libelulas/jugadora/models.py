@@ -27,12 +27,15 @@ class Jugadora(models.Model):
         return self.Nombre + str(self.pk)
 
     def save(self, *args, **kw):
+
         if self.Imagen:
 
-            print(self.Imagen.name)
+
 
             # Opening the uploaded image
             im = Image.open(self.Imagen)
+            nombre = (self.Imagen.name)
+
 
             output = BytesIO()
 
