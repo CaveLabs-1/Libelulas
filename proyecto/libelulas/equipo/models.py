@@ -1,4 +1,5 @@
 from django.db import models
+from jugadora.models import Jugadora
 
 # Create your models here.
 from django.core.validators import RegexValidator
@@ -10,6 +11,7 @@ import sys
 # Create your models here.
 
 class Equipo(models.Model):
+    jugadoras = models.ManyToManyField(Jugadora, through='JugadoraPertenceEquipo')
     nombre = models.CharField(
         max_length=64, 
         unique=True, 
@@ -98,3 +100,8 @@ class Equipo(models.Model):
         super(Equipo, self).save()
 
         '''
+class JugadoraPertenceEquipo(models.Model):
+    jugadora = models.ForeignKey(Jugadora, on_delete=models.CASCADE)
+    equipo = models.ForeignKey(Equipo, on_delete=models.CASCADE)
+
+
