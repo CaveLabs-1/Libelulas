@@ -86,12 +86,13 @@ WSGI_APPLICATION = 'libelulas.wsgi.application'
 
 DATABASES = {
     'default': {
+     
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'libelulas',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': 'localhost',
-        'PORT': '',
+        'PORT': '5432',
     }
 }
 
