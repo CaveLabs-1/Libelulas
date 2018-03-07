@@ -1,0 +1,34 @@
+{% load staticfiles %}
+  <nav>
+    <div class="nav-wrapper">
+      <div class="navito">
+      <a href="#!" class="brand-logo">
+         <img class="logo-plidi" src="{% static 'media/logo.svg' %}"/>
+        
+      </a>
+        
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><div class="wellcome-pack"><h6 id="paketaxo">¡BIENVENIDO POLICARPIO!</h6></div></li>
+        <li><a href="{% url 'equipo:lista_equipos' %}">EQUIPO</a></li>
+        <li><a href="#">CONVOCATORIAS</a></li>
+        <li><a href="#">LIGAS</a></li>
+        <li><a href="#">GALERIA</a></li>
+        <li><a href="#">ORGANIZADORES</a></li>
+        <li><a href="#"><i class="material-icons">exit_to_app</i></a></li>
+        
+      </ul>
+      </div>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><div class="wellcome-pack"><h6 id="paketaxo">¡BIENVENIDO POLICARPIO!</h6></div></li>
+        <li><a href="{% url 'equipo:lista_equipos' %}">EQUIPO</a></li>
+        <li><a href="#">CONVOCATORIAS</a></li>
+        <li><a href="#">LIGAS</a></li>
+        <li><a href="#">GALERIA</a></li>
+        <li><a href="#">ORGANIZADORES</a></li>
+        <li><a href="#"><i class="material-icons">exit_to_app</i></a></li>
+  </ul>
+  
