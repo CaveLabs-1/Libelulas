@@ -63,16 +63,12 @@
       </p>
       {{ form.Posicion.errors }}
       <p>
-        <label>
-          Equipo
-        </label>
-        <select>
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
-        </select>
+          <label>
+              {{ form.equipo.label_tag }}
+          </label>
+          {{ form.equipo }}
       </p>
+       {{ form.equipo.errors }}
       <p>
         <label>
           {{ form.Notas.label_tag }}

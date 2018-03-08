@@ -2,8 +2,11 @@ from django.forms import ModelForm
 from .models import Jugadora
 from django.forms.widgets import FileInput
 from django import forms
+from equipo.models import Equipo
 
 class jugadoraForm(ModelForm):
+
+    equipo = forms.ModelChoiceField(queryset=Equipo.objects.all(), empty_label="Elige un Equpo")
 
     def __init__(self, *args, **kwargs):
         super(jugadoraForm, self).__init__(*args, **kwargs)
@@ -18,3 +21,4 @@ class jugadoraForm(ModelForm):
         widgets = {
             'Imagen': forms.FileInput(),
         }
+
