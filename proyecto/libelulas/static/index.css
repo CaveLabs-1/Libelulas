@@ -44,7 +44,8 @@ form > .form-column {
   display: flex;
   justify-content: space-between;
   margin-top: 2em;
-  width: 60%;
+  max-width:18em;
+  width: 100%;
 }
 
 .cancel {
