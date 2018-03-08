@@ -67,6 +67,4 @@ class borrar_equipo(DeleteView):
     model = Equipo
     success_url = reverse_lazy('equipo:lista_equipos')
 
-def ver_jugadora(request):
-    jugadoras_sin_equipo = Jugadora.objects.all()
-    return render(request, 'equipo/ver_jugadora.html', {'jugadoras': jugadoras_sin_equipo})
+
