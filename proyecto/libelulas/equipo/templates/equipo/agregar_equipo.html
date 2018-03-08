@@ -16,7 +16,7 @@
   {% csrf_token %}
   <div class="image-column">
     <div class="image-circle upload">
-      <img id="upload"/>
+      <img id="upload" class="upload-change"/>
       <div class="generic-photo">
         <img class="camera-icon" src="{% static 'media/photo-camera.svg' %}"/>
         <span>Agregar Logo</span>
@@ -99,4 +99,3 @@
   </div>
 </form>
 {% endblock %}
-
