@@ -10,8 +10,12 @@ from equipo.models import Equipo
 # Create your views here.
 
 
-def agregar_jugadora(request):
-    lista_equipo = Equipo.objects.all()
+def agregar_jugadora(request, equipo_id=''):
+    lista_equipo = ''
+
+    if equipo_id != '':
+        lista_equipo = Equipo.objects.get(id=equipo_id)
+
     if request.method == "POST":
         form = jugadoraForm(request.POST, request.FILES)
         if form.is_valid():
@@ -26,7 +30,7 @@ def agregar_jugadora(request):
     else:
             form = jugadoraForm()
 
-    return render(request, 'jugadora/agregar_jugadora.html', {'form': form, 'lista_equipo':lista_equipo})
+    return render(request, 'jugadora/agregar_jugadora.html', {'form': form, 'lista_equipo':lista_equipo, 'equipo':equipo_id})
 
 def editar_jugadora(request, jugadora_id):
     instance = get_object_or_404(Jugadora, id=jugadora_id)

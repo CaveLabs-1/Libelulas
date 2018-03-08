@@ -10,8 +10,12 @@
     {% endfor %}
   </div>
 {% endif %}
+    {% if equipo == '' %}
+        <form class="container flex" method="POST" enctype="multipart/form-data" novalidate action="{% url 'jugadora:agregar_jugadora' %}">
 
-<form class="container flex" method="POST" enctype="multipart/form-data" novalidate action="{% url 'jugadora:agregar_jugadora' %}">
+    {% else %}
+        <form class="container flex" method="POST" enctype="multipart/form-data" novalidate action="{% url 'jugadora:agregar_jugadora' equipo %}">
+    {% endif %}
   {% csrf_token %}
   <div class="image-column">
     <div class="image-circle upload">
@@ -62,13 +66,28 @@
         {{ form.Posicion }}
       </p>
       {{ form.Posicion.errors }}
-      <p>
-          <label>
-              {{ form.equipo.label_tag }}
-          </label>
-          {{ form.equipo }}
-      </p>
-       {{ form.equipo.errors }}
+
+      {% if equipo == '' %}
+          <p>
+              <label>
+                  {{ form.equipo.label_tag }}
+              </label>
+              {{ form.equipo }}
+          </p>
+           {{ form.equipo.errors }}
+      {% else %}
+          <p>
+              <label>
+                   {{ form.equipo.label_tag }}
+              </label>
+              <select name="{{ form.equipo.name }}" required id="{{ form.equipo.id_for_label }}">
+                <option value="{{ lista_equipo.pk }}" selected>{{ lista_equipo.nombre }}</option>
+              </select>
+          </p>
+
+
+      {% endif %}
+
       <p>
         <label>
           {{ form.Notas.label_tag }}
