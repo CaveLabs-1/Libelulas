@@ -44,7 +44,7 @@ form  .container-button {
   display: flex;
   justify-content: space-between;
   margin-top: 2em;
-  width: 50%;
+  width: 45%;
 }
 
 .cancel {
@@ -96,6 +96,7 @@ form  .container-button {
   align-items: center;
   display: flex;
   flex-direction: column;
+  z-index: 1;
 }
 
 .generic-photo > span {
@@ -145,6 +146,7 @@ textarea {
   position: absolute;
   right: 0;
   width: 100%;
+  z-index: 2;
 }
 
 .messages {
@@ -152,11 +154,21 @@ textarea {
   display: flex;
   color: #fff;
   justify-content: center;
-  height: 48px;
   position: fixed;
-  top: 0;
+  height: 48px;
   width: 100%;
   z-index: 10;
+  animation: hide 1s forwards;
+  animation-play-state: paused;
+}
+
+@keyframes hide {
+  from  {
+    top: 0
+  }
+  to {
+    top:-48px
+  }
 }
 
 .success {
@@ -181,6 +193,16 @@ select {
   margin-top: 0;
 }
 
+
+.upload-change {
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
 @media only screen and (max-width: 768px) {
   .boton {
     width: 30vw
@@ -192,7 +214,6 @@ select {
     width: 10vw
   }
 }
-
 .logo-plidi {
   height: 65px;
   padding: 10px;
