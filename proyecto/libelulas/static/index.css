@@ -39,12 +39,13 @@ form > .form-column {
   flex-direction: column;
 }
 
-form  .container-button {
+.form-column > .container-button {
   align-self: flex-end;
   display: flex;
   justify-content: space-between;
   margin-top: 2em;
-  width: 45%;
+  max-width:18em;
+  width: 100%;
 }
 
 .cancel {
@@ -120,7 +121,6 @@ form  p > label {
 form  p > input {
   border: none;
   border-bottom: 1px solid  #b4c0c6;
-  padding: 3px 0px 3px 0px;
 }
 
 textarea {
