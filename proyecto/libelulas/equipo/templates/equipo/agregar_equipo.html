@@ -2,101 +2,91 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block main %}
-
-
 {% if messages %}
-{% for message in messages %}
-  <div class="{{ message.tags }} messages">
+  {% for message in messages %}
+    <div class="{{ message.tags }} messages">
       <span class="">{{ message }}</span>
-    {% endfor %}
-  </div>
+    </div>
+  {% endfor %}
 {% endif %}
 
-<form method="POST" enctype="multipart/form-data" novalidate action="{% url 'equipo:agregar_equipo' %}">
-  {% csrf_token %}
-  <div class="image-column">
-    <div class="image-circle upload">
-      <img id="upload"/>
-      <div class="generic-photo">
-        <img class="camera-icon" src="{% static 'media/photo-camera.svg' %}"/>
-        <span>Agregar Logo</span>
+<body>
+  <div class="container">
+    <form method="POST" enctype="multipart/form-data" novalidate action="{% url 'equipo:agregar_equipo' %}">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col s12 m12 l3">
+          <div class="image-column">
+            <div class="image-circle upload">
+              <img id="upload"/>
+              <div class="generic-photo">
+                <img class="camera-icon" src="{% static 'media/photo-camera.svg' %}"/>
+                <span>Agregar Logo</span>
+              </div>
+              <div class="absolute-icons">
+                {{ form.logo }}
+              </div>
+            </div>
+            {{ form.logo.errors }}
+          </div>
+        </div>
+        <div class="col s12 m12 l9">
+          <div class="input-field col s12">
+            {{ form.nombre }}
+            <label for="{{form.nombre.id_for_label}}">Nombre de Equipo</label>
+            {{form.nombre.errors}}
+          </div>
+          <div class="input-field col s12">
+            {{ form.representante }}
+            <label for="{{form.representante.id_for_label}}">Coach</label>
+            {{form.representante.errors}}
+          </div>
+          <div class="input-field col s12 m6">
+            {{ form.correo }}
+            <label for="{{form.correo.id_for_label}}">Correo Electrónico</label>
+            {{form.correo.errors}}
+          </div>
+          <div class="input-field col s12 m6">
+            {{form.telefono}}
+            <label for="{{form.telefono.id_for_label}}">Teléfono</label>
+            {{ form.telefono.errors }}
+          </div>
+          <div class="input-field col s12">
+            {{form.cancha}}
+            <label for="{{form.cancha.id_for_label}}">Cancha</label>
+            {{ form.cancha.errors }}
+          </div>
+          <div class="input-field col s12 m6">
+            {{form.dia}}
+            <label for="{{form.dia.id_for_label}}">Dia de Juego</label>
+            {{form.dia.errors}}
+          </div>
+          <div class="input-field col s12 m6">
+            <input type="text" name="{{form.hora.html_name}}" required="" class="timepicker" id="{{form.hora.id_for_label}}"/>
+            <label for="{{form.hora.id_for_label}}">Hora de Juego</label>
+            {{form.hora.errors}}
+          </div>
+          <div class="input-field col s6 m3">
+            {{form.colorLocal}}
+            <label for="{{form.colorLocal.id_for_label}}">Color Local</label>
+            {{form.colorLocal.errors}}
+          </div>
+          <div class="input-field col s6 m3">
+            {{form.colorVisitante}}
+            <label for="{{form.colorVisitante.id_for_label}}">Color Visitante</label>
+            {{form.colorVisitante.errors}}
+          </div>
+          <div class="col s12 m8 l6 offset-m4 offset-l6">
+              <div class="container-button">
+                <button class="cancel">Cancelar</button>
+                <button class="submit" type="submit">Enviar</button>
+              </div>
+          </div>
+        </div>
       </div>
-      <div class="absolute-icons">
-          {{ form.logo }}
-
-      </div>
-    </div>
-    {{ form.logo.errors }}
-  </div>
-  <div class="form-column">
-      <p>
-        <label>
-          {{ form.nombre.label_tag }}
-        </label>
-        {{ form.nombre }}
-      </p>
-      {{ form.nombre.errors }}
-      <p>
-        <label>
-          {{ form.representante.label_tag }}
-        </label>
-        {{ form.representante }}
-      </p>
-      {{ form.representante.errors }}
-      <p>
-        <label>
-          {{ form.correo.label_tag }}
-        </label>
-        {{ form.correo }}
-      </p>
-      {{ form.correo.errors }}
-      <p>
-        <label>
-          {{ form.telefono.label_tag }}
-        </label>
-        {{ form.telefono }}
-      </p>
-      {{ form.telefono.errors }}
-      <p>
-        <label>
-          {{ form.colorLocal.label_tag }}
-        </label>
-        {{ form.colorLocal }}
-      </p>
-      {{ form.colorLocal.errors }}
-      <p>
-        <label>
-          {{ form.colorVisitante.label_tag }}
-        </label>
-        {{ form.colorVisitante }}
-      </p>
-      {{ form.colorVisitante.errors }}
-      <p>
-        <label>
-          {{ form.cancha.label_tag }}
-        </label>
-        {{ form.cancha }}
-      </p>
-      {{ form.cancha.errors }}
-      <p>
-        <label>
-          {{ form.dia.label_tag }}
-        </label>
-        {{ form.dia }}
-      </p>
-      {{ form.dia.errors }}
-      <p>
-        <label>
-          {{ form.hora.label_tag }}
-        </label>
-        {{ form.hora }}
-      </p>
-      {{ form.hora.errors }}
-    <div class="container-button">
-      <button class="cancel">Cancelar</button>
-      <button class="submit" type="submit">Enviar</button>
+      </form>
     </div>
   </div>
-</form>
+</body>
 {% endblock %}
 
