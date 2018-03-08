@@ -16,16 +16,20 @@ nav .nav-wrapper {
   padding-top: 3em;
   width: 100%;
   position: relative;
+  flex-direction: column;
 }
 
-form {
+.main > .container {
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 0 18px 9px 0 rgba(235, 236, 239, 0.64);
-  display: flex;
   padding: 3.8em 3em;
   max-width: 1024px;
   width:100%;
+}
+
+.flex {
+  display: flex;
 }
 
 form > .image-column {
@@ -255,7 +259,7 @@ nav ul a {
 
 .welcome-pack{
   padding: 30px;
-  
+
 }
 #paketaxo{
   padding-top: 9px;
@@ -276,4 +280,18 @@ nav ul a {
   padding: 3.8em 3em;
   max-width: 1024px;
   width:100%;
+}
+
+.img-icons{
+  max-width: 5em;
+  max-height: 5em;
+  height: 100%;
+}
+
+.division {
+  border-bottom: 1.5px solid #cfd7db;
+}
+
+.no-pad {
+  padding: 0 !important;
 }

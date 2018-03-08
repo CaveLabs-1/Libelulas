@@ -8,9 +8,10 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 
 # Create your views here.
-    
+
 from django.views.generic.list import ListView
 from .models import Equipo
+from jugadora.models import Jugadora
 
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import DeleteView
@@ -41,9 +42,6 @@ class lista_equipos(ListView):
         return context
 
 
-
-
-
 class detalle_equipo(DetailView):
 
     model = Equipo
@@ -69,3 +67,6 @@ class borrar_equipo(DeleteView):
     model = Equipo
     success_url = reverse_lazy('equipo:lista_equipos')
 
+def ver_jugadora(request):
+    jugadoras_sin_equipo = Jugadora.objects.all()
+    return render(request, 'equipo/ver_jugadora.html', {'jugadoras': jugadoras_sin_equipo})

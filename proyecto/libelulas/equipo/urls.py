@@ -11,9 +11,6 @@ urlpatterns = [
     path('', lista_equipos.as_view() , name='lista_equipos'),
     path('<int:pk>/', detalle_equipo.as_view(), name='detalle_equipo'),
     path('editar_equipo/<int:pk>/', editar_equipo.as_view(), name='editar_equipo'),
-    path('borrar_equipo/<int:pk>/', borrar_equipo.as_view(), name='borrar_equipo')
-
-
-
+    path('borrar_equipo/<int:pk>/', borrar_equipo.as_view(), name='borrar_equipo'),
+    path('jugadoras/', views.ver_jugadora, name='ver_jugadora')
 ]
-
