@@ -4,109 +4,49 @@
 {% load staticfiles %}
 {% block main %}
   <body>
-   <div class="container">
-      <div id="gansito">
+    <div class="container" id="gansito">
         <div class="row">
-          <div class="col s12">
-            <h1>Equipo: {{object.nombre}}</h1>
+          <div class="col s12 m3">
+            <img class="logo-equipo" src="{{object.logo.url}}">
           </div>
-        <div class="row">
-          <div class="col m4">
-            <h3>Logo</h3>
-            <img  width="150px" src="{{object.logo.url}}">
-        </div>
-            
-              <h2>Representante: {{object.representante}}</h2>
-<h3>Teléfono: {{object.telefono}}</h3>
-<h3>E-Mail: {{object.correo}}</h3>
-
-
-<h3>Color Local</h3>
-
-{% if object.colorLocal is 1 %}
-  <span>Blanco</span>
-{% elif object.colorLocal  is  2 %}
-    <span>Gris</span>
-{% elif object.colorLocal  is 3 %}
-  <span>Negro</span>
-{% elif object.colorLocal is 4 %}
-  <span>Rojo</span>
-{% elif object.colorLocal is 5 %}
-  <span>Naranja</span>
-{% elif object.colorLocal is 6 %}
-  <span>Amarillo</span>
-{% elif object.colorLocal is 7 %}
-    <span>Verde</span>
-{% elif object.colorLocal is 8 %}
-  <span>Azul</span>
-{% elif object.colorLocal is  9 %}
-  <span>Morado</span>
-{% elif object.colorLocal is 10 %}
-  <span>Rosa</span>
-{% elif object.colorLocal is 11 %}
-  <span>Cafe</span>
-{% endif %}
-<h3>Color Visitante</h3>
-
-{% if object.colorVisitante is  1 %}
-  <span>Blanco</span>
-{% elif object.colorVisitante  is  2 %}
-    <span>Gris</span>
-{% elif object.colorVisitante is 3 %}
-  <span>Negro</span>
-{% elif object.colorVisitante is 4 %}
-  <span>Rojo</span>
-{% elif object.colorVisitante is 5 %}
-  <span>Naranja</span>
-{% elif object.colorVisitante is 6 %}
-  <span>Amarillo</span>
-{% elif object.colorVisitante is 7 %}
-    <span>Verde</span>
-{% elif object.colorVisitante is 8 %}
-  <span>Azul</span>
-{% elif object.colorVisitante is  9 %}
-  <span>Morado</span>
-{% elif object.colorVisitante is 10 %}
-  <span>Rosa</span>
-{% elif object.colorVisitante is 11 %}
-  <span>Cafe</span>
-{% endif %}
-
-  <h4>Cancha: {{object.cancha}}</h4>
-
-  <h4>Dia de Juego:</h4>
-
-{% if object.dia is 1 %}
-  <span>Lunes</span>
-{% elif object.dia is 2 %}
-    <span>Martes</span>
-{% elif object.dia is 3 %}
-  <span>Miércoles</span>
-{% elif object.dia is 4 %}
-  <span>Jueves</span>
-{% elif object.dia is 5 %}
-  <span>Viernes</span>
-{% elif object.dia is 6 %}
-  <span>Sábado</span>
-{% elif object.dia is 7 %}
-    <span>Domingo</span>
-{% endif %}
-
-   <h4>Hora:  {{ object.hora }}</h4>
-              
+          <div class="col s12 m9">
+            <div class="input-field col s12">
+              <input disabled value="{{object.nombre}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+              <label for="disabled">Nombre de Equipo</label>
             </div>
-            
+            <div class="input-field col s12">
+              <input disabled value="{{object.representante}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+              <label for="disabled">Coach</label>
+            </div>
+            <div class="input-field col s12 m6">
+              <input disabled value="{{object.correo}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+              <label for="disabled">Correo Electrónico</label>
+            </div>
+            <div class="input-field col s12 m6">
+              <input disabled value="{{object.telefono}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+              <label for="disabled">Teléfono</label>
+            </div>
+            <div class="input-field col s12">
+              <input disabled value="{{object.cancha}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+              <label for="disabled">Cancha</label>
+            </div>
+            <div class="input-field col s12">
+              <input disabled value="{{object.get_dia_display}} {{object.hora}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+              <label for="disabled">Horario</label>
+            </div>
+            <div class="input-field col s6 m3">
+              <input disabled value="{{object.get_colorLocal_display}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+              <label for="disabled">Color Local</label>
+            </div>
+            <div class="input-field col s6 m3">
+              <input disabled value="{{object.get_colorVisitante_display}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+              <label for="disabled">Color Visitante</label>
+            </div>
           </div>
-    
-
-
-   
-</div>
-</div>
-
-
-
-
+        </div>
+      </div>
+    </div>
+ </body>
 </html>
 {% endblock %}
 
