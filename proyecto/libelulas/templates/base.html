@@ -25,9 +25,11 @@
     $(document).ready(function(){
       $('select').formSelect();
       $('.sidenav').sidenav();
-      $('.timepicker').timepicker();
+      $('.timepicker').timepicker({
+        twelveHour: false
+      });
     });
-    </script>
+    </script>  
   </body>
   <script type="text/javascript" src="{% static '/index.js' %}">
   </script> 

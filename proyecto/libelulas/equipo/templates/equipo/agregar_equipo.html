@@ -16,9 +16,10 @@
       {% csrf_token %}
       <div class="row">
         <div class="col s12 m12 l3">
+          <div align="center">
           <div class="image-column">
             <div class="image-circle upload">
-              <img id="upload"/>
+              <img id="upload" class="upload-change"/>
               <div class="generic-photo">
                 <img class="camera-icon" src="{% static 'media/photo-camera.svg' %}"/>
                 <span>Agregar Logo</span>
@@ -28,6 +29,7 @@
               </div>
             </div>
             {{ form.logo.errors }}
+          </div>
           </div>
         </div>
         <div class="col s12 m12 l9">
@@ -76,7 +78,7 @@
             <label for="{{form.colorVisitante.id_for_label}}">Color Visitante</label>
             {{form.colorVisitante.errors}}
           </div>
-          <div class="col s12 m8 l6 offset-m4 offset-l6">
+          <div class="col s12 m8 l8 offset-m4 offset-l4">
               <div class="container-button">
                 <button class="cancel">Cancelar</button>
                 <button class="submit" type="submit">Enviar</button>
