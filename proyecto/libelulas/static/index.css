@@ -214,4 +214,66 @@ select {
     width: 10vw
   }
 }
+.logo-plidi {
+  height: 65px;
+  padding: 10px;
+}
+.logo-equipo {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+.navito {
+  width: 100%;
+  max-width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+}
+nav a.sidenav-trigger i {
+    height: 64px;
+    line-height: 64px;
+    color: #81889d;
+}
 
+nav ul a {
+  color: #81889d;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  text-align: left;
+}
+.sidenav li a {
+  color: #81889d;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  text-align: left;
+}
+
+.welcome-pack{
+  padding: 30px;
+  
+}
+#paketaxo{
+  padding-top: 9px;
+  padding-right: 10px;
+  padding-left: 32px;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.33;
+  text-align: left;
+  color: #cfd7db;
+}
+#gansito {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 18px 9px 0 rgba(235, 236, 239, 0.64);
+  padding: 3.8em 3em;
+  max-width: 1024px;
+  width:100%;
+}
