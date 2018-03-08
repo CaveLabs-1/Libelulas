@@ -14,7 +14,13 @@
   {% csrf_token %}
   <div class="image-column">
     <div class="image-circle upload">
-      <img class="upload-change" src="{{ jugadora.Imagen.url }}" alt="{{ jugadora.Imagen.url }}">
+        {% if jugadora.Imagen == '' %}
+            <img class="upload-change" src="" alt="">
+        {% else %}
+            <img class="upload-change" src="{{ jugadora.Imagen.url }}" alt="{{ jugadora.Imagen.url }}">
+        {% endif %}
+
+
       <img id="upload" class="upload-change"/>
       <div class="generic-photo">
         <img class="camera-icon" src="{% static 'media/photo-camera.svg' %}"/>

@@ -26,14 +26,16 @@ class Jugadora(models.Model):
     def __str__(self):
         return self.Nombre + str(self.pk)
 
-    def save(self):
+    def save(self, *args, **kw):
 
         if self.Imagen:
 
-            print(self.Imagen.name)
+
 
             # Opening the uploaded image
             im = Image.open(self.Imagen)
+            nombre = (self.Imagen.name)
+
 
             output = BytesIO()
 
@@ -45,4 +47,5 @@ class Jugadora(models.Model):
             # change the imagefield value to be the newley modifed image value
             self.Imagen = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.Imagen.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
 
-        super(Jugadora, self).save()
+        super(Jugadora,self).save(*args, **kw)
+        # super(Jugadora, self).save()
