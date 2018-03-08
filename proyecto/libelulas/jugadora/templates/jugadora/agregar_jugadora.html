@@ -64,11 +64,25 @@
       {{ form.Posicion.errors }}
       <p>
         <label>
+          Equipo
+        </label>
+        <select>
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+        </select>
+      </p>
+      <p>
+        <label>
           {{ form.Notas.label_tag }}
         </label>
         {{ form.Notas }}
       </p>
       {{ form.Notas.errors }}
+
+
+
     <div class="container-button">
       <button class="cancel">Cancelar</button>
       <button class="submit" type="submit">Enviar</button>
