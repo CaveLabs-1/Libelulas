@@ -8,13 +8,17 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 
 # Create your views here.
-    
+
 from django.views.generic.list import ListView
 from .models import Equipo
+from jugadora.models import Jugadora
 
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import DeleteView
 
+
+from django.urls import reverse_lazy
+from django.views.generic.edit import UpdateView
 
 def agregar_equipo(request):
     if request.method == "POST":
@@ -41,21 +45,10 @@ class lista_equipos(ListView):
         return context
 
 
-
-
-
-class detalle_equipo(DetailView):
-
-    model = Equipo
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
-
-
-from django.urls import reverse_lazy
-
-from django.views.generic.edit import UpdateView
+def detalle_equipo(request, equipo_id):
+    equipo = Equipo.objects.get(pk=equipo_id)
+    jugadoras_equipo = Equipo.objects.get(jugadoras=equipo_id).jugadoras.all()
+    return render(request, 'equipo/equipo_detail.html', {'equipo': equipo, 'jugadoras_equipo': jugadoras_equipo })
 
 class editar_equipo(UpdateView):
     model = Equipo
@@ -63,9 +56,20 @@ class editar_equipo(UpdateView):
     template_name_suffix = '_update'
     success_url = reverse_lazy('equipo:lista_equipos')
 
-from django.urls import reverse_lazy
+# def editar_equipo(request, equipo_id):
+#     instance = get_object_or_404(Equipo, id=equipo_id)
+#     form = equipoForm(request.POST or None, instance=instance)
+#     if request.method == "POST":
+#         form = equipoForm(request.POST, request.FILES, instance=instance)
+#         if form.is_valid():
+#             equipo = form
+#             equipo.save()
+#             messages.success(request, 'Equipo editado exitosamente')
+#             return HttpResponseRedirect(reverse('equipo:lista_equipos'))
+#         else:
+#             messages.warning(request, 'Hubo un error en la forma')
+#     return render(request, 'equipo/equipo_update.html', {'form': form, 'equipo' : instance})
 
 class borrar_equipo(DeleteView):
     model = Equipo
     success_url = reverse_lazy('equipo:lista_equipos')
-

@@ -1,5 +1,7 @@
 from django.forms import ModelForm
 from .models import Equipo
+from django.forms.widgets import FileInput
+from django import forms
 
 class equipoForm(ModelForm):
 
@@ -23,4 +25,6 @@ class equipoForm(ModelForm):
             'dia',
             'hora'
         )
-
+        widgets = {
+        'logo': forms.FileInput(),
+        }
