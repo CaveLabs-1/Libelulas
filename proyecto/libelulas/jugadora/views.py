@@ -6,6 +6,8 @@ from django.contrib import messages
 from django.shortcuts import get_object_or_404
 from jugadora.models import Jugadora
 from equipo.models import Equipo
+from django.views.generic.edit import DeleteView
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -61,3 +63,8 @@ def editar_jugadora(request, jugadora_id):
 def ver_jugadoras(request):
     jugadoras = Jugadora.objects.all()
     return render(request, 'jugadora/ver_jugadoras.html', {'jugadoras': jugadoras})
+
+class eliminar_jugadora(DeleteView):
+    model = Jugadora
+    success_url = reverse_lazy('jugadora:ver_jugadoras')
+
