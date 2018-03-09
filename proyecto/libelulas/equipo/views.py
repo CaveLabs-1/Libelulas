@@ -56,20 +56,6 @@ class editar_equipo(UpdateView):
     template_name_suffix = '_update'
     success_url = reverse_lazy('equipo:lista_equipos')
 
-# def editar_equipo(request, equipo_id):
-#     instance = get_object_or_404(Equipo, id=equipo_id)
-#     form = equipoForm(request.POST or None, instance=instance)
-#     if request.method == "POST":
-#         form = equipoForm(request.POST, request.FILES, instance=instance)
-#         if form.is_valid():
-#             equipo = form
-#             equipo.save()
-#             messages.success(request, 'Equipo editado exitosamente')
-#             return HttpResponseRedirect(reverse('equipo:lista_equipos'))
-#         else:
-#             messages.warning(request, 'Hubo un error en la forma')
-#     return render(request, 'equipo/equipo_update.html', {'form': form, 'equipo' : instance})
-
 class borrar_equipo(DeleteView):
     model = Equipo
     success_url = reverse_lazy('equipo:lista_equipos')

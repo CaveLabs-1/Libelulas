@@ -25,6 +25,3 @@ class equipoForm(ModelForm):
             'dia',
             'hora'
         )
-        widgets = {
-        'logo': forms.FileInput(),
-        }

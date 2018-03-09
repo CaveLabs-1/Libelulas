@@ -22,7 +22,7 @@
         <span>Agregar Logo</span>
       </div>
       <div class="absolute-icons">
-          {{ form.logo }}
+          <input type="file" name="{{form.logo.html_name}}" required="" onchange="loadFile(event)"  id="{{form.logo.id_for_label}}" class="inputfile"/>
       </div>
     </div>
     {{ form.logo.errors }}
