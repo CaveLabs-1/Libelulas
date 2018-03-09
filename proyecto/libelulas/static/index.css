@@ -23,9 +23,10 @@ nav .nav-wrapper {
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 0 18px 9px 0 rgba(235, 236, 239, 0.64);
-  padding: 3.8em 3em;
+  display: flex;
   max-width: 1024px;
   width:100%;
+  padding-top: 10px;
 }
 
 .flex {
@@ -62,6 +63,7 @@ form > .form-column {
   font-weight: bold;
   letter-spacing: 43;
   padding: 0.5em 2.37em 0.5em 2.37em;
+  margin-right: 10px;
 }
 
 .submit {
@@ -80,15 +82,16 @@ form > .form-column {
   align-items: center;
   background-image: linear-gradient(to bottom, #ff7982, #ff78b8);
   display: flex;
-  height: 335px;
+  height: 100%;
   justify-content: center;
   position:relative;
-  width: 335px;
+  width: 100%;
+  max-width: 250px;
 }
 
 .image-circle {
   border-radius: 50%;
-  margin-bottom: 8px;
+  margin-bottom: 8px;;
 }
 
 
@@ -283,6 +286,18 @@ nav ul a {
   width:100%;
 }
 
+.cancel:focus {
+  background-color: transparent;
+  border: solid 2px #ff7178;
+  border-radius: 50px;
+  box-shadow: 0 8px 6px 0 rgba(239, 239, 239, 0.47);
+  color: #ff7178;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 43;
+  padding: 0.5em 2.37em 0.5em 2.37em;
+}
+
 .img-icons{
   max-width: 6.5em;
   max-height: 6.5em;
@@ -325,3 +340,4 @@ p {
 .red-background {
   background-image: linear-gradient(to bottom, #ff7a80, #ff78be);
 }
+
