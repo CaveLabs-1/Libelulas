@@ -32,7 +32,7 @@ nav .nav-wrapper {
   display: flex;
 }
 
-@media only screen and (min-device-width: 360px) and (max-device-width: 768px) {
+@media (min-width: 360px) and (max-width: 768px) {
   .flex {
     flex-direction: column;
     align-items: center;
