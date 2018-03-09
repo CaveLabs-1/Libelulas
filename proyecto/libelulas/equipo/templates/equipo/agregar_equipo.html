@@ -12,7 +12,7 @@
   </div>
 {% endif %}
 
-<form method="POST" enctype="multipart/form-data" novalidate action="{% url 'equipo:agregar_equipo' %}">
+<form class="container flex" method="POST" enctype="multipart/form-data" novalidate action="{% url 'equipo:agregar_equipo' %}">
   {% csrf_token %}
   <div class="image-column">
     <div class="image-circle upload">

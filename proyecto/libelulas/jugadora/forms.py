@@ -6,7 +6,7 @@ from equipo.models import Equipo
 
 class jugadoraForm(ModelForm):
 
-    equipo = forms.ModelChoiceField(queryset=Equipo.objects.all(), empty_label="Elige un Equpo")
+    equipo = forms.ModelChoiceField(queryset=Equipo.objects.all(), empty_label="Elige un Equipo")
 
     def __init__(self, *args, **kwargs):
         super(jugadoraForm, self).__init__(*args, **kwargs)
@@ -21,4 +21,3 @@ class jugadoraForm(ModelForm):
         widgets = {
             'Imagen': forms.FileInput(),
         }
-
