@@ -22,7 +22,7 @@
         <span>Agregar Logo</span>
       </div>
       <div class="absolute-icons">
-          <input type="file" name="{{form.logo.html_name}}" required="" onchange="loadFile(event)"  id="{{form.logo.id_for_label}}" class="inputfile"/>
+          <input type="file" value="{{form.logo.url}}" name="{{form.logo.html_name}}" required="" onchange="loadFile(event)"  id="{{form.logo.id_for_label}}" class="inputfile"/>
       </div>
     </div>
     {{ form.logo.errors }}
@@ -88,8 +88,7 @@
         <label>
           {{ form.hora.label_tag }}
         </label>
-
-        <input type="time" name="{{form.hora.html_name}}" required="" value='{{ form.hora.value|time:"H:i" }}' id="{{form.hora.id_for_label}}">
+        <input type="time" name="{{form.hora.html_name}}" required="" value='{{ form.hora.value|time:"H:i" }}' id="{{form.hora.id_for_label}}" class="timepicker">
       </p>
       {{ form.hora.errors }}
     <div class="container-button">
