@@ -11,7 +11,7 @@ nav .nav-wrapper {
   background-color: #f7f8fb;
   display: flex;
   justify-content: center;
-  min-height: calc(100vh - 6em);
+  min-height: calc(100vh - 65px);
   padding-bottom: 3em;
   padding-top: 3em;
   width: 100%;
@@ -292,6 +292,7 @@ nav ul a {
 .division {
   border-bottom: 1.5px solid #cfd7db;
 }
+
 
 .no-pad {
   padding: 0 !important;

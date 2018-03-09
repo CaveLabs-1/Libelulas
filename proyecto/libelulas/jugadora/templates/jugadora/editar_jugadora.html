@@ -15,15 +15,15 @@
   <div class="image-column">
     <div class="image-circle upload">
         {% if jugadora.Imagen == '' %}
-            <img class="upload-change" src="" alt="">
+            <img class="upload-change" src="{% static 'static_media/default.jpg' %}" alt="" />
         {% else %}
-            <img class="upload-change" src="{{ jugadora.Imagen.url }}" alt="{{ jugadora.Imagen.url }}">
+            <img class="upload-change" src="{{ jugadora.Imagen.url }}" alt="{{ jugadora.Imagen.url }}" />
         {% endif %}
 
 
       <img id="upload" class="upload-change"/>
       <div class="generic-photo">
-        <img class="camera-icon" src="{% static 'media/photo-camera.svg' %}"/>
+        <img class="camera-icon" src="{% static 'static_media/photo-camera.svg' %}"/>
         <span>Cambiar Foto</span>
       </div>
       <div class="absolute-icons">
