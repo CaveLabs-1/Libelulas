@@ -57,3 +57,7 @@ def editar_jugadora(request, jugadora_id):
         else:
             messages.warning(request, 'Hubo un error en la forma')
     return render(request, 'jugadora/editar_jugadora.html', {'form': form, 'jugadora': instance })
+
+def ver_jugadoras(request):
+    jugadoras = Jugadora.objects.all()
+    return render(request, 'jugadora/ver_jugadoras.html', {'jugadoras': jugadoras})
