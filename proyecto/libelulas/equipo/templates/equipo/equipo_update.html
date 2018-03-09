@@ -5,7 +5,7 @@
 
 {% if messages %}
 {% for message in messages %}
-  <div class="{{ message.tags }} messages">
+  <div class="{{ message.tags }} messages" id="message">
       <span class="">{{ message }}</span>
     {% endfor %}
   </div>
@@ -22,7 +22,7 @@
         <span>Agregar Logo</span>
       </div>
       <div class="absolute-icons">
-          <input type="file" value="{{form.logo.url}}" name="{{form.logo.html_name}}" required="" onchange="loadFile(event)"  id="{{form.logo.id_for_label}}" class="inputfile"/>
+          {{ form.logo }}
       </div>
     </div>
     {{ form.logo.errors }}
