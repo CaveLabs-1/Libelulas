@@ -12,13 +12,13 @@
   </div>
 {% endif %}
 
-<form method="POST" enctype="multipart/form-data" novalidate action="{% url 'equipo:agregar_equipo' %}">
+<form class="container flex" method="POST" enctype="multipart/form-data" novalidate action="{% url 'equipo:agregar_equipo' %}">
   {% csrf_token %}
   <div class="image-column">
     <div class="image-circle upload">
       <img id="upload" class="upload-change"/>
       <div class="generic-photo">
-        <img class="camera-icon" src="{% static 'media/photo-camera.svg' %}"/>
+        <img class="camera-icon" src="{% static 'static_media/photo-camera.svg' %}"/>
         <span>Agregar Logo</span>
       </div>
       <div class="absolute-icons">
