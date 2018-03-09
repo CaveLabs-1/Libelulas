@@ -34,14 +34,26 @@ def agregar_jugadora(request, equipo_id=''):
 
 def editar_jugadora(request, jugadora_id):
     instance = get_object_or_404(Jugadora, id=jugadora_id)
-    form = jugadoraForm(request.POST or None, instance=instance)
+    idEquipo = Jugadora.objects.get(id=jugadora_id).equipo_set.all().first().pk
+    form = jugadoraForm(request.POST or None, instance=instance, initial={'equipo': idEquipo})
+
+
     if request.method == "POST":
         form = jugadoraForm(request.POST, request.FILES, instance=instance)
         if form.is_valid():
             jugadora = form
-            jugadora.save()
+            if idEquipo != request.POST['equipo']:
+                re = Equipo.objects.get(id=idEquipo)
+                re.jugadoras.remove(Jugadora.objects.get(id=jugadora_id))
+                re.save()
+
+                e = Equipo.objects.get(id=(request.POST['equipo']))
+                e.jugadoras.add(jugadora.save())
+                e.save()
+            else:
+                jugadora.save()
             messages.success(request, 'Jugadora editada exitosamente')
             return HttpResponseRedirect(reverse('jugadora:agregar_jugadora'))
         else:
             messages.warning(request, 'Hubo un error en la forma')
-    return render(request, 'jugadora/editar_jugadora.html', {'form': form, 'jugadora' : instance})
+    return render(request, 'jugadora/editar_jugadora.html', {'form': form, 'jugadora': instance })
