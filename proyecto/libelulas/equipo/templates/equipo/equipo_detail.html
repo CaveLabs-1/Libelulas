@@ -68,15 +68,15 @@
       {% for jugadora in jugadoras_equipo %}
         <div class="row division vertical-align-center">
           {% if jugadora.Imagen %}
-            <div class="col s2 center-align">
+            <div class="col s2 center-align no-display">
               <img class="circle img-icons" src="{{jugadora.Imagen.url}}" />
             </div>
           {% else %}
-          <div class="col s2 center-align">
+          <div class="col s2 center-align no-display">
             <img class="circle img-icons" src="{% static 'static_media/default.jpg' %}" />
           </div>
           {% endif %}
-          <div class="col s6">
+          <div class="col s6 change-width">
             <div class="row">
               <h6>{{ jugadora.Nombre }} {{ jugadora.Apellido }}</h6>
             </div>

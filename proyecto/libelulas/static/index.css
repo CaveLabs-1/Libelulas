@@ -20,12 +20,12 @@ nav .nav-wrapper {
   flex-direction: column;
 }
 
-.main > .container {
+.main>.container {
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 0 18px 9px 0 rgba(235, 236, 239, 0.64);
   max-width: 1024px;
-  width:100%;
+  width: 100%;
   padding: 24px;
 }
 
@@ -38,19 +38,28 @@ nav .nav-wrapper {
     flex-direction: column;
     align-items: center;
   }
+  .img-icons {
+    display: none;
+  }
+  .no-display {
+    width: 0 !important;
+  }
+  .change-width {
+    width: 60% !important;
+  }
 }
-form > .image-column {
+
+form>.image-column {
   flex-grow: 1;
 }
 
-
-form > .form-column {
+form>.form-column {
   flex-grow: 3;
   display: flex;
   flex-direction: column;
 }
 
-.form-column > .container-button {
+.form-column>.container-button {
   align-self: flex-end;
   display: flex;
   justify-content: space-between;
@@ -87,16 +96,16 @@ form > .form-column {
   background-image: linear-gradient(to bottom, #ff7982, #ff78b8);
   display: flex;
   justify-content: center;
-  position:relative;
+  position: relative;
   width: 335px;
   height: 355px;
 }
 
 .image-circle {
   border-radius: 50%;
-  margin-bottom: 8px;;
+  margin-bottom: 8px;
+  ;
 }
-
 
 .camera-icon {
   max-width: 155px;
@@ -110,25 +119,25 @@ form > .form-column {
   z-index: 1;
 }
 
-.generic-photo > span {
+.generic-photo>span {
   color: #fff;
   font-size: 1.1em;
   letter-spacing: 29;
 }
 
-form  p {
+form p {
   display: flex;
   flex-direction: column;
 }
 
-form  p > label {
+form p>label {
   color: #b4c0c6;
   letter-spacing: 29;
 }
 
-form  p > input {
+form p>input {
   border: none;
-  border-bottom: 1px solid  #b4c0c6;
+  border-bottom: 1px solid #b4c0c6;
 }
 
 textarea {
@@ -141,7 +150,7 @@ textarea {
   cursor: pointer;
   height: 100%;
   opacity: 0;
-  width:100%;
+  width: 100%;
 }
 
 .absolute-icons {
@@ -173,11 +182,11 @@ textarea {
 }
 
 @keyframes hide {
-  from  {
+  from {
     top: 0
   }
   to {
-    top:-48px
+    top: -48px
   }
 }
 
@@ -192,7 +201,7 @@ textarea {
 select {
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid  #b4c0c6;
+  border-bottom: 1px solid #b4c0c6;
   padding: 3px 0px 3px 0px;
 }
 
@@ -202,7 +211,6 @@ select {
   padding: 0;
   margin-top: 0;
 }
-
 
 .upload-change {
   position: absolute;
@@ -224,10 +232,12 @@ select {
     width: 10vw
   }
 }
+
 .logo-plidi {
   height: 65px;
   padding: 10px;
 }
+
 .logo-equipo {
   border-radius: 50%;
   max-width: 12em;
@@ -235,16 +245,18 @@ select {
   height: 12em;
   padding: 10px;
 }
+
 .navito {
   width: 100%;
   max-width: 1024px;
   height: 100%;
   margin: 0 auto;
 }
+
 nav a.sidenav-trigger i {
-    height: 64px;
-    line-height: 64px;
-    color: #81889d;
+  height: 64px;
+  line-height: 64px;
+  color: #81889d;
 }
 
 nav ul a {
@@ -255,6 +267,7 @@ nav ul a {
   font-stretch: normal;
   text-align: left;
 }
+
 .sidenav li a {
   color: #81889d;
   font-size: 16px;
@@ -264,11 +277,11 @@ nav ul a {
   text-align: left;
 }
 
-.welcome-pack{
+.welcome-pack {
   padding: 30px;
 }
 
-#paketaxo{
+#paketaxo {
   padding-top: 9px;
   padding-right: 10px;
   padding-left: 32px;
@@ -293,7 +306,7 @@ nav ul a {
   padding: 0.5em 2.37em 0.5em 2.37em;
 }
 
-.img-icons{
+.img-icons {
   max-width: 6.5em;
   max-height: 6.5em;
   height: 100%;
@@ -303,7 +316,6 @@ nav ul a {
   border-bottom: 1.5px solid #cfd7db;
 }
 
-
 .no-pad {
   padding: 0 !important;
 }
@@ -311,12 +323,13 @@ nav ul a {
 .tab-row {
   padding-bottom: 2em;
 }
+
 p {
   color: #b4c0c6;
 }
 
 .medium {
-  font-size:2.4em !important;
+  font-size: 2.4em !important;
 }
 
 .icon-red {
