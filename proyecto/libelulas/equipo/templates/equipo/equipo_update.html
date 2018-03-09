@@ -5,24 +5,24 @@
 
 {% if messages %}
 {% for message in messages %}
-  <div class="{{ message.tags }} messages">
+  <div class="{{ message.tags }} messages" id="message">
       <span class="">{{ message }}</span>
     {% endfor %}
   </div>
 {% endif %}
 
-    <form  action="{% url 'equipo:editar_equipo' equipo.id %}" method="POST" enctype="multipart/form-data">`
+<form  class="container flex" action="{% url 'equipo:editar_equipo' equipo.id %}" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   <div class="image-column">
     <div class="image-circle upload">
+      <img class="upload-change" src="{{ equipo.logo.url }}" />
       <img id="upload" class="upload-change"/>
       <div class="generic-photo">
-        <img class="camera-icon" src="{% static 'media/photo-camera.svg' %}"/>
+        <img class="camera-icon" src="{% static 'static_media/photo-camera.svg' %}"/>
         <span>Agregar Logo</span>
       </div>
       <div class="absolute-icons">
           {{ form.logo }}
-
       </div>
     </div>
     {{ form.logo.errors }}
@@ -88,8 +88,7 @@
         <label>
           {{ form.hora.label_tag }}
         </label>
-
-        <input type="time" name="{{form.hora.html_name}}" required="" value='{{ form.hora.value|time:"H:i" }}' id="{{form.hora.id_for_label}}">
+        <input type="time" name="{{form.hora.html_name}}" required="" value='{{ form.hora.value|time:"H:i" }}' id="{{form.hora.id_for_label}}" class="timepicker">
       </p>
       {{ form.hora.errors }}
     <div class="container-button">

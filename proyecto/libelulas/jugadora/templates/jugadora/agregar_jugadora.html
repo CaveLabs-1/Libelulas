@@ -10,14 +10,18 @@
     {% endfor %}
   </div>
 {% endif %}
+    {% if equipo == '' %}
+        <form class="container flex" method="POST" enctype="multipart/form-data" novalidate action="{% url 'jugadora:agregar_jugadora' %}">
 
-<form method="POST" enctype="multipart/form-data" novalidate action="{% url 'jugadora:agregar_jugadora' %}">
+    {% else %}
+        <form class="container flex" method="POST" enctype="multipart/form-data" novalidate action="{% url 'jugadora:agregar_jugadora' equipo %}">
+    {% endif %}
   {% csrf_token %}
   <div class="image-column">
     <div class="image-circle upload">
       <img id="upload" class="upload-change"/>
       <div class="generic-photo">
-        <img class="camera-icon" src="{% static 'media/photo-camera.svg' %}"/>
+        <img class="camera-icon" src="{% static 'static_media/photo-camera.svg' %}"/>
         <span>Agregar Foto</span>
       </div>
       <div class="absolute-icons">
@@ -62,6 +66,28 @@
         {{ form.Posicion }}
       </p>
       {{ form.Posicion.errors }}
+
+      {% if equipo == '' %}
+          <p>
+              <label>
+                  {{ form.equipo.label_tag }}
+              </label>
+              {{ form.equipo }}
+          </p>
+           {{ form.equipo.errors }}
+      {% else %}
+          <p>
+              <label>
+                   {{ form.equipo.label_tag }}
+              </label>
+              <select name="{{ form.equipo.name }}" required id="{{ form.equipo.id_for_label }}">
+                <option value="{{ lista_equipo.pk }}" selected>{{ lista_equipo.nombre }}</option>
+              </select>
+          </p>
+
+
+      {% endif %}
+
       <p>
         <label>
           {{ form.Notas.label_tag }}
@@ -69,6 +95,9 @@
         {{ form.Notas }}
       </p>
       {{ form.Notas.errors }}
+
+
+
     <div class="container-button">
       <button class="cancel">Cancelar</button>
       <button class="submit" type="submit">Enviar</button>

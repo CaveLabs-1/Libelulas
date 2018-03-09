@@ -11,31 +11,32 @@ import sys
 # Create your models here.
 
 class Equipo(models.Model):
-    jugadoras = models.ManyToManyField(Jugadora, through='JugadoraPertenceEquipo')
+    jugadoras = models.ManyToManyField(Jugadora)
     nombre = models.CharField(
-        max_length=64, 
-        unique=True, 
-        default='', 
+        max_length=64,
+        unique=True,
+        default='',
         verbose_name='Nombre')
     representante = models.CharField(
-        max_length=64, 
-        default='', 
+        max_length=64,
+        default='',
         verbose_name='Representante')
     phone_regex = RegexValidator(
-        regex=r'^\+?1?\d{9,15}$', 
+        regex=r'^\+?1?\d{9,15}$',
         message="El numero de telefono debe estar en este formato: '+999999999'. Con 15 digitos maximos permitidos.")
     telefono = models.CharField(
-        validators=[phone_regex], 
-        max_length=17, 
-        default='', 
+        validators=[phone_regex],
+        max_length=17,
+        default='',
         verbose_name='Teléfono')
     correo = models.EmailField(
-        max_length=128, 
-        default='', 
+        max_length=128,
+        default='',
         verbose_name='Correo Electronico' )
     logo = models.ImageField(
         upload_to='media/equipo',
         default='',
+        blank=True,
         verbose_name='Logo')
     COLORES = (
         (1, 'Blanco'),
@@ -52,15 +53,15 @@ class Equipo(models.Model):
     )
     colorLocal  = models.IntegerField(
         choices=COLORES,
-        default=1, 
+        default=1,
         verbose_name='Color de Local')
     colorVisitante = models.IntegerField(
         choices=COLORES,
         default=1,
         verbose_name='Color de Visitante')
     cancha = models.CharField(
-        max_length=128, 
-        default='', 
+        max_length=128,
+        default='',
         verbose_name='Cancha del Equipo')
     DIAS_DE_JUEGO = (
         (1, 'Lunes'),
@@ -78,7 +79,7 @@ class Equipo(models.Model):
     hora = models.TimeField(
         verbose_name='Hora de Juego',
         )
-        
+
 
     def __str__(self):
         return self.nombre
@@ -100,8 +101,3 @@ class Equipo(models.Model):
         super(Equipo, self).save()
 
         '''
-class JugadoraPertenceEquipo(models.Model):
-    jugadora = models.ForeignKey(Jugadora, on_delete=models.CASCADE)
-    equipo = models.ForeignKey(Equipo, on_delete=models.CASCADE)
-
-

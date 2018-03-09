@@ -9,11 +9,9 @@ app_name = 'equipo'
 urlpatterns = [
     path('agregar_equipo/', views.agregar_equipo, name='agregar_equipo'),
     path('', lista_equipos.as_view() , name='lista_equipos'),
-    path('<int:pk>/', detalle_equipo.as_view(), name='detalle_equipo'),
-    path('editar_equipo/<int:pk>/', editar_equipo.as_view(), name='editar_equipo'),
-    path('borrar_equipo/<int:pk>/', borrar_equipo.as_view(), name='borrar_equipo')
-
-
+    path ('<int:equipo_id>/', views.detalle_equipo, name='detalle_equipo'),
+    path('editar_equipo/<int:pk>/', views.editar_equipo, name='editar_equipo'),
+    # path('editar_equipo/<int:pk>/', editar_equipo.as_view(), name='editar_equipo'),
+    path('borrar_equipo/<int:pk>/', borrar_equipo.as_view(), name='borrar_equipo'),
 
 ]
-

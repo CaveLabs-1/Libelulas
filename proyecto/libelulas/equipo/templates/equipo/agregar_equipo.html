@@ -3,7 +3,6 @@
 {% load staticfiles %}
 {% block main %}
 
-
 {% if messages %}
 {% for message in messages %}
   <div class="{{ message.tags }} messages">
@@ -12,18 +11,18 @@
   </div>
 {% endif %}
 
-<form method="POST" enctype="multipart/form-data" novalidate action="{% url 'equipo:agregar_equipo' %}">
+<form  class="container flex" action="{% url 'equipo:agregar_equipo' %}" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   <div class="image-column">
     <div class="image-circle upload">
+      <img class="upload-change" src="{{ equipo.logo.url }}" />
       <img id="upload" class="upload-change"/>
       <div class="generic-photo">
-        <img class="camera-icon" src="{% static 'media/photo-camera.svg' %}"/>
+        <img class="camera-icon" src="{% static 'static_media/photo-camera.svg' %}"/>
         <span>Agregar Logo</span>
       </div>
       <div class="absolute-icons">
-          {{ form.logo }}
-
+          <input type="file" name="{{form.logo.html_name}}" required="" onchange="loadFile(event)"  id="{{form.logo.id_for_label}}" class="inputfile"/>
       </div>
     </div>
     {{ form.logo.errors }}
@@ -89,12 +88,12 @@
         <label>
           {{ form.hora.label_tag }}
         </label>
-        {{ form.hora }}
+        <input type="text" name="{{form.hora.html_name}}" required="" class="timepicker" id="{{form.hora.id_for_label}}"/>
       </p>
       {{ form.hora.errors }}
     <div class="container-button">
       <button class="cancel">Cancelar</button>
-      <button class="submit" type="submit">Enviar</button>
+      <button class="submit" type="submit">Actualizar</button>
     </div>
   </div>
 </form>
