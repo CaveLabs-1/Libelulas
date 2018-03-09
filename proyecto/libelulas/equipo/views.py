@@ -3,22 +3,20 @@ from django.urls import reverse
 
 # Create your views here.
 from .forms import equipoForm
-from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
 from django.views.generic.list import ListView
 from .models import Equipo
-from jugadora.models import Jugadora
 
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import DeleteView
 
 
 from django.urls import reverse_lazy
-from django.views.generic.edit import UpdateView
 
 def agregar_equipo(request):
     if request.method == "POST":
@@ -50,25 +48,19 @@ def detalle_equipo(request, equipo_id):
     jugadoras_equipo = Equipo.objects.get(id=equipo_id).jugadoras.all()
     return render(request, 'equipo/equipo_detail.html', {'equipo': equipo, 'jugadoras_equipo': jugadoras_equipo })
 
-class editar_equipo(UpdateView):
-    model = Equipo
-    fields = ['nombre', 'representante', 'telefono', 'correo', 'logo', 'colorLocal', 'colorVisitante', 'cancha', 'dia', 'hora']
-    template_name_suffix = '_update'
-    success_url = reverse_lazy('equipo:lista_equipos')
-
-# def editar_equipo(request, equipo_id):
-#     instance = get_object_or_404(Equipo, id=equipo_id)
-#     form = equipoForm(request.POST or None, instance=instance)
-#     if request.method == "POST":
-#         form = equipoForm(request.POST, request.FILES, instance=instance)
-#         if form.is_valid():
-#             equipo = form
-#             equipo.save()
-#             messages.success(request, 'Equipo editado exitosamente')
-#             return HttpResponseRedirect(reverse('equipo:lista_equipos'))
-#         else:
-#             messages.warning(request, 'Hubo un error en la forma')
-#     return render(request, 'equipo/equipo_update.html', {'form': form, 'equipo' : instance})
+def editar_equipo(request, pk):
+    instance = get_object_or_404(Equipo, id=pk)
+    form = equipoForm(instance=instance)
+    if request.method == "POST":
+        form = equipoForm(request.POST, request.FILES, instance=instance)
+        if form.is_valid():
+            equipo = form
+            equipo.save()
+            messages.success(request, 'Equipo editado exitosamente')
+            return HttpResponseRedirect(reverse('equipo:lista_equipos'))
+        else:
+            messages.warning(request, 'Hubo un error en la forma')
+    return render(request, 'equipo/equipo_update.html', {'form': form, 'equipo' : instance})
 
 class borrar_equipo(DeleteView):
     model = Equipo

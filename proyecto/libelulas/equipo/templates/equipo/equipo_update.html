@@ -5,7 +5,7 @@
 
 {% if messages %}
 {% for message in messages %}
-  <div class="{{ message.tags }} messages">
+  <div class="{{ message.tags }} messages" id="message">
       <span class="">{{ message }}</span>
     {% endfor %}
   </div>
@@ -88,8 +88,7 @@
         <label>
           {{ form.hora.label_tag }}
         </label>
-
-        <input type="time" name="{{form.hora.html_name}}" required="" value='{{ form.hora.value|time:"H:i" }}' id="{{form.hora.id_for_label}}">
+        <input type="time" name="{{form.hora.html_name}}" required="" value='{{ form.hora.value|time:"H:i" }}' id="{{form.hora.id_for_label}}" class="timepicker">
       </p>
       {{ form.hora.errors }}
     <div class="container-button">
