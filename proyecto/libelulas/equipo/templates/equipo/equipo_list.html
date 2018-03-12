@@ -2,118 +2,32 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block main %}
-  <body>
-    <div class="container" id="gansito">
 
-
-
- <ul class="collection">
-  {% for Equipo in object_list %}
-    <li class="collection-item avatar">
-      <img src="{{ Equipo.logo.url }}" alt="" class="circle">
-      <span class="title"><a href="{% url 'equipo:detalle_equipo' Equipo.id %}">{{ Equipo.nombre }}</a></span>
-      <p>Representante: {{ Equipo.representante }}</p>
-
-<div class="secondary-content">
-
-<a href="{% url 'equipo:editar_equipo' Equipo.id %}" ><i class="material-icons">edit</i></a>
-      <a href="{% url 'equipo:borrar_equipo' Equipo.id %}" ><i class="material-icons">delete_forever</i></a>
-
- </div>
-
-      
-    </li>
-                                      {% endfor %}
-
-  </ul>
-
-
-
-
-
-
-  <div class="fixed-action-btn horizontal click-to-toggle">
-    <a class="btn-floating btn-large red" href="{% url 'equipo:agregar_equipo'%}">
-      <i class="material-icons waves-effect waves-light red">add</i>
+<body>
+  <div class="container">
+    <ul class="collection">
+      {% for Equipo in object_list %}
+      <li class="collection-item avatar">
+        <img src="{{ Equipo.logo.url }}" alt="" class="circle">
+        <span class="title"><a href="{% url 'equipo:detalle_equipo' Equipo.id %}">{{ Equipo.nombre }}</a></span>
+        <p>Representante: {{ Equipo.representante }}</p>
+        <div class="secondary-content">
+          <a href="{% url 'equipo:editar_equipo' Equipo.id %}">
+            <i class="medium material-icons icon-red">delete</i>
+          </a>
+          <a href="{% url 'equipo:borrar_equipo' Equipo.id %}">
+            <i class="medium material-icons icon-blue">mode_edit</i>
+          </a>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+    <div class="fixed-action-btn horizontal click-to-toggle">
+      <a class="btn-floating btn-large red-background" href="{% url 'equipo:agregar_equipo'%}">
+      <i class="large material-icons waves-effect waves-light">add</i>
     </a>
-  </div>
-
-
     </div>
-
-
- </body>
+  </div>
+</body>
 </html>
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- Content 
-
-
-<h1>Equipo</h1>
-<ul>
-{% for Equipo in object_list %}
-    <li>{{ Equipo.nombre }}</li>
-{% empty %}
-    <li>No articles yet.</li>
-{% endfor %}
-</ul>
-    here -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

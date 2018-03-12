@@ -12,51 +12,34 @@
 {% endif %}
 <div class="container">
   <div class="row">
-    <div class="fixed-action-btn">
+    <div class="fixed-action-btn horizontal click-to-toggle">
       <a class="btn-floating btn-large red-background" href="{% url 'jugadora:agregar_jugadora' %}">
-      <i class="large material-icons">add</i>
+      <i class="large material-icons waves-effect waves-light">add</i>
     </a>
     </div>
+    <ul class="collection">
     {% for jugadora in jugadoras %}
-    <div class="row division vertical-align-center">
+    <li class="collection-item avatar">
       {% if jugadora.Imagen %}
-      <div class="col s2 center-align no-display">
-        <img class="circle img-icons" src="{{jugadora.Imagen.url}}" />
-      </div>
+        <img src="{{ jugadora.Imagen.url }}" alt="" class="circle"/>
       {% else %}
-      <div class="col s2 center-align no-display">
-        <img class="circle img-icons" src="{% static 'static_media/default.jpg' %}" />
-      </div>
+        <img src="{% static 'static_media/default.jpg' %}" alt="" class="circle"/>
       {% endif %}
-      <div class="col s6 change-width">
-        <div class="row">
-          <h6>{{ jugadora.Nombre }} {{ jugadora.Apellido }}</h6>
-        </div>
-        <div class="row">
-          <div class="col s6 no-pad">
-            <p>
-              <strong>
-                Número:
-              </strong> {{ jugadora.Numero }}
-            </p>
-          </div>
-          <div class="col s6 no-pad">
-            <p>
-              <strong>
-                Posición:
-              </strong> {{ jugadora.get_Posicion_display }}
-            </p>
-          </div>
-        </div>
+      <span class="title">{{ jugadora.Nombre}} {{ jugadora.Apellido }}</span>
+      <p><strong>Fecha de nacimiento:</strong> {{ jugadora.Nacimiento }}</p>
+      <div class="flex">
+        <p><strong>Número:</strong> {{ jugadora.Numero }}</p>&nbsp;&nbsp;
+        <p><strong>Posición:</strong> {{ jugadora.Posicion }}</p>
       </div>
-      <div class="col s4 right-align">
+      <div class="secondary-content">
         <i class="medium material-icons icon-red">delete</i>
         <a href="{% url 'jugadora:editar_jugadora' jugadora.id %}">
           <i class="medium material-icons icon-blue">mode_edit</i>
         </a>
       </div>
-    </div>
+    </li>
     {% endfor %}
+  </ul>
   </div>
 </div>
 {% endblock %}

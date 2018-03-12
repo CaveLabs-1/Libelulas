@@ -312,10 +312,6 @@ nav ul a {
   height: 100%;
 }
 
-.division {
-  border-bottom: 1.5px solid #cfd7db;
-}
-
 .no-pad {
   padding: 0 !important;
 }
@@ -340,10 +336,6 @@ p {
   color: #67bbff;
 }
 
-.vertical-align-center {
-  display: flex;
-  align-items: center;
-}
 
 .red-background {
   background-image: linear-gradient(to bottom, #ff7a80, #ff78be);
