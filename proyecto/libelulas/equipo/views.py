@@ -17,6 +17,7 @@ from django.views.generic.edit import DeleteView
 
 
 from django.urls import reverse_lazy
+from jugadora.models import Jugadora
 
 def agregar_equipo(request):
     if request.method == "POST":
@@ -65,3 +66,10 @@ def editar_equipo(request, pk):
 class borrar_equipo(DeleteView):
     model = Equipo
     success_url = reverse_lazy('equipo:lista_equipos')
+
+def eliminar_jugadora(request, equipo_id, idJugadora):
+
+
+    j =  Jugadora.objects.get(id=idJugadora)
+    Equipo.objects.get(id=equipo_id).jugadoras.remove(j)
+    return HttpResponseRedirect(reverse_lazy('equipo:lista_equipos'))

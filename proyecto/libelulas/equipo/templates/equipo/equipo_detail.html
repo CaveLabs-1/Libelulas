@@ -100,13 +100,29 @@
             </div>
           </div>
           <div class="col s4 right-align">
-            <i class="medium material-icons icon-red">delete</i>
+             <a class="modal-trigger" href="#borrarJugadorEquipoModal">
+                 <i class="medium material-icons icon-red">delete</i>
+             </a>
             <a href="{% url 'jugadora:editar_jugadora' jugadora.id %}">
               <i class="medium material-icons icon-blue">mode_edit</i>
             </a>
             </div>
           </div>
+
+          <div id="borrarJugadorEquipoModal" class="modal modal-fixed-footer">
+            <form id="BorrarJugadoraID"action="{% url 'equipo:eliminar_jugadora' equipo.id jugadora.id %}" method="post">
+                {% csrf_token %}
+                <div class="modal-content">
+                    <h4>Modal Header</h4>
+                    <p>A bunch of text</p>
+                </div>
+                <div class="modal-footer">
+                    <a class="modal-action modal-close waves-effect waves-green btn-flat ">Cancelar</a>
+                    <button class="submit" type="submit">Borrar</button>
+                </form>
+          </div>
           {% endfor %}
         </div>
     </div>
+
 {% endblock %}

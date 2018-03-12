@@ -13,5 +13,6 @@ urlpatterns = [
     path('editar_equipo/<int:pk>/', views.editar_equipo, name='editar_equipo'),
     # path('editar_equipo/<int:pk>/', editar_equipo.as_view(), name='editar_equipo'),
     path('borrar_equipo/<int:pk>/', borrar_equipo.as_view(), name='borrar_equipo'),
+    path ('<int:equipo_id>/eliminar_jugadora/<int:idJugadora>/', views.eliminar_jugadora, name='eliminar_jugadora'),
 
 ]

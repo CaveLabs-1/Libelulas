@@ -36,7 +36,11 @@ def agregar_jugadora(request, equipo_id=''):
 
 def editar_jugadora(request, jugadora_id):
     instance = get_object_or_404(Jugadora, id=jugadora_id)
-    idEquipo = Jugadora.objects.get(id=jugadora_id).equipo_set.all().first().pk
+    try:
+        idEquipo = Jugadora.objects.get(id=jugadora_id).equipo_set.all().first().pk
+
+    except Exception as e:
+        idEquipo = ''
     form = jugadoraForm(request.POST or None, instance=instance, initial={'equipo': idEquipo})
 
 
@@ -45,9 +49,10 @@ def editar_jugadora(request, jugadora_id):
         if form.is_valid():
             jugadora = form
             if idEquipo != request.POST['equipo']:
-                re = Equipo.objects.get(id=idEquipo)
-                re.jugadoras.remove(Jugadora.objects.get(id=jugadora_id))
-                re.save()
+                if idEquipo != '':
+                    re = Equipo.objects.get(id=idEquipo)
+                    re.jugadoras.remove(Jugadora.objects.get(id=jugadora_id))
+                    re.save()
 
                 e = Equipo.objects.get(id=(request.POST['equipo']))
                 e.jugadoras.add(jugadora.save())
