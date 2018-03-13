@@ -15,7 +15,7 @@
       <span class="title"><a href="{% url 'equipo:detalle_equipo' Equipo.id %}">{{ Equipo.nombre }}</a></span>
       <p>Representante: {{ Equipo.representante }}</p>
       <div class="secondary-content">
-        <a data-toggle="modal" href="{% url 'equipo:borrar_equipo' Equipo.id %}">
+        <a href="#" data-form="{% url 'equipo:borrar_equipo' Equipo.id %}" class="delete-button">
           <i class="medium material-icons icon-red">delete</i>
         </a>
           <a href="{% url 'equipo:editar_equipo' Equipo.id %}">
