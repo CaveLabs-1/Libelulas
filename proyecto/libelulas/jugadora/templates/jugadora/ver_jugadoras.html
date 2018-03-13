@@ -11,69 +11,37 @@
   </div>
 {% endif %}
 <div class="container">
-  <div class="row">
-    <div class="fixed-action-btn">
-      <a class="btn-floating btn-large red-background" href="{% url 'jugadora:agregar_jugadora' %}">
-      <i class="large material-icons">add</i>
-    </a>
-    </div>
-    {% for jugadora in jugadoras %}
-    <div class="row division vertical-align-center">
-      {% if jugadora.Imagen %}
-      <div class="col s2 center-align">
-        <img class="circle img-icons" src="{{jugadora.Imagen.url}}" />
-      </div>
-      {% else %}
-      <div class="col s2 center-align">
-        <img class="circle img-icons" src="{% static 'static_media/default.jpg' %}" />
-      </div>
-      {% endif %}
-      <div class="col s6">
-        <div class="row">
-          <h6>{{ jugadora.Nombre }} {{ jugadora.Apellido }}</h6>
-        </div>
-        <div class="row">
-          <div class="col s6 no-pad">
-            <p>
-              <strong>
-                Número:
-              </strong> {{ jugadora.Numero }}
-            </p>
-          </div>
-          <div class="col s6 no-pad">
-            <p>
-              <strong>
-                Posición:
-              </strong> {{ jugadora.get_Posicion_display }}
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col s4 right-align">
-          <a class="modal-trigger" href="#borrarJugadorModal"><i class="medium material-icons icon-red">delete</i></a>
-        <a href="{% url 'jugadora:editar_jugadora' jugadora.id %}">
-          <i class="medium material-icons icon-blue">mode_edit</i>
-        </a>
-      </div>
-    </div>
-
-        <div id="borrarJugadorModal" class="modal modal-fixed-footer">
-            <form id="BorrarJugadoraID"action="{% url 'jugadora:eliminar_jugadora' jugadora.id %}" method="post">
-                {% csrf_token %}
-                <div class="modal-content">
-                    <h4>Modal Header</h4>
-                    <p>A bunch of text</p>
-                </div>
-                <div class="modal-footer">
-                    <a class="modal-action modal-close waves-effect waves-green btn-flat ">Cancelar</a>
-                    <button class="submit" type="submit">Borrar</button>
-                </form>
-        </div>
-
-        </div>
-
-    {% endfor %}
+  <div class="fixed-action-btn horizontal click-to-toggle">
+    <a class="btn-floating btn-large red-background" href="{% url 'jugadora:agregar_jugadora' %}">
+        <i class="large material-icons waves-effect waves-light">add</i>
+      </a>
   </div>
+  <ul class="collection">
+    {% for jugadora in jugadoras %}
+    <li class="collection-item avatar">
+      {% if jugadora.Imagen %}
+        <img src="{{ jugadora.Imagen.url }}" alt="" class="circle" />
+      {% else %}
+        <img src="{% static 'static_media/default.jpg' %}" alt="" class="circle" />
+      {% endif %}
+      <span class="title">{{ jugadora.Nombre}} {{ jugadora.Apellido }}</span>
+      <p><strong>Fecha de nacimiento:</strong> {{ jugadora.Nacimiento }}</p>
+      <div class="flex">
+        <p><strong>Número:</strong> {{ jugadora.Numero }}</p>&nbsp;&nbsp;
+        <p><strong>Posición:</strong> {{ jugadora.Posicion }}</p>
+      </div>
+      <div class="secondary-content">
+        <a href="#" data-target="delete" data-form="{% url 'jugadora:eliminar_jugadora' jugadora.id %}" class="delete-button">
+          <i class="medium material-icons icon-red">delete</i>
+        </a>
+        <a href="{% url 'jugadora:editar_jugadora' jugadora.id %}">
+           <i class="medium material-icons icon-blue">mode_edit</i>
+         </a>
+       </div>
+    </li>
+    {% endfor %}
+  </ul>
+
 </div>
 
 

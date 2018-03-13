@@ -1,10 +1,8 @@
 
   <form  action="{% url 'equipo:borrar_equipo' equipo.id %}" method="POST" enctype="multipart/form-data">
-    <div class="modal-header">
-      <h3>Eliminar {{ equipo.nombre }}</h3>
-    </div>
-    <div class="modal-body">
-      {% csrf_token %}
+    {% csrf_token %}
+    <h4>Eliminar {{ equipo.nombre }}</h4>
+    <div class="modal-content">
     </div>
     <p>Esta seguro de que quiere eliminar "{{ object }}"?</p>
     <div class="modal-footer">

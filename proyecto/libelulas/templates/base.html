@@ -39,6 +39,7 @@
       $(".delete-button").click(function(ev) { // for each edit contact url
         ev.preventDefault(); // prevent navigation
         var url = $(this).data("form"); // get the contact form url
+        console.log(url);
         $("#delete").load(url, function() { // load the url into the modal
           $(this).modal('open'); // display the modal on url load
         });
