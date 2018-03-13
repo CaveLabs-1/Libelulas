@@ -336,7 +336,32 @@ p {
   color: #67bbff;
 }
 
-
 .red-background {
   background-image: linear-gradient(to bottom, #ff7a80, #ff78be);
+}
+
+.container-title {
+  max-width: 1024px;
+  width: 100%;
+}
+
+.delete-color {
+  background-color: #ff7178;
+  border-radius: 50px;
+  border-style: none;
+  box-shadow: 0 8px 6px 0 rgba(239, 239, 239, 0.47);
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 43;
+  padding: 0.75em 2.62em 0.75em 2.62em;
+}
+
+.cancel-delete {
+  border: solid 2px #81889d;
+  color: #81889d;
+}
+
+.modal {
+  padding: 1.5em;
 }

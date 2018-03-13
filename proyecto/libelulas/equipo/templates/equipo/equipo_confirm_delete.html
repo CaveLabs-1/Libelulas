@@ -1,7 +1,19 @@
-    <form  action="{% url 'equipo:borrar_equipo' equipo.id %}" method="POST" enctype="multipart/form-data">`
 
-
-  {% csrf_token %}
-    <p>Are you sure you want to delete "{{ object }}"?</p>
-    <input type="submit" value="Confirm" />
-</form>
+  <form  action="{% url 'equipo:borrar_equipo' equipo.id %}" method="POST" enctype="multipart/form-data">
+    <div class="modal-header">
+      <h3>Eliminar {{ equipo.nombre }}</h3>
+    </div>
+    <div class="modal-body">
+      {% csrf_token %}
+    </div>
+    <p>Esta seguro de que quiere eliminar "{{ object }}"?</p>
+    <div class="modal-footer">
+      <button id="cancel" type="button" class="cancel cancel-delete" data-target="delete">Cancelar</button>
+      <button class="delete-color" type="submit">Eliminar</button>
+    </div>
+  </form>
+<script>
+$("#cancel").click(function() {
+  $("#delete").modal('close');
+})
+</script>
