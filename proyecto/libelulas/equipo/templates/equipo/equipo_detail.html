@@ -5,9 +5,10 @@
 
 {% if messages %}
 {% for message in messages %}
-<div class="{{ message.tags }} messages" id="message">
-  <span class="">{{ message }}</span> {% endfor %}
-</div>
+  <div class="{{ message.tags }} messages" id="message">
+      <span class="">{{ message }}</span>
+    {% endfor %}
+  </div>
 {% endif %}
 
 <div class="container">
@@ -15,76 +16,113 @@
     <div class="col s12">
       <ul class="tabs">
         <li class="tab col s3"><a href="#informacion">Informacion</a>
-          <li class="tab col s3"><a href="#jugadoras">Jugadoras</a>
+        <li class="tab col s3"><a href="#jugadoras">Jugadoras</a>
       </ul>
     </div>
   </div>
-  <div class="row" id="informacion">
-    <div class="col s12 m3">
-      <img class="logo-equipo" src="{{equipo.logo.url}}">
+    <div class="row" id="informacion">
+      <div class="col s12 m3">
+        <img class="logo-equipo" src="{{equipo.logo.url}}">
+      </div>
+      <div class="col s12 m9">
+        <div class="input-field col s12">
+          <input disabled value="{{equipo.nombre}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+          <label for="disabled">Nombre de Equipo</label>
+        </div>
+        <div class="input-field col s12">
+          <input disabled value="{{equipo.representante}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+          <label for="disabled">Coach</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <input disabled value="{{equipo.correo}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+          <label for="disabled">Correo Electrónico</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <input disabled value="{{equipo.telefono}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+          <label for="disabled">Teléfono</label>
+        </div>
+        <div class="input-field col s12">
+          <input disabled value="{{equipo.cancha}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+          <label for="disabled">Cancha</label>
+        </div>
+        <div class="input-field col s12">
+          <input disabled value="{{equipo.get_dia_display}} {{equipo.hora}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+          <label for="disabled">Horario</label>
+        </div>
+        <div class="input-field col s6 m3">
+          <input disabled value="{{equipo.get_colorLocal_display}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+          <label for="disabled">Color Local</label>
+        </div>
+        <div class="input-field col s6 m3">
+          <input disabled value="{{equipo.get_colorVisitante_display}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+          <label for="disabled">Color Visitante</label>
+        </div>
+      </div>
     </div>
-    <div class="col s12 m9">
-      <div class="input-field col s12">
-        <input disabled value="{{equipo.nombre}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
-        <label for="disabled">Nombre de Equipo</label>
-      </div>
-      <div class="input-field col s12">
-        <input disabled value="{{equipo.representante}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
-        <label for="disabled">Coach</label>
-      </div>
-      <div class="input-field col s12 m6">
-        <input disabled value="{{equipo.correo}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
-        <label for="disabled">Correo Electrónico</label>
-      </div>
-      <div class="input-field col s12 m6">
-        <input disabled value="{{equipo.telefono}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
-        <label for="disabled">Teléfono</label>
-      </div>
-      <div class="input-field col s12">
-        <input disabled value="{{equipo.cancha}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
-        <label for="disabled">Cancha</label>
-      </div>
-      <div class="input-field col s12">
-        <input disabled value="{{equipo.get_dia_display}} {{equipo.hora}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
-        <label for="disabled">Horario</label>
-      </div>
-      <div class="input-field col s6 m3">
-        <input disabled value="{{equipo.get_colorLocal_display}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
-        <label for="disabled">Color Local</label>
-      </div>
-      <div class="input-field col s6 m3">
-        <input disabled value="{{equipo.get_colorVisitante_display}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
-        <label for="disabled">Color Visitante</label>
-      </div>
-    </div>
-  </div>
-  <div class="row" id="jugadoras">
-    <div class="fixed-action-btn horizontal click-to-toggle">
-      <a class="btn-floating btn-large red-background" href="{% url 'jugadora:agregar_jugadora' equipo.id %}">
-          <i class="large material-icons waves-effect waves-light">add</i>
+    <div class="row" id="jugadoras">
+      <div class="fixed-action-btn">
+        <a class="btn-floating btn-large red-background" href="{% url 'jugadora:agregar_jugadora' equipo.id %}">
+          <i class="large material-icons">add</i>
         </a>
-    </div>
-    <ul class="collection">
+      </div>
       {% for jugadora in jugadoras_equipo %}
-      <li class="collection-item avatar">
-        {% if jugadora.Imagen %}
-        <img src="{{ jugadora.Imagen.url }}" alt="" class="circle" /> {% else %}
-        <img src="{% static 'static_media/default.jpg' %}" alt="" class="circle" /> {% endif %}
-        <span class="title">{{ jugadora.Nombre}} {{ jugadora.Apellido }}</span>
-        <p><strong>Fecha de nacimiento:</strong> {{ jugadora.Nacimiento }}</p>
-        <div class="flex">
-          <p><strong>Número:</strong> {{ jugadora.Numero }}</p>&nbsp;&nbsp;
-          <p><strong>Posición:</strong> {{ jugadora.Posicion }}</p>
+        <div class="row division vertical-align-center">
+          {% if jugadora.Imagen %}
+            <div class="col s2 center-align">
+              <img class="circle img-icons" src="{{jugadora.Imagen.url}}" />
+            </div>
+          {% else %}
+          <div class="col s2 center-align">
+            <img class="circle img-icons" src="{% static 'static_media/default.jpg' %}" />
+          </div>
+          {% endif %}
+          <div class="col s6">
+            <div class="row">
+              <h6>{{ jugadora.Nombre }} {{ jugadora.Apellido }}</h6>
+            </div>
+            <div class="row">
+              <div class="col s6 no-pad">
+                <p>
+                  <strong>
+                    Número:
+                  </strong>
+                  {{ jugadora.Numero }}
+                </p>
+              </div>
+              <div class="col s6 no-pad">
+                <p>
+                  <strong>
+                    Posición:
+                  </strong>
+                  {{ jugadora.get_Posicion_display }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col s4 right-align">
+             <a class="modal-trigger" href="#borrarJugadorEquipoModal">
+                 <i class="medium material-icons icon-red">delete</i>
+             </a>
+            <a href="{% url 'jugadora:editar_jugadora' jugadora.id %}">
+              <i class="medium material-icons icon-blue">mode_edit</i>
+            </a>
+            </div>
+          </div>
+
+          <div id="borrarJugadorEquipoModal" class="modal modal-fixed-footer">
+            <form id="BorrarJugadoraID"action="{% url 'equipo:eliminar_jugadora' equipo.id jugadora.id %}" method="post">
+                {% csrf_token %}
+                <div class="modal-content">
+                    <h4>Modal Header</h4>
+                    <p>A bunch of text</p>
+                </div>
+                <div class="modal-footer">
+                    <a class="modal-action modal-close waves-effect waves-green btn-flat ">Cancelar</a>
+                    <button class="submit" type="submit">Borrar</button>
+                </form>
+          </div>
+          {% endfor %}
         </div>
-        <div class="secondary-content">
-          <i class="medium material-icons icon-red">delete</i>
-          <a href="{% url 'jugadora:editar_jugadora' jugadora.id %}">
-            <i class="medium material-icons icon-blue">mode_edit</i>
-          </a>
-        </div>
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
-</div>
+    </div>
+
 {% endblock %}

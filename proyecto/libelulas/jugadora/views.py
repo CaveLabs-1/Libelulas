@@ -6,6 +6,8 @@ from django.contrib import messages
 from django.shortcuts import get_object_or_404
 from jugadora.models import Jugadora
 from equipo.models import Equipo
+from django.views.generic.edit import DeleteView
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -34,7 +36,11 @@ def agregar_jugadora(request, equipo_id=''):
 
 def editar_jugadora(request, jugadora_id):
     instance = get_object_or_404(Jugadora, id=jugadora_id)
-    idEquipo = Jugadora.objects.get(id=jugadora_id).equipo_set.all().first().pk
+    try:
+        idEquipo = Jugadora.objects.get(id=jugadora_id).equipo_set.all().first().pk
+
+    except Exception as e:
+        idEquipo = ''
     form = jugadoraForm(request.POST or None, instance=instance, initial={'equipo': idEquipo})
 
 
@@ -43,9 +49,10 @@ def editar_jugadora(request, jugadora_id):
         if form.is_valid():
             jugadora = form
             if idEquipo != request.POST['equipo']:
-                re = Equipo.objects.get(id=idEquipo)
-                re.jugadoras.remove(Jugadora.objects.get(id=jugadora_id))
-                re.save()
+                if idEquipo != '':
+                    re = Equipo.objects.get(id=idEquipo)
+                    re.jugadoras.remove(Jugadora.objects.get(id=jugadora_id))
+                    re.save()
 
                 e = Equipo.objects.get(id=(request.POST['equipo']))
                 e.jugadoras.add(jugadora.save())
@@ -61,3 +68,8 @@ def editar_jugadora(request, jugadora_id):
 def ver_jugadoras(request):
     jugadoras = Jugadora.objects.all()
     return render(request, 'jugadora/ver_jugadoras.html', {'jugadoras': jugadoras})
+
+class eliminar_jugadora(DeleteView):
+    model = Jugadora
+    success_url = reverse_lazy('jugadora:ver_jugadoras')
+
