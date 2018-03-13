@@ -27,6 +27,7 @@ urlpatterns = [
     path('jugadora/', include('jugadora.urls')),
     path('equipo/', include('equipo.urls')),
     path('administrador/', include('administrador.urls')),
+    path('torneo/', include('torneo.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

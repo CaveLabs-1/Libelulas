@@ -1,0 +1,130 @@
+
+
+
+
+
+<!doctype html>
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block main %}
+
+
+<div class="container">
+
+<h1>Información de Torneo</h1>
+
+<div class="row">
+      <div class="col s6 m6 l6">
+      <p>
+        <label>
+          {{ torneo.nombre.label_tag }}
+        </label>
+        Nombre: {{ torneo.nombre }}
+      </p>
+      {{ torneo.nombre.errors }}
+
+      </div>
+      <div class="col s6 m6 l6">
+          <p>
+        <label>
+          {{ torneo.categoria.label_tag }}
+        </label>
+        Categoría: {{ torneo.categoria }}
+      </p>
+      {{ torneo.categoria.errors }}</div>
+
+    </div>
+
+
+
+<div class="row">
+   <div class="col s12">
+
+        <label>
+          {{ torneo.fechaInicio.label_tag }}
+        </label>
+       Fecha Inicio: {{ torneo.fechaInicio }}
+
+
+      {{ torneo.fechaInicio.errors }}
+
+       </div>
+
+</div>
+      <div class="row">
+   <div class="col s12">
+
+       <div class="file-field input-field">
+
+      <div class="file-path-wrapper">
+          <p>Anexo: <a href="{{ torneo.anexo.url }}" >{{torneo.anexo.name}}</a>   </p>
+      </div>
+    </div>
+
+   </div>
+      </div>
+
+    <div class="row">
+   <div class="col s12">
+
+      <p>
+        <label>
+          {{ torneo.costo.label_tag }}
+        </label>
+
+          <p>Costo: {{ torneo.costo }}<p/>
+      </p>
+      {{ torneo.costo.errors }}
+    </div>
+    </div>
+
+
+
+
+ <ul class="collection">
+{% for Equipo in equipos %}
+    <li class="collection-item avatar">
+      <img src="{{ Equipo.logo.url }}" alt="" class="circle">
+      <span class="title"><a href="{% url 'equipo:detalle_equipo' Equipo.id %}">{{ Equipo.nombre }}</a></span>
+      <p>Representante: {{ Equipo.representante }}</p>
+
+<div class="secondary-content">
+
+<a href="{% url 'equipo:editar_equipo' Equipo.id %}" ><i class="material-icons">cancel</i></a>
+
+ </div>
+
+
+    </li>
+
+      {% empty %}
+    <li>No hay equipos registrados aun.</li>
+                                      {% endfor %}
+
+  </ul>
+
+
+
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
