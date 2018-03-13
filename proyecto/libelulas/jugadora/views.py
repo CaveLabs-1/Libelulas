@@ -53,10 +53,10 @@ def editar_jugadora(request, jugadora_id):
                     re = Equipo.objects.get(id=idEquipo)
                     re.jugadoras.remove(Jugadora.objects.get(id=jugadora_id))
                     re.save()
-
-                e = Equipo.objects.get(id=(request.POST['equipo']))
-                e.jugadoras.add(jugadora.save())
-                e.save()
+                if request.POST['equipo'] != "":
+                    e = Equipo.objects.get(id=(request.POST['equipo']))
+                    e.jugadoras.add(jugadora.save())
+                    e.save()
             else:
                 jugadora.save()
             messages.success(request, 'Jugadora editada exitosamente')
