@@ -17,7 +17,11 @@ class Equipo(models.Model):
         unique=True,
         default='',
         verbose_name='Nombre')
+    repre_regex = RegexValidator(
+        regex=r'[a-zA-ZéíóúáäöüßÄÖÜÁÉÍÓÚñÑ\s]+$',
+        message="El representante debe de ")
     representante = models.CharField(
+        validators=[repre_regex],
         max_length=64,
         default='',
         verbose_name='Representante')
@@ -36,7 +40,6 @@ class Equipo(models.Model):
     logo = models.ImageField(
         upload_to='media/equipo',
         default='',
-        blank=True,
         verbose_name='Logo')
     COLORES = (
         (1, 'Blanco'),
