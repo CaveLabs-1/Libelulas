@@ -32,15 +32,14 @@
       $('.timepicker').timepicker({
         twelveHour: false
       });
-      // $('.modal').modal();
+      $('.modal').modal();
       $('ul.tabs').tabs();
 
       $(".delete-button").click(function(ev) { // for each edit contact url
         ev.preventDefault(); // prevent navigation
         var url = $(this).data("form"); // get the contact form url
         $("#delete").load(url, function() { // load the url into the modal
-          $(this).modal(); // display the modal on url load
-          $(this).toggleClass('display');
+          $(this).modal('open'); // display the modal on url load
         });
         return false; // prevent the click propagation
       })
