@@ -1607,7 +1607,7 @@ class TestEditarEquipo(TestCase):
         }
         form = equipoForm(data=form_data)
         #Pruebo que la forma sea correcta
-        self.assertTrue(form.is_valid())
+        self.assertFalse(form.is_valid())
         #Pruebo que se guarde el equipo
         self.client.post(reverse('equipo:editar_equipo', kwargs={'pk':1}), form_data)
         self.assertEqual(Equipo.objects.get(id = 1).telefono, '+5144227654321')
@@ -2473,7 +2473,7 @@ class TestEditarEquipo(TestCase):
     def test_cambio_logo_equipo(self):
         team = self.equipo1()
         img = Equipo.objects.get(id = 1).logo
-        logo = SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default_test.jpg', 'rb').read(), content_type='image/jpeg')
+        logo = SimpleUploadedFile(name='test_image2.jpg', content=open(sys.path[0]+'/static/static_media/default_test.jpg', 'rb').read(), content_type='image/jpeg')
         form_data = {
             'nombre': 'Real Madrid F.C.',
             'representante': 'Florentino Pérez',
@@ -2754,6 +2754,19 @@ class TestEliminarEquipo(TestCase):
             logo = imagen,
             hora = '13:00'
         )
+        Equipo.objects.create(
+            id = 2,
+            nombre ='Club America',
+            representante = 'Mauricio Culebro',
+            telefono = '+5144227654321',
+            correo = 'america@fc.com',
+            colorLocal = 1,
+            colorVisitante = 2,
+            cancha = 'Estadio Azteca',
+            dia = 7,
+            logo = imagen,
+            hora = '13:00'
+        )
     
     def tearDown(self):
         Equipo.objects.all().delete()
@@ -2766,5 +2779,14 @@ class TestEliminarEquipo(TestCase):
         self.assertEqual(response.status_code, 404)
         self.assertEqual(Equipo.objects.count(),0)
     
+    def test_vista_equipo(self):
+        response = self.client.get('/equipo/borrar_equipo/2/')
+        self.assertEqual(response.status_code, 200)
+        response = self.client.post(reverse('equipo:borrar_equipo', kwargs={'pk':2}))
+        self.assertEqual(response.status_code, 302)
+        response = self.client.get('/equipo/borrar_equipo/2/')
+        self.assertEqual(response.status_code, 404)
+        response = self.client.get('/equipo/2/')
+        self.assertEqual(response.status_code, 404)
    
         
