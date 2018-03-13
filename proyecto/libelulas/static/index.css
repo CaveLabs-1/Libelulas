@@ -336,7 +336,11 @@ p {
   color: #67bbff;
 }
 
-
 .red-background {
   background-image: linear-gradient(to bottom, #ff7a80, #ff78be);
+}
+
+.container-title {
+  max-width: 1024px;
+  width: 100%;
 }
