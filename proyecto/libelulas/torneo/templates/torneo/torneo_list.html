@@ -1,0 +1,96 @@
+
+
+
+<!doctype html>
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block main %}
+  <body>
+    <div class="container" id="gansito">
+
+    <h1>Torneos</h1>
+
+
+
+ <ul class="collection">
+  {% for Torneo in lista_torneos %}
+    <li class="collection-item avatar">
+
+     <img src="{{ Equipo.logo.url }}" alt="" class="circle">
+      <span class="title"><a href="{% url 'torneo:detalle_torneo' Torneo.id %}">{{ Torneo.nombre }}</a></span>
+      <p>Fecha: {{ Torneo.fechaInicio }}</p>
+
+
+<div class="secondary-content">
+
+    <a href="" ><i class="material-icons">edit</i></a>
+      <a href="" ><i class="material-icons">delete_forever</i></a>
+
+ </div>
+
+
+    </li>
+
+      {% empty %}
+    <li>No hay torneos registrados aun.</li>
+                                      {% endfor %}
+
+  </ul>
+
+
+
+
+
+
+
+  <div class="fixed-action-btn horizontal click-to-toggle">
+    <a class="btn-floating btn-large red" href="{% url 'torneo:crear_torneo'%}">
+      <i class="material-icons waves-effect waves-light red">add</i>
+    </a>
+  </div>
+
+
+    </div>
+
+
+ </body>
+{% endblock %}
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
