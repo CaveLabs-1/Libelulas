@@ -71,7 +71,9 @@
           <p><strong>Posición:</strong> {{ jugadora.Posicion }}</p>
         </div>
         <div class="secondary-content">
-          <i class="medium material-icons icon-red">delete</i>
+          <a data-target="delete" data-form="{% url 'equipo:eliminar_jugadora' equipo.id jugadora.id  %}" class="delete-button">
+            <i class="medium material-icons icon-red">delete</i>
+          </a>
           <a href="{% url 'jugadora:editar_jugadora' jugadora.id %}">
              <i class="medium material-icons icon-blue">mode_edit</i>
            </a>
