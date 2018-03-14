@@ -23,7 +23,7 @@ def agregar_equipo(request):
     if request.method == "POST":
         form = equipoForm(request.POST, request.FILES)
         if form.is_valid():
-            equipo = form.save()
+            equipo = form
             equipo.save()
             messages.success(request, 'Equipo creado exitosamente')
             return HttpResponseRedirect(reverse('equipo:lista_equipos'))
