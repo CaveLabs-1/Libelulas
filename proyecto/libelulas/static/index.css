@@ -365,3 +365,7 @@ p {
 .modal {
   padding: 1.5em;
 }
+
+.fix {
+  padding-left: 20px !important;
+}
