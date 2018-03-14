@@ -1,0 +1,31 @@
+ {% extends "base.html" %}
+ {% load staticfiles %}
+ {% block main %}
+
+<div class="container">
+  <h1>Torneos</h1>
+  <ul class="collection">
+    {% for Torneo in lista_torneos %}
+    <li class="collection-item avatar fix">
+      <span class="title"><a href="{% url 'torneo:detalle_torneo' Torneo.id %}">{{ Torneo.nombre }}</a></span>
+      <p>Fecha: {{ Torneo.fechaInicio }}</p>
+      <div class="secondary-content">
+        <a href="">
+          <i class="medium material-icons icon-red">delete</i>
+        </a>
+        <a href="">
+           <i class="medium material-icons icon-blue">mode_edit</i>
+         </a>
+      </div>
+    </li>
+    {% empty %}
+    <li>No hay torneos registrados aun.</li>
+    {% endfor %}
+  </ul>
+  <div class="fixed-action-btn horizontal click-to-toggle">
+    <a class="btn-floating btn-large red-background" href="{% url 'torneo:crear_torneo'%}">
+    <i class="material-icons waves-effect waves-light">add</i>
+  </a>
+  </div>
+</div>
+{% endblock %}

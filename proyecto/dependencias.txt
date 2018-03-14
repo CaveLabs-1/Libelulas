@@ -1,9 +1,5 @@
-Este Archivo contiene todo lo que se necestia instalar para el ambiente (se asume que ya django esta instalado y el virtualenv)
-
-#pip
-pip install psycopg2
-pip install psycopg2-binary
-
-#instalar en su computadora (UBUNTU)
-POSTGRES:
-  sudo apt-get install postgresql postgresql-contrib
+Django==2.0.2
+Pillow==5.0.0
+psycopg2==2.7.4
+psycopg2-binary==2.7.4
+pytz==2018.3

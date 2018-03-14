@@ -25,7 +25,11 @@ SECRET_KEY = 'kwq*0&t1gx2rhs2k3^+ij1&*7etjyf7!8u^1emx^q@t639#_gx'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'plidi-ianroses.c9users.io',
+    '127.0.0.1',
+    'localhost'
+]
 
 
 # Application definition
@@ -37,6 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'equipo',
+    'jugadora',
+    'administrador',
+    'torneo'
 ]
 
 MIDDLEWARE = [
@@ -54,7 +62,7 @@ ROOT_URLCONF = 'libelulas.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +75,11 @@ TEMPLATES = [
     },
 ]
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+STATIC_URL = '/static/'
+
 WSGI_APPLICATION = 'libelulas.wsgi.application'
 
 
@@ -75,8 +88,13 @@ WSGI_APPLICATION = 'libelulas.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+     
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'libelulas',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -100,6 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
@@ -118,3 +137,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
