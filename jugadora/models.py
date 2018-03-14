@@ -3,7 +3,7 @@ from PIL import Image
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.core.validators import MinValueValidator
-import sys
+import sys, os
 
 # Create your models here.
 
@@ -49,3 +49,9 @@ class Jugadora(models.Model):
 
         super(Jugadora,self).save(*args, **kw)
         # super(Jugadora, self).save()
+
+    def delete(self):
+        if self.Imagen:
+            if os.path.isfile(self.Imagen.path):
+                os.remove(self.Imagen.path)
+        super().delete()

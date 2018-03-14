@@ -22,9 +22,13 @@ def agregar_jugadora(request, equipo_id=''):
         form = jugadoraForm(request.POST, request.FILES)
         if form.is_valid():
             jugadora = form
-            e = Equipo.objects.get(id=(request.POST['equipo']))
-            e.jugadoras.add(jugadora.save())
-            e.save()
+
+            if request.POST['equipo'] != '':
+                e = Equipo.objects.get(id=(request.POST['equipo']))
+                e.jugadoras.add(jugadora.save())
+                e.save()
+            else:
+                jugadora.save()
             messages.success(request, 'Jugadora agregada exitosamente')
             return HttpResponseRedirect(reverse('jugadora:agregar_jugadora'))
         else:
