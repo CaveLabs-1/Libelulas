@@ -251,3 +251,38 @@ class TestJugadoraCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['jugadoras'].count(), Jugadora.objects.all().count())
         self.assertTemplateUsed(response, 'jugadora/ver_jugadoras.html')
+
+    def testDeleteJugadora(self):
+        j = Jugadora.objects.create(
+            id=1,
+            Nombre='Ramon',
+            Apellido='Romero',
+            Nacimiento='1996-10-02',
+            Numero='2',
+            Posicion='4',
+            Notas='Esto es una nota',
+        )
+
+        j = Jugadora.objects.create(
+            id=2,
+            Nombre='Ramon',
+            Apellido='Romero',
+            Nacimiento='1996-10-02',
+            Numero='2',
+            Posicion='4',
+            Notas='Esto es una nota',
+        )
+
+
+        #Revisar que existe la jugadora creadad
+        self.assertTrue(Jugadora.objects.count() == 2)
+
+        #Mandar un post para eliminar a la jugadora
+        response = self.client.post('/jugadora/eliminar/1')
+        self.assertTrue(Jugadora.objects.count() == 1)
+
+
+
+
+
+
