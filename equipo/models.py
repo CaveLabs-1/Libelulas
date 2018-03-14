@@ -6,7 +6,9 @@ from django.core.validators import RegexValidator
 from PIL import Image
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
-import sys
+import sys, os
+from django.dispatch import receiver
+
 
 # Create your models here.
 
@@ -86,21 +88,32 @@ class Equipo(models.Model):
 
     def __str__(self):
         return self.nombre
-'''
-    def save(self):
-        # Opening the uploaded image
-        im = Image.open(self.logo)
+    
+    def delete(self):
+        if self.logo:
+            if os.path.isfile(self.logo.path):
+                os.remove(self.logo.path)
+        super().delete()
+        
+    def save(self, *args, **kw):
 
-        output = BytesIO()
+        if self.logo:
 
 
-        # after modifications, save it to the output
-        im.save(output, format='JPEG', quality=70)
-        output.seek(0)
 
-        # change the imagefield value to be the newley modifed image value
-        self.logo = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.logo.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
+            # Opening the uploaded image
+            im = Image.open(self.logo)
+            nombre = (self.logo.name)
 
-        super(Equipo, self).save()
 
-        '''
+            output = BytesIO()
+
+
+            # after modifications, save it to the output
+            im.save(output, format='JPEG', quality=70)
+            output.seek(0)
+
+            # change the imagefield value to be the newley modifed image value
+            self.logo = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.logo.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
+
+        super(Equipo,self).save(*args, **kw)
