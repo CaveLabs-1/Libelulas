@@ -10,7 +10,7 @@
     {% endfor %}
 {% endif %}
 
-<form method="POST" enctype="multipart/form-data" novalidate action="{% url 'administrador:editar_administrador'  %}">
+<form method="POST" enctype="multipart/form-data" novalidate action="{% url 'administrador:editar_administrador' administrador.id %}">
     {% csrf_token %}
     <div class="container">
         <div class="row">
@@ -33,10 +33,10 @@
         </div>
         <div class="row">
             <div class="col s6 m6 l6">
-                <a class="waves-effect waves-light btn red boton" href="{% url 'administrador:lista_administrador' %}">CANCELAR</a>
+                <a class="waves-effect waves-light btn red boton" href="{% url 'administrador:lista_administrador' %}">REGRESAR</a>
             </div>
             <div class="col s6 m6 l6">
-                <button class="waves-effect waves-light btn blue boton" type="submit">Enviar</button>
+                <button class="waves-effect waves-light btn blue boton" type="submit">ENVIAR</button>
             </div>
         </div>
     </div>

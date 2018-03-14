@@ -7,14 +7,19 @@
         {% for administrador in lista %}
             <li class="collection-item">
                 <div class="row">
-                    <div class="col s8 m8 l8">
+                    <div class="col s8 m10 l10">
                         <br>
                         <span class="title">{{administrador.first_name}} ({{administrador.username}})</span>
                         <br>
                         <span class="title">{{administrador.email}}</span>
                     </div>
-                    <div class="col s4 m4 l4">
-                        <a href="{% url 'administrador:editar_administrador' administrador.id %}" class="secondary-content"><i class="material-icons">mode_edit</i></a>
+                    <div class="col s2 m1 l1">
+                        <br>
+                        <a href="{% url 'administrador:editar_administrador' administrador.id %}" class="secondary-content"><i class="small material-icons">mode_edit</i></a>
+                    </div>
+                    <div class="col s2 m1 l1">
+                        <br>
+                        <a class="modal-trigger secondary-content boton-eliminar" href="#delete-modal" data-id="{{administrador.id}}"><i class="small material-icons">delete</i></a>
                     </div>
                 </div>
             </li>
@@ -22,10 +27,34 @@
     </ul>
 </div>
 
- <div class="fixed-action-btn horizontal">
+<div class="fixed-action-btn horizontal">
     <a href="{% url 'administrador:agregar_administrador' %}" class="btn-floating btn-large blue">
         <i class="large material-icons">add</i>
     </a>
- </div>
+</div>
+
+<div id="delete-modal" class="modal">
+    <div class="modal-content">
+        <h6>¿Desea eliminar el administrador?</h6>
+    </div>
+    <div class="modal-footer">
+
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function(){
+        $('.modal').modal() ;
+    }) ;
+
+
+    $(".boton-eliminar").click(function(){
+        var id = $(this).attr("data-id") ;
+        var botones = '<a href="/administrador/eliminar_administrador/' + id + '" class="modal-action modal-close waves-effect waves-green btn-flat confirmar-eliminar">Aceptar</a><a href="#cancelar" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>' ;
+        $(".modal-footer").html(botones) ;
+    }) ;
+
+</script>
 
 {% endblock %}

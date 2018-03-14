@@ -2,33 +2,36 @@
 {% load staticfiles %}
 {% block main %}
 
-{% if messages %}
-    {% for message in messages %}
-        <div class="{{ message.tags }} messages">
-            <span class="">{{ message }}</span>
-        </div>
-    {% endfor %}
-{% endif %}
 
-<form method="POST" enctype="multipart/form-data" novalidate action="{% url 'administrador:agregar_administrador' %}">
+
+<form id="forma" method="POST" novalidate action="{% url 'administrador:agregar_administrador' %}">
     {% csrf_token %}
     <div class="container">
         <div class="row">
             <div class="input-field col s12 m6 l6">
-                <input type="text" name="{{form.first_name.html_name}}" id="{{form.first_name.id_for_label}}" class="validate">
+                <input type="text" name="{{form.first_name.html_name}}" id="{{form.first_name.id_for_label}}">
                 <label for="{{form.first_name.id_for_label}}">{{form.first_name.label_tag}}</label>
+                {{form.first_name.errors}}
             </div>
             <div class="input-field col s12 m6 l6">
-                <input type="text" name="{{form.username.html_name}}" id="{{form.username.id_for_label}}" class="validate">
+                <input type="text" name="{{form.username.html_name}}" id="{{form.username.id_for_label}}" class="validate" required>
                 <label for="{{form.username.id_for_label}}">{{form.username.label_tag}}</label>
+                {{form.username.errors}}
             </div>
-            <div class="input-field col s12 m6 l6">
+            <div class="input-field col s12 m12 l12">
                 <input type="email" name="{{form.email.html_name}}" id="{{form.email.id_for_label}}" class="validate">
                 <label for="{{form.email.id_for_label}}">{{form.email.label_tag}}</label>
+                {{form.email.errors}}
             </div>
             <div class="input-field col s12 m6 l6">
-                <input type="password" name="{{form.password.html_name}}" id="{{form.password.id_for_label}}" class="validate">
+                <input type="password" name="{{form.password.html_name}}" id="{{form.password.id_for_label}}" class="validate" required>
                 <label for="{{form.password.id_for_label}}">{{form.password.label_tag}}</label>
+                {{form.password.errors}}
+            </div>
+            <div class="input-field col s12 m6 l6">
+                <input type="password" name="confirm_password" id="confirm_password" class="validate" required>
+                <label for="confirm_password">Confirm Password</label>
+                {{form.confirm_password.errors}}
             </div>
         </div>
         <div class="row">
@@ -36,10 +39,20 @@
                 <a class="waves-effect waves-light btn red boton" href="{% url 'administrador:lista_administrador' %}">CANCELAR</a>
             </div>
             <div class="col s6 m6 l6">
-                <button class="waves-effect waves-light btn blue boton" type="submit">Enviar</button>
+                <button id="enviar_forma" class="waves-effect waves-light btn blue boton" type="submit">Enviar</button>
             </div>
         </div>
     </div>
 </form>
+
+
+{% endblock %}
+
+{% block scripts %}
+
+    <script type="text/javascript">
+
+    </script>
+
 {% endblock %}
 
