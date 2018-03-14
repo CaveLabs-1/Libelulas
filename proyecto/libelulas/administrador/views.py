@@ -13,9 +13,15 @@ def agregar_administrador(request):
     if request.method == "POST":
         form = UserForm(request.POST)
         if form.is_valid():
-            form.save()
+            informacion = form.save(commit=False)
+            administrador = User()
+            administrador.first_name = informacion.first_name
+            administrador.username = informacion.username
+            administrador.email = informacion.email
+            administrador.password = informacion.password
+            administrador.save()
             messages.success(request, 'Administrador agregado exitosamente')
-            return HttpResponseRedirect(reverse('administrador:lista_administrador'))
+            return HttpResponseRedirect(reverse('administrador:editar_administrador', kwargs={'id_administrador':administrador.id}))
     else:
         form = UserForm()
     return render(request, 'agregar_administrador.html', {'form': form})
@@ -23,7 +29,7 @@ def agregar_administrador(request):
 def editar_administrador(request, id_administrador):
     administrador = get_object_or_404(User, id=id_administrador)
     if request.method == "POST":
-        form = UserForm(request.POST)
+        form = UserForm(data=request.POST, instance=administrador)
         if form.is_valid():
             actualizar = form.save(commit=False)
             administrador.first_name = actualizar.first_name
@@ -32,8 +38,15 @@ def editar_administrador(request, id_administrador):
             administrador.password = actualizar.password
             administrador.save()
             messages.success(request, 'Administrador editado exitosamente')
-            return HttpResponseRedirect(reverse('administrador:lista_administrador'))
+            url = reverse('administrador:editar_administrador', kwargs={'id_administrador':id_administrador})
+            return HttpResponseRedirect(url)
     else:
         form = UserForm()
     return render(request, 'editar_administrador.html', {'form': form, 'administrador': administrador})
+
+def eliminar_administrador(request, id_administrador):
+    administrador = get_object_or_404(User, id=id_administrador)
+    administrador.delete()
+    messages.warning(request, 'Administrador eliminado exitosamente.')
+    return HttpResponseRedirect(reverse('administrador:lista_administrador'))
 
