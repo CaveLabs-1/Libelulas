@@ -17,12 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-
-
-
-
+from . import views
 
 urlpatterns = [
+    path('', include('django.contrib.auth.urls')),
+    path('', views.redireccionar, name='redireccionar'),
     path('admin/', admin.site.urls),
     path('jugadora/', include('jugadora.urls')),
     path('equipo/', include('equipo.urls')),
@@ -30,4 +29,3 @@ urlpatterns = [
     path('torneo/', include('torneo.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
