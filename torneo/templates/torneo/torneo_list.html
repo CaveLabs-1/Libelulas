@@ -1,7 +1,7 @@
  {% extends "base.html" %}
  {% load staticfiles %}
  {% block main %}
- 
+
  {% if messages %} {% for message in messages %}
  <div class="{{ message.tags }} messages">
    <span class="">{{ message }}</span> {% endfor %}
@@ -21,7 +21,7 @@
         <a href="">
           <i class="medium material-icons icon-red">delete</i>
         </a>
-        <a href="">
+        <a href="{% url 'torneo:editar_torneo' Torneo.id %}">
            <i class="medium material-icons icon-blue">mode_edit</i>
          </a>
       </div>

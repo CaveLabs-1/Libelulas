@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block main %}
+
+<div class="title-container">
+  <h2>Editar Torneo<h2>
+</div>
+<form class="container" action="{% url 'torneo:editar_torneo' torneo.id %}" method="POST">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col s6 m6 l6">
+        <p>
+          <label>
+            {{ form.nombre.label_tag }}
+          </label>
+          {{ form.nombre }}
+        </p>
+        {{ form.nombre.errors }}
+      </div>
+      <div class="col s6 m6 l6">
+        <p>
+          <label>
+            {{ form.categoria.label_tag }}
+          </label>
+          {{ form.categoria }}
+        </p>
+        {{ form.categoria.errors }}</div>
+      <div class="col s12">
+        <p>
+          <label>
+              {{ form.fechaInicio.label_tag }}
+          </label>
+        {{ form.fechaInicio }}
+      </p>
+        {{ form.fechaInicio.errors }}
+      </div>
+      <div class="col s12" style="margin-top:24px">
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>Anexo</span>
+            <input type="file" name="anexo">
+          </div>
+          <div class="file-path-wrapper">
+            <!-- {{ form.anexo }} -->
+            <input class="file-path validate" value="{{ form.anexo.value|default:"No hay ningún anexo" }}" type="text">
+          </div>
+        </div>
+      </div>
+      <div class="col s12">
+        <p>
+          <label>
+            {{ form.costo.label_tag }}
+          </label>
+          {{ form.costo }}
+        </p>
+        {{ form.costo.errors }}
+      </div>
+      <div class="col s12">
+        <p>
+          <label>
+            {{ form.equipos.label_tag }}
+          </label> {{ form.equipos }}
+        </p>
+        {{ form.equipos.errors }}
+      </div>
+      <div class="col s12">
+        <div class="container-button">
+          <a href="{% url 'torneo:lista_torneos' %}" class="cancel">Cancelar</a>
+          <button class="submit" type="submit">Guardar</button>
+        </div>
+      </div>
+    </div>
+</form>
+{% endblock %}

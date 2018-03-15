@@ -22,23 +22,13 @@ def detalle_torneo(request, torneo_id):
     torneo = get_object_or_404(Torneo, id=torneo_id)
     return render(request, 'torneo/torneo_detail.html', {'torneo': torneo, 'equipos':torneo.equipos.all})
 
-
-
 def crear_torneo(request):
-
-    #lista_equipo = ''
-
-    #if equipo_id != '':
-     #   lista_equipo = Equipo.objects.get(id=equipo_id)
-
     lista_equipo = Equipo.objects.all()
 
     if request.method == "POST":
         form = torneoForm(request.POST, request.FILES)
         if form.is_valid():
             torneo = form
-            #print (request.POST['equipos'])
-            #torneo.equipos.add(request.POST['equipos'])
             torneo.save()
             messages.success(request, 'Torneo agregado exitosamente')
             return HttpResponseRedirect(reverse('torneo:lista_torneos'))
@@ -49,3 +39,16 @@ def crear_torneo(request):
 
     return render(request, 'torneo/agregar_torneo.html', {'form': form, 'lista_equipo':lista_equipo})
 
+def editar_torneo(request, torneo_id):
+    instance = get_object_or_404(Torneo, id=torneo_id)
+    form = torneoForm(instance=instance)
+    if request.method == "POST":
+        form = torneoForm(request.POST, request.FILES, instance=instance)
+        if form.is_valid():
+            torneo = form
+            torneo.save()
+            messages.success(request, 'Torneo editado exitosamente')
+            return HttpResponseRedirect(reverse('torneo:lista_torneos'))
+        else:
+            messages.warning(request, 'Hubo un error en la forma')
+    return render(request, 'torneo/torneo_editar.html', {'form': form, 'torneo':instance})
