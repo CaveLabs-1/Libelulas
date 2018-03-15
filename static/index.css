@@ -362,10 +362,47 @@ p {
   color: #81889d;
 }
 
+.back {
+  border: solid 2px #81889d;
+  color: #81889d;
+}
+
+.back:focus {
+  border: solid 2px #81889d;
+  color: #81889d;
+}
+
 .modal {
   padding: 1.5em;
 }
 
 .fix {
   padding-left: 20px !important;
+}
+
+.btn {
+  background-color: #ff78b8 !important;
+}
+
+.title-container {
+  max-width: 1024px;
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+h2 {
+  text-transform: uppercase;
+  color: #81889d;
+}
+
+h4 {
+  color: #81889d;
+}
+
+.container-button {
+  display: flex;
+  justify-content: flex-end;
 }

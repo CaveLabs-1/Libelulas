@@ -1,114 +1,73 @@
-<!doctype html>
-{% extends "base.html" %}
-{% load staticfiles %}
-{% block main %}
-
-{% if messages %}
-{% for message in messages %}
-  <div class="{{ message.tags }} messages">
-      <span class="">{{ message }}</span>
-    {% endfor %}
-  </div>
+{% extends "base.html" %} {% load staticfiles %} {% block main %} {% if messages %} {% for message in messages %}
+<div class="{{ message.tags }} messages">
+  <span class="">{{ message }}</span> {% endfor %}
+</div>
 {% endif %}
 
-<form  class="container" action="{% url 'torneo:crear_torneo' %}" method="POST" enctype="multipart/form-data">
+<form class="container" action="{% url 'torneo:crear_torneo' %}" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
-
-<div class="row">
-      <div class="col s6 m6 l6">
-
-
+  <div class="row">
+    <div class="col s6 m6 l6">
       <p>
         <label>
           {{ form.nombre.label_tag }}
-        </label>
-        {{ form.nombre }}
+        </label> {{ form.nombre }}
       </p>
       {{ form.nombre.errors }}
-
-      </div>
-      <div class="col s6 m6 l6">
-          <p>
+    </div>
+    <div class="col s6 m6 l6">
+      <p>
         <label>
           {{ form.categoria.label_tag }}
-        </label>
-        {{ form.categoria }}
+        </label> {{ form.categoria }}
       </p>
       {{ form.categoria.errors }}</div>
-
-    </div>
-
-
-
-<div class="row">
-   <div class="col s12">
-
-        <label>
+    <div class="col s12">
+      <label>
           {{ form.fechaInicio.label_tag }}
         </label>
-        <input type="date" name="{{form.fechaInicio.html_name}}" required="" class="datepicker" id="{{form.fechaInicio.id_for_label}}"/>
-
-
-      {{ form.fechaInicio.errors }}
-
-       </div>
-
-</div>
-      <div class="row">
-   <div class="col s12">
-
-       <div class="file-field input-field">
-      <div class="btn">
-        <span>Anexo</span>
-        <input type="file" name="anexo">
-      </div>
-      <div class="file-path-wrapper">
-        <input class="file-path validate" type="text">
+      <input type="date" name="{{form.fechaInicio.html_name}}" required="" class="datepicker" id="{{form.fechaInicio.id_for_label}}" /> {{ form.fechaInicio.errors }}
+    </div>
+    <div class="col s12" style="margin-top:24px">
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>Anexo</span>
+          <input type="file" name="anexo">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
       </div>
     </div>
-
-   </div>
-      </div>
-
-    <div class="row">
-   <div class="col s12">
-
+    <div class="col s12">
       <p>
         <label>
           {{ form.costo.label_tag }}
         </label>
-
-          <input name="costo" type="number" min="0.00" max="10000.00" step="0.01" />
+        <input name="costo" type="number" min="0.00" max="10000.00" step="0.01" />
       </p>
       {{ form.costo.errors }}
     </div>
-    </div>
-    <div class="row">
-   <div class="col s12">
-
+    <div class="col s12">
       <p>
         <label>
           {{ form.equipos.label_tag }}
-        </label>
-        {{ form.equipos }}
+        </label> {{ form.equipos }}
       </p>
       {{ form.equipos.errors }}
-
     </div>
+    <div class="col s12">
+      <div class="container-button">
+        <a href="{% url 'torneo:lista_torneos' %}" class="cancel">Cancelar</a>
+        <button class="submit" type="submit">Actualizar</button>
+      </div>
     </div>
-     <div class="row">
-   <div class="col s12">
-    <div class="container-button">
-      <button class="cancel">Cancelar</button>
-      <button class="submit" type="submit">Actualizar</button>
-    </div>
-   </div></div>
+  </div>
 </form>
 {% endblock %}
 
 <script>
-
-    $('.datepicker').pickadate({
+  $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15, // Creates a dropdown of 15 years to control year,
     today: 'Today',

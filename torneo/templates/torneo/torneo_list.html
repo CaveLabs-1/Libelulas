@@ -2,8 +2,10 @@
  {% load staticfiles %}
  {% block main %}
 
+<div class="title-container">
+  <h2 class="admin-title">Torneos</h2>
+</div>
 <div class="container">
-  <h1>Torneos</h1>
   <ul class="collection">
     {% for Torneo in lista_torneos %}
     <li class="collection-item avatar fix">

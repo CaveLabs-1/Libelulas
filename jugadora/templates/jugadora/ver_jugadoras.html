@@ -10,6 +10,9 @@
     {% endfor %}
   </div>
 {% endif %}
+<div class="title-container">
+  <h2>Jugadoras</h2>
+</div>
 <div class="container">
   <div class="fixed-action-btn horizontal click-to-toggle">
     <a class="btn-floating btn-large red-background" href="{% url 'jugadora:agregar_jugadora' %}">
@@ -39,6 +42,8 @@
          </a>
        </div>
     </li>
+    {% empty %}
+    <li>No hay jugadoras registradas aun.</li>
     {% endfor %}
   </ul>
 
