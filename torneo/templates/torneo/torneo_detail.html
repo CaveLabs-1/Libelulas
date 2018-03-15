@@ -27,10 +27,10 @@
     </div>
     <div class="file-field col 12 input-field">
       <div class="file-path-wrapper">
-        {% if torneo.anexo.url == '' %}
-          <p><strong>Anexo: </strong><a href="{{ torneo.anexo.url }}">{{torneo.anexo.name}}</a> </p>
-        {% else %}
+        {% if torneo.anexo == '' %}
           <p><strong>Anexo: </strong>No hay ningún anexo</p>
+        {% else %}
+          <p><strong>Anexo: </strong><a href="{{ torneo.anexo.url }}">{{torneo.anexo.name}}</a> </p>
         {% endif %}
       </div>
     </div>
