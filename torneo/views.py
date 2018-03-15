@@ -8,6 +8,9 @@ from torneo.models import Torneo
 from equipo.models import Equipo
 from django.views.generic.list import ListView
 from torneo.models import Torneo
+from django.views.generic.edit import DeleteView
+from django.urls import reverse_lazy
+
 
 
 def lista_torneos(request):
@@ -52,3 +55,8 @@ def editar_torneo(request, torneo_id):
         else:
             messages.warning(request, 'Hubo un error en la forma')
     return render(request, 'torneo/torneo_editar.html', {'form': form, 'torneo':instance})
+
+
+class eliminar_torneo(DeleteView):
+    model = Torneo
+    success_url = reverse_lazy('torneo:lista_torneos')

@@ -18,7 +18,7 @@
       <span class="title"><a href="{% url 'torneo:detalle_torneo' Torneo.id %}">{{ Torneo.nombre }}</a></span>
       <p>Fecha: {{ Torneo.fechaInicio }}</p>
       <div class="secondary-content">
-        <a href="">
+        <a href="#" data-target="delete" data-form="{% url 'torneo:eliminar_torneo' Torneo.id %}" class="delete-button">
           <i class="medium material-icons icon-red">delete</i>
         </a>
         <a href="{% url 'torneo:editar_torneo' Torneo.id %}">
