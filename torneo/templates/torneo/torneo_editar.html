@@ -5,7 +5,7 @@
 <div class="title-container">
   <h2>Editar Torneo<h2>
 </div>
-<form class="container" action="{% url 'torneo:editar_torneo' torneo.id %}" method="POST">
+<form class="container" novalidate action="{% url 'torneo:editar_torneo' torneo.id %}" enctype="multipart/form-data" method="POST">
     {% csrf_token %}
     <div class="row">
       <div class="col s6 m6 l6">
@@ -41,7 +41,6 @@
             <input type="file" name="anexo">
           </div>
           <div class="file-path-wrapper">
-            <!-- {{ form.anexo }} -->
             <input class="file-path validate" value="{{ form.anexo.value|default:"No hay ningún anexo" }}" type="text">
           </div>
         </div>
