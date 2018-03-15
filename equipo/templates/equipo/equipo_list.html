@@ -2,8 +2,10 @@
 {% load static %}
 {% block main %}
 
+<div class="title-container">
+  <h2 class="admin-title">Equipos</h2>
+</div>
 <div class="container">
-  <h1>Equipos</h1>
   <ul class="collection">
     {% for Equipo in object_list %}
     <li class="collection-item avatar">

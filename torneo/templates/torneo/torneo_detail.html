@@ -2,64 +2,57 @@
 {% load staticfiles %}
 {% block main %}
 
-<div class="container">
-  <h1>Información de Torneo</h1>
-  <div class="row">
-    <div class="col s6 m6 l6">
-      <p>
-        <strong> Nombre:</strong> {{ torneo.nombre }}
-      </p>
-      {{ torneo.nombre.errors }}
-
-    </div>
-    <div class="col s6 m6 l6">
-      <p>
-        <strong> Categoría: </strong>{{ torneo.categoria }}
-      </p>
-      {{ torneo.categoria.errors }}</div>
-  </div>
-  <div class="row">
-    <div class="col s12">
-      <p>
-        <strong> Fecha Inicio: </strong>{{ torneo.fechaInicio }}
-      </p>
-      {{ torneo.fechaInicio.errors }}
-    </div>
-  </div>
-  <div class="row">
-    <div class="col s12">
-      <div class="file-field input-field">
-        <div class="file-path-wrapper">
-          <p><strong>Anexo: </strong><a href="{{ torneo.anexo.url }}">{{torneo.anexo.name}}</a> </p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col s12">
-      <p>
-        <label>
-          {{ torneo.costo.label_tag }}
-        </label>
-        <p>Costo: ${{ torneo.costo }}
-          <p/>
-        </p>
-        {{ torneo.costo.errors }}
-    </div>
-  </div>
-  <ul class="collection">
-    {% for Equipo in equipos %}
-    <li class="collection-item avatar">
-      <img src="{{ Equipo.logo.url }}" alt="" class="circle">
-      <span class="title"><a href="{% url 'equipo:detalle_equipo' Equipo.id %}">{{ Equipo.nombre }}</a></span>
-      <p>Representante: {{ Equipo.representante }}</p>
-      <div class="secondary-content">
-        <a href="{% url 'equipo:editar_equipo' Equipo.id %}"><i class="material-icons icon-red">cancel</i></a>
-      </div>
-    </li>
-    {% empty %}
-    <li>No hay equipos registrados aun.</li>
-    {% endfor %}
-  </ul>
+<div class="title-container">
+  <h2>Información de Torneo</h2>
 </div>
-{% endblock %}
+<div class="container">
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="input-field col s12">
+        <input disabled value="{{torneo.nombre}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
+        <label for="disabled">Nombre</label>
+      </div>
+      <div class="input-field col s12">
+        <input disabled value="{{torneo.categoria}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
+        <label for="disabled">Categoría</label>
+      </div>
+      <div class="input-field col s12">
+        <input disabled value="{{torneo.fechaInicio}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
+        <label for="disabled">Fecha de Inicio</label>
+      </div>
+      <div class="input-field col s12">
+        <input disabled value="{{torneo.costo}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
+        <label for="disabled">Costo</label>
+      </div>
+    </div>
+    <div class="file-field col 12 input-field">
+      <div class="file-path-wrapper">
+        {% if torneo.anexo.url == '' %}
+          <p><strong>Anexo: </strong><a href="{{ torneo.anexo.url }}">{{torneo.anexo.name}}</a> </p>
+        {% else %}
+          <p><strong>Anexo: </strong>No hay ningún anexo</p>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <h4>Equipos</h4>
+      <ul class="collection">
+        {% for Equipo in equipos %}
+        <li class="collection-item avatar">
+          <img src="{{ Equipo.logo.url }}" alt="" class="circle">
+          <span class="title"><a href="{% url 'equipo:detalle_equipo' Equipo.id %}">{{ Equipo.nombre }}</a></span>
+          <p>Representante: {{ Equipo.representante }}</p>
+          <div class="secondary-content">
+            <a href="{% url 'equipo:editar_equipo' Equipo.id %}"><i class="material-icons icon-red">cancel</i></a>
+          </div>
+        </li>
+        {% empty %}
+        <li>No hay equipos registrados aun.</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col s12 m12" style="margin-top: 24px">
+      <a href="{% url 'torneo:lista_torneos' %}" class="cancel back">Regresar</a>
+    </div>
+  </div>
+  {% endblock %}

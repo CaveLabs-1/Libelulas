@@ -1,15 +1,23 @@
-<!doctype html> {% extends "base.html" %} {% load staticfiles %} {% block main %} {% if messages %} {% for message in messages %}
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block main %}
+{% if messages %}
+{% for message in messages %}
 <div class="{{ message.tags }} messages" id="message">
   <span class="">{{ message }}</span> {% endfor %}
 </div>
 {% endif %}
 
+<div class="title-container">
+  <h2 id="team-title">{{equipo.nombre}}</h2>
+  <h2 class="hidden" id="player-title">Jugadoras - {{equipo.nombre}}</h2>
+</div>
 <div class="container">
   <div class="row tab-row">
     <div class="col s12">
       <ul class="tabs">
-        <li class="tab col s3"><a href="#informacion">Informacion</a>
-          <li class="tab col s3"><a href="#jugadoras">Jugadoras</a>
+        <li class="tab col s3"><a id='info' href="#informacion">Información</a>
+          <li class="tab col s3"><a id='player' href="#jugadoras">Jugadoras</a>
       </ul>
     </div>
   </div>
@@ -91,9 +99,26 @@
             <button class="submit" type="submit">Borrar</button>
         </form>
         </div>
+        {% empty %}
+        <li>No hay jugadoras registradas en este equipo aun.</li>
         {% endfor %}
     </ul>
     </div>
   </div>
+  <script>
+  document.getElementById('player').onclick = function() {
+    if (document.getElementById('player-title').className === 'hidden') {
+      document.getElementById('player-title').classList.remove('hidden');
+      document.getElementById('team-title').classList.add('hidden');
+    }
+  }
+
+  document.getElementById('info').onclick = function() {
+    if (document.getElementById('team-title').className === 'hidden') {
+      document.getElementById('team-title').classList.remove('hidden');
+      document.getElementById('player-title').classList.add('hidden');
+    }
+  }
+  </script>
 
   {% endblock %}
