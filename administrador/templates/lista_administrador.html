@@ -42,19 +42,20 @@
     </div>
 </div>
 
-<script>
+{% endblock %}
 
-    $(document).ready(function(){
-        $('.modal').modal() ;
-    }) ;
+{% block scripts %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.modal').modal() ;
+        }) ;
 
 
-    $(".boton-eliminar").click(function(){
-        var id = $(this).attr("data-id") ;
-        var botones = '<a href="/administrador/eliminar_administrador/' + id + '" class="modal-action modal-close waves-effect waves-green btn-flat confirmar-eliminar">Aceptar</a><a href="#cancelar" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>' ;
-        $(".modal-footer").html(botones) ;
-    }) ;
-
-</script>
-
+        $(".boton-eliminar").click(function(){
+            var id = $(this).attr("data-id") ;
+            var botones = '<a href="/administrador/eliminar_administrador/' + id + '" class="modal-action modal-close waves-effect waves-green btn-flat confirmar-eliminar">Aceptar</a><a href="#cancelar" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>' ;
+            $(".modal-footer").html(botones) ;
+        }) ;
+    </script>
 {% endblock %}
