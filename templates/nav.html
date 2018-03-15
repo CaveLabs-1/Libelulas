@@ -3,7 +3,7 @@
     <div class="nav-wrapper">
       <div class="navito">
       <a href="#!" class="brand-logo">
-         <img class="logo-plidi" src="{% static 'media/logo.svg' %}"/>
+         <img class="logo-plidi" src="{% static 'static_media/logo.svg' %}"/>
 
       </a>
 
@@ -15,7 +15,7 @@
         <li><a href="#">LIGAS</a></li>
         <li><a href="#">GALERIA</a></li>
         <li><a href="#">ORGANIZADORES</a></li>
-        <li><a href="#"><i class="material-icons">exit_to_app</i></a></li>
+        <li><a href="{% url 'logout' %}"><i class="material-icons">exit_to_app</i></a></li>
 
       </ul>
       </div>
@@ -29,5 +29,5 @@
         <li><a href="#">LIGAS</a></li>
         <li><a href="#">GALERIA</a></li>
         <li><a href="#">ORGANIZADORES</a></li>
-        <li><a href="#"><i class="material-icons">exit_to_app</i></a></li>
+        <li><a href="{% url 'logout' %}"><i class="material-icons">exit_to_app</i></a></li>
   </ul>

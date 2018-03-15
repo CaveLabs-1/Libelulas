@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/css/materialize.min.css">
+        <link rel="stylesheet" href="{% static '/index.css' %}">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Iniciar Sesión</title>
+    </head>
+  <body>
+    <div class="login">
+      <div class ="login-container">
+          <div class = "logo-container">
+           <img src="{% static 'static_media/logo.svg' %}" type="image/svg+xml" alt="logo"></img>
+          </div>
+          <div class="form-container">
+          <form action="." method="POST">
+              {% csrf_token %}
+              <div class="input-field">
+                  <input type="text" class="validate" name="{{form.username.html_name}}" id="{{ form.username.id_for_label }}" required/>
+                  <label for="{{form.username.id_for_label}}">Usuario</label>
+              </div>
+              <div class="input-field">
+                  <input class="validate" name="password" type="password" name="{{form.password.html_name}}" id="{{ form.password.id_for_label }}" required/>
+                  <label for="{{form.password.id_for_label}}">Contraseña</label>
+              </div>
+              <div class="cta-container">
+                  <span>¿Olvidaste tu contraseña?</span>
+                  <button class="submit" type="submit">Iniciar Sesión</button>
+              </div>
+          </form>
+          </div>
+      </div>
+      <div class = "image-container">
+          <div class ="text">
+              <h2>Bienvenido a <strong>Plan Libélula Desarrollo Integral</strong></h2>
+              <h4>Inicia sesión para acceder a tu cuenta</h4>
+          </div>
+      </div>
+      </div>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/js/materialize.min.js"></script>
+      <script type="text/javascript" src="{% static '/index.js' %}"></script>
+  </body>
+</html>

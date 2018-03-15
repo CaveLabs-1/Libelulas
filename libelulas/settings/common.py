@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-
+from django.urls import reverse_lazy
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -39,6 +39,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'libelulas.middleware.RequireLoginMiddleware'
 ]
 
 ROOT_URLCONF = 'libelulas.urls'
@@ -107,3 +108,17 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+LOGIN_REDIRECT_URL = reverse_lazy('equipo:lista_equipos')
+LOGIN_URL = reverse_lazy('login')
+LOGOUT_REDIRECT_URL = reverse_lazy('login')
+
+
+LOGIN_REQUIRED_URLS = (
+    r'/equipo/',
+    #r'^legal/', # allow any URL under /legal/*
+)
+LOGIN_REQUIRED_URLS_EXCEPTIONS = (
+    r'^login/$',
+    r'^$',
+)
