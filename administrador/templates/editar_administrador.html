@@ -4,42 +4,49 @@
 
 {% if messages %}
     {% for message in messages %}
-        <div class="{{ message.tags }} messages">
+        <div class="{{ message.tags }} messages" id="message">
             <span class="">{{ message }}</span>
         </div>
     {% endfor %}
 {% endif %}
 
-<form method="POST" enctype="multipart/form-data" novalidate action="{% url 'administrador:editar_administrador' administrador.id %}">
-    {% csrf_token %}
-    <div class="container">
-        <div class="row">
-            <div class="input-field col s12 m6 l6">
-                <input type="text" name="{{form.first_name.html_name}}" value="{{administrador.first_name}}" id="{{form.first_name.id_for_label}}" class="validate">
-                <label for="{{form.first_name.id_for_label}}">{{form.first_name.label_tag}}</label>
+<div class="container">
+    <form method="POST" action=".">
+        {% csrf_token %}
+        <div class="container">
+            <div class="row">
+                <div class="input-field col s12 m6 l6">
+                    <input type="text" name="{{form.first_name.html_name}}" value="{{form.first_name.value}}" id="{{form.first_name.id_for_label}}" class="validate">
+                    <label for="{{form.first_name.id_for_label}}">{{form.first_name.label_tag}}</label>
+                </div>
+                <div class="input-field col s12 m6 l6">
+                    <input type="text" name="Username" value="{{administrador.username}}" id="Username" class="validate" disabled>
+                    <label for="Username">Username</label>
+                </div>
+                <div class="input-field col s12 m12 l12">
+                    <input type="email" name="{{form.email.html_name}}" value="{{form.email.value}}" id="{{form.email.id_for_label}}" class="validate">
+                    <label for="{{form.email.id_for_label}}">{{form.email.label_tag}}</label>
+                </div>
             </div>
-            <div class="input-field col s12 m6 l6">
-                <input type="text" name="{{form.username.html_name}}" value="{{administrador.username}}" id="{{form.username.id_for_label}}" class="validate">
-                <label for="{{form.username.id_for_label}}">{{form.username.label_tag}}</label>
-            </div>
-            <div class="input-field col s12 m6 l6">
-                <input type="email" name="{{form.email.html_name}}" value="{{administrador.email}}" id="{{form.email.id_for_label}}" class="validate">
-                <label for="{{form.email.id_for_label}}">{{form.email.label_tag}}</label>
-            </div>
-            <div class="input-field col s12 m6 l6">
-                <input type="password" name="{{form.password.html_name}}" value="{{administrador.password}}" id="{{form.password.id_for_label}}" class="validate">
-                <label for="{{form.password.id_for_label}}">{{form.password.label_tag}}</label>
+            <div class="row">
+                <div class="col s6 m4 l4 center">
+                    <a class="waves-effect waves-light btn red boton" href="{% url 'administrador:lista_administrador' %}">REGRESAR</a>
+                </div>
+                <div class="col s6 m4 l4 center">
+                    <a class="waves-effect waves-light btn green boton" href="{% url 'administrador:confirmar_contrasena' administrador.id %}">CONTRASEÑA</a>
+                </div>
+                <div class="col s12 m4 l4 center">
+                    <button class="waves-effect waves-light btn blue boton" type="submit">ENVIAR</button>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col s6 m6 l6">
-                <a class="waves-effect waves-light btn red boton" href="{% url 'administrador:lista_administrador' %}">REGRESAR</a>
-            </div>
-            <div class="col s6 m6 l6">
-                <button class="waves-effect waves-light btn blue boton" type="submit">ENVIAR</button>
-            </div>
-        </div>
-    </div>
-</form>
+    </form>
+</div>
+
 {% endblock %}
 
+{% block scripts %}
+
+{{ block.super }}
+
+{% endblock %}

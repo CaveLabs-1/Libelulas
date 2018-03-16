@@ -2,6 +2,14 @@
 {% load staticfiles %}
 {% block main %}
 
+{% if messages %}
+    {% for message in messages %}
+        <div class="{{ message.tags }} messages" id="message">
+            <span class="">{{ message }}</span>
+        </div>
+    {% endfor %}
+{% endif %}
+
 <div class="container">
     <ul class="collection">
         {% for administrador in lista %}
@@ -19,7 +27,7 @@
                     </div>
                     <div class="col s2 m1 l1">
                         <br>
-                        <a class="modal-trigger secondary-content boton-eliminar" href="#delete-modal" data-id="{{administrador.id}}"><i class="small material-icons">delete</i></a>
+                        <a class="modal-trigger secondary-content boton-eliminar" href="#delete-modal" data-id="{{administrador.id}}" data-nombre="{{administrador.first_name}}"><i class="small material-icons">delete</i></a>
                     </div>
                 </div>
             </li>
@@ -35,7 +43,7 @@
 
 <div id="delete-modal" class="modal">
     <div class="modal-content">
-        <h6>¿Desea eliminar el administrador?</h6>
+
     </div>
     <div class="modal-footer">
 
@@ -51,9 +59,10 @@
             $('.modal').modal() ;
         }) ;
 
-
         $(".boton-eliminar").click(function(){
             var id = $(this).attr("data-id") ;
+            var nombre = $(this).attr("data-nombre") ;
+            $(".modal-content").html("<h6>¿Desea eliminar al administrador <strong>" + nombre + "</strong>?</h6>") ;
             var botones = '<a href="/administrador/eliminar_administrador/' + id + '" class="modal-action modal-close waves-effect waves-green btn-flat confirmar-eliminar">Aceptar</a><a href="#cancelar" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>' ;
             $(".modal-footer").html(botones) ;
         }) ;
