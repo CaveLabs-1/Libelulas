@@ -1,6 +1,7 @@
 from django.test import TestCase
 from .models import User
 from django.db.models import QuerySet
+from django.contrib.auth.models import User, Group
 
 # Create your tests here.
 
