@@ -34,7 +34,13 @@ class Jugadora(models.Model):
 
             # Opening the uploaded image
             im = Image.open(self.Imagen)
+
             nombre = (self.Imagen.name)
+            fill_color = ''
+            if im.mode in ('RGBA', 'LA'):
+                background = Image.new(im.mode[:-1], im.size, 0)
+                background.paste(im, im.split()[-1])
+                im = background
 
 
             output = BytesIO()

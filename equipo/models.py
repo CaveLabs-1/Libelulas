@@ -4,6 +4,7 @@ from jugadora.models import Jugadora
 # Create your models here.
 from django.core.validators import RegexValidator
 from PIL import Image
+from PIL import ImageDraw
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys, os
@@ -102,11 +103,19 @@ class Equipo(models.Model):
 
 
             # Opening the uploaded image
+
             im = Image.open(self.logo)
+
             nombre = (self.logo.name)
+
+            if im.mode in ('RGBA', 'LA'):
+                background = Image.new(im.mode[:-1], im.size, 0)
+                background.paste(im, im.split()[-1])
+                im = background
 
 
             output = BytesIO()
+
 
 
             # after modifications, save it to the output
