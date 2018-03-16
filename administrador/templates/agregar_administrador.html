@@ -2,8 +2,6 @@
 {% load staticfiles %}
 {% block main %}
 
-
-
 <form id="forma" method="POST" novalidate action="{% url 'administrador:agregar_administrador' %}">
     {% csrf_token %}
     <div class="container">
@@ -50,9 +48,7 @@
 
 {% block scripts %}
 
-<script type="text/javascript">
-
-</script>
+{{ block.super }}
 
 {% endblock %}
 
