@@ -30,7 +30,7 @@ def agregar_jugadora(request, equipo_id=''):
             else:
                 jugadora.save()
             messages.success(request, 'Jugadora agregada exitosamente')
-            return HttpResponseRedirect(reverse('jugadora:agregar_jugadora'))
+            return HttpResponseRedirect(reverse('jugadora:ver_jugadoras'))
         else:
             messages.warning(request, 'Hubo un error en la forma')
     else:
@@ -64,7 +64,7 @@ def editar_jugadora(request, jugadora_id):
             else:
                 jugadora.save()
             messages.success(request, 'Jugadora editada exitosamente')
-            return HttpResponseRedirect(reverse('jugadora:agregar_jugadora'))
+            return HttpResponseRedirect(reverse('jugadora:ver_jugadoras'))
         else:
             messages.warning(request, 'Hubo un error en la forma')
     return render(request, 'jugadora/editar_jugadora.html', {'form': form, 'jugadora': instance })
@@ -76,4 +76,13 @@ def ver_jugadoras(request):
 class eliminar_jugadora(DeleteView):
     model = Jugadora
     success_url = reverse_lazy('jugadora:ver_jugadoras')
+
+
+def detalle_jugadora(request, pk):
+    jugadora = get_object_or_404(Jugadora, pk=pk)
+    EquipoNombre = 'No pertenece a ningún equipo'
+    Equipo = jugadora.equipo_set.all().first()
+    if Equipo is not None:
+        EquipoNombre = Equipo.nombre
+    return render(request, 'jugadora/jugadora_detail.html', {'jugadora': jugadora, 'EquipoNombre':EquipoNombre})
 
