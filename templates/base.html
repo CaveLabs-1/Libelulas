@@ -34,6 +34,18 @@
                     twelveHour: false
                 });
 
+                $('.datepicker').datepicker();
+
+                $('.datepicker').datepicker({
+                  selectMonths: true, // Creates a dropdown to control month
+                  selectYears: 15, // Creates a dropdown of 15 years to control year,
+                  today: 'Today',
+                  clear: 'Clear',
+                  close: 'Ok',
+                  format: 'yyyy-mm-dd',
+                  closeOnSelect: true // Close upon selecting a date,
+                });
+
                 $(".delete-button").click(function(ev) { // for each edit contact url
                     ev.preventDefault(); // prevent navigation
                     if ($(this).data("form")) {
@@ -46,14 +58,6 @@
                 })
             });
 
-            $('.datepicker').pickadate({
-                selectMonths: true, // Creates a dropdown to control month
-                selectYears: 15, // Creates a dropdown of 15 years to control year,
-                today: 'Today',
-                clear: 'Clear',
-                close: 'Ok',
-                closeOnSelect: false // Close upon selecting a date,
-            });
         </script>
         <script type="text/javascript" src="{% static '/index.js' %}"></script>
         {% endblock %}

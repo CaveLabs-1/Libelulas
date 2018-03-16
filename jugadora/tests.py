@@ -16,7 +16,7 @@ class TestJugadoraCase(TestCase):
                 representante = 'Juanito López',
                 telefono = '4423471577',
                 correo = 'juanito@mail.com',
-                logo = 'ejemplo.jpg',
+                logo = 'media/equipo/ejemplo.jpg',
                 colorLocal = '1',
                 colorVisitante = '1',
                 cancha = 'Qro',
@@ -139,7 +139,7 @@ class TestJugadoraCase(TestCase):
                 representante = 'Juanito López',
                 telefono = '4423471577',
                 correo = 'juanito@mail.com',
-                logo = 'ejemplo.jpg',
+                logo = 'media/equipo/ejemplo.jpg',
                 colorLocal = '1',
                 colorVisitante = '1',
                 cancha = 'Qro',
@@ -215,7 +215,7 @@ class TestJugadoraCase(TestCase):
         representante = 'Juanito López',
         telefono = '4423471577',
         correo = 'juanito@mail.com',
-        logo = 'ejemplo.jpg',
+        logo = 'media/equipo/ejemplo.jpg',
         colorLocal = '1',
         colorVisitante = '1',
         cancha = 'Qro',
@@ -280,9 +280,3 @@ class TestJugadoraCase(TestCase):
         #Mandar un post para eliminar a la jugadora
         response = self.client.post('/jugadora/eliminar/1')
         self.assertTrue(Jugadora.objects.count() == 1)
-
-
-
-
-
-

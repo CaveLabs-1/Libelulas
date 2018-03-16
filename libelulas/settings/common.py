@@ -122,3 +122,5 @@ LOGIN_REQUIRED_URLS_EXCEPTIONS = (
     r'^login/$',
     r'^$',
 )
+
+DATE_INPUT_FORMATS = ['%m-%d-%Y']
