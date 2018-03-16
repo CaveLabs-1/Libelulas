@@ -406,3 +406,12 @@ h4 {
   display: flex;
   justify-content: flex-end;
 }
+
+.datepicker::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+.datepicker-date-display {
+  background-color: #ff78b8 !important;
+}
