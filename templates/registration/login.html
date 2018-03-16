@@ -16,31 +16,29 @@
   <body>
     <div class="login">
       <div class ="login-container">
-          <div class = "logo-container">
-           <img src="{% static 'static_media/logo.svg' %}" type="image/svg+xml" alt="logo"></img>
-          </div>
+        <img src="{% static 'static_media/logo.svg' %}" type="image/svg+xml" alt="logo"></img>
           <div class="form-container">
-          <form action="." method="POST">
-              {% csrf_token %}
-              <div class="input-field">
-                  <input type="text" class="validate" name="{{form.username.html_name}}" id="{{ form.username.id_for_label }}" required/>
-                  <label for="{{form.username.id_for_label}}">Usuario</label>
-              </div>
-              <div class="input-field">
-                  <input class="validate" name="password" type="password" name="{{form.password.html_name}}" id="{{ form.password.id_for_label }}" required/>
-                  <label for="{{form.password.id_for_label}}">Contraseña</label>
-              </div>
-              <div class="cta-container">
-                  <span>¿Olvidaste tu contraseña?</span>
-                  <button class="submit" type="submit">Iniciar Sesión</button>
-              </div>
-          </form>
+            <form action="." method="POST">
+                {% csrf_token %}
+                <div class="input-field">
+                    <input type="text" class="validate" name="{{form.username.html_name}}" id="{{ form.username.id_for_label }}" required/>
+                    <label for="{{form.username.id_for_label}}">Usuario</label>
+                </div>
+                <div class="input-field">
+                    <input class="validate" name="password" type="password" name="{{form.password.html_name}}" id="{{ form.password.id_for_label }}" required/>
+                    <label for="{{form.password.id_for_label}}">Contraseña</label>
+                </div>
+                <div class="cta-container">
+                    <span>¿Olvidaste tu contraseña?</span>
+                    <button class="submit" type="submit">Iniciar Sesión</button>
+                </div>
+            </form>
           </div>
       </div>
       <div class = "image-container">
           <div class ="text">
-              <h2>Bienvenido a <strong>Plan Libélula Desarrollo Integral</strong></h2>
-              <h4>Inicia sesión para acceder a tu cuenta</h4>
+              <h3 class="white-text">Bienvenido a <strong>Plan Libélula Desarrollo Integral</strong></h3>
+              <h5 class="white-text">Inicia sesión para acceder a tu cuenta</h5>
           </div>
       </div>
       </div>
