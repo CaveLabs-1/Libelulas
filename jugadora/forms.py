@@ -15,6 +15,7 @@ class jugadoraForm(ModelForm):
         self.fields['Numero'].widget.attrs['min'] = '0'
         self.fields['Imagen'].widget.attrs['onchange'] = 'loadFile(event)'
         self.fields['equipo'].required = False
+        self.fields['Nacimiento'].widget.attrs['class'] = 'datepicker'
 
     class Meta:
         model = Jugadora

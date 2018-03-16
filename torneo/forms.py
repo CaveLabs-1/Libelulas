@@ -11,6 +11,8 @@ class torneoForm(ModelForm):
         super(torneoForm, self).__init__(*args, **kwargs)
         self.fields['anexo'].widget.attrs['class'] = 'inputfile'
         self.fields['anexo'].widget.attrs['onchange'] = 'loadFile(event)'
+        self.fields['fechaInicio'].widget.attrs['class'] = 'datepicker'
+        self.fields['fechaInicio'].widget.input_type = 'date'
 
     class Meta:
         model = Torneo
@@ -18,5 +20,3 @@ class torneoForm(ModelForm):
         widgets = {
             'anexo': forms.FileInput(),
         }
-
-
