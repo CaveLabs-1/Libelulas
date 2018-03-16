@@ -3,11 +3,17 @@ from jugadora.models import Jugadora
 from jugadora.forms import jugadoraForm
 from django.test import Client
 from equipo.models import Equipo
+from django.contrib.auth.models import User, Group
 import datetime
 # Create your tests here.
 
 
 class TestJugadoraCase(TestCase):
+
+    def setUp(self):
+        usuario1 = User.objects.create_user(username='testuser1', password='12345',is_superuser=True)
+        usuario1.save()
+        login = self.client.login(username='testuser1', password='12345')
 
     def testAgregarJugadora(self):
         # Crear un equipo

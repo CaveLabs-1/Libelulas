@@ -4,10 +4,16 @@ from torneo.forms import torneoForm
 from equipo.models import Equipo
 import datetime
 import os, glob
+from django.contrib.auth.models import User, Group
 
 # Create your tests here.
 
 class TestTorneoCase(TestCase):
+
+    def setUp(self):
+        usuario1 = User.objects.create_user(username='testuser1', password='12345',is_superuser=True)
+        usuario1.save()
+        login = self.client.login(username='testuser1', password='12345')
 
     def tearDown(self):
         Equipo.objects.all().delete()
@@ -220,6 +226,3 @@ class TestTorneoCase(TestCase):
         self.assertTrue(1 == Torneo.objects.all().count())
         self.assertTrue(t in Torneo.objects.all())
         self.assertTrue(t2 not in Torneo.objects.all())
-
-
-
