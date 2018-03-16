@@ -1,12 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block main %}
-{% if messages %}
-{% for message in messages %}
-<div class="{{ message.tags }} messages" id="message">
-  <span class="">{{ message }}</span> {% endfor %}
-</div>
-{% endif %}
 
 <div class="title-container">
   <h2 id="team-title">{{equipo.nombre}}</h2>

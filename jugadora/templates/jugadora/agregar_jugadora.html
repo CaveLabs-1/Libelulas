@@ -3,13 +3,6 @@
 {% load staticfiles %}
 {% block main %}
 
-{% if messages %}
-{% for message in messages %}
-  <div class="{{ message.tags }} messages" id="message">
-      <span class="">{{ message }}</span>
-    {% endfor %}
-  </div>
-{% endif %}
     {% if equipo == '' %}
         <form class="container flex" method="POST" enctype="multipart/form-data" novalidate action="{% url 'jugadora:agregar_jugadora' %}">
 

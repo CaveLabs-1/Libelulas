@@ -1,15 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block main %}
-
-{% if messages %}
-    {% for message in messages %}
-        <div class="{{ message.tags }} messages" id="message">
-            <span class="">{{ message }}</span>
-        </div>
-    {% endfor %}
-{% endif %}
-
+    
 <div class="container">
     <form id="forma" method="POST" novalidate action="{% url 'administrador:confirmar_contrasena' administrador.id %}">
         {% csrf_token %}

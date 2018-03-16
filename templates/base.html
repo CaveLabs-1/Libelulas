@@ -15,6 +15,13 @@
     {% block navbar %}{% include "nav.html" %}{% endblock navbar %}
     <body>
         <div class="modal" id="delete"></div>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="{{ message.tags }} messages" id="message">
+                    <span class="">{{ message }}</span>
+                </div>
+            {% endfor %}
+        {% endif %}
         <div class="main">
             {% block main %}{% endblock %}
         </div>

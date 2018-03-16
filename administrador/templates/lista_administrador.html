@@ -2,14 +2,6 @@
 {% load staticfiles %}
 {% block main %}
 
-{% if messages %}
-    {% for message in messages %}
-        <div class="{{ message.tags }} messages" id="message">
-            <span class="">{{ message }}</span>
-        </div>
-    {% endfor %}
-{% endif %}
-
 <div class="container">
     <ul class="collection">
         {% for administrador in lista %}
