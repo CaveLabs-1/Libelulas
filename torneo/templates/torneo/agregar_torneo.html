@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block main %}
-
+<div class="title-container">
+  <h2>Agregar Torneo<h2>
+</div>
 <form class="container" action="{% url 'torneo:crear_torneo' %}" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   <div class="row">
