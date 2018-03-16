@@ -2,7 +2,7 @@ from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 import datetime
 from equipo.models import Equipo
-
+import sys, os
 
 
 class Torneo(models.Model):
@@ -14,3 +14,9 @@ class Torneo(models.Model):
     anexo=models.FileField(upload_to='media/torneo', blank=True, null=True, verbose_name="Documento Anexo")
     costo=models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Costo", validators=[MinValueValidator(0)])
     equipos=models.ManyToManyField(Equipo, blank=True)
+    
+    def delete(self):
+        if self.anexo:
+            if os.path.isfile(self.anexo.path):
+                os.remove(self.anexo.path)
+        super().delete()
