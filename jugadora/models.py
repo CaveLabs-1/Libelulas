@@ -2,7 +2,7 @@ from django.db import models
 from PIL import Image
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator
 import sys, os
 
 # Create your models here.
@@ -18,7 +18,7 @@ class Jugadora(models.Model):
     Nombre = models.CharField(max_length=50, default='', verbose_name='Nombre')
     Apellido = models.CharField(max_length=50, default='', verbose_name='Apellido')
     Nacimiento = models.DateField(default='', verbose_name='Fecha de Nacimiento')
-    Numero = models.IntegerField(default='', verbose_name='Número', validators=[MinValueValidator(0)])
+    Numero = models.IntegerField(default='', verbose_name='Número', validators=[MinValueValidator(0), MaxValueValidator(1000)])
     Posicion = models.IntegerField(default='', choices=POSICION, verbose_name='Posición')
     Notas = models.TextField(max_length=150, default='', verbose_name='Comentarios', null=True, blank=True)
     Imagen = models.ImageField(upload_to='jugadora', verbose_name='Foto', null=True, blank=True)

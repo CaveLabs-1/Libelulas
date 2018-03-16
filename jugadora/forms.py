@@ -13,6 +13,7 @@ class jugadoraForm(ModelForm):
         self.fields['Imagen'].widget.attrs['class'] = 'inputfile'
         self.fields['Nacimiento'].widget.input_type = 'date'
         self.fields['Numero'].widget.attrs['min'] = '0'
+        self.fields['Numero'].widget.attrs['max'] = '1000'
         self.fields['Imagen'].widget.attrs['onchange'] = 'loadFile(event)'
         self.fields['equipo'].required = False
         self.fields['Nacimiento'].widget.attrs['class'] = 'datepicker'
