@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .forms import UserForm
+from .forms import UserForm, UpdatePasswordForm, UpdateUserForm
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.contrib import messages
@@ -18,30 +18,43 @@ def agregar_administrador(request):
             administrador.first_name = informacion.first_name
             administrador.username = informacion.username
             administrador.email = informacion.email
-            administrador.password = informacion.password
+            administrador.set_password('temporal')
             administrador.save()
             messages.success(request, 'Administrador agregado exitosamente')
-            return HttpResponseRedirect(reverse('administrador:editar_administrador', kwargs={'id_administrador':administrador.id}))
+            return HttpResponseRedirect(reverse('administrador:confirmar_contrasena', kwargs={'id_administrador':administrador.id}))
     else:
         form = UserForm()
     return render(request, 'agregar_administrador.html', {'form': form})
 
+def confirmar_contrasena(request, id_administrador):
+    administrador = get_object_or_404(User, id=id_administrador)
+    if request.method == "POST":
+        form = UpdatePasswordForm(data=request.POST, instance=request.user)
+        if form.is_valid():
+            actualizar = form.save(commit=False)
+            administrador.set_password(actualizar.password)
+            administrador.save()
+            messages.success(request, 'Contraseña actualizada exitosamente.')
+            url = reverse('administrador:editar_administrador', kwargs={'id_administrador':id_administrador})
+            return HttpResponseRedirect(url)
+    else:
+        form = UpdatePasswordForm()
+    return render(request, 'confirmar_contrasena.html', {'form': form, 'administrador': administrador})
+
 def editar_administrador(request, id_administrador):
     administrador = get_object_or_404(User, id=id_administrador)
     if request.method == "POST":
-        form = UserForm(data=request.POST, instance=administrador)
+        form = UpdateUserForm(data=request.POST, instance=administrador)
         if form.is_valid():
             actualizar = form.save(commit=False)
             administrador.first_name = actualizar.first_name
-            administrador.username = actualizar.username
             administrador.email = actualizar.email
-            administrador.password = actualizar.password
             administrador.save()
             messages.success(request, 'Administrador editado exitosamente')
             url = reverse('administrador:editar_administrador', kwargs={'id_administrador':id_administrador})
             return HttpResponseRedirect(url)
     else:
-        form = UserForm()
+        form = UpdateUserForm(instance=administrador)
     return render(request, 'editar_administrador.html', {'form': form, 'administrador': administrador})
 
 def eliminar_administrador(request, id_administrador):
