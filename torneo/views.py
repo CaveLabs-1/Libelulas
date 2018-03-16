@@ -11,15 +11,9 @@ from torneo.models import Torneo
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
 
-
-
 def lista_torneos(request):
     lista_torneos=Torneo.objects.all()
     return render(request, 'torneo/torneo_list.html', { 'lista_torneos':lista_torneos})
-
-from django.views.generic.detail import DetailView
-
-from .models import Torneo
 
 def detalle_torneo(request, torneo_id):
     torneo = get_object_or_404(Torneo, id=torneo_id)
