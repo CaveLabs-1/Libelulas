@@ -106,7 +106,7 @@ class TestTorneoCase(TestCase):
             representante = 'Juanito López',
             telefono = '4423471577',
             correo = 'juanito@mail.com',
-            logo = 'media/equipo/ejemplo.jpg',
+            logo = '',
             colorLocal = '1',
             colorVisitante = '1',
             cancha = 'Qro',
