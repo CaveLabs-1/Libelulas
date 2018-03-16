@@ -1,8 +1,6 @@
-{% extends "base.html" %} {% load staticfiles %} {% block main %} {% if messages %} {% for message in messages %}
-<div class="{{ message.tags }} messages">
-  <span class="">{{ message }}</span> {% endfor %}
-</div>
-{% endif %}
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block main %}
 
 <form class="container" action="{% url 'torneo:crear_torneo' %}" method="POST" enctype="multipart/form-data">
   {% csrf_token %}

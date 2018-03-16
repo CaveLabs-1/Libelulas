@@ -3,14 +3,6 @@
 {% load staticfiles %}
 {% block main %}
 
-{% if messages %}
-{% for message in messages %}
-  <div class="{{ message.tags }} messages">
-      <span class="">{{ message }}</span>
-    {% endfor %}
-  </div>
-{% endif %}
-
 <form  class="container flex" action="{% url 'equipo:agregar_equipo' %}" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   <div class="image-column">
