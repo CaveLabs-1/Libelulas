@@ -176,3 +176,50 @@ class TestTorneoCase(TestCase):
         }
         response = self.client.post('/torneo/editar/1', form_data)
         self.assertNotEqual(t.anexo, "")
+
+    def testDeleteTorneo(self):
+
+        t = Torneo.objects.create(
+            id=1,
+            nombre="Torneo Ejemplo",
+            categoria=1,
+            fechaInicio="2010-12-12",
+            costo=500.50,
+        )
+
+        t2 = Torneo.objects.create(
+            id=3,
+            nombre="Torneos Ejemplos",
+            categoria=1,
+            fechaInicio="2015-12-12",
+            costo=500.50,
+        )
+
+        self.assertTrue(1 == 1)
+
+
+        #Checar que los objetos existen
+        self.assertTrue(2 == Torneo.objects.all().count())
+        self.assertTrue(t in Torneo.objects.all())
+        self.assertTrue(t2 in Torneo.objects.all())
+
+        #intentar de borrar un torneo que no existe y checar que ningun objeto ha sido borrado o cambiado
+        self.client.post('/torneo/eliminar/5')
+        self.assertTrue(2 == Torneo.objects.all().count())
+        self.assertTrue(t in Torneo.objects.all())
+        self.assertTrue(t2 in Torneo.objects.all())
+
+        #intentar de borrar invalido y checar que ningun objeto ha sido borrado o cambiado
+        self.client.post('/torneo/eliminar/as')
+        self.assertTrue(2 == Torneo.objects.all().count())
+        self.assertTrue(t in Torneo.objects.all())
+        self.assertTrue(t2 in Torneo.objects.all())
+
+        # Borrar un torneo y checar si fue borrada y ninguna ha cambiado
+        self.client.post('/torneo/eliminar/3')
+        self.assertTrue(1 == Torneo.objects.all().count())
+        self.assertTrue(t in Torneo.objects.all())
+        self.assertTrue(t2 not in Torneo.objects.all())
+
+
+
