@@ -7,11 +7,21 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('first_name', 'username', 'email')
 
+    def clean_email(self):
+        if User.objects.filter(email__iexact=self.cleaned_data['email']):
+            raise forms.ValidationError("Este email ya se encuentra en uso.")
+        return self.cleaned_data['email']
+
 class UpdateUserForm(forms.ModelForm):
 
     class Meta:
         model = User
         fields = ('first_name', 'email')
+
+    def clean_email(self):
+        if User.objects.filter(email__iexact=self.cleaned_data['email']).exclude(pk=self.instance.pk):
+            raise forms.ValidationError("Este email ya se encuentra en uso.")
+        return self.cleaned_data['email']
 
 class UpdatePasswordForm(forms.ModelForm):
 
