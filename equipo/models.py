@@ -42,6 +42,7 @@ class Equipo(models.Model):
         verbose_name='Correo Electronico' )
     logo = models.ImageField(
         upload_to='media/equipo',
+        blank=True,
         default='',
         verbose_name='Logo')
     COLORES = (
