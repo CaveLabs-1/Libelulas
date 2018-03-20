@@ -11,7 +11,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.contrib.auth.models import User, Group
 import sys
 import os, glob
-
+import datetime
 # Create your tests here.
 class TestCrearEquipo(TestCase):
 
@@ -22,8 +22,8 @@ class TestCrearEquipo(TestCase):
 
     def tearDown(self):
         Equipo.objects.all().delete()
-        for filename in glob.glob("./media/media/equipo/test*"):
-            os.remove(filename)
+        # for filename in glob.glob("./media/media/equipo/test*"):
+        #     os.remove(filename)
 
     def test_happy_crear_equipo(self):
         #Revisar que no hay equipos
@@ -1652,40 +1652,7 @@ class TestCrearEquipo(TestCase):
         self.client.post(reverse('equipo:agregar_equipo'), data)
         self.assertEqual(Equipo.objects.count(), 0)
 
-    def test_no_logo_equipo(self):
-        self.assertEqual(Equipo.objects.count(), 0)
-        form_data = {
-            'nombre': 'Real Madrid F.C.',
-            'representante': 'Florentino Pérez',
-            'telefono': '+5144227654321',
-            'correo': 'florentinop@realmadrid.com',
-            'colorLocal': '1',
-            'colorVisitante': '2',
-            'cancha': 'Santiago Bernabéu',
-            'dia': '7',
-            'hora': '13:05'
-        }
-        file_data = {
-        }
-
-        data = {
-            'nombre': 'Real Madrid Futboll Club',
-            'representante': 'Florentino Pérez',
-            'telefono': '+5144227654321',
-            'correo': 'florentinop@realmadrid.com',
-            'colorLocal': '1',
-            'colorVisitante': '2',
-            'cancha': 'Santiago Bernabéu',
-            'dia': '7',
-            'hora': '13:05',
-        }
-        form = equipoForm(form_data, file_data)
-        #Pruebo que la forma sea correcta
-        self.assertFalse(form.is_valid())
-        #Pruebo que se guarde el equipo
-        self.client.post(reverse('equipo:agregar_equipo'), data)
-        self.assertEqual(Equipo.objects.count(), 0)
-
+    
     def test_no_hora_equipo(self):
         self.assertEqual(Equipo.objects.count(), 0)
         form_data = {
@@ -1961,8 +1928,8 @@ class TestVerEquipo(TestCase):
 
     def tearDown(self):
         Equipo.objects.all().delete()
-        for filename in glob.glob("./media/media/equipo/test*"):
-            os.remove(filename)
+        # for filename in glob.glob("./media/media/equipo/test*"):
+        #     os.remove(filename)
 
     def test_ver_existente_equipo(self):
         response = self.client.get('/equipo/1/')
@@ -2017,8 +1984,8 @@ class TestEditarEquipo(TestCase):
 
     def tearDown(self):
         Equipo.objects.all().delete()
-        for filename in glob.glob("./media/media/equipo/test*"):
-            os.remove(filename)
+        # for filename in glob.glob("./media/media/equipo/test*"):
+        #     os.remove(filename)
 
     def test_cambio_nombre_equipo(self):
         team = self.equipo1()
@@ -3916,40 +3883,6 @@ class TestEditarEquipo(TestCase):
         self.client.post(reverse('equipo:editar_equipo', kwargs={'pk':1}), data)
         self.assertNotEqual(Equipo.objects.get(id = 1).logo, img)
 
-    def test_no_logo_equipo(self):
-        team = self.equipo1()
-        logo = Equipo.objects.get(id = 1).logo
-        form_data = {
-            'nombre': 'Real Madrid F.C.',
-            'representante': 'Florentino Pérez',
-            'telefono': '+5144227654321',
-            'correo': 'florentinop@realmadrid.com',
-            'colorLocal': '1',
-            'colorVisitante': '2',
-            'cancha': 'Santiago Bernabéu',
-            'dia': '7',
-            'hora': '13:05'
-        }
-        file_data = {
-        }
-        data = {
-            'nombre': 'Real Madrid F.C.',
-            'representante': 'Florentino Pérez',
-            'telefono': '+5144227654321',
-            'correo': 'florentinop@realmadrid.com',
-            'colorLocal': '1',
-            'colorVisitante': '2',
-            'cancha': 'Santiago Bernabéu',
-            'dia': '7',
-            'hora': '13:05'
-        }
-        form = equipoForm(form_data, file_data, team)
-        #Pruebo que la forma sea correcta
-        self.assertFalse(form.is_valid())
-        #Pruebo que se guarde el equipo
-        self.client.post(reverse('equipo:editar_equipo', kwargs={'pk':1}), data)
-        self.assertEqual(Equipo.objects.get(id = 1).logo, logo)
-
     def test_cambio_hora_equipo(self):
         team = self.equipo1()
         form_data = {
@@ -4248,8 +4181,8 @@ class TestEliminarEquipo(TestCase):
             colorVisitante = 2,
             cancha = 'Santiago Bernabéu',
             dia = 7,
-            logo = imagen,
-            hora = '13:00'
+            #logo = imagen,
+            hora = datetime.datetime.now().time()
         )
         Equipo.objects.create(
             id = 2,
@@ -4261,20 +4194,12 @@ class TestEliminarEquipo(TestCase):
             colorVisitante = 2,
             cancha = 'Estadio Azteca',
             dia = 7,
-            logo = imagen,
-            hora = '13:00'
+            #logo = imagen,
+            hora = datetime.datetime.now().time()
         )
 
     def tearDown(self):
         Equipo.objects.all().delete()
-
-    def test_eliminar_equipo(self):
-        response = self.client.get('/equipo/1/')
-        self.assertEqual(response.status_code, 200)
-        Equipo.objects.all().delete()
-        response = self.client.get('/equipo/1/')
-        self.assertEqual(response.status_code, 404)
-        self.assertEqual(Equipo.objects.count(),0)
 
     def test_vista_equipo(self):
         response = self.client.get('/equipo/borrar_equipo/2/')
