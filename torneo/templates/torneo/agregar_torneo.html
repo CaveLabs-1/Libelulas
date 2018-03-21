@@ -28,6 +28,17 @@
         </label>
       <input type="date" name="{{form.fechaInicio.html_name}}" required="" class="datepicker" id="{{form.fechaInicio.id_for_label}}" /> {{ form.fechaInicio.errors }}
     </div>
+
+      <div class="col s12">
+            <p>
+              <label>
+                  {{ form.fechaJunta.label_tag }}
+              </label>
+            {{ form.fechaJunta }}
+
+          </p>
+            {{ form.fechaJunta.errors }}
+        </div>
     <div class="col s12" style="margin-top:24px">
       <div class="file-field input-field">
         <div class="btn">
@@ -48,6 +59,15 @@
       </p>
       {{ form.costo.errors }}
     </div>
+      <div class="col s12">
+          <p>
+            <label>
+              {{ form.costoCredencial.label_tag }}
+            </label>
+            <input name="costoCredencial" type="number" min="0.00" max="10000.00" step="0.01" />
+          </p>
+          {{ form.costoCredencial.errors }}
+      </div>
     <div class="col s12">
       <p>
         <label>

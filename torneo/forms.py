@@ -13,10 +13,12 @@ class torneoForm(ModelForm):
         self.fields['anexo'].widget.attrs['onchange'] = 'loadFile(event)'
         self.fields['fechaInicio'].widget.attrs['class'] = 'datepicker'
         self.fields['fechaInicio'].widget.input_type = 'date'
+        self.fields['fechaJunta'].widget.attrs['class'] = 'datepicker'
+        self.fields['fechaJunta'].widget.input_type = 'date'
 
     class Meta:
         model = Torneo
-        fields = ( 'nombre','categoria', 'fechaInicio', 'anexo','costo', 'equipos')
+        fields = ('nombre', 'categoria', 'fechaInicio', 'anexo', 'costo', 'costoCredencial', 'equipos', 'fechaJunta')
         widgets = {
             'anexo': forms.FileInput(),
         }

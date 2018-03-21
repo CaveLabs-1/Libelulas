@@ -62,9 +62,11 @@ class TestTorneoCase(TestCase):
         form_data = {
             'nombre': 'TorneoAlejandro',
             'categoria': 1995,
-            'fechaInicio': '12/12/1995',
+            'fechaInicio': '1995-12-12',
             'anexo':'',
             'costo': 100.4,
+            'fechaJunta':'1995-11-11',
+            'costoCredencial':12
         }
 
         form = torneoForm(data=form_data)
@@ -89,7 +91,9 @@ class TestTorneoCase(TestCase):
             nombre="Torneo PRueba",
             categoria="1995",
             fechaInicio='2010-12-12',
-            costo=int(12.12)
+            costo=int(12.12),
+            fechaJunta='1995-11-11',
+            costoCredencial=12
         )
 
         self.assertTrue(Torneo.objects.all().count() == 1)
@@ -105,6 +109,8 @@ class TestTorneoCase(TestCase):
             categoria=1,
             fechaInicio="2010-12-12",
             costo=500.50,
+            fechaJunta='1995-11-11',
+            costoCredencial= 12
         )
 
         e = Equipo.objects.create(
@@ -191,6 +197,8 @@ class TestTorneoCase(TestCase):
             categoria=1,
             fechaInicio="2010-12-12",
             costo=500.50,
+            fechaJunta='1995-11-11',
+            costoCredencial= 12
         )
 
         t2 = Torneo.objects.create(
@@ -199,6 +207,8 @@ class TestTorneoCase(TestCase):
             categoria=1,
             fechaInicio="2015-12-12",
             costo=500.50,
+            fechaJunta='1995-11-11',
+            costoCredencial=12
         )
 
         self.assertTrue(1 == 1)
