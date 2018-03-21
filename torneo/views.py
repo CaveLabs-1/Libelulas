@@ -55,3 +55,11 @@ def editar_torneo(request, torneo_id):
 class eliminar_torneo(DeleteView):
     model = Torneo
     success_url = reverse_lazy('torneo:lista_torneos')
+
+def eliminar_equipo(request, id_equipo, id_torneo):
+    torneo = get_object_or_404(Torneo, id=id_torneo)
+    equipo = get_object_or_404(Equipo, id=id_equipo)
+    if equipo in torneo.equipos.all():
+        torneo.equipos.remove(equipo)
+        messages.success(request, 'Equipo eliminado exitosamente')
+        return HttpResponseRedirect(reverse('torneo:detalle_torneo',kwargs={'torneo_id':id_torneo}))
