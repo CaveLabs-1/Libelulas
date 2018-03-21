@@ -95,7 +95,11 @@
 
 
     <div class="container-button">
-      <button class="cancel">Cancelar</button>
+      {% if equipo %}
+      <a href="{% url 'equipo:detalle_equipo' equipo %}"><button class="cancel" type="button">Cancelar</button></a>
+      {% else %}
+      <a href="{% url 'jugadora:ver_jugadoras' %}"><button class="cancel" type="button">Cancelar</button></a>
+      {% endif %}
       <button class="submit" type="submit">Guardar</button>
     </div>
   </div>

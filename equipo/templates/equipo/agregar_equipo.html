@@ -85,7 +85,7 @@
       </p>
       {{ form.hora.errors }}
     <div class="container-button">
-      <button class="cancel">Cancelar</button>
+      <a href="{% url 'equipo:lista_equipos' %}"><button class="cancel" type="button">Cancelar</button></a>
       <button class="submit" type="submit">Guardar</button>
     </div>
   </div>
