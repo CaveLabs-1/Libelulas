@@ -86,7 +86,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-mx'
 
 TIME_ZONE = 'UTC'
 
@@ -116,7 +116,9 @@ LOGOUT_REDIRECT_URL = reverse_lazy('login')
 
 LOGIN_REQUIRED_URLS = (
     r'/equipo/',
-    #r'^legal/', # allow any URL under /legal/*
+    r'/jugadora/',
+    r'/administrador/',
+    r'/torneo/',
 )
 LOGIN_REQUIRED_URLS_EXCEPTIONS = (
     r'^login/$',

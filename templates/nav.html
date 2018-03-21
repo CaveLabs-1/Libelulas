@@ -9,8 +9,8 @@
 
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><div class="wellcome-pack"><h6 id="paketaxo">¡BIENVENIDO POLICARPIO!</h6></div></li>
-        <li><a href="{% url 'equipo:lista_equipos' %}">EQUIPO</a></li>
+        <li><div class="wellcome-pack"><h6 id="paketaxo">¡BIENVENIDO {{ user.first_name | upper }}!</h6></div></li>
+        <li><a href="{% url 'equipo:lista_equipos' %}">EQUIPOS</a></li>
         <li><a href="{% url 'jugadora:ver_jugadoras' %}">JUGADORAS</a></li>
         <li><a href="{% url 'torneo:lista_torneos' %}">TORNEOS</a></li>
         <li><a href="#">CONVOCATORIAS</a></li>

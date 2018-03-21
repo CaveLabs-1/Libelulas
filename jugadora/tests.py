@@ -3,26 +3,21 @@ from jugadora.models import Jugadora
 from jugadora.forms import jugadoraForm
 from django.test import Client
 from equipo.models import Equipo
+from django.contrib.auth.models import User, Group
 import datetime
 # Create your tests here.
 
 
 class TestJugadoraCase(TestCase):
 
+    def setUp(self):
+        usuario1 = User.objects.create_user(username='testuser1', password='12345',is_superuser=True)
+        usuario1.save()
+        login = self.client.login(username='testuser1', password='12345')
+
     def testAgregarJugadora(self):
         # Crear un equipo
-        e = Equipo.objects.create(
-                nombre = 'Equipo',
-                representante = 'Juanito López',
-                telefono = '4423471577',
-                correo = 'juanito@mail.com',
-                logo = 'media/equipo/ejemplo.jpg',
-                colorLocal = '1',
-                colorVisitante = '1',
-                cancha = 'Qro',
-                dia = '1',
-                hora = datetime.datetime.now()
-                )
+
 
         # Agregar jugadora vacia
         form_data = {}
@@ -41,7 +36,7 @@ class TestJugadoraCase(TestCase):
             'Nacimiento': '09/22/1995',
             'Numero': '-1',
             'Posicion': '3',
-            'equipo': '1'
+            'equipo': ''
             }
         form = jugadoraForm(data=form_data)
         self.assertFalse(form.is_valid())
@@ -53,7 +48,7 @@ class TestJugadoraCase(TestCase):
             'Nacimiento': '09/22/1995',
             'Numero': '-1',
             'Posicion': '5',
-            'equipo': '1'
+            'equipo': ''
             }
         form = jugadoraForm(data=form_data)
         self.assertFalse(form.is_valid())
@@ -65,7 +60,7 @@ class TestJugadoraCase(TestCase):
             'Nacimiento': '13/38/1995',
             'Numero': '1',
             'Posicion': '5',
-            'equipo': '1'
+            'equipo': ''
             }
         form = jugadoraForm(data=form_data)
         self.assertFalse(form.is_valid())
@@ -77,7 +72,7 @@ class TestJugadoraCase(TestCase):
             'Nacimiento': '13/38/1995',
             'Numero': '1',
             'Posicion': '3',
-            'equipo': '1'
+            'equipo': ''
             }
         form = jugadoraForm(data=form_data)
         self.assertFalse(form.is_valid())
@@ -89,7 +84,7 @@ class TestJugadoraCase(TestCase):
             'Nacimiento': '13/38/1995',
             'Numero': '1',
             'Posicion': '3',
-            'equipo': '1'
+            'equipo': ''
             }
         form = jugadoraForm(data=form_data)
         self.assertFalse(form.is_valid())
@@ -98,24 +93,25 @@ class TestJugadoraCase(TestCase):
         form_data = {
             'Nombre': 'Alejandro',
             'Apellido': 'López',
-            'Nacimiento': '09/22/1995',
+            'Nacimiento': '1111-11-11',
             'Numero': '1',
             'Posicion': '3',
-            'equipo': '1'
+            'Notas': 'Esto es una nota',
             }
         form = jugadoraForm(data=form_data)
+        print(form.errors)
         self.assertTrue(form.is_valid())
+
 
         # Agregar jugadora con Imagen
         form_data = {
             'Nombre': 'Alejandro',
             'Apellido': 'López',
-            'Nacimiento': '09/22/1995',
+            'Nacimiento': '1111-11-11',
             'Numero': '1',
             'Posicion': '3',
-            'Imagen': 'ejemplo.jpg',
             'Notas': 'Esto es una nota',
-            'equipo': '1'
+
         }
         form = jugadoraForm(data=form_data)
         self.assertTrue(form.is_valid())
@@ -124,51 +120,39 @@ class TestJugadoraCase(TestCase):
         form_data = {
             'Nombre': 'Alejandro',
             'Apellido': 'López',
-            'Nacimiento': '09/22/1995',
+            'Nacimiento': '1111-11-11',
             'Numero': '1',
             'Posicion': '3',
             'Notas': 'Esto es una nota',
-            'equipo': '1'
+
             }
         form = jugadoraForm(data=form_data)
         self.assertTrue(form.is_valid())
 
     def testEditarJugadora(self):
-        e = Equipo.objects.create(
-                nombre = 'Equipo',
-                representante = 'Juanito López',
-                telefono = '4423471577',
-                correo = 'juanito@mail.com',
-                logo = 'media/equipo/ejemplo.jpg',
-                colorLocal = '1',
-                colorVisitante = '1',
-                cancha = 'Qro',
-                dia = '1',
-                hora = datetime.datetime.now()
-                )
+
 
         j = Jugadora.objects.create(
                 Nombre = 'Alejandro',
                 Apellido = 'López',
-                Nacimiento = '1995-10-02',
+                Nacimiento = '1111-11-11',
                 Numero = '1',
                 Posicion = '3',
                 Notas = 'Esto es una nota',
-                equipo = '2'
+
                 )
 
         form_data = {
             'Nombre': '',
             'Apellido': 'López',
-            'Nacimiento': '09/22/1995',
+            'Nacimiento': '1111-11-11',
             'Numero': '1',
             'Posicion': '3',
             'Notas': 'Esto es una nota',
             'Imagen': 'ejemplo.jpg',
-            'equipo': '2'
+
             }
-        e.jugadoras.add(j)
-        e.save()
+
         # Simular que la página funciona
         response = self.client.get('/jugadora/editar/1')
         self.assertTrue(response.status_code == 200)
@@ -186,11 +170,11 @@ class TestJugadoraCase(TestCase):
         form_data = {
             'Nombre': 'Ale',
             'Apellido': 'López',
-            'Nacimiento': '09/22/1995',
+            'Nacimiento': '1111-11-11',
             'Numero': '1',
             'Posicion': '5',
             'Notas': 'Esto es una nota',
-            'equipo': '2'
+
             }
         response = self.client.post('/jugadora/editar/1', form_data)
         # self.assertEqual(response['Location'], "/jugadora/editar/1")
@@ -200,50 +184,37 @@ class TestJugadoraCase(TestCase):
         form_data = {
             'Nombre': 'Ale',
             'Apellido': 'López',
-            'Nacimiento': '09/22/1995',
+            'Nacimiento': '1111-11-11',
             'Numero': '1',
             'Posicion': '4',
             'Notas': 'Esto es una nota',
-            'equipo': '2'
+            'equipo':'1'
             }
         response = self.client.post('/jugadora/editar/1', form_data)
         self.assertNotEqual(j.Posicion, 3)
 
     def testVerJugadora(self):
-        e = Equipo.objects.create(
-        nombre = 'Equipo',
-        representante = 'Juanito López',
-        telefono = '4423471577',
-        correo = 'juanito@mail.com',
-        logo = 'media/equipo/ejemplo.jpg',
-        colorLocal = '1',
-        colorVisitante = '1',
-        cancha = 'Qro',
-        dia = '1',
-        hora = datetime.datetime.now()
-        )
+
 
         j = Jugadora.objects.create(
         Nombre = 'Alejandro',
         Apellido = 'López',
-        Nacimiento = '1995-10-02',
+        Nacimiento = '1111-11-11',
         Numero = '1',
         Posicion = '3',
         Notas = 'Esto es una nota',
-        equipo = '2'
+
         )
         j1 = Jugadora.objects.create(
         Nombre = 'Ramon',
         Apellido = 'Romero',
-        Nacimiento = '1996-10-02',
+        Nacimiento = '1111-11-11',
         Numero = '2',
         Posicion = '4',
         Notas = 'Esto es una nota',
-        equipo = '2'
+
         )
-        e.jugadoras.add(j)
-        e.jugadoras.add(j1)
-        e.save()
+
 
 
         # Simular el ir a la pagina
@@ -257,7 +228,7 @@ class TestJugadoraCase(TestCase):
             id=1,
             Nombre='Ramon',
             Apellido='Romero',
-            Nacimiento='1996-10-02',
+            Nacimiento='1111-11-11',
             Numero='2',
             Posicion='4',
             Notas='Esto es una nota',
@@ -267,7 +238,7 @@ class TestJugadoraCase(TestCase):
             id=2,
             Nombre='Ramon',
             Apellido='Romero',
-            Nacimiento='1996-10-02',
+            Nacimiento='1111-11-11',
             Numero='2',
             Posicion='4',
             Notas='Esto es una nota',
