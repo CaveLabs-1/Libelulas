@@ -1,15 +1,25 @@
 {% load static %}
-<div class="navbar">
+<div class="navbar" id="navbar">
   <div class="container">
     <div class="column">
-      <img class="logo" src="{% static 'static_media/logo.svg' %}" alt="logo-plidi"/>
+      <img class="logo" src="{% static 'static_media/logo-white.svg' %}" alt="logo-plidi" />
     </div>
-    <div class="column">
-      <div class="nav">CONVOCATORIAS</div>
-      <div class="nav">TORNEOS</div>
-      <div class="nav">EQUIPOS</div>
-      <div class="nav">GALERIA</div>
-      <div class="nav">ORGANIZADORES</div>
+    <div class="column anchors">
+      <div class="anchor">CONVOCATORIAS</div>
+      <div class="anchor">TORNEOS</div>
+      <div class="anchor">EQUIPOS</div>
+      <div class="anchor">GALERIA</div>
+      <div class="anchor">ORGANIZADORES</div>
     </div>
   </div>
+</div>
+<div class="mobile-nav">
+  <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+  <ul id="mobile-demo" class="sidenav">
+        <li><a href="#">CONVOCATORIAS</a></li>
+        <li><a href="#">TORNEOS</a></li>
+        <li><a href="#">EQUIPOS</a></li>
+        <li><a href="#">GALERIA</a></li>
+        <li><a href="#">ORGANIZADORES</a></li>
+  </ul>
 </div>

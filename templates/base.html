@@ -81,7 +81,11 @@
             });
 
         </script>
-        <script type="text/javascript" src="{% static '/index.js' %}"></script>
+        {% if request.resolver_match.app_name == 'landing' %}
+          <script type="text/javascript" src="{% static '/js/landing.js' %}"></script>
+        {% else %}
+          <script type="text/javascript" src="{% static '/index.js' %}"></script>
+        {% endif %}
         {% endblock %}
     </body>
 </html>
