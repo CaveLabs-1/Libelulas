@@ -1,0 +1,33 @@
+.navbar {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.navbar > .container {
+  max-width: 1024px;
+  width: 100%;
+  display: flex;
+}
+
+.navbar > .container > .column {
+  flex-grow: 1;
+}
+
+.hero {
+  min-height: 100vh;
+  height: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.container {
+  color: white;
+}
