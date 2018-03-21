@@ -90,13 +90,13 @@ class Equipo(models.Model):
 
     def __str__(self):
         return self.nombre
-    
+
     def delete(self):
         if self.logo:
             if os.path.isfile(self.logo.path):
                 os.remove(self.logo.path)
         super().delete()
-        
+
     def save(self, *args, **kw):
 
         if self.logo:

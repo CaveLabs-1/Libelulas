@@ -43,7 +43,9 @@
           <span class="title"><a href="{% url 'equipo:detalle_equipo' Equipo.id %}">{{ Equipo.nombre }}</a></span>
           <p>Representante: {{ Equipo.representante }}</p>
           <div class="secondary-content">
-            <a href="{% url 'equipo:editar_equipo' Equipo.id %}"><i class="material-icons icon-red">cancel</i></a>
+            {% if torneo.activo %}
+            <a href="{% url 'torneo:eliminar_equipo' Equipo.id torneo.id %}"><i class="material-icons icon-red">cancel</i></a>
+            {% endif %}
           </div>
         </li>
         {% empty %}
