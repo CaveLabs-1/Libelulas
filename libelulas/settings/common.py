@@ -28,7 +28,8 @@ INSTALLED_APPS = [
     'equipo',
     'jugadora',
     'administrador',
-    'torneo'
+    'torneo',
+    'landing',
 ]
 
 MIDDLEWARE = [

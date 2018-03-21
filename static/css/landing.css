@@ -1,0 +1,301 @@
+body {
+  margin: 0;
+}
+
+/* Navbar */
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 64px;
+  background-color: transparent;
+  z-index: 10;
+}
+
+.transparent {
+  height: 64px;
+  animation: dissapear 0.4s forwards;
+}
+
+.anchors {
+  cursor: pointer;
+}
+
+.mobile-nav {
+  background-color: transparent !important;
+  position: fixed;
+}
+
+.sidenav-trigger {
+  color: #fff;
+}
+
+@keyframes dissapear {
+  from {
+    height: 55px;
+    background-color: #fff;
+  }
+  to {
+    height: 64px;
+    background-color: transparent
+  }
+}
+
+.colored {
+  animation: appear 0.4s forwards;
+}
+
+.colored>.container>.column {
+  color: #81889d;
+}
+
+@keyframes appear {
+  from {
+    background-color: transparent;
+    height: 64px;
+  }
+  to {
+    height: 55px;
+    background-color: #FFFFFF;
+  }
+}
+
+.navbar>.container {
+  max-width: 1024px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar>.container>.column {
+  flex-grow: 1;
+  display: flex;
+}
+
+.anchors {
+  justify-content: space-between;
+}
+
+.logo {
+  width: 64px;
+  align-self: flex-start;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+
+@media (min-width: 360px) and (max-width: 1040px) {
+  .navbar {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: block;
+  }
+}
+
+/* Hero */
+
+.hero {
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.image-hero {
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-image: url("../static_media/hero-final-hd.jpg");
+  position: fixed;
+  z-index:-1;
+}
+
+.hero>.container {
+  max-width: 1024px;
+  width: 100%;
+}
+
+.hero>.container>.text {
+  max-width: 60%;
+}
+
+.hero>.container>.text>.cta-container {
+  margin-top: 32px;
+  display: flex;
+}
+
+.hero>.container>.text>h6 {
+  max-width: 90%;
+  line-height: 28px;
+  letter-spacing: 1px;
+}
+
+
+/* Buttons */
+
+.button {
+  border-radius: 50px;
+  padding: 6px 24px 6px 24px;
+  cursor: pointer;
+}
+
+.primary-button {
+  background-color: transparent !important;
+  border: solid 2px #ff7178;
+  color: #ff7178;
+  background-size: 200% 200%;
+  background-image: linear-gradient(to right, transparent 50%, #ff7178 50%);
+  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  -moz-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  -ms-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  -o-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+}
+
+.primary-button:hover {
+  background-position: -100% 0;
+  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  -moz-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  -ms-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  -o-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+}
+
+/* Generic */
+
+.white {
+  color: #fff !important;
+}
+
+h1 {
+  line-height: 90px;
+  letter-spacing: 3px;
+  font-size: 5em;
+}
+
+
+.container {
+  color: white;
+}
+
+h2 {
+  text-transform: uppercase;
+  color: #81889d;
+}
+
+/* Proximos juegos */
+
+.content {
+  padding-top: 4em;
+  background-color: #f7f8fb;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 3em;
+}
+
+
+.card {
+  max-width: 300px;
+  width: 100%;
+  border-radius: 20px !important;
+  height: 100%;
+}
+
+.card-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 37px;
+  padding-bottom: 24px;
+}
+
+.vs-container {
+  height: 100%;
+}
+
+.card-image > .container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.vs-circle {
+  height: 57px;
+  width: 57px;
+  background-image: linear-gradient(307deg, #67caff, #6797ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4em;
+}
+
+.team {
+  max-height: 5em;
+  height: 100%;
+  max-width: 5em;
+  width: 100%;
+}
+
+.card-content {
+  background-image: linear-gradient(271deg, #67bbff, #679fff);
+  border-radius: 0 0 20px 20px !important;
+}
+
+/* Footer */
+
+.footer {
+  background-image: linear-gradient(to right, #3a3d5c, #404a69);
+ border: solid 1px #3a3d5c;
+ display: flex;
+ justify-content:center;
+ padding-top: 4em;
+ padding-bottom:1em;
+}
+
+.footer > .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.footer > .container > .anchors {
+  width: 25%;
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+
+.footer > .container > .icons {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  display: flex;
+  justify-content: space-around;
+  width: 20%;
+}
+
+.footer > .container > .icons > .icon {
+  height: 24px;
+  cursor: pointer;
+}
+
+.small {
+  font-size:0.8em;
+  color: #b4c0c6;
+}
