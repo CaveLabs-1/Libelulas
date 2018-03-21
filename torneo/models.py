@@ -16,7 +16,6 @@ class Torneo(models.Model):
     costoCredencial=models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Costo de Credencial", validators=[MinValueValidator(0)])
     equipos=models.ManyToManyField(Equipo, blank=True)
     activo=models.BooleanField(default = True)
-
     fechaJunta = models.DateField(verbose_name="Fecha de la siguiente junta")
     def delete(self):
         if self.anexo:
