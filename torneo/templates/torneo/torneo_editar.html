@@ -29,11 +29,22 @@
         <p>
           <label>
               {{ form.fechaInicio.label_tag }}
+
           </label>
-        <input type="date" name="fechaInicio" value="{{torneo.fechaInicio | date:"Y-m-d"}}" class="datepicker" required id="id_fechaInicio">
+          <input type="date" name="{{form.fechaInicio.html_name}}" required="" value='{{ form.fechaInicio.value|date:"Y-m-d" }}' id="{{form.fechaInicio.id_for_label}}" class="datepicker">
       </p>
         {{ form.fechaInicio.errors }}
       </div>
+        <div class="col s12">
+            <p>
+              <label>
+                  {{ form.fechaJunta.label_tag }}
+              </label>
+            <input type="date" name="{{form.fechaJunta.html_name}}" required="" value='{{ form.fechaJunta.value|date:"Y-m-d" }}' id="{{form.fechaJunta.id_for_label}}" class="datepicker">
+
+          </p>
+            {{ form.fechaJunta.errors }}
+        </div>
       <div class="col s12" style="margin-top:24px">
         <div class="file-field input-field">
           <div class="btn">
@@ -53,6 +64,16 @@
           {{ form.costo }}
         </p>
         {{ form.costo.errors }}
+      </div>
+      <div class="col s12">
+          <p>
+            <label>
+              {{ form.costoCredencial.label_tag }}
+            </label>
+
+              {{ form.costoCredencial }}
+          </p>
+          {{ form.costoCredencial.errors }}
       </div>
       {% if torneo.activo %}
       <div class="col s12">
