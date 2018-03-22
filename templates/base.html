@@ -8,11 +8,21 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/css/materialize.min.css">
-        <link rel="stylesheet" href="{% static '/index.css' %}">
+        {% if request.resolver_match.app_name == 'landing' %}
+          <link rel="stylesheet" href="{% static '/css/landing.css' %}">
+        {% else %}
+          <link rel="stylesheet" href="{% static '/index.css' %}">
+        {% endif %}
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
-    {% block navbar %}{% include "nav.html" %}{% endblock navbar %}
+    {% block navbar %}
+    {% if request.resolver_match.app_name == 'landing' %}
+      {% include "navbar.html" %}
+    {% else %}
+      {% include "nav.html" %}
+    {% endif %}
+    {% endblock navbar %}
     <body>
         <div class="modal" id="delete"></div>
         {% if messages %}
@@ -25,6 +35,11 @@
         <div class="main">
             {% block main %}{% endblock %}
         </div>
+        {% block footer %}
+        {% if request.resolver_match.app_name == 'landing' %}
+          {% include "footer.html" %}
+        {% endif %}
+        {% endblock footer %}
         {% block scripts %}
         <!--JavaScript at end of body for optimized loading-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -66,7 +81,11 @@
             });
 
         </script>
-        <script type="text/javascript" src="{% static '/index.js' %}"></script>
+        {% if request.resolver_match.app_name == 'landing' %}
+          <script type="text/javascript" src="{% static '/js/landing.js' %}"></script>
+        {% else %}
+          <script type="text/javascript" src="{% static '/index.js' %}"></script>
+        {% endif %}
         {% endblock %}
     </body>
 </html>
