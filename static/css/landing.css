@@ -55,7 +55,7 @@ body {
 
 .colored .material-icons {
   color: #81889d;
-  
+
 }
 
 @keyframes appear {
@@ -124,6 +124,7 @@ body {
   background-image: url("../static_media/hero-final-hd.jpg");
   position: fixed;
   z-index:-1;
+  background-position:right;
 }
 
 .hero>.container {
@@ -335,10 +336,6 @@ h2 {
 
   .hero > .container > .text {
     max-width: 100%;
-  }
-
-  .hero > .image-hero {
-    background-position: center;
   }
 
   .hero > .container {
