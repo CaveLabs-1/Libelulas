@@ -100,30 +100,31 @@ class Equipo(models.Model):
     def save(self, *args, **kw):
 
         if self.logo:
+            try:
 
 
-
-            # Opening the uploaded image
-
-            im = Image.open(self.logo)
-
-            nombre = (self.logo.name)
-
-            if im.mode in ('RGBA', 'LA'):
-                background = Image.new(im.mode[:-1], im.size, 0)
-                background.paste(im, im.split()[-1])
-                im = background
-
-
-            output = BytesIO()
-
-
-
-            # after modifications, save it to the output
-            im.save(output, format='JPEG', quality=70)
-            output.seek(0)
-
-            # change the imagefield value to be the newley modifed image value
-            self.logo = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.logo.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
-
+                # Opening the uploaded image
+    
+                im = Image.open(self.logo)
+    
+                nombre = (self.logo.name)
+    
+                if im.mode in ('RGBA', 'LA'):
+                    background = Image.new(im.mode[:-1], im.size, 0)
+                    background.paste(im, im.split()[-1])
+                    im = background
+    
+    
+                output = BytesIO()
+    
+    
+    
+                # after modifications, save it to the output
+                im.save(output, format='JPEG', quality=70)
+                output.seek(0)
+    
+                # change the imagefield value to be the newley modifed image value
+                self.logo = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.logo.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
+            except:
+                print("gg")
         super(Equipo,self).save(*args, **kw)
