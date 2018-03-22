@@ -4,11 +4,14 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
-from torneo.models import Torneo, Partido
+from torneo.models import *
 from equipo.models import Equipo
 from django.views.generic.list import ListView
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
+from django.utils import timezone
+import datetime
+import uuid
 
 def lista_torneos(request):
     lista_torneos = Torneo.objects.all()
@@ -71,3 +74,61 @@ def registrar_partido(request, id_partido):
         if form.is_valid():
             return True
     return render(request, 'torneo/registrar_partido.html', {'form':form, 'data':data})
+
+def cerrar_registro(request, id_torneo):
+    torneo = get_object_or_404(Torneo, id=id_torneo)
+    if torneo.activo:
+        torneo.activo = False
+        torneo.save()
+        fecha_inicial = torneo.fechaInicio
+        fecha_fin =  fecha_inicial + timezone.timedelta(days=6)
+        equipos = torneo.equipos.all()
+        id_last_j = 1
+        lista = []
+        for equipo in equipos:
+            lista.append(equipo.nombre)
+        lista_vuelta = []
+        for equipo in equipos:
+            lista_vuelta.append(equipo.nombre)
+        lista_vuelta = lista_vuelta[::-1]
+        jornadas_local = create_schedule(lista)
+        jornadas_visitante = create_schedule(lista_vuelta)
+        id_last_j,fecha_inicial,fecha_fin = partidos(id_last_j,jornadas_local,fecha_inicial,fecha_fin,torneo)
+        partidos(id_last_j,jornadas_visitante,fecha_inicial,fecha_fin,torneo)
+        messages.success(request,'El registro del torneo ha sido cerrado')
+        return HttpResponseRedirect(reverse('torneo:lista_torneos'))
+
+def create_schedule(list):
+    s = []
+    if len(list) % 2 == 1: list = list + ["BYE"]
+    for i in range(len(list)-1):
+        mid = len(list) / 2
+        l1 = list[:int(mid)]
+        l2 = list[int(mid):]
+        l2.reverse()
+        if(i % 2 == 1):
+            s = s + [ zip(l1, l2) ]
+        else:
+            s = s + [ zip(l2, l1) ]
+        list.insert(1, list.pop())
+    return s
+
+def partidos(id_last_j,jornadas_local,fecha_inicial,fecha_fin,torneo):
+    for i,semana in enumerate(jornadas_local):
+        descripcion = "Jornada "+str(id_last_j)
+        jornada = Jornada(jornada=descripcion,torneo=torneo,fecha_inicio=fecha_inicial,fecha_fin=fecha_fin)
+        fecha_inicial = fecha_fin + timezone.timedelta(days=1)
+        fecha_fin =  fecha_inicial + timezone.timedelta(days=6)
+        jornada.save()
+        for equipo in semana:
+            if equipo[0] is not "BYE" and equipo[1] is not "BYE":
+                equipo_local = get_object_or_404(Equipo, nombre=equipo[0])
+                equipo_visitante = get_object_or_404(Equipo, nombre=equipo[1])
+                dias_adelante = equipo_local.dia - jornada.fecha_inicio.weekday()
+                if dias_adelante <= 0:
+                    dias_adelante += 7
+                    fecha =  jornada.fecha_inicio + datetime.timedelta(dias_adelante)
+                partido = Partido(id=uuid.uuid4().hex[:6].upper(), jornada=jornada, equipo_local=equipo_local, equipo_visitante=equipo_visitante, fecha=fecha,hora=equipo_local.hora,cancha=equipo_local.cancha)
+                partido.save()
+        id_last_j = id_last_j + 1
+    return id_last_j, fecha_inicial, fecha_fin

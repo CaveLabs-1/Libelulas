@@ -17,4 +17,5 @@ urlpatterns = [
     path('eliminar/<int:pk>', views.eliminar_torneo.as_view(), name='eliminar_torneo'),
     path('eliminar_equipo/<int:id_equipo>/<int:id_torneo>', views.eliminar_equipo, name='eliminar_equipo'),
     path('registrar_partido/<int:id_partido>', views.registrar_partido, name='registrar_partido'),
+    path('cerrar_registro/<int:id_torneo>', views.cerrar_registro, name='cerrar_registro'),
 ]
