@@ -115,6 +115,6 @@ def cerrar_registro(request, id_torneo):
 
 def mandar_codigoCedula(request, torneo_id):
 
-    codigo = Torneo.objects.get(id=t)
+    codigo = Torneo.objects.get(id=torneo_id)
 
-    return
+    return HttpResponseRedirect(reverse('torneo:lista_torneos'))
