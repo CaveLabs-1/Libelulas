@@ -178,6 +178,18 @@ body {
   transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
 }
 
+.secondary-button {
+  border: solid 2px #ff7178;
+  color: #ff7178;
+  transition: all 0.4s ease-in;
+}
+
+.secondary-button:hover{
+  background-color: #ff7178;
+  color: #fff;
+  transition: all 0.4s ease-in;
+}
+
 /* Generic */
 
 .white {
@@ -195,13 +207,17 @@ h1 {
   color: white;
 }
 
-h2 {
+h2, h3 {
   text-transform: uppercase;
   color: #81889d;
 }
 
 .medium {
   font-size:3em !important;
+}
+
+a {
+  color: inherit;
 }
 
 /* Proximos juegos */
@@ -233,7 +249,7 @@ h2 {
   height: 100%;
 }
 
-.card-image {
+.match .card-image {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -245,7 +261,7 @@ h2 {
   height: 100%;
 }
 
-.card-image > .container {
+.match .card-image > .container {
   display: flex;
   justify-content: space-around;
   width: 100%;
@@ -273,6 +289,13 @@ h2 {
   border-radius: 0 0 20px 20px !important;
 }
 
+.content > .container > .cta-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  margin: 2em 0 3em 0;
+}
 /* Footer */
 
 .footer {
@@ -359,4 +382,26 @@ h2 {
   .footer > .container > .icons {
     width:30%;
   }
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  height: 100%;
+  background-color: black;
+}
+
+.header > .container > h6 {
+  max-width: 45%;
+  width: 100%;
+  line-height: 25px;
+  letter-spacing: 1px;
+}
+
+/* Organizadores */
+.organizer-content {
+  padding-bottom: 4.5em;
 }
