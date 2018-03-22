@@ -22,13 +22,16 @@
             </div>
             <div class="row">
                 <div class="col s6 m4 l4 center">
-                    <a class="waves-effect waves-light btn red boton" href="{% url 'administrador:lista_administrador' %}">REGRESAR</a>
+                    <br>
+                    <a href="{% url 'administrador:lista_administrador' %}"><button class="cancel" type="button">Regresar</button></a>
                 </div>
                 <div class="col s6 m4 l4 center">
-                    <a class="waves-effect waves-light btn green boton" href="{% url 'administrador:confirmar_contrasena' administrador.id %}">CONTRASEÑA</a>
+                    <br>
+                    <a href="{% url 'administrador:confirmar_contrasena' administrador.id %}"><button class="submit" type="button">Contraseña</button></a>
                 </div>
                 <div class="col s12 m4 l4 center">
-                    <button class="waves-effect waves-light btn blue boton" type="submit">ENVIAR</button>
+                    <br>
+                    <button class="submit" type="submit">Guardar</button>
                 </div>
             </div>
         </div>

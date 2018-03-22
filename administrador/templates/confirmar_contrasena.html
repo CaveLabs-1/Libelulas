@@ -20,10 +20,10 @@
             </div>
             <div id="botones" class="row">
                 <div id="regresar" class="col s6 m6 l6 center">
-                    <a class="waves-effect waves-light btn red boton" href="{% url 'administrador:editar_administrador' administrador.id %}">CANCELAR</a>
+                    <a href="{% url 'administrador:editar_administrador' administrador.id %}"><button class="cancel" type="button">Cancelar</button></a>
                 </div>
                 <div id="enviar" class="col s6 m6 l6 center">
-                    <button id="enviar_forma" class="waves-effect waves-light btn blue boton" type="submit">Enviar</button>
+                    <button id="enviar_forma" class="submit" type="submit">Enviar</button>
                 </div>
             </div>
         </div>
