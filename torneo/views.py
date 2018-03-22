@@ -84,14 +84,31 @@ def cerrar_registro(request, id_torneo):
             fecha_fin =  fecha_inicial + timezone.timedelta(days=6)
             jornada.save()
         jornadas = Jornada.objects.filter(torneo=torneo)
-        for jornada in jornadas[:(numero_jornadas/2)]:
-            for equipo_local in torneo.equipos.all():
-                for equipo_visitante in torneo.equipos.all():
-                    if equipo_local is not equipo_visitante:
-                        dias_adelante = equipo_local.dia - jornada.fecha_inicio.weekday()
-                        if dias_adelante <= 0:
-                            dias_adelante += 7
-                            fecha =  jornada.fecha_inicio + datetime.timedelta(dias_adelante)
-                        partido = Partido(jornada=jornada, equipo_local=equipo_local, equipo_visitante=equipo_visitante, fecha=fecha,hora=equipo_local.hora,cancha=equipo_local.cancha)
-                        partido.save()
+        equipos = Equipo.objects.filter(torneo=torneo)
+        lista = []
+        for equipo in equipos:
+            lista.append(equipo)
+        print(lista)
+        for i,jornada in enumerate(jornadas):
+            s = []
+            if numero_equipos % 2 == 1: lista = lista + ["BYE"]
+            mid = len(lista) / 2
+            l1 = equipos[:mid]
+            l2 = equipos[mid:]
+            l2.reverse()
+            if(i % 2 == 1):
+                s = s + [ zip(l1, l2) ]
+            else:
+                s = s + [ zip(l2, l1) ]
+
+                lista.insert(1, lista.pop())
+
+            print(s)
+            # dias_adelante = equipo_local.dia - jornada.fecha_inicio.weekday()
+            # if dias_adelante <= 0:
+            #     dias_adelante += 7
+            #     fecha =  jornada.fecha_inicio + datetime.timedelta(dias_adelante)
+            #
+            # partido = Partido(jornada=jornada, equipo_local=equipo_local, equipo_visitante=equipo_visitante, fecha=fecha,hora=equipo_local.hora,cancha=equipo_local.cancha)
+            # partido.save()
         return HttpResponseRedirect(reverse('torneo:lista_torneos'))

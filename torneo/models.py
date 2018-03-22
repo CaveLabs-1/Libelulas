@@ -8,14 +8,14 @@ import uuid
 
 
 class Torneo(models.Model):
-    nombre=models.CharField(max_length=100, verbose_name="Nombre del Torneo")
-    categoria=models.IntegerField(verbose_name="Categoria", validators=[MaxValueValidator(datetime.datetime.now().year )])
-    fechaInicio=models.DateField(verbose_name="Fecha Inicio")
-    anexo=models.FileField(upload_to='media/torneo', blank=True, null=True, verbose_name="Documento Anexo")
-    costo=models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Costo Inscripcion", validators=[MinValueValidator(0)])
-    costoCredencial=models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Costo de Credencial", validators=[MinValueValidator(0)])
-    equipos=models.ManyToManyField(Equipo, blank=True)
-    activo=models.BooleanField(default = True)
+    nombre = models.CharField(max_length=100, verbose_name="Nombre del Torneo")
+    categoria = models.IntegerField(verbose_name="Categoria", validators=[MaxValueValidator(datetime.datetime.now().year )])
+    fechaInicio = models.DateField(verbose_name="Fecha Inicio")
+    anexo = models.FileField(upload_to='media/torneo', blank=True, null=True, verbose_name="Documento Anexo")
+    costo = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Costo Inscripcion", validators=[MinValueValidator(0)])
+    costoCredencial = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Costo de Credencial", validators=[MinValueValidator(0)])
+    equipos = models.ManyToManyField(Equipo ,through='Estadisticas')
+    activo = models.BooleanField(default = True)
     fechaJunta = models.DateField(verbose_name="Fecha de la siguiente junta")
 
     def delete(self):
@@ -24,14 +24,23 @@ class Torneo(models.Model):
                 os.remove(self.anexo.path)
         super().delete()
 
-    def __str__(self):
-        return self.nombre
+class Estadisticas(models.Model):
+    torneo = models.ForeignKey(Torneo, on_delete = models.CASCADE)
+    equipo = models.ForeignKey(Equipo, on_delete = models.CASCADE)
+    jugados = models.IntegerField(verbose_name="Jugados", default=0)
+    puntos = models.IntegerField(verbose_name="Puntos", default=0)
+    ganados = models.IntegerField(verbose_name="Ganados", default=0)
+    empatados = models.IntegerField(verbose_name="Empatados", default=0)
+    perdidos = models.IntegerField(verbose_name="Perdidos", default=0)
+    goles_favor = models.IntegerField(verbose_name="GF", default=0)
+    goles_contra = models.IntegerField(verbose_name="GC", default=0)
+
 
 class Jornada(models.Model):
-    jornada = models.CharField(max_length=20, verbose_name="Jornada")
-    torneo = models.ForeignKey(Torneo, on_delete = models.CASCADE)
+    jornada = models.CharField(max_length=50)
     fecha_inicio = models.DateField(verbose_name="Fecha Inicio")
     fecha_fin = models.DateField(verbose_name="Fecha Fin")
+    torneo = models.ForeignKey(Torneo, on_delete = models.CASCADE)
 
     def __str__(self):
         return self.jornada
