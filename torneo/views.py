@@ -12,6 +12,9 @@ from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
 from django.utils import timezone
 import datetime
+from reportlab.pdfgen import canvas
+from django.http import HttpResponse
+from io import BytesIO
 
 def lista_torneos(request):
 
@@ -113,8 +116,45 @@ def cerrar_registro(request, id_torneo):
             # partido.save()
         return HttpResponseRedirect(reverse('torneo:lista_torneos'))
 
-def mandar_codigoCedula(request, torneo_id):
+def mandar_codigoCedula(request, torneo_id, jornada_id):
 
-    codigo = Torneo.objects.get(id=torneo_id)
+    torneos = get_object_or_404(Torneo, id=torneo_id)
 
-    return HttpResponseRedirect(reverse('torneo:lista_torneos'))
+    jornadas = get_object_or_404(torneos.jornada_set.all(), id=jornada_id)
+
+    partidos = jornadas.partido_set.all()
+
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'inline; filename="Partidos.pdf"'
+
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer)
+
+    # Start writing the PDF here
+    posX = 0
+    posY = 830
+    posX += 250
+    posY -= 50
+    p.drawString(posX, posY, 'Lista de Partidos')
+    posY -= 20
+    p.drawString(posX, posY, torneos.nombre)
+    p.drawString(50, 740, 'Jornada: '+jornadas.jornada)
+    p.drawString(100, 720, 'Fecha de Inicio: '+str(jornadas.fecha_inicio.strftime("%d-%B-%Y")))
+    p.drawString(100, 700, 'Fecha Final: '+str(jornadas.fecha_inicio.strftime("%d-%B-%Y")))
+    p.drawString(50, 650, 'Partidos')
+    posX=50
+    posY=650
+    for partido in partidos:
+        print(partido.id)
+
+    # End writing
+
+    p.showPage()
+    p.save()
+
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+
+    return response
+    #return HttpResponseRedirect(reverse('torneo:lista_torneos'))
