@@ -94,15 +94,4 @@ def cerrar_registro(request, id_torneo):
                             fecha =  jornada.fecha_inicio + datetime.timedelta(dias_adelante)
                         partido = Partido(jornada=jornada, equipo_local=equipo_local, equipo_visitante=equipo_visitante, fecha=fecha,hora=equipo_local.hora,cancha=equipo_local.cancha)
                         partido.save()
-
-        for jornada in reversed(jornadas[:(numero_jornadas/2)]):
-            for equipo_local in torneo.equipos.all():
-                for equipo_visitante in torneo.equipos.all():
-                    if equipo_local is not equipo_visitante:
-                        dias_adelante = equipo_visitante.dia - jornada.fecha_inicio.weekday()
-                        if dias_adelante <= 0:
-                            dias_adelante += 7
-                            fecha =  jornada.fecha_inicio + datetime.timedelta(dias_adelante)
-                        partido = Partido(jornada=jornada, equipo_local=equipo_visitante, equipo_visitante=equipo_local, fecha=fecha,hora=equipo_visitante.hora,cancha=equipo_visitante.cancha)
-                        partido.save()
         return HttpResponseRedirect(reverse('torneo:lista_torneos'))
