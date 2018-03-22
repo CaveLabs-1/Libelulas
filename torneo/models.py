@@ -47,7 +47,7 @@ class Jornada(models.Model):
 
 
 class Partido(models.Model):
-    id = models.CharField(primary_key=True, default=uuid.uuid4().hex[:6].upper(), editable=False, max_length=6)
+    id = models.CharField(primary_key=True, editable=False, max_length=6)
     jornada = models.ForeignKey(Jornada, on_delete = models.CASCADE)
     equipo_local =  models.ForeignKey(Equipo, on_delete = models.CASCADE, related_name='equipo_local')
     equipo_visitante = models.ForeignKey(Equipo, on_delete = models.CASCADE, related_name='equipo_visitante')
