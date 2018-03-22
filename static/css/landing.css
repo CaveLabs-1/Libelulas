@@ -27,6 +27,7 @@ body {
 .mobile-nav {
   background-color: transparent !important;
   position: fixed;
+  z-index: 10;
 }
 
 .sidenav-trigger {
@@ -50,6 +51,11 @@ body {
 
 .colored>.container>.column {
   color: #81889d;
+}
+
+.colored .material-icons {
+  color: #81889d;
+  
 }
 
 @keyframes appear {
@@ -86,17 +92,14 @@ body {
 
 .mobile-nav {
   display: none;
+  z-index: 10;
+  height: 64px;
+  align-items: center;
+  width: 100%;
 }
 
-
-@media (min-width: 360px) and (max-width: 1040px) {
-  .navbar {
-    display: none;
-  }
-
-  .mobile-nav {
-    display: block;
-  }
+.sidenav-overlay {
+  z-index: 9;
 }
 
 /* Hero */
@@ -109,6 +112,7 @@ body {
   align-items: center;
   margin-top: 0;
   padding-top: 0;
+  position: relative;
 }
 
 .image-hero {
@@ -195,11 +199,22 @@ h2 {
   color: #81889d;
 }
 
+.medium {
+  font-size:3em !important;
+}
+
 /* Proximos juegos */
 
 .content {
   padding-top: 4em;
   background-color: #f7f8fb;
+  display: flex;
+  justify-content: center;
+}
+
+.content > .container {
+  max-width: 1024px;
+  width:100%;
 }
 
 .card-container {
@@ -298,4 +313,53 @@ h2 {
 .small {
   font-size:0.8em;
   color: #b4c0c6;
+}
+
+/* Mobile and tablet */
+@media (min-width: 360px) and (max-width: 767px) {
+  .card-container {
+    justify-content: center;
+  }
+}
+
+
+@media (min-width: 360px) and (max-width: 1060px) {
+  .navbar {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: flex;
+    padding-left: 24px;
+  }
+
+  .hero > .container > .text {
+    max-width: 100%;
+  }
+
+  .hero > .image-hero {
+    background-position: center;
+  }
+
+  .hero > .container {
+    padding-right:24px;
+    padding-left: 24px;
+  }
+
+  .content {
+    padding: 0 24px 0 24px;
+  }
+
+  h1 {
+    font-size: 3.5em;
+    line-height: 115%;
+  }
+
+  .footer > .container > .anchors {
+    width: 75%;
+  }
+
+  .footer > .container > .icons {
+    width:30%;
+  }
 }
