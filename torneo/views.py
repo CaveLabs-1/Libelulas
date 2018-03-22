@@ -63,3 +63,9 @@ def eliminar_equipo(request, id_equipo, id_torneo):
         torneo.equipos.remove(equipo)
         messages.success(request, 'Equipo eliminado exitosamente')
         return HttpResponseRedirect(reverse('torneo:detalle_torneo',kwargs={'torneo_id':id_torneo}))
+
+def mandar_codigoCedula(request, torneo_id):
+
+    codigo = Torneo.objects.get(id=t)
+
+    return
