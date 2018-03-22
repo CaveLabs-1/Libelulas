@@ -1,12 +1,11 @@
 from django.test import TestCase
-from torneo.models import Torneo
+from torneo.models import *
 from torneo.forms import torneoForm
 from equipo.models import Equipo
 import datetime
 import os, glob
 from django.contrib.auth.models import User, Group
-
-# Create your tests here.
+from django.urls import reverse
 
 class TestTorneoCase(TestCase):
 
@@ -236,3 +235,65 @@ class TestTorneoCase(TestCase):
         self.assertTrue(1 == Torneo.objects.all().count())
         self.assertTrue(t in Torneo.objects.all())
         self.assertTrue(t2 not in Torneo.objects.all())
+
+
+class TestTorneoCerrarCase(TestCase):
+
+    def setUp(self):
+        usuario1 = User.objects.create_user(username='testuser1', password='12345',is_superuser=True)
+        usuario1.save()
+        login = self.client.login(username='testuser1', password='12345')
+        e = Equipo.objects.create(
+            id=5,
+            nombre='Equipos',
+            representante='Juanito López',
+            telefono='4423471577',
+            correo='juanito@mail.com',
+            colorLocal='1',
+            colorVisitante='1',
+            cancha='Qro',
+            dia='1',
+            hora=datetime.datetime.now()
+        )
+        f = Equipo.objects.create(
+            id=6,
+            nombre='Equipos2',
+            representante='Juanito López',
+            telefono='4423471577',
+            correo='juanito@mail.com',
+            colorLocal='1',
+            colorVisitante='1',
+            cancha='Qro',
+            dia='2',
+            hora=datetime.datetime.now()
+        )
+
+        t1=Torneo.objects.create(
+            id=2,
+            nombre="Torneo PRueba",
+            categoria="1995",
+            fechaInicio='2010-12-12',
+            costo=int(12.12),
+            fechaJunta='1995-11-11',
+            costoCredencial=12,
+            activo=True
+        )
+        e.save()
+        f.save()
+        t1.save()
+        e1 = Estadisticas.objects.create(torneo=t1,equipo=e)
+        e1.save()
+        e2 = Estadisticas.objects.create(torneo=t1,equipo=e)
+        e2.save()
+
+    def test_cerrar_registro(self):
+        torneo = Torneo.objects.get(id=2)
+        resp = self.client.get(reverse('torneo:cerrar_registro',kwargs={'id_torneo':2}))
+        jornadas = Jornada.objects.all()
+        n_partidos = 0
+        for jornada in jornadas:
+            partidos = Partido.objects.filter(jornada=jornada)
+            for partido in partidos:
+                n_partidos = n_partidos + 1
+        self.assertEqual(2, len(jornadas))
+        self.assertEqual(2, n_partidos)
