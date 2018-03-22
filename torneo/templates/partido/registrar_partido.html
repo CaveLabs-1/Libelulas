@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block main %}
+
+<div class="container">
+    <form id="forma" method="POST" action=".">
+        {% csrf_token %}
+        <div class="container">
+            <div class="row">
+
+            </div>
+            <div class="row">
+                <div class="container-button">
+                    <a href=""><button class="cancel" type="button">Cancelar</button></a>
+                    <button id="enviar_forma" class="submit" type="submit">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+{{ block.super }}
+<script type="text/javascript">
+
+</script>
+{% endblock %}
