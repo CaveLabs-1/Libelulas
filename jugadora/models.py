@@ -27,33 +27,33 @@ class Jugadora(models.Model):
         return self.Nombre + str(self.pk)
 
     def save(self, *args, **kw):
-        
+
         if self.Imagen:
-            try:
-                # Opening the uploaded image
-                im = Image.open(self.Imagen)
-    
-                nombre = (self.Imagen.name)
-                fill_color = ''
-                if im.mode in ('RGBA', 'LA'):
-                    background = Image.new(im.mode[:-1], im.size, 0)
-                    background.paste(im, im.split()[-1])
-                    im = background
-    
-    
-                output = BytesIO()
-    
-    
-                # after modifications, save it to the output
-                im.save(output, format='JPEG', quality=70)
-                output.seek(0)
-    
-                # change the imagefield value to be the newley modifed image value
-                self.Imagen = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.Imagen.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
-            except:
-                print("gg")
+
+
+
+            # Opening the uploaded image
+            im = Image.open(self.Imagen)
+
+            nombre = (self.Imagen.name)
+            fill_color = ''
+            if im.mode in ('RGBA', 'LA'):
+                background = Image.new(im.mode[:-1], im.size, 0)
+                background.paste(im, im.split()[-1])
+                im = background
+
+
+            output = BytesIO()
+
+
+            # after modifications, save it to the output
+            im.save(output, format='JPEG', quality=70)
+            output.seek(0)
+
+            # change the imagefield value to be the newley modifed image value
+            self.Imagen = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.Imagen.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
+
         super(Jugadora,self).save(*args, **kw)
-        
         # super(Jugadora, self).save()
 
     def delete(self):

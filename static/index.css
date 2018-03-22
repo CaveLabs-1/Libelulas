@@ -338,10 +338,6 @@ p {
   color: #67bbff;
 }
 
-.icon-green {
-  color: #71cf74;
-}
-
 .red-background {
   background-image: linear-gradient(to bottom, #ff7a80, #ff78be);
 }
@@ -445,15 +441,15 @@ input:focus{
  box-shadow: 0 1px 0 0 #ff78b8 !important;
 }
 
-.timepicker-tick:hover {
-  background: #ff78b8 !important;
+.timepicker-tick:hover { 
+  background: #ff78b8 !important; 
 }
-.timepicker-canvas line {
-  stroke: #ff78b8 !important;
+.timepicker-canvas line { 
+  stroke: #ff78b8 !important; 
 }
-.timepicker-canvas-bearing {
-  fill: #ff78b8 !important;
+.timepicker-canvas-bearing { 
+  fill: #ff78b8 !important; 
 }
-.timepicker-canvas-bg {
-  fill: #ff78b8 !important;
+.timepicker-canvas-bg { 
+  fill: #ff78b8 !important; 
 }

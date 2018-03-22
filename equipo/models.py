@@ -71,13 +71,13 @@ class Equipo(models.Model):
         default='',
         verbose_name='Cancha del Equipo')
     DIAS_DE_JUEGO = (
-        (0, 'Lunes'),
-        (1, 'Martes'),
-        (2, 'Miercoles'),
-        (3, 'Jueves'),
-        (4, 'Viernes'),
-        (5, 'Sabado'),
-        (6, 'Domingo'),
+        (1, 'Lunes'),
+        (2, 'Martes'),
+        (3, 'Miercoles'),
+        (4, 'Jueves'),
+        (5, 'Viernes'),
+        (6, 'Sabado'),
+        (7, 'Domingo'),
     )
     dia = models.IntegerField(
         choices=DIAS_DE_JUEGO,
@@ -100,31 +100,30 @@ class Equipo(models.Model):
     def save(self, *args, **kw):
 
         if self.logo:
-            try:
 
 
-                # Opening the uploaded image
-    
-                im = Image.open(self.logo)
-    
-                nombre = (self.logo.name)
-    
-                if im.mode in ('RGBA', 'LA'):
-                    background = Image.new(im.mode[:-1], im.size, 0)
-                    background.paste(im, im.split()[-1])
-                    im = background
-    
-    
-                output = BytesIO()
-    
-    
-    
-                # after modifications, save it to the output
-                im.save(output, format='JPEG', quality=70)
-                output.seek(0)
-    
-                # change the imagefield value to be the newley modifed image value
-                self.logo = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.logo.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
-            except:
-                print("gg")
+
+            # Opening the uploaded image
+
+            im = Image.open(self.logo)
+
+            nombre = (self.logo.name)
+
+            if im.mode in ('RGBA', 'LA'):
+                background = Image.new(im.mode[:-1], im.size, 0)
+                background.paste(im, im.split()[-1])
+                im = background
+
+
+            output = BytesIO()
+
+
+
+            # after modifications, save it to the output
+            im.save(output, format='JPEG', quality=70)
+            output.seek(0)
+
+            # change the imagefield value to be the newley modifed image value
+            self.logo = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.logo.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
+
         super(Equipo,self).save(*args, **kw)

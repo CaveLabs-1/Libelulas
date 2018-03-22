@@ -1,10 +1,11 @@
 from django.forms import ModelForm
-from .models import *
+from .models import Torneo
 from django.forms.widgets import FileInput
 from django import forms
 from equipo.models import Equipo
 
 class torneoForm(ModelForm):
+
 
     def __init__(self, *args, **kwargs):
         super(torneoForm, self).__init__(*args, **kwargs)
@@ -21,23 +22,3 @@ class torneoForm(ModelForm):
         widgets = {
             'anexo': forms.FileInput(),
         }
-
-class PartidoForm(ModelForm):
-    class Meta:
-        model = Partido
-        fields = ['goles_local', 'goles_visitante', 'notas', 'arbitro', 'fecha', 'hora', 'cancha']
-
-class TarjetaAmarillaForm(ModelForm):
-    class Meta:
-        model = Tarjetas_amarillas
-        fields = ['partido', 'jugadora', 'cantidad']
-
-class TarjetaRojaForm(ModelForm):
-    class Meta:
-        model = Tarjetas_rojas
-        fields = ['partido', 'jugadora', 'directa']
-
-class TarjetaAzulForm(ModelForm):
-    class Meta:
-        model = Tarjetas_azules
-        fields = ['partido', 'jugadora']
