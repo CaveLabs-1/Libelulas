@@ -4,12 +4,14 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
-from torneo.models import Torneo
+from torneo.models import *
 from equipo.models import Equipo
 from django.views.generic.list import ListView
 from torneo.models import Torneo
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
+from django.utils import timezone
+import datetime
 
 def lista_torneos(request):
 
@@ -63,3 +65,44 @@ def eliminar_equipo(request, id_equipo, id_torneo):
         torneo.equipos.remove(equipo)
         messages.success(request, 'Equipo eliminado exitosamente')
         return HttpResponseRedirect(reverse('torneo:detalle_torneo',kwargs={'torneo_id':id_torneo}))
+
+
+def cerrar_registro(request, id_torneo):
+    torneo = get_object_or_404(Torneo, id=id_torneo)
+    if torneo.activo:
+        torneo.activo = False
+        torneo.save()
+        numero_equipos = len(torneo.equipos.all())
+        numero_jornadas = (numero_equipos - 1) * 2
+        fecha_inicial = torneo.fechaInicio
+        fecha_fin =  fecha_inicial + timezone.timedelta(days=6)
+
+        for i in range(numero_jornadas):
+            descripcion = "Jornada "+str(i+1)
+            jornada = Jornada(jornada=descripcion,torneo=torneo,fecha_inicio=fecha_inicial,fecha_fin=fecha_fin)
+            fecha_inicial = fecha_fin + timezone.timedelta(days=1)
+            fecha_fin =  fecha_inicial + timezone.timedelta(days=6)
+            jornada.save()
+        jornadas = Jornada.objects.filter(torneo=torneo)
+        for jornada in jornadas[:(numero_jornadas/2)]:
+            for equipo_local in torneo.equipos.all():
+                for equipo_visitante in torneo.equipos.all():
+                    if equipo_local is not equipo_visitante:
+                        dias_adelante = equipo_local.dia - jornada.fecha_inicio.weekday()
+                        if dias_adelante <= 0:
+                            dias_adelante += 7
+                            fecha =  jornada.fecha_inicio + datetime.timedelta(dias_adelante)
+                        partido = Partido(jornada=jornada, equipo_local=equipo_local, equipo_visitante=equipo_visitante, fecha=fecha,hora=equipo_local.hora,cancha=equipo_local.cancha)
+                        partido.save()
+
+        for jornada in reversed(jornadas[:(numero_jornadas/2)]):
+            for equipo_local in torneo.equipos.all():
+                for equipo_visitante in torneo.equipos.all():
+                    if equipo_local is not equipo_visitante:
+                        dias_adelante = equipo_visitante.dia - jornada.fecha_inicio.weekday()
+                        if dias_adelante <= 0:
+                            dias_adelante += 7
+                            fecha =  jornada.fecha_inicio + datetime.timedelta(dias_adelante)
+                        partido = Partido(jornada=jornada, equipo_local=equipo_visitante, equipo_visitante=equipo_local, fecha=fecha,hora=equipo_visitante.hora,cancha=equipo_visitante.cancha)
+                        partido.save()
+        return HttpResponseRedirect(reverse('torneo:lista_torneos'))
