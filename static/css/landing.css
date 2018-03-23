@@ -34,6 +34,11 @@ body {
   color: #fff;
 }
 
+.mobile-nav .logo-container {
+  width: 100%;
+  padding: 2em 0 1em 0;
+}
+
 @keyframes dissapear {
   from {
     height: 55px;
@@ -339,50 +344,6 @@ a {
   color: #b4c0c6;
 }
 
-/* Mobile and tablet */
-@media (min-width: 360px) and (max-width: 767px) {
-  .card-container {
-    justify-content: center;
-  }
-}
-
-
-@media (min-width: 360px) and (max-width: 1060px) {
-  .navbar {
-    display: none;
-  }
-
-  .mobile-nav {
-    display: flex;
-    padding-left: 24px;
-  }
-
-  .hero > .container > .text {
-    max-width: 100%;
-  }
-
-  .hero > .container {
-    padding-right:24px;
-    padding-left: 24px;
-  }
-
-  .content {
-    padding: 0 24px 0 24px;
-  }
-
-  h1 {
-    font-size: 3.5em;
-    line-height: 115%;
-  }
-
-  .footer > .container > .anchors {
-    width: 75%;
-  }
-
-  .footer > .container > .icons {
-    width:30%;
-  }
-}
 
 /* Header */
 .header {
@@ -441,4 +402,56 @@ a {
 
 .vision {
   height:60px !important;
+}
+
+/* Mobile and tablet */
+@media (min-width: 360px) and (max-width: 767px) {
+  .card-container {
+    justify-content: center;
+  }
+  .mision-vision {
+    flex-direction: column;
+  }
+
+  .mision-vision > .column:last-of-type {
+    margin-top: 2em;
+  }
+}
+
+
+@media (min-width: 360px) and (max-width: 1060px) {
+  .navbar {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: flex;
+    padding-left: 24px;
+  }
+
+  .hero > .container > .text {
+    max-width: 100%;
+  }
+
+  .hero > .container {
+    padding-right:24px;
+    padding-left: 24px;
+  }
+
+  .content {
+    padding: 0 24px 0 24px;
+  }
+
+  h1 {
+    font-size: 3.5em;
+    line-height: 115%;
+  }
+
+  .footer > .container > .anchors {
+    width: 75%;
+  }
+
+  .footer > .container > .icons {
+    width:30%;
+  }
 }
