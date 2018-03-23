@@ -34,6 +34,11 @@ body {
   color: #fff;
 }
 
+.mobile-nav .logo-container {
+  width: 100%;
+  padding: 2em 0 1em 0;
+}
+
 @keyframes dissapear {
   from {
     height: 55px;
@@ -339,10 +344,77 @@ a {
   color: #b4c0c6;
 }
 
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  height: 100%;
+  background-color: black;
+}
+
+.header > .container > h6 {
+  max-width: 45%;
+  width: 100%;
+  line-height: 25px;
+  letter-spacing: 1px;
+}
+
+/* Organizadores */
+.organizer-content {
+  padding-bottom: 4.5em;
+}
+
+/* mision and vision */
+.mision-vision {
+  display: flex;
+  justify-content: space-between;
+  padding: 4em 0 6em 0;
+}
+
+.mision-division > .column {
+  flex-grow: 1;
+}
+
+.mision-vision > .column > .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mision-vision .icon {
+  height: 70px;
+}
+
+.mision-vision p {
+  color:#b4c0c6;
+}
+
+.mision-vision h4 {
+  color:#81889d;
+  margin-top: 0.56em !important;
+  margin-bottom: 0.56em !important;
+}
+
+
+.vision {
+  height:60px !important;
+}
+
 /* Mobile and tablet */
 @media (min-width: 360px) and (max-width: 767px) {
   .card-container {
     justify-content: center;
+  }
+  .mision-vision {
+    flex-direction: column;
+  }
+
+  .mision-vision > .column:last-of-type {
+    margin-top: 2em;
   }
 }
 
@@ -382,26 +454,4 @@ a {
   .footer > .container > .icons {
     width:30%;
   }
-}
-
-/* Header */
-.header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 50vh;
-  height: 100%;
-  background-color: black;
-}
-
-.header > .container > h6 {
-  max-width: 45%;
-  width: 100%;
-  line-height: 25px;
-  letter-spacing: 1px;
-}
-
-/* Organizadores */
-.organizer-content {
-  padding-bottom: 4.5em;
 }
