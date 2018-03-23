@@ -352,7 +352,15 @@ a {
   align-items: center;
   min-height: 50vh;
   height: 100%;
-  background-color: black;
+}
+
+.header > .container {
+  max-width: 1024px;
+  width: 100%;
+}
+
+.header > .container > h2 {
+  color: #fff;
 }
 
 .header > .container > h6 {
@@ -362,9 +370,29 @@ a {
   letter-spacing: 1px;
 }
 
+.header > .image-header {
+  position: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  background-image: url("../static_media/soccer.jpg");
+  z-index:-1;
+  background-position: bottom;
+}
+
 /* Organizadores */
 .organizer-content {
   padding-bottom: 4.5em;
+}
+
+.organizer img {
+  border-radius: 20px 20px 0 0 !important;
+}
+
+.organizer > .card-image {
+  height:350px;
+  overflow: hidden;
 }
 
 /* mision and vision */
@@ -416,6 +444,22 @@ a {
   .mision-vision > .column:last-of-type {
     margin-top: 2em;
   }
+
+  .header > .container > h6 {
+    max-width: 100%;
+  }
+
+  h2 {
+    font-size: 3em;
+  }
+
+  h3 {
+    font-size: 2.5em;
+  }
+
+  .organizer-content {
+    padding-top: 2em !important;
+  }
 }
 
 
@@ -454,4 +498,10 @@ a {
   .footer > .container > .icons {
     width:30%;
   }
+
+  .header > .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
 }
