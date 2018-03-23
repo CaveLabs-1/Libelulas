@@ -46,7 +46,7 @@
         <label>
           {{ form.Nacimiento.label_tag }}
         </label>
-        {{ form.Nacimiento }}
+          <input type="date" name="{{form.Nacimiento.html_name}}" required="" value='{{form.Nacimiento.value|date:"Y-m-d"}}'   id="{{form.Nacimiento.id_for_label}}" class="datepicker">
       </p>
       {{ form.Nacimiento.errors }}
       <p>
