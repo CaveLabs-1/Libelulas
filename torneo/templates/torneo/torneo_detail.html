@@ -3,10 +3,20 @@
 {% block main %}
 
 <div class="title-container">
-  <h2>Información de Torneo</h2>
+  <h2 id="team-title">Informacion de Torneo</h2>
+  <h2 class="hidden" id="player-title">Jugadoras - {{equipo.nombre}}</h2>
 </div>
 <div class="container">
-  <div class="row">
+  <div class="row tab-row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a id='info' href="#informacion">Información</a>
+          <li class="tab col s3"><a id='player' href="#jugadoras">Jugadoras</a>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row" id="informacion">
     <div class="col s12 m12">
       <div class="input-field col s12">
         <input disabled value="{{torneo.nombre}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
@@ -57,4 +67,40 @@
       <a href="{% url 'torneo:lista_torneos' %}" class="cancel back">Regresar</a>
     </div>
   </div>
+
+    <div class="row" id="jugadoras">
+        <ul class="collection">
+            {% for jornada in torneo.jornada_set.all %}
+                <li class="collection-item avatar">
+                <img src="{% static 'static_media/default.jpg' %}" alt="" class="circle" />
+                    <span class="title">Jornada: {{ jornada.jornada }}</span>
+                    <p><strong>Fecha de Inicio:</strong> {{jornada.fecha_inicio}}</p>
+                    <p><strong>Fecha de Fin:</strong> {{jornada.fecha_inicio}}</p>
+                 <div class="secondary-content">
+                  <a href="{% url 'torneo:mandar_codigoCedula' torneo.id jornada.id %}">
+                     <i class="medium material-icons icon-blue">mode_eject</i>
+                   </a>
+                </div>
+                </li>
+            {% empty %}
+                <li>No hay jornadas registradas en este torneo aun.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+  <script>
+  document.getElementById('player').onclick = function() {
+    if (document.getElementById('player-title').className === 'hidden') {
+      document.getElementById('player-title').classList.remove('hidden');
+      document.getElementById('team-title').classList.add('hidden');
+    }
+  }
+
+  document.getElementById('info').onclick = function() {
+    if (document.getElementById('team-title').className === 'hidden') {
+      document.getElementById('team-title').classList.remove('hidden');
+      document.getElementById('player-title').classList.add('hidden');
+    }
+  }
+  </script>
   {% endblock %}
