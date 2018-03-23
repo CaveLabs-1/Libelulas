@@ -15,6 +15,7 @@ import datetime
 from reportlab.pdfgen import canvas
 from django.http import HttpResponse
 from io import BytesIO
+from django.conf import settings
 
 def lista_torneos(request):
 
@@ -127,8 +128,12 @@ def mandar_codigoCedula(request, torneo_id, jornada_id):
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'inline; filename="Partidos.pdf"'
 
+
+
+
     buffer = BytesIO()
     p = canvas.Canvas(buffer)
+
 
     # Start writing the PDF here
     posX = 0
@@ -142,11 +147,25 @@ def mandar_codigoCedula(request, torneo_id, jornada_id):
     p.drawString(100, 720, 'Fecha de Inicio: '+str(jornadas.fecha_inicio.strftime("%d-%B-%Y")))
     p.drawString(100, 700, 'Fecha Final: '+str(jornadas.fecha_inicio.strftime("%d-%B-%Y")))
     p.drawString(50, 650, 'Partidos')
-    posX=50
+    posX=75
     posY=650
-    for partido in partidos:
-        print(partido.id)
 
+    for partido in partidos:
+
+        if posY <= 50:
+            p.showPage()
+            posY=800
+
+        posY-=15
+
+        p.drawString(posX, posY, str(partido.equipo_local.nombre)+" vs "+partido.equipo_visitante.nombre)
+        posY-=15
+        p.drawString(100, posY, "Fecha del Partido: "+partido.fecha.strftime("%d-%B-%Y"))
+        posY -= 15
+        p.drawString(100, posY, "Hora del Partido: " + partido.hora.strftime("%H:%M"))
+        posY -= 15
+        p.drawString(100, posY, "Codido de acceso a la cedula del partido: " + partido.id)
+        posY-=10
     # End writing
 
     p.showPage()
