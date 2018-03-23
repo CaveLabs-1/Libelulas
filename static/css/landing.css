@@ -405,3 +405,40 @@ a {
 .organizer-content {
   padding-bottom: 4.5em;
 }
+
+/* mision and vision */
+.mision-vision {
+  display: flex;
+  justify-content: space-between;
+  padding: 4em 0 6em 0;
+}
+
+.mision-division > .column {
+  flex-grow: 1;
+}
+
+.mision-vision > .column > .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mision-vision .icon {
+  height: 70px;
+}
+
+.mision-vision p {
+  color:#b4c0c6;
+}
+
+.mision-vision h4 {
+  color:#81889d;
+  margin-top: 0.56em !important;
+  margin-bottom: 0.56em !important;
+}
+
+
+.vision {
+  height:60px !important;
+}
