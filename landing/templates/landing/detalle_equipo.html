@@ -16,21 +16,32 @@
 <div class="content team-detail">
   <div class="container">
     <h3>Estadísticas</h3>
-    <div class="card team-player">
-      <span class="card-title">MEJOR GOLEADORA</span>
+    <div class="card-list">
+      <div class="card team-player">
+        <span class="card-title">MEJOR GOLEADORA</span>
+      </div>
+      <div class="card team-player">
+        <span class="card-title">MÁS FALTAS COMETIDAS</span>
+      </div>
+      <div class="card team-player">
+        <span class="card-title">MÁS AMONESTACIONES</span>
+      </div>
+      <div class="card team-player">
+        <span class="card-title">MÁS EXPULSIONES</span>
+      </div>
+      <div class="card campeonatos-ganados">
+        <span class="card-title">CAMPEONATOS</span>
+      </div>
     </div>
-    <div class="card team-player">
-      <span class="card-title">MÁS FALTAS COMETIDAS</span>
-    </div>
-    <div class="card team-player">
-      <span class="card-title">MÁS AMONESTACIONES</span>
-    </div>
-    <div class="card team-player">
-      <span class="card-title">MÁS EXPULSIONES</span>
-    </div>
-    <div class="card campeonatos-ganados">
-      <span class="card-title">CAMPEONATOS</span>
-    </div>
+    <h3>Jugadoras</h3>
+    <ul class="collection">
+      {% for jugadora in jugadoras_equipo %}
+      <li class="collection-item avatar">
+        <img src="{{ jugadora.Imagen.url }}" alt="{{jugadora.Nombre}} imagen" class="circle"/>
+        <span class="title">{{jugadora.Nombre}}</span>
+      </li>
+      {% endfor %}
+    </ul>
   </div>
 </div>
 {% endblock %}

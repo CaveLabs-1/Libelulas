@@ -457,6 +457,29 @@ a {
   height:60px !important;
 }
 
+/* Equipos */
+.team-list {
+  min-height: calc(80vh - 30vh);
+}
+
+.team-list > .container{
+  color: rgba(3,27,78,.7);
+}
+
+.team-list .collection-item {
+  border-bottom: 1px solid #e0e0e0 !important;
+}
+
+.team-detail > .container {
+  height: 100%;
+}
+
+.team-detail > .container > .card-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 /* Mobile and tablet */
 @media (min-width: 360px) and (max-width: 767px) {
   .card-container {
@@ -486,20 +509,6 @@ a {
     padding-top: 2em !important;
   }
 }
-
-/* Equipos */
-.team-list {
-  min-height: calc(80vh - 30vh);
-}
-
-.team-list > .container{
-  color: rgba(3,27,78,.7);
-}
-
-.team-list .collection-item {
-  border-bottom: 1px solid #e0e0e0 !important;
-}
-
 
 @media (min-width: 360px) and (max-width: 1060px) {
   .navbar {
