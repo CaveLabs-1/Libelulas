@@ -354,7 +354,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 50vh;
+  min-height: 30vh;
   height: 100%;
 }
 
@@ -485,6 +485,19 @@ a {
   .organizer-content {
     padding-top: 2em !important;
   }
+}
+
+/* Equipos */
+.team-list {
+  min-height: calc(80vh - 30vh);
+}
+
+.team-list > .container{
+  color: rgba(3,27,78,.7);
+}
+
+.team-list .collection-item {
+  border-bottom: 1px solid #e0e0e0 !important;
 }
 
 

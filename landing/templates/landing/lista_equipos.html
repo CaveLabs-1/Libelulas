@@ -9,6 +9,15 @@
 </div>
 <div class="content team-list">
   <div class="container">
+    <ul class="collection">
+      {% for equipo in equipos %}
+      <a href="{% url 'landing:detalle_equipo' equipo.id %}">
+        <li class="collection-item avatar">{{equipo.nombre}}
+          <img src="{{ equipo.logo.url }}" class="circle"/>
+        </li>
+      </a>
+      {% endfor %}
+    </ul>
   </div>
 </div>
 {% endblock %}

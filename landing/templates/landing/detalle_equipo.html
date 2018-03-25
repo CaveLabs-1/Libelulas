@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% load static %} {% block main %}
+<div class="header">
+  <div class="image-header"></div>
+  <div class="container">
+    <div class="image-column">
+      <img src={{equipo.logo.url}} alt="{{equipo.nombre}} logo" />
+    </div>
+    <div class="info-column">
+      <h2>{{ equipo.nombre }}</h2>
+      <h5><strong>Representante: </strong>{{equipo.representante}}</h5>
+      <h5><strong>Cancha: </strong>{{equipo.cancha}}</h5>
+      <h5><strong>Horario: </strong>{{equipo.get_dia_display}} {{equipo.hora}}</h5>
+    </div>
+  </div>
+</div>
+<div class="content team-detail">
+  <div class="container">
+    <h3>Estadísticas</h3>
+    <div class="card team-player">
+      <span class="card-title">MEJOR GOLEADORA</span>
+    </div>
+    <div class="card team-player">
+      <span class="card-title">MÁS FALTAS COMETIDAS</span>
+    </div>
+    <div class="card team-player">
+      <span class="card-title">MÁS AMONESTACIONES</span>
+    </div>
+    <div class="card team-player">
+      <span class="card-title">MÁS EXPULSIONES</span>
+    </div>
+    <div class="card campeonatos-ganados">
+      <span class="card-title">CAMPEONATOS</span>
+    </div>
+  </div>
+</div>
+{% endblock %}
