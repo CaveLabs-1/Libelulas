@@ -52,14 +52,15 @@ body {
 
 .colored {
   animation: appear 0.4s forwards;
+  box-shadow: 0 2px 4px rgba(3,27,78,.1);
 }
 
 .colored>.container>.column {
-  color: #81889d;
+  color: #031b4e;
 }
 
 .colored .material-icons {
-  color: #81889d;
+  color: #031b4e;
 
 }
 
@@ -163,10 +164,10 @@ body {
 
 .primary-button {
   background-color: transparent !important;
-  border: solid 2px #ff7178;
-  color: #ff7178;
+  border: solid 2px #9D378E;
+  color: #9D378E;
   background-size: 200% 200%;
-  background-image: linear-gradient(to right, transparent 50%, #ff7178 50%);
+  background-image: linear-gradient(to right, transparent 50%, #9D378E 50%);
   -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
   -moz-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
   -ms-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
@@ -184,15 +185,15 @@ body {
 }
 
 .secondary-button {
-  border: solid 2px #ff7178;
-  color: #ff7178;
-  transition: all 0.4s ease-in;
+  border: solid 2px #9D378E;
+  color: #9D378E;
+  transition: all 0.2s ease-in;
 }
 
 .secondary-button:hover{
-  background-color: #ff7178;
+  background-color: #9D378E;
   color: #fff;
-  transition: all 0.4s ease-in;
+  transition: all 0.2s ease-in;
 }
 
 /* Generic */
@@ -214,7 +215,7 @@ h1 {
 
 h2, h3 {
   text-transform: uppercase;
-  color: #81889d;
+  color: #031b4e;
 }
 
 .medium {
@@ -229,7 +230,7 @@ a {
 
 .content {
   padding-top: 4em;
-  background-color: #f7f8fb;
+  background-color: #fff;
   display: flex;
   justify-content: center;
 }
@@ -250,8 +251,9 @@ a {
 .card {
   max-width: 300px;
   width: 100%;
-  border-radius: 20px !important;
+  border-radius: 5px !important;
   height: 100%;
+  /* border: 1px solid #e5e8ed */
 }
 
 .match .card-image {
@@ -275,7 +277,8 @@ a {
 .vs-circle {
   height: 57px;
   width: 57px;
-  background-image: linear-gradient(307deg, #67caff, #6797ff);
+  background-color: #009CDE;
+  /* background-image: linear-gradient(307deg, #67caff, #6797ff); */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -290,8 +293,9 @@ a {
 }
 
 .card-content {
-  background-image: linear-gradient(271deg, #67bbff, #679fff);
-  border-radius: 0 0 20px 20px !important;
+  background-color: #009CDE;
+  /* background-image: linear-gradient(271deg, #67bbff, #679fff); */
+  border-radius: 0 0 5px 5px !important;
 }
 
 .content > .container > .cta-container {
@@ -341,7 +345,7 @@ a {
 
 .small {
   font-size:0.8em;
-  color: #b4c0c6;
+  color: #b4c0c6; ;
 }
 
 
@@ -387,12 +391,30 @@ a {
 }
 
 .organizer img {
-  border-radius: 20px 20px 0 0 !important;
+  border-radius: 50% !important;
+  width: 200px !important;
+  height: 200px;
 }
 
 .organizer > .card-image {
-  height:350px;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+}
+
+.organizer .card-content{
+  background-color: #fff;
+  text-align: center;
+}
+
+.organizer .card-content > span {
+  color: #031b4e;
+}
+
+.organizer .card-content > p {
+  color: rgba(3,27,78,.7)
 }
 
 /* mision and vision */
@@ -418,11 +440,14 @@ a {
 }
 
 .mision-vision p {
-  color:#b4c0c6;
+  color:rgba(3,27,78,.6);
+  line-height: 1.75;
+  font-size: 16px;
+  text-align: center;
 }
 
 .mision-vision h4 {
-  color:#81889d;
+  color:#031b4e;
   margin-top: 0.56em !important;
   margin-bottom: 0.56em !important;
 }
