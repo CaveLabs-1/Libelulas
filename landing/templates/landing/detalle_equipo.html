@@ -3,13 +3,13 @@
   <div class="image-header"></div>
   <div class="container">
     <div class="image-column">
-      <img src={{equipo.logo.url}} alt="{{equipo.nombre}} logo" />
+      <img src={{equipo.logo.url}} alt="{{equipo.nombre}} logo"/>
     </div>
     <div class="info-column">
       <h2>{{ equipo.nombre }}</h2>
-      <h5><strong>Representante: </strong>{{equipo.representante}}</h5>
-      <h5><strong>Cancha: </strong>{{equipo.cancha}}</h5>
-      <h5><strong>Horario: </strong>{{equipo.get_dia_display}} {{equipo.hora}}</h5>
+      <h6><strong>Representante: </strong>{{equipo.representante}}</h6>
+      <h6><strong>Cancha: </strong>{{equipo.cancha}}</h6>
+      <h6><strong>Horario: </strong>{{equipo.get_dia_display}} {{equipo.hora}}</h6>
     </div>
   </div>
 </div>
@@ -17,20 +17,31 @@
   <div class="container">
     <h3>Estadísticas</h3>
     <div class="card-list">
-      <div class="card team-player">
+      <div class="card team-player team">
         <span class="card-title">MEJOR GOLEADORA</span>
       </div>
-      <div class="card team-player">
+      <div class="card team-player team">
         <span class="card-title">MÁS FALTAS COMETIDAS</span>
       </div>
-      <div class="card team-player">
+      <div class="card team-player team">
         <span class="card-title">MÁS AMONESTACIONES</span>
       </div>
-      <div class="card team-player">
+      <div class="card team-player team">
         <span class="card-title">MÁS EXPULSIONES</span>
       </div>
-      <div class="card campeonatos-ganados">
+      <div class="card campeonatos-ganados team">
         <span class="card-title">CAMPEONATOS</span>
+        <div class="campeonato">
+          <div class="image-column">
+            <div class="circle-icon circle">
+              <img src="{% static 'static_media/trophy.svg' %}" />
+            </div>
+          </div>
+          <div class="text-column">
+            <p>Libelulas<p>
+            <span class="small">2018</p>
+          </div>
+        </div>
       </div>
     </div>
     <h3>Jugadoras</h3>
@@ -38,7 +49,9 @@
       {% for jugadora in jugadoras_equipo %}
       <li class="collection-item avatar">
         <img src="{{ jugadora.Imagen.url }}" alt="{{jugadora.Nombre}} imagen" class="circle"/>
-        <span class="title">{{jugadora.Nombre}}</span>
+        <span class="title">{{jugadora.Nombre}} {{jugadora.Apellido}}</span>
+        <p>#{{jugadora.Numero}}</p>
+        <p>{{jugadora.get_Posicion_display}}</p>
       </li>
       {% endfor %}
     </ul>

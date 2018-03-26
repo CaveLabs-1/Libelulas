@@ -10,4 +10,5 @@ urlpatterns = [
     path('organizadores/', views.ver_organizadores, name='ver_organizadores' ),
     path('equipos/', views.ver_equipos, name='ver_equipos'),
     path('equipo/<int:pk>', views.detalle_equipo, name='detalle_equipo'),
+    path('partido', TemplateView.as_view(template_name='landing/partido.html')),
 ]
