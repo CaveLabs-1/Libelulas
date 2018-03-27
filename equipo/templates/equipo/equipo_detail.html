@@ -83,12 +83,12 @@
            </a>
         </div>
       </li>
-      <div id="borrarJugadorEquipoModal" class="modal modal-fixed-footer">
-        <form id="BorrarJugadoraID" action="{% url 'equipo:eliminar_jugadora' equipo.id jugadora.id %}" method="post">
+      <div id="borrarJugadorEquipoModal" class="modal">
+        <form action="{% url 'equipo:eliminar_jugadora' equipo.id jugadora.id %}" method="post">
           {% csrf_token %}
           <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
+            <h4>Eliminar {{ jugadora.Nombre }}</h4>
+            <p>Esta seguro de que quiere eliminar "{{ jugadora.Nombre }}" del equipo {{ equipo.nombre}}?</p>
           </div>
           <div class="modal-footer">
             <button id="cancel" type="button" class="modal-action modal-close waves-effect cancel cancel-delete" data-target="delete">Cancelar</button>
