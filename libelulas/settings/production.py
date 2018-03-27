@@ -5,13 +5,9 @@ with open('/etc/secret_key.txt') as f:
     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = [
-    'plidi-ianroses.c9users.io',
-    '127.0.0.1',
-    'localhost'
-]
+ALLOWED_HOSTS = ['planlibelula.com','165.227.29.111']
 
 
 # Database
@@ -22,9 +18,9 @@ DATABASES = {
 
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'libelulas',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
+        'USER': 'libelula',
+        'PASSWORD': '^jFlqoW^Dy$Bg81',
+        'HOST': '127.0.0.1',
         'PORT': '5432',
     }
 }
