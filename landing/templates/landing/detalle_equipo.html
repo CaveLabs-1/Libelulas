@@ -1,4 +1,9 @@
-{% extends "base.html" %} {% load static %} {% block main %}
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/landing/detalle-equipo.css' %}">
+{% endblock %}
+{% block main %}
 <div class="header">
   <div class="image-header"></div>
   <div class="container">
@@ -49,7 +54,7 @@
       {% for jugadora in jugadoras_equipo %}
       <li class="collection-item avatar">
         <img src="{{ jugadora.Imagen.url }}" alt="{{jugadora.Nombre}} imagen" class="circle"/>
-        <span class="title">{{jugadora.Nombre}} {{jugadora.Apellido}}</span>
+        <h6 class="title"><strong>{{jugadora.Nombre}} {{jugadora.Apellido}}</strong></h6>
         <p>#{{jugadora.Numero}}</p>
         <p>{{jugadora.get_Posicion_display}}</p>
       </li>
