@@ -47,6 +47,7 @@ class lista_equipos(ListView):
 def detalle_equipo(request, equipo_id):
     equipo = get_object_or_404(Equipo ,pk=equipo_id)
     jugadoras_equipo = Equipo.objects.get(id=equipo_id).jugadoras.all()
+    print (jugadoras_equipo)
     return render(request, 'equipo/equipo_detail.html', {'equipo': equipo, 'jugadoras_equipo': jugadoras_equipo })
 
 def editar_equipo(request, pk):
