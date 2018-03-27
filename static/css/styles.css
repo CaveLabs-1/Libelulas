@@ -1,0 +1,74 @@
+.login {
+  display: flex;
+  height: 100vh;
+}
+
+@media (min-width: 100px) and (max-width: 768px) {
+  .image-container {
+    display: none !important;
+  }
+  .login-container {
+    max-width: 100% !important;
+  }
+}
+
+.login>.image-container {
+  background-image: url("../static_media/cancha.jpg");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width:100%;
+  max-width: 55%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+h2 {
+  color: #fff !important;
+  font-weight: bold;
+}
+
+
+.login>.image-container>.text {
+  width: 75%;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 45%;
+  height: 100%;
+  justify-content: center;
+}
+
+.login-container>.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container>.form-container>form {
+  width:70%;
+}
+
+form>.cta-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-container>img {
+  height: 100px;
+}
+
+.admin-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.white-text {
+  color: #fff;
+}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block main %}
+
+<div class="container">
+    <ul class="collection">
+        {% for administrador in lista %}
+            <li class="collection-item">
+                <div class="row">
+                    <div class="col s8 m10 l10">
+                        <br>
+                        <span class="title">{{administrador.first_name}} ({{administrador.username}})</span>
+                        <br>
+                        <span class="title">{{administrador.email}}</span>
+                    </div>
+                    <div class="secondary-content">
+                        <br>
+                        <a href="{% url 'administrador:editar_administrador' administrador.id %}" class="secondary-content"><i class="medium material-icons icon-blue">mode_edit</i></a>
+                        <a class="modal-trigger secondary-content boton-eliminar" href="#delete-modal" data-id="{{administrador.id}}" data-nombre="{{administrador.first_name}}"><i class="medium material-icons icon-red">delete</i></a>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="fixed-action-btn horizontal">
+    <a href="{% url 'administrador:agregar_administrador' %}" class="btn-floating btn-large red-background">
+        <i class="large material-icons">add</i>
+    </a>
+</div>
+
+<div id="delete-modal" class="modal">
+    <div class="modal-content">
+
+    </div>
+    <div class="modal-footer">
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.modal').modal() ;
+        }) ;
+
+        $(".boton-eliminar").click(function(){
+            var id = $(this).attr("data-id") ;
+            var nombre = $(this).attr("data-nombre") ;
+            $(".modal-content").html("<h4>¿Desea eliminar al administrador <strong>" + nombre + "</strong>?</h4>") ;
+            var botones = '<a href="#cancelar" class="modal-action modal-close cancel cancel-delete">Cancelar</a>  <a href="/administrador/eliminar_administrador/' + id + '" class="modal-action modal-close delete-color confirmar-eliminar">Aceptar</a>' ;
+            $(".modal-footer").html(botones) ;
+        }) ;
+    </script>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block main %}
+    
+<div class="container">
+    <form id="forma" method="POST" novalidate action="{% url 'administrador:confirmar_contrasena' administrador.id %}">
+        {% csrf_token %}
+        <div class="container">
+            <div class="row">
+                <div class="input-field col s12 m6 l6">
+                    <input type="password" name="{{form.password.html_name}}" id="{{form.password.id_for_label}}" class="validate" required>
+                    <label for="{{form.password.id_for_label}}">Contraseña:</label>
+                    {{form.password.errors}}
+                </div>
+                <div class="input-field col s12 m6 l6">
+                    <input type="password" name="confirm_password" id="confirm_password" class="validate" required>
+                    <label for="confirm_password">Confirmar Contraseña:</label>
+                    {{form.confirm_password.errors}}
+                </div>
+            </div>
+            <div id="botones" class="row">
+                <div id="regresar" class="col s6 m6 l6 center">
+                    <a href="{% url 'administrador:editar_administrador' administrador.id %}"><button class="cancel" type="button">Cancelar</button></a>
+                </div>
+                <div id="enviar" class="col s6 m6 l6 center">
+                    <button id="enviar_forma" class="submit" type="submit">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+{{ block.super }}
+
+{% if "agregar_administrador" in request.META.HTTP_REFERER %}
+    <script type="text/javascript">
+        document.getElementById("regresar").style.display = "none" ;
+        document.getElementById("enviar").classList.remove() ;
+        document.getElementById("enviar").classList.add("col", "s12", "m12", "l12", "center") ;
+    </script>
+{% endif %}
+
+{% endblock %}

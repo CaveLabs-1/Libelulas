@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block main %}
+
+<div class="container">
+    <form method="POST" action=".">
+        {% csrf_token %}
+        <div class="container">
+            <div class="row">
+                <div class="input-field col s12 m6 l6">
+                    <input type="text" name="{{form.first_name.html_name}}" value="{{form.first_name.value}}" id="{{form.first_name.id_for_label}}" class="validate">
+                    <label for="{{form.first_name.id_for_label}}">{{form.first_name.label_tag}}</label>
+                </div>
+                <div class="input-field col s12 m6 l6">
+                    <input type="text" name="Username" value="{{administrador.username}}" id="Username" class="validate" disabled>
+                    <label for="Username">Nombre de Usuario:</label>
+                </div>
+                <div class="input-field col s12 m12 l12">
+                    <input type="email" name="{{form.email.html_name}}" value="{{form.email.value}}" id="{{form.email.id_for_label}}" class="validate">
+                    <label for="{{form.email.id_for_label}}">{{form.email.label_tag}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6 m4 l4 center">
+                    <br>
+                    <a href="{% url 'administrador:lista_administrador' %}"><button class="cancel" type="button">Regresar</button></a>
+                </div>
+                <div class="col s6 m4 l4 center">
+                    <br>
+                    <a href="{% url 'administrador:confirmar_contrasena' administrador.id %}"><button class="submit" type="button">Contraseña</button></a>
+                </div>
+                <div class="col s12 m4 l4 center">
+                    <br>
+                    <button class="submit" type="submit">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+{{ block.super }}
+
+{% endblock %}

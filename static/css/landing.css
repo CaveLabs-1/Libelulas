@@ -1,0 +1,681 @@
+body {
+  margin: 0;
+}
+
+/* Navbar */
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 64px;
+  background-color: transparent;
+  z-index: 10;
+}
+
+.transparent {
+  height: 64px;
+  animation: dissapear 0.4s forwards;
+}
+
+.anchors {
+  cursor: pointer;
+}
+
+.mobile-nav {
+  background-color: transparent !important;
+  position: fixed;
+  z-index: 10;
+}
+
+.sidenav-trigger {
+  color: #fff;
+}
+
+.mobile-nav .logo-container {
+  width: 100%;
+  padding: 2em 0 1em 0;
+}
+
+@keyframes dissapear {
+  from {
+    height: 55px;
+    background-color: #fff;
+  }
+  to {
+    height: 64px;
+    background-color: transparent
+  }
+}
+
+.colored {
+  animation: appear 0.4s forwards;
+  box-shadow: 0 2px 4px rgba(3,27,78,.1);
+}
+
+.colored>.container>.column {
+  color: #031b4e;
+}
+
+.colored .material-icons {
+  color: #031b4e;
+
+}
+
+@keyframes appear {
+  from {
+    background-color: transparent;
+    height: 64px;
+  }
+  to {
+    height: 55px;
+    background-color: #FFFFFF;
+  }
+}
+
+.navbar>.container {
+  max-width: 1024px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar>.container>.column {
+  flex-grow: 1;
+  display: flex;
+}
+
+.anchors {
+  justify-content: space-between;
+}
+
+.logo {
+  width: 64px;
+  align-self: flex-start;
+}
+
+.mobile-nav {
+  display: none;
+  z-index: 10;
+  height: 64px;
+  align-items: center;
+  width: 100%;
+}
+
+.sidenav-overlay {
+  z-index: 9;
+}
+
+/* Hero */
+
+.hero {
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+  padding-top: 0;
+  position: relative;
+}
+
+.image-hero {
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-image: url("../static_media/hero-final-hd.jpg");
+  position: fixed;
+  z-index:-1;
+  background-position:right;
+}
+
+.hero>.container {
+  max-width: 1024px;
+  width: 100%;
+}
+
+.hero>.container>.text {
+  max-width: 60%;
+}
+
+.hero>.container>.text>.cta-container {
+  margin-top: 32px;
+  display: flex;
+}
+
+.hero>.container>.text>h6 {
+  max-width: 90%;
+  line-height: 28px;
+  letter-spacing: 1px;
+}
+
+
+/* Buttons */
+
+.button {
+  border-radius: 50px;
+  padding: 6px 24px 6px 24px;
+  cursor: pointer;
+}
+
+.primary-button {
+  background-color: transparent !important;
+  border: solid 2px #9D378E;
+  color: #9D378E;
+  background-size: 200% 200%;
+  background-image: linear-gradient(to right, transparent 50%, #9D378E 50%);
+  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  -moz-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  -ms-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  -o-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+}
+
+.primary-button:hover {
+  background-position: -100% 0;
+  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  -moz-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  -ms-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  -o-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+}
+
+.secondary-button {
+  border: solid 2px #9D378E;
+  color: #9D378E;
+  transition: all 0.2s ease-in;
+}
+
+.secondary-button:hover{
+  background-color: #9D378E;
+  color: #fff;
+  transition: all 0.2s ease-in;
+}
+
+/* Generic */
+
+.white {
+  color: #fff !important;
+}
+
+h1 {
+  line-height: 90px;
+  letter-spacing: 3px;
+  font-size: 5em;
+}
+
+
+.container {
+  color: white;
+}
+
+h2, h3 {
+  text-transform: uppercase;
+  color: #031b4e;
+}
+
+.medium {
+  font-size:3em !important;
+}
+
+a {
+  color: inherit;
+}
+
+/* Proximos juegos */
+
+.content {
+  padding-top: 4em;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.content > .container {
+  max-width: 1024px;
+  width:100%;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 3em;
+}
+
+
+.card {
+  max-width: 300px;
+  width: 100%;
+  border-radius: 5px !important;
+  height: 100%;
+}
+
+.match .card-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 37px;
+  padding-bottom: 24px;
+}
+
+.vs-container {
+  height: 100%;
+}
+
+.match .card-image > .container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.vs-circle {
+  height: 57px;
+  width: 57px;
+  background-color: #009CDE;
+  /* background-image: linear-gradient(307deg, #67caff, #6797ff); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4em;
+}
+
+.match .team {
+  max-height: 5em;
+  height: 100%;
+  max-width: 5em;
+  width: 100%;
+}
+
+.card-content {
+  background-color: #009CDE;
+  /* background-image: linear-gradient(271deg, #67bbff, #679fff); */
+  border-radius: 0 0 5px 5px !important;
+}
+
+.content > .container > .cta-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  margin: 2em 0 3em 0;
+}
+/* Footer */
+
+.footer {
+  background-image: linear-gradient(to right, #3a3d5c, #404a69);
+ border: solid 1px #3a3d5c;
+ display: flex;
+ justify-content:center;
+ padding-top: 4em;
+ padding-bottom:1em;
+}
+
+.footer > .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.footer > .container > .anchors {
+  width: 25%;
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+
+.footer > .container > .icons {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  display: flex;
+  justify-content: space-around;
+  width: 20%;
+}
+
+.footer > .container > .icons > .icon {
+  height: 24px;
+  cursor: pointer;
+}
+
+.small {
+  font-size:0.8em;
+  color: #b4c0c6; ;
+}
+
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  height: 100%;
+}
+
+.small-header {
+  min-height: 40vh;
+}
+
+.header > .container {
+  max-width: 1024px;
+  width: 100%;
+  display: flex;
+  height:100%;
+}
+
+.header .team, .header .torneo {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header .team > .logo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.header h2 {
+  color: #fff;
+}
+
+.header > .container > h6 {
+  max-width: 45%;
+  width: 100%;
+  line-height: 25px;
+  letter-spacing: 1px;
+}
+
+.header > .image-header {
+  position: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  background-image: url("../static_media/soccer.jpg");
+  z-index:-1;
+  background-position: bottom;
+}
+
+.header > .container > .image-column {
+  flex-grow: 1;
+}
+
+.header > .container > .info-column {
+  flex-grow: 2;
+}
+
+.header > .container > .image-column > img {
+  width: 230px;
+  height: 230px;
+}
+
+/* Organizadores */
+.organizer-content {
+  padding-bottom: 4.5em;
+}
+
+.organizer img {
+  border-radius: 50% !important;
+  width: 200px !important;
+  height: 200px;
+}
+
+.organizer > .card-image {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+}
+
+.organizer .card-content{
+  background-color: #fff;
+  text-align: center;
+}
+
+.organizer .card-content > span {
+  color: #031b4e;
+}
+
+.organizer .card-content > p {
+  color: rgba(3,27,78,.7)
+}
+
+/* mision and vision */
+.mision-vision, .team-detail{
+  display: flex;
+  justify-content: space-between;
+  padding: 4em 0 6em 0;
+}
+
+.mision-division > .column {
+  flex-grow: 1;
+}
+
+.mision-vision > .column > .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mision-vision .icon {
+  height: 70px;
+}
+
+.mision-vision p {
+  color:rgba(3,27,78,.6);
+  line-height: 1.75;
+  font-size: 16px;
+  text-align: center;
+}
+
+.mision-vision h4 {
+  color:#031b4e;
+  margin-top: 0.56em !important;
+  margin-bottom: 0.56em !important;
+}
+
+
+.vision {
+  height:60px !important;
+}
+
+/* Equipos */
+.team-list {
+  min-height: calc(80vh - 30vh);
+}
+
+.team-list > .container, .team-detail > .container{
+  color: rgba(3,27,78,.7);
+}
+
+.team-list .collection-item {
+  border-bottom: 1px solid #e0e0e0 !important;
+}
+
+.team-detail > .container {
+  height: 100%;
+}
+
+.team-detail > .container > .card-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.campeonatos-ganados {
+  max-width: 100% !important;
+}
+
+.team-player {
+  max-width: 45% ;
+}
+
+.team-detail .team{
+  padding: 12px 24px 12px 24px;
+  height: 100%:
+}
+
+.campeonatos-ganados > .campeonato {
+  display: flex;
+  align-items: center;
+}
+
+.campeonatos-ganados .image-column {
+  margin-right: 24px;
+}
+
+.campeonatos-ganados .text-column > p {
+  margin: 0;
+}
+
+.team-detail .circle-icon {
+  width:50px;
+  height: 50px;
+  background-color: #F19800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team-detail .circle-icon > img {
+  max-height: 50%;
+}
+
+/* Partido */
+
+.match-content {
+  background-color: #fff;
+  padding-top: 4em;
+  padding-bottom: 6em;
+}
+
+.header .logo > img {
+  height:200px;
+  width: 200px;
+
+}
+
+.header .row {
+  flex-direction: row;
+}
+
+
+.header .logo {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.match-content > .container {
+  display: flex;
+}
+
+.match-content .team {
+  flex-grow: 1;
+}
+
+/* borrar color despues */
+.match-content  .team-name {
+  background-color: #F19800;
+  padding: 5px 12px 12px 24px;
+}
+
+.match-content .collection {
+  margin-top: -7px;
+}
+
+.match-content .field {
+  flex-grow: 3;
+  background-image: url("../static_media/field.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 75vh;
+}
+
+/* Mobile and tablet */
+@media (min-width: 360px) and (max-width: 767px) {
+  .card-container {
+    justify-content: center;
+  }
+  .mision-vision {
+    flex-direction: column;
+  }
+
+  .mision-vision > .column:last-of-type {
+    margin-top: 2em;
+  }
+
+  .header > .container > h6 {
+    max-width: 100%;
+  }
+
+  h2 {
+    font-size: 3em;
+  }
+
+  h3 {
+    font-size: 2.5em;
+  }
+
+  .organizer-content {
+    padding-top: 2em !important;
+  }
+
+  .team-detail .team-player {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 1060px) {
+  .navbar {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: flex;
+    padding-left: 24px;
+  }
+
+  .hero > .container > .text {
+    max-width: 100%;
+  }
+
+  .hero > .container {
+    padding-right:24px;
+    padding-left: 24px;
+  }
+
+  .content {
+    padding: 0 24px 0 24px;
+  }
+
+  h1 {
+    font-size: 3.5em;
+    line-height: 115%;
+  }
+
+  .footer > .container > .anchors {
+    width: 75%;
+  }
+
+  .footer > .container > .icons {
+    width:30%;
+  }
+
+  .header > .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+}

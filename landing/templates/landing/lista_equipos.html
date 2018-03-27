@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+<div class="header small-header">
+  <div class="image-header"></div>
+  <div class="container">
+    <h2>Equipos</h2>
+  </div>
+</div>
+<div class="content team-list">
+  <div class="container">
+    <ul class="collection">
+      {% for equipo in equipos %}
+      <a href="{% url 'landing:detalle_equipo' equipo.id %}">
+        <li class="collection-item avatar">
+          <img src="{{ equipo.logo.url }}" class="circle"/>
+          <span class="title">{{equipo.nombre}}</span>
+          <p>{{ equipo.representante }}</p>
+        </li>
+      </a>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

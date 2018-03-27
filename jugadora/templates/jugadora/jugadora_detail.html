@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block main %}
+
+<div class="title-container">
+  <h2 id="team-title">{{equipo.nombre}}</h2>
+  <h2 class="hidden" id="player-title">Jugadoras - {{equipo.nombre}}</h2>
+</div>
+<div class="container">
+  <div class="row tab-row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a id='info' href="#informacion">Información</a>
+      </ul>
+    </div>
+  </div>
+  <div class="row" id="informacion">
+    <div class="col s12 m3">
+        {% if jugadora.Imagen %}
+            <img class="logo-equipo" src="{{jugadora.Imagen.url}}">
+        {% else %}
+            <img class="logo-equipo" src="{% static 'static_media/default.jpg' %}">
+        {% endif %}
+    </div>
+    <div class="col s12 m9">
+      <div class="input-field col s12">
+        <input disabled value="{{jugadora.Nombre}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+        <label for="disabled">Nombre de Jugadora</label>
+      </div>
+      <div class="input-field col s12">
+        <input disabled value="{{jugadora.Nacimiento}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+        <label for="disabled">Fecha de Nacimiento</label>
+      </div>
+      <div class="input-field col s12 m6">
+        <input disabled value="{{jugadora.Numero}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+        <label for="disabled">Numero de playera</label>
+      </div>
+      <div class="input-field col s12 m6">
+        <input disabled value="{{jugadora.get_Posicion_display}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+        <label for="disabled">Posicion de la Jugadora</label>
+      </div>
+      <div class="input-field col s12">
+        <input disabled value="{{jugadora.Notas}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+        <label for="disabled">Notas</label>
+      </div>
+      <div class="input-field col s12">
+        <input disabled value="{{EquipoNombre}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+        <label for="disabled">Equipo</label>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+
+
+  {% endblock %}

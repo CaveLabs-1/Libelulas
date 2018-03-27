@@ -1,0 +1,94 @@
+<!doctype html>
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block main %}
+<div class="title-container">
+  <h2>Editar Equipo<h2>
+</div>
+<form  class="container flex" action="{% url 'equipo:editar_equipo' equipo.id %}" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="image-column">
+    <div class="image-circle upload">
+      <img class="upload-change" src="{{ equipo.logo.url }}" />
+      <img id="upload" class="upload-change"/>
+      <div class="generic-photo">
+        <img class="camera-icon" src="{% static 'static_media/photo-camera.svg' %}"/>
+        <span>Agregar Logo</span>
+      </div>
+      <div class="absolute-icons">
+          {{ form.logo }}
+      </div>
+    </div>
+    {{ form.logo.errors }}
+  </div>
+  <div class="form-column">
+      <p>
+        <label>
+          {{ form.nombre.label_tag }}
+        </label>
+        {{ form.nombre }}
+      </p>
+      {{ form.nombre.errors }}
+      <p>
+        <label>
+          {{ form.representante.label_tag }}
+        </label>
+        {{ form.representante }}
+      </p>
+      {{ form.representante.errors }}
+      <p>
+        <label>
+          {{ form.correo.label_tag }}
+        </label>
+        {{ form.correo }}
+      </p>
+      {{ form.correo.errors }}
+      <p>
+        <label>
+          {{ form.telefono.label_tag }}
+        </label>
+        {{ form.telefono }}
+      </p>
+      {{ form.telefono.errors }}
+      <p>
+        <label>
+          {{ form.colorLocal.label_tag }}
+        </label>
+        {{ form.colorLocal }}
+      </p>
+      {{ form.colorLocal.errors }}
+      <p>
+        <label>
+          {{ form.colorVisitante.label_tag }}
+        </label>
+        {{ form.colorVisitante }}
+      </p>
+      {{ form.colorVisitante.errors }}
+      <p>
+        <label>
+          {{ form.cancha.label_tag }}
+        </label>
+        {{ form.cancha }}
+      </p>
+      {{ form.cancha.errors }}
+      <p>
+        <label>
+          {{ form.dia.label_tag }}
+        </label>
+        {{ form.dia }}
+      </p>
+      {{ form.dia.errors }}
+      <p>
+        <label>
+          {{ form.hora.label_tag }}
+        </label>
+        <input type="time" name="{{form.hora.html_name}}" required="" value='{{ form.hora.value|time:"H:i" }}' id="{{form.hora.id_for_label}}" class="timepicker">
+      </p>
+      {{ form.hora.errors }}
+    <div class="container-button">
+      <button class="cancel">Cancelar</button>
+      <button class="submit" type="submit">Actualizar</button>
+    </div>
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block main %}
+
+<div class="container">
+    <form id="forma" method="POST" action=".">
+        {% csrf_token %}
+        <div class="container">
+            <div class="row">
+                <div class="input-field col s12 m6 l6">
+                    <input type="text" name="{{form.first_name.html_name}}" id="{{form.first_name.id_for_label}}">
+                    <label for="{{form.first_name.id_for_label}}">{{form.first_name.label_tag}}</label>
+                    {{form.first_name.errors}}
+                </div>
+                <div class="input-field col s12 m6 l6">
+                    <input type="text" name="{{form.username.html_name}}" id="{{form.username.id_for_label}}" class="validate" required>
+                    <label for="{{form.username.id_for_label}}">{{form.username.label_tag}}</label>
+                    {{form.username.errors}}
+                </div>
+                <div class="input-field col s12 m12 l12">
+                    <input type="email" name="{{form.email.html_name}}" id="{{form.email.id_for_label}}" class="validate">
+                    <label for="{{form.email.id_for_label}}">{{form.email.label_tag}}</label>
+                    {{form.email.errors}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="container-button">
+                    <a href="{% url 'administrador:lista_administrador' %}"><button class="cancel" type="button">Cancelar</button></a>
+                    <button id="enviar_forma" class="submit" type="submit">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+{{ block.super }}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.modal').modal() ;
+    }) ;
+
+    $(".boton-eliminar").click(function(){
+        var id = $(this).attr("data-id") ;
+        var botones = '<a href="/administrador/eliminar_administrador/' + id + '" class="modal-action modal-close waves-effect waves-green btn-flat confirmar-eliminar">Aceptar</a><a href="#cancelar" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>' ;
+        $(".modal-footer").html(botones) ;
+    }) ;
+</script>
+{% endblock %}
+
