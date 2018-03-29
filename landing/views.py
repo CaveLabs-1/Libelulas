@@ -42,3 +42,46 @@ def detalle_partido(request, id_torneo, id_partido):
                                                     'jugadoras_local' : jugadoras_local,
                                                     'jugadoras_visitante': jugadoras_visitante,
                                                      })
+
+def ver_torneos(request):
+    torneos = Torneo.objects.all().order_by("-fechaInicio")
+    return render(request, 'landing/lista_torneos.html', {'torneos': torneos})
+
+def detalle_torneo(request, pk):
+    torneo = get_object_or_404(Torneo, pk=pk)
+    partidos = Partido.objects.filter(torneo=pk)
+    if partidos.exists():
+        weones=[]
+        for equipo in torneo.equipos.all():
+            jj=jg=jp=je=pts=gf=ge=dg=ta=tr=tz=0
+            for partido in partidos.all():
+                if (partido.equipo_local == equipo or partido.equipo_visitante == equipo):
+                    jj=jj+1
+                if (partido.equipo_local == equipo and partido.goles_local>partido.goles_visitante):
+                    jg=jg+1
+                    gf=gf+partido.goles_local
+                    ge=ge+partido.goles_visitante
+                if (partido.equipo_visitante == equipo and partido.goles_visitante>partido.goles_local):
+                    jg=jg+1
+                    ge=ge+partido.goles_local
+                    gf=gf+partido.goles_visitante
+                if (partido.equipo_local == equipo and partido.goles_local<partido.goles_visitante):
+                    jp=jp+1
+                    gf=gf+partido.goles_local
+                    ge=ge+partido.goles_visitante
+                if (partido.equipo_visitante == equipo and partido.goles_visitante<partido.goles_local):
+                    jp=jp+1
+                    ge=ge+partido.goles_local
+                    gf=gf+partido.goles_visitante
+            je=jj-jg-jp
+            pts=(jg*3)+(je*1)
+            dg=gf-ge
+            weones.append({'equipo':equipo, 'jj':jj, 'jg':jg,'jp':jp,'je':je,'gf':gf,'ge':ge,'dg':dg,'pts':pts})
+        newlist = sorted(weones, key=lambda k: (k['pts'],k['dg'],k['gf']), reverse=True) 
+        return render (request, 'landing/detalle_torneo.html', {'torneo': torneo,'stats': newlist})
+    jj=jg=jp=je=pts=gf=ge=dg=ta=tr=tz=0
+    weones=[]
+    for equipo in torneo.equipos.all():
+        weones.append({'equipo':equipo, 'jj':jj, 'jg':jg,'jp':jp,'je':je,'gf':gf,'ge':ge,'dg':dg,'pts':pts})
+    newlist = sorted(weones, key=lambda k: k['pts'], reverse=True)
+    return render (request, 'landing/detalle_torneo.html', {'torneo': torneo,'stats': newlist})                                          
