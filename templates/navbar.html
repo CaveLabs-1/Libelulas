@@ -6,7 +6,7 @@
     </div>
     <div class="column anchors">
       <div class="anchor">CONVOCATORIAS</div>
-      <div class="anchor">TORNEOS</div>
+      <div class="anchor"><a href="{% url 'landing:ver_torneos' %}">TORNEOS</div>
       <div class="anchor"><a href="{% url 'landing:ver_equipos' %}">EQUIPOS</a></div>
       <div class="anchor">GALERÍA</div>
       <div class="anchor"><a href="{% url 'landing:ver_organizadores' %}">ORGANIZADORES</a></div>
@@ -21,9 +21,9 @@
       <li><a href="/"><img class="logo" src="{% static 'static_media/logo-white.svg' %}" alt="logo-plidi" /></a></li>
     </div>
         <li><a href="#">CONVOCATORIAS</a></li>
-        <li><a href="#">TORNEOS</a></li>
-        <li><a href="#">EQUIPOS</a></li>
+        <li><a href="{% url 'landing:ver_torneos' %}">TORNEOS</a></li>
+        <li><a href="{% url 'landing:ver_equipos' %}">EQUIPOS</a></li>
         <li><a href="#">GALERÍA</a></li>
-        <li><a href="#">ORGANIZADORES</a></li>
+        <li><a href="{% url 'landing:ver_organizadores' %}">ORGANIZADORES</a></li>
   </ul>
 </div>
