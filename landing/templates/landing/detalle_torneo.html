@@ -1,0 +1,63 @@
+{% extends "base.html" %} {% load static %} {% block main %}
+<div class="header">
+  <div class="image-header"></div>
+  <div class="container">
+    <div class="info-column">
+      <h2>{{ torneo.nombre }}</h2>
+      <h6><strong>Categoría: </strong>{{torneo.categoria}}</h6>
+      <h6><strong>Fecha de Inicio: </strong>{{torneo.fechaInicio}}</h6>
+    </div>
+  </div>
+</div>
+<div class="content team-detail">
+  <div class="container">
+    <h3>Tabla General</h3>
+    </br>
+      <table class='responsive-table'>
+        <thead>
+          <tr>
+              <th>POS</th>
+              <th>EQUIPO</th>
+              <th>PTS</th>
+              <th>JJ</th>
+              <th>JG</th>
+              <th>JP</th>
+              <th>JE</th>
+              <th>GF</th>
+              <th>GE</th>
+              <th>DG</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for stat in stats %}
+            
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td><img src="{{ stat.equipo.logo.url }}" alt="" class="circle" height="32" width="32"  style="vertical-align:middle"><a href="{% url 'landing:detalle_equipo' stat.equipo.id %}" >{{stat.equipo.nombre}}</a></td>
+            <td>{{ stat.pts }}</td>
+            <td>{{ stat.jj }}</td>
+            <td>{{ stat.jg }}</td>
+            <td>{{ stat.jp }}</td>
+            <td>{{ stat.je }}</td>
+            <td>{{ stat.gf }}</td>
+            <td>{{ stat.ge }}</td>
+            <td>{{ stat.dg }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <p>
+        <strong>POS:</strong> Posición
+        <strong>PTS:</strong> Puntos
+        <strong>JJ:</strong> Juegos jugados
+        <strong>JG:</strong> Juegos ganados
+        <strong>JP:</strong> Juegos perdidos
+        <strong>JE:</strong> Juegos empatados
+        <strong>GF:</strong> Goles a favor
+        <strong>GC:</strong> Goles en contra
+        <strong>DG:</strong> Diferencia de goles
+      </p>
+      </br>
+  </div>
+</div>
+{% endblock %}
