@@ -1,0 +1,42 @@
+<h4 class="center-align">Jornada {{jornada.jornada}}</h4>
+<br>
+{% for partido in partidos %}
+  <div class="row valign-wrapper">
+    <div class="col s5">
+      <div class="row ">
+        <div class="card-panel z-depth-1">
+          <div class="collection-item avatar">
+            <img src="{{ partido.equipo_local.logo.url }}" alt="" class="circle valign equipo">
+            <span class="title">{{ partido.equipo_local.nombre }}</span>
+            <p>Representante: {{ partido.equipo_local.representante }}</p>
+            <p>Telefono: {{ partido.equipo_local.telefono }}</p>
+            <p>Color: {{ partido.equipo_local.colorLocal }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s2 center-align">
+      <h5 class="">VS.</h5>
+      <span>{{partido.fecha}}</span>
+      <span>Hora: {{partido.hora}}</span>
+      <br>
+      <span>Cancha: {{partido.cancha}}</span>
+      <br>
+      <br>
+      <a href='{% url "torneo:editar_partido" partido.id %}'><i class="material-icons icon-blue">mode_edit</i></a>
+    </div>
+    <div class="col s5">
+      <div class="row right-align">
+        <div class="card-panel z-depth-1">
+          <div class="collection-item avatar">
+            <span class="title">{{ partido.equipo_visitante.nombre }}</span>
+            <img src="{{ partido.equipo_visitante.logo.url }}" alt="" class="circle valign equipo">
+            <p>Representante: {{ partido.equipo_visitante.representante }}</p>
+            <p>Telefono: {{ partido.equipo_visitante.telefono }}</p>
+            <p>Color: {{ partido.equipo_visitante.colorVisitante }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/landing/detalle-equipo.css' %}">
+{% endblock %}
+{% block main %}
+<div class="header">
+  <div class="image-header"></div>
+  <div class="container">
+    <div class="image-column">
+      <img src={{equipo.logo.url}} alt="{{equipo.nombre}} logo"/>
+    </div>
+    <div class="info-column">
+      <h2>{{ equipo.nombre }}</h2>
+      <h6><strong>Representante: </strong>{{equipo.representante}}</h6>
+      <h6><strong>Cancha: </strong>{{equipo.cancha}}</h6>
+      <h6><strong>Horario: </strong>{{equipo.get_dia_display}} {{equipo.hora}}</h6>
+    </div>
+  </div>
+</div>
+<div class="content">
+  <div class="container">
+    <h3>Estadísticas</h3>
+    <div class="card-list flex space-between">
+      <div class="card team-player">
+        <span class="card-title"><strong>MEJOR GOLEADORA </strong></span>
+      </div>
+      <div class="card team-player">
+        <span class="card-title"><strong>MÁS FALTAS COMETIDAS </strong></span>
+      </div>
+      <div class="card team-player">
+        <span class="card-title"><strong>MÁS AMONESTACIONES </strong></span>
+      </div>
+      <div class="card team-player">
+        <span class="card-title"><strong>MÁS EXPULSIONES </strong></span>
+      </div>
+      <div class="card campeonatos-ganados">
+        <span class="card-title"><strong>CAMPEONATOS</strong></span>
+        <div class="campeonato">
+          <div class="image-column">
+            <div class="circle-icon circle">
+              <img src="{% static 'static_media/trophy.svg' %}" />
+            </div>
+          </div>
+          <div class="text-column">
+            <p>Libelulas<p>
+            <span class="small">2018</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h3>Jugadoras</h3>
+    <div class="jugadoras wrap flex space-between">
+      {% for jugadora in jugadoras_equipo %}
+      <div class="card">
+        <div class="card-image">
+          {% if jugadora.Imagen %}
+            <img src="{{ jugadora.Imagen.url }}" alt="{{jugadora.Nombre}} imagen" class="circle"/>
+          {% else %}
+            <img src="{% static 'static_media/default.jpg' %}" alt="{{jugadora.Nombre}} imagen" class="circle"/>
+          {% endif %}
+        </div>
+        <div class="card-content">
+          <h6 class="title"><strong>{{jugadora.Nombre}} {{jugadora.Apellido}}</strong></h6>
+          <p>#{{jugadora.Numero}}</p>
+          <p>{{jugadora.get_Posicion_display}}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

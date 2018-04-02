@@ -9,21 +9,21 @@
             <div class="row">
                 <div class="input-field col s12 m6 l6">
                     <input type="password" name="{{form.password.html_name}}" id="{{form.password.id_for_label}}" class="validate" required>
-                    <label for="{{form.password.id_for_label}}">{{form.password.label_tag}}</label>
+                    <label for="{{form.password.id_for_label}}">Contraseña:</label>
                     {{form.password.errors}}
                 </div>
                 <div class="input-field col s12 m6 l6">
                     <input type="password" name="confirm_password" id="confirm_password" class="validate" required>
-                    <label for="confirm_password">Confirm Password</label>
+                    <label for="confirm_password">Confirmar Contraseña:</label>
                     {{form.confirm_password.errors}}
                 </div>
             </div>
             <div id="botones" class="row">
                 <div id="regresar" class="col s6 m6 l6 center">
-                    <a class="waves-effect waves-light btn red boton" href="{% url 'administrador:editar_administrador' administrador.id %}">CANCELAR</a>
+                    <a href="{% url 'administrador:editar_administrador' administrador.id %}"><button class="cancel" type="button">Cancelar</button></a>
                 </div>
                 <div id="enviar" class="col s6 m6 l6 center">
-                    <button id="enviar_forma" class="waves-effect waves-light btn blue boton" type="submit">Enviar</button>
+                    <button id="enviar_forma" class="submit" type="submit">Enviar</button>
                 </div>
             </div>
         </div>

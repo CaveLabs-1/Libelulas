@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/landing/organizadores.css' %}">
+{% endblock %}
+{% block main %}
+  <div class="header small-header">
+    <div class="image-header"></div>
+    <div class="container">
+      <h2>Organizadores</h2>
+    </div>
+  </div>
+  <div class="content">
+    <div class="container flex space-between">
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="person" src="{% static 'static_media/Yo.jpg' %}">
+        </div>
+        <div class="card-content">
+          <span class="card-title">Erica García</span>
+          <p>Directora General</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="person" src="{% static 'static_media/Marcela.jpg' %}">
+        </div>
+        <div class="card-content">
+          <span class="card-title">Marcela García</span>
+          <p>Administradora Deportiva</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="person" src="{% static 'static_media/Lulu.jpg' %}">
+        </div>
+        <div class="card-content">
+          <span class="card-title">Lourdes Espino</span>
+          <p>Coordinadora Deportiva</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+
+<div class="title-container">
+    <h2 class="admin-title">Roles de juego</h2>
+</div>
+<div class="container">
+    <div class="row">
+        {% for jornada in jornadas %}
+        <div class="col">
+            <a href="#{{jornada.id}}" onclick="carga_partidos({{jornada.id}})"><h6>{{jornada.jornada}}</h6></a>
+        </div>
+        {% endfor %}
+    </div>
+    <hr />
+    <div id="partidos">
+
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script src=" https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js "></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var csrftoken = $.cookie('csrftoken');
+            function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
+            $.ajaxSetup({
+                beforeSend: function(xhr, settings) {
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
+                }
+            });
+            $('.modal').modal() ;
+        });
+
+        $(".boton-eliminar").click(function(){
+            var id = $(this).attr("data-id") ;
+            var nombre = $(this).attr("data-nombre") ;
+            $(".modal-content").html("<h4>¿Desea eliminar el torneo <strong>" + nombre + "</strong>?</h4>") ;
+            var botones = '<a href="#cancelar" class="modal-action modal-close cancel cancel-delete">Cancelar</a>  <a href="eliminar/' + id + '" class="modal-action modal-close delete-color confirmar-eliminar">Aceptar</a>' ;
+            $(".modal-footer").html(botones) ;
+        });
+
+        $(".boton-cerrar").click(function(){
+            var id = $(this).attr("data-id") ;
+            var nombre = $(this).attr("data-nombre") ;
+            $(".modal-content").html("<h4>¿Desea cerrar el registro del torneo <strong>" + nombre + "</strong>?</h4>") ;
+            var botones = '<a href="#cancelar" class="modal-action modal-close cancel cancel-delete">Cancelar</a>  <a href="cerrar_registro/' + id + '" class="modal-action modal-close delete-color confirmar-eliminar">Aceptar</a>' ;
+            $(".modal-footer").html(botones) ;
+        });
+
+        function carga_partidos(jornada){
+
+                var url = '{% url "torneo:carga_partidos" %}';
+
+                var jornada = jornada
+
+                $.post(url,
+                {
+                    jornada:jornada
+                })
+                .done(function( data ) {
+                    $('#partidos').html(data);
+                });
+                return false;
+        };
+    </script>
+{% endblock %}

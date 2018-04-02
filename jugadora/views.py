@@ -30,7 +30,7 @@ def agregar_jugadora(request, equipo_id=''):
             else:
                 jugadora.save()
             messages.success(request, 'Jugadora agregada exitosamente')
-            return HttpResponseRedirect(reverse('jugadora:ver_jugadoras'))
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
         else:
             messages.warning(request, 'Hubo un error en la forma')
     else:
@@ -85,4 +85,3 @@ def detalle_jugadora(request, pk):
     if Equipo is not None:
         EquipoNombre = Equipo.nombre
     return render(request, 'jugadora/jugadora_detail.html', {'jugadora': jugadora, 'EquipoNombre':EquipoNombre})
-

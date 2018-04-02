@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Torneo
+from .models import *
 from django.forms.widgets import FileInput
 from django import forms
 from equipo.models import Equipo
@@ -22,3 +22,12 @@ class torneoForm(ModelForm):
         widgets = {
             'anexo': forms.FileInput(),
         }
+
+class PartidoForm(forms.ModelForm):
+    class Meta:
+        model = Partido
+        fields = (
+            'fecha',
+            'hora',
+            'cancha',
+        )

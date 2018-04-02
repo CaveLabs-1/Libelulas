@@ -24,11 +24,9 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col s6 m6 l6 center">
-                    <a class="waves-effect waves-light btn red boton" href="{% url 'administrador:lista_administrador' %}">CANCELAR</a>
-                </div>
-                <div class="col s6 m6 l6 center">
-                    <button id="enviar_forma" class="waves-effect waves-light btn blue boton" type="submit">Enviar</button>
+                <div class="container-button">
+                    <a href="{% url 'administrador:lista_administrador' %}"><button class="cancel" type="button">Cancelar</button></a>
+                    <button id="enviar_forma" class="submit" type="submit">Guardar</button>
                 </div>
             </div>
         </div>
