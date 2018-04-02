@@ -108,52 +108,6 @@ body {
   z-index: 9;
 }
 
-/* Hero */
-
-.hero {
-  min-height: 100vh;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 0;
-  padding-top: 0;
-  position: relative;
-}
-
-.image-hero {
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-  height: 100%;
-  width: 100%;
-  background-image: url("../static_media/hero-final-hd.jpg");
-  position: fixed;
-  z-index:-1;
-  background-position:right;
-}
-
-.hero>.container {
-  max-width: 1024px;
-  width: 100%;
-}
-
-.hero>.container>.text {
-  max-width: 60%;
-}
-
-.hero>.container>.text>.cta-container {
-  margin-top: 32px;
-  display: flex;
-}
-
-.hero>.container>.text>h6 {
-  max-width: 90%;
-  line-height: 28px;
-  letter-spacing: 1px;
-}
-
-
 /* Buttons */
 
 .button {
@@ -226,84 +180,31 @@ a {
   color: inherit;
 }
 
-/* Proximos juegos */
-
 .content {
-  padding-top: 4em;
+  width: 100%;
   background-color: #fff;
-  display: flex;
-  justify-content: center;
+  padding-top: 4.5em;
+  padding-bottom: 6em;
 }
 
 .content > .container {
   max-width: 1024px;
   width:100%;
+  color: rgba(3,27,78,.7);
 }
 
-.card-container {
+.flex {
   display: flex;
-  flex-wrap: wrap;
+}
+
+.space-between {
   justify-content: space-between;
-  padding-top: 3em;
 }
 
-
-.card {
-  max-width: 300px;
-  width: 100%;
-  border-radius: 5px !important;
-  height: 100%;
+.wrap {
+  flex-wrap: wrap;
 }
 
-.match .card-image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 37px;
-  padding-bottom: 24px;
-}
-
-.vs-container {
-  height: 100%;
-}
-
-.match .card-image > .container {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-}
-
-.vs-circle {
-  height: 57px;
-  width: 57px;
-  background-color: #009CDE;
-  /* background-image: linear-gradient(307deg, #67caff, #6797ff); */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.4em;
-}
-
-.match .team {
-  max-height: 5em;
-  height: 100%;
-  max-width: 5em;
-  width: 100%;
-}
-
-.card-content {
-  background-color: #009CDE;
-  /* background-image: linear-gradient(271deg, #67bbff, #679fff); */
-  border-radius: 0 0 5px 5px !important;
-}
-
-.content > .container > .cta-container {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  align-items: center;
-  margin: 2em 0 3em 0;
-}
 /* Footer */
 
 .footer {
@@ -415,192 +316,6 @@ a {
 .header > .container > .image-column > img {
   width: 230px;
   height: 230px;
-}
-
-/* Organizadores */
-.organizer-content {
-  padding-bottom: 4.5em;
-}
-
-.organizer img {
-  border-radius: 50% !important;
-  width: 200px !important;
-  height: 200px;
-}
-
-.organizer > .card-image {
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 250px;
-}
-
-.organizer .card-content{
-  background-color: #fff;
-  text-align: center;
-}
-
-.organizer .card-content > span {
-  color: #031b4e;
-}
-
-.organizer .card-content > p {
-  color: rgba(3,27,78,.7)
-}
-
-/* mision and vision */
-.mision-vision, .team-detail{
-  display: flex;
-  justify-content: space-between;
-  padding: 4em 0 6em 0;
-}
-
-.mision-division > .column {
-  flex-grow: 1;
-}
-
-.mision-vision > .column > .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.mision-vision .icon {
-  height: 70px;
-}
-
-.mision-vision p {
-  color:rgba(3,27,78,.6);
-  line-height: 1.75;
-  font-size: 16px;
-  text-align: center;
-}
-
-.mision-vision h4 {
-  color:#031b4e;
-  margin-top: 0.56em !important;
-  margin-bottom: 0.56em !important;
-}
-
-
-.vision {
-  height:60px !important;
-}
-
-/* Equipos */
-.team-list {
-  min-height: calc(80vh - 30vh);
-}
-
-.team-list > .container, .team-detail > .container{
-  color: rgba(3,27,78,.7);
-}
-
-.team-list .collection-item {
-  border-bottom: 1px solid #e0e0e0 !important;
-}
-
-.team-detail > .container {
-  height: 100%;
-}
-
-.team-detail > .container > .card-list {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.campeonatos-ganados {
-  max-width: 100% !important;
-}
-
-.team-player {
-  max-width: 45% ;
-}
-
-.team-detail .team{
-  padding: 12px 24px 12px 24px;
-  height: 100%:
-}
-
-.campeonatos-ganados > .campeonato {
-  display: flex;
-  align-items: center;
-}
-
-.campeonatos-ganados .image-column {
-  margin-right: 24px;
-}
-
-.campeonatos-ganados .text-column > p {
-  margin: 0;
-}
-
-.team-detail .circle-icon {
-  width:50px;
-  height: 50px;
-  background-color: #F19800;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.team-detail .circle-icon > img {
-  max-height: 50%;
-}
-
-/* Partido */
-
-.match-content {
-  background-color: #fff;
-  padding-top: 4em;
-  padding-bottom: 6em;
-}
-
-.header .logo > img {
-  height:200px;
-  width: 200px;
-
-}
-
-.header .row {
-  flex-direction: row;
-}
-
-
-.header .logo {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.match-content > .container {
-  display: flex;
-}
-
-.match-content .team {
-  flex-grow: 1;
-}
-
-/* borrar color despues */
-.match-content  .team-name {
-  background-color: #F19800;
-  padding: 5px 12px 12px 24px;
-}
-
-.match-content .collection {
-  margin-top: -7px;
-}
-
-.match-content .field {
-  flex-grow: 3;
-  background-image: url("../static_media/field.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 75vh;
 }
 
 /* Mobile and tablet */

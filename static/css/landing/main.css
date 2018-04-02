@@ -1,0 +1,163 @@
+/* Hero */
+
+.hero {
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+  padding-top: 0;
+  position: relative;
+}
+
+.image-hero {
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-image: url("../../static_media/hero-final-hd.jpg");
+  position: fixed;
+  z-index: -1;
+  background-position: right;
+}
+
+.hero>.container {
+  max-width: 1024px;
+  width: 100%;
+}
+
+.hero>.container>.text {
+  max-width: 60%;
+}
+
+.hero>.container>.text>.cta-container {
+  margin-top: 32px;
+  display: flex;
+}
+
+.hero>.container>.text>h6 {
+  max-width: 90%;
+  line-height: 28px;
+  letter-spacing: 1px;
+}
+
+/* Proximos juegos */
+
+.content {
+  padding-top: 4em;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.content>.container {
+  max-width: 1024px;
+  width: 100%;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 3em;
+}
+
+.card {
+  max-width: 300px;
+  width: 100%;
+  border-radius: 5px !important;
+  height: 100%;
+}
+
+.match .card-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 37px;
+  padding-bottom: 24px;
+}
+
+.vs-container {
+  height: 100%;
+}
+
+.match .card-image>.container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.vs-circle {
+  height: 57px;
+  width: 57px;
+  background-color: #009CDE;
+  /* background-image: linear-gradient(307deg, #67caff, #6797ff); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4em;
+}
+
+.match .team {
+  max-height: 5em;
+  height: 100%;
+  max-width: 5em;
+  width: 100%;
+}
+
+.card-content {
+  color: #fff;
+  background-color: #009CDE;
+  /* background-image: linear-gradient(271deg, #67bbff, #679fff); */
+  border-radius: 0 0 5px 5px !important;
+}
+
+.content>.container>.cta-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  margin: 2em 0 3em 0;
+}
+
+/* mision and vision */
+
+.mision-vision, .team-detail {
+  display: flex;
+  justify-content: space-between;
+  padding: 4em 0 6em 0;
+}
+
+.mision-division>.column {
+  flex-grow: 1;
+}
+
+.mision-vision>.column>.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mision-vision .icon {
+  height: 70px;
+}
+
+.mision-vision p {
+  color: rgba(3, 27, 78, .6);
+  line-height: 1.75;
+  font-size: 16px;
+  text-align: center;
+}
+
+.mision-vision h4 {
+  color: #031b4e;
+  margin-top: 0.56em !important;
+  margin-bottom: 0.56em !important;
+}
+
+.vision {
+  height: 60px !important;
+}

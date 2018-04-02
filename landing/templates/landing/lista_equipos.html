@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/landing/team-list.css' %}">
+{% endblock %}
 {% block main %}
 <div class="header small-header">
   <div class="image-header"></div>
@@ -9,17 +12,19 @@
 </div>
 <div class="content team-list">
   <div class="container">
-    <ul class="collection">
-      {% for equipo in equipos %}
+    {% for equipo in equipos %}
+    <div class="card">
       <a href="{% url 'landing:detalle_equipo' equipo.id %}">
-        <li class="collection-item avatar">
+        <div class="card-image">
           <img src="{{ equipo.logo.url }}" class="circle"/>
-          <span class="title">{{equipo.nombre}}</span>
-          <p>{{ equipo.representante }}</p>
-        </li>
+        </div>
+        <div class="card-content">
+          <h6 class="title"><strong>{{equipo.nombre}}</strong></h6>
+          <span>Posicion</span>
+        </div>
       </a>
-      {% endfor %}
-    </ul>
+    </div>
+    {% endfor %}
   </div>
 </div>
 {% endblock %}
