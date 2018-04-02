@@ -441,15 +441,20 @@ input:focus{
  box-shadow: 0 1px 0 0 #ff78b8 !important;
 }
 
-.timepicker-tick:hover { 
-  background: #ff78b8 !important; 
+.timepicker-tick:hover {
+  background: #ff78b8 !important;
 }
-.timepicker-canvas line { 
-  stroke: #ff78b8 !important; 
+.timepicker-canvas line {
+  stroke: #ff78b8 !important;
 }
-.timepicker-canvas-bearing { 
-  fill: #ff78b8 !important; 
+.timepicker-canvas-bearing {
+  fill: #ff78b8 !important;
 }
-.timepicker-canvas-bg { 
-  fill: #ff78b8 !important; 
+.timepicker-canvas-bg {
+  fill: #ff78b8 !important;
+}
+
+.equipo{
+  height: 50px;
+  width: 50px;
 }
