@@ -14,6 +14,10 @@ from django.utils import timezone
 import datetime
 import uuid
 
+from weasyprint import HTML, CSS
+from django.template.loader import get_template
+from django.http import HttpResponse
+
 def lista_torneos(request):
     lista_torneos = Torneo.objects.all()
     return render(request, 'torneo/torneo_list.html', {'lista_torneos': lista_torneos})
@@ -160,3 +164,11 @@ def editar_partido(request, id_partido):
         else:
             messages.warning(request, 'Hubo un error en la forma')
     return render(request, 'torneo/editar_partido.html', {'form': form, 'partido':partido})
+
+def mandar_codigoCedula(request, torneo_id, jornada_id):
+
+    html_template = get_template('templates/base.html')
+    pdf_file = HTML(string=html_template).write_pdf()
+    response = HttpResponse(pdf_file, content_type='application/pdf')
+    response['Content-Disposition'] = 'filename="home_page.pdf"'
+    return response
