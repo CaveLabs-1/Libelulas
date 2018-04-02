@@ -27,18 +27,7 @@
       {{ form.hora.errors }}
     </div>
     <div class="input-field col s12 m12 l12">
-        <select name="{{form.cancha.html_name}}" id="{{form.cancha.id_for_label}}" value="{{ form.cancha.value}}" required>
-          {% if partido.equipo_local.cancha == form.cancha.value %}
-          <option value="{{partido.equipo_local.cancha}}" selected>{{partido.equipo_local.cancha}}</option>
-          {%else%}
-          <option value="{{partido.equipo_local.cancha}}">{{partido.equipo_local.cancha}}</option>
-          {%endif%}
-          {% if partido.equipo_visitante.cancha == form.cancha.value %}
-          <option value="{{partido.equipo_visitante.cancha}}" selected>{{partido.equipo_visitante.cancha}}</option>
-          {%else%}
-          <option value="{{partido.equipo_visitante.cancha}}">{{partido.equipo_visitante.cancha}}</option>
-          {%endif%}
-        </select>
+        {{form.cancha}}
         <label>
           {{ form.cancha.label_tag }}
         </label>

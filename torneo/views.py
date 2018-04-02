@@ -154,13 +154,9 @@ def editar_partido(request, id_partido):
         form = PartidoForm(request.POST,instance=partido)
         objeto = form.save(commit=False)
         if form.is_valid():
-            if partido.jornada.fecha_inicio <= objeto.fecha and partido.jornada.fecha_fin >= objeto.fecha:
-                objeto.save()
-                messages.success(request, 'Partido editado exitosamente')
-                return HttpResponseRedirect(reverse('torneo:editar_registro',kwargs={'id_torneo':partido.jornada.torneo.id}))
-            else:
-                form = PartidoForm(instance=partido)
-                messages.warning(request, 'Fecha incorrecta')
+            form.save()
+            messages.success(request, 'Partido editado exitosamente')
+            return HttpResponseRedirect(reverse('torneo:editar_registro',kwargs={'id_torneo':partido.jornada.torneo.id}))
         else:
             messages.warning(request, 'Hubo un error en la forma')
     return render(request, 'torneo/editar_partido.html', {'form': form, 'partido':partido})
