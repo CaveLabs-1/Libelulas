@@ -18,24 +18,24 @@
     </div>
   </div>
 </div>
-<div class="content team-detail">
+<div class="content">
   <div class="container">
     <h3>Estadísticas</h3>
-    <div class="card-list">
-      <div class="card team-player team">
-        <span class="card-title">MEJOR GOLEADORA</span>
+    <div class="card-list flex space-between">
+      <div class="card team-player">
+        <span class="card-title"><strong>MEJOR GOLEADORA </strong></span>
       </div>
-      <div class="card team-player team">
-        <span class="card-title">MÁS FALTAS COMETIDAS</span>
+      <div class="card team-player">
+        <span class="card-title"><strong>MÁS FALTAS COMETIDAS </strong></span>
       </div>
-      <div class="card team-player team">
-        <span class="card-title">MÁS AMONESTACIONES</span>
+      <div class="card team-player">
+        <span class="card-title"><strong>MÁS AMONESTACIONES </strong></span>
       </div>
-      <div class="card team-player team">
-        <span class="card-title">MÁS EXPULSIONES</span>
+      <div class="card team-player">
+        <span class="card-title"><strong>MÁS EXPULSIONES </strong></span>
       </div>
-      <div class="card campeonatos-ganados team">
-        <span class="card-title">CAMPEONATOS</span>
+      <div class="card campeonatos-ganados">
+        <span class="card-title"><strong>CAMPEONATOS</strong></span>
         <div class="campeonato">
           <div class="image-column">
             <div class="circle-icon circle">
@@ -50,16 +50,24 @@
       </div>
     </div>
     <h3>Jugadoras</h3>
-    <ul class="collection">
+    <div class="jugadoras wrap flex space-between">
       {% for jugadora in jugadoras_equipo %}
-      <li class="collection-item avatar">
-        <img src="{{ jugadora.Imagen.url }}" alt="{{jugadora.Nombre}} imagen" class="circle"/>
-        <h6 class="title"><strong>{{jugadora.Nombre}} {{jugadora.Apellido}}</strong></h6>
-        <p>#{{jugadora.Numero}}</p>
-        <p>{{jugadora.get_Posicion_display}}</p>
-      </li>
+      <div class="card">
+        <div class="card-image">
+          {% if jugadora.Imagen %}
+            <img src="{{ jugadora.Imagen.url }}" alt="{{jugadora.Nombre}} imagen" class="circle"/>
+          {% else %}
+            <img src="{% static 'static_media/default.jpg' %}" alt="{{jugadora.Nombre}} imagen" class="circle"/>
+          {% endif %}
+        </div>
+        <div class="card-content">
+          <h6 class="title"><strong>{{jugadora.Nombre}} {{jugadora.Apellido}}</strong></h6>
+          <p>#{{jugadora.Numero}}</p>
+          <p>{{jugadora.get_Posicion_display}}</p>
+        </div>
+      </div>
       {% endfor %}
-    </ul>
+    </div>
   </div>
 </div>
 {% endblock %}

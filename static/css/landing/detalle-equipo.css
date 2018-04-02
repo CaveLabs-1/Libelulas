@@ -1,0 +1,58 @@
+.card-list {
+  flex-wrap: wrap;
+}
+
+.campeonatos-ganados {
+  width: 100% !important;
+}
+
+.card {
+  width:300px;
+}
+
+.team-player {
+  width: 45% ;
+}
+
+.team-player, .campeonatos-ganados {
+  padding: 12px 24px 12px 24px;
+}
+
+.campeonatos-ganados > .campeonato {
+  display: flex;
+  align-items: center;
+}
+
+.campeonatos-ganados .image-column {
+  margin-right: 24px;
+}
+
+.campeonatos-ganados .text-column > p {
+  margin: 0;
+}
+
+.circle-icon {
+  width:50px;
+  height: 50px;
+  background-color: #F19800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-icon > img {
+  max-height: 50%;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-image > img {
+  width: 300px;
+  height: 300px;
+
+}
