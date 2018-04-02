@@ -1,3 +1,4 @@
+
 from django.shortcuts import render
 from equipo.models import Equipo
 from jugadora.models import Jugadora
@@ -12,6 +13,16 @@ from equipo.models import Equipo
 from django.shortcuts import get_object_or_404
 
 # Create your views here.
+
+from torneo.models import Torneo
+
+
+# Create your views here.
+
+def verTorneos (request):
+    torneos= Torneo.objects.filter(activo=True)
+    return render(request,'landing/torneos.html',{'torneos':torneos})
+  
 def ver_organizadores(request):
     return render(request, 'landing/organizadores.html')
 
