@@ -13,6 +13,8 @@ echo 'create database libelulas;' >> database.sql
 
 
 
+
+
 psql  < "database.sql"
 
 rm ./database.sql
