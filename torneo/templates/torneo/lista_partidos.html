@@ -24,6 +24,8 @@
       <br>
       <br>
       <a href='{% url "torneo:editar_partido" partido.id %}'><i class="material-icons icon-blue">mode_edit</i></a>
+        <br>
+      <a href='{% url "torneo:mandar_codigoCedula" id_jornada jornada.id %}'><i class="material-icons icon-blue">print</i></a>
     </div>
     <div class="col s5">
       <div class="row right-align">
