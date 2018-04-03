@@ -185,6 +185,7 @@ a {
   background-color: #fff;
   padding-top: 4.5em;
   padding-bottom: 6em;
+  min-height: 41.2vh;
 }
 
 .content > .container {
