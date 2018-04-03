@@ -353,6 +353,10 @@ a {
 }
 
 @media (min-width: 360px) and (max-width: 1060px) {
+  .card-list {
+    justify-content: center;
+  }
+
   .navbar {
     display: none;
   }
@@ -372,7 +376,7 @@ a {
   }
 
   .content {
-    padding: 0 24px 0 24px;
+    padding: 24px;
   }
 
   h1 {

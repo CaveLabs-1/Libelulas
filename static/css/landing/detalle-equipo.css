@@ -7,15 +7,16 @@
 }
 
 .card {
-  width:300px;
+  width:450px;
+}
+
+.card, .campeonatos-ganados {
+  padding: 12px 24px 12px 24px;
 }
 
 .team-player {
-  width: 45% ;
-}
-
-.team-player, .campeonatos-ganados {
-  padding: 12px 24px 12px 24px;
+  width: 300px;
+  padding: 0;
 }
 
 .campeonatos-ganados > .campeonato {
@@ -76,4 +77,11 @@
 
 .top {
   top: 23px !important;
+}
+
+@media (min-width: 360px) and (max-width: 767px) {
+  .header > .container {
+    flex-direction: column;
+    align-items: center;
+  }
 }
