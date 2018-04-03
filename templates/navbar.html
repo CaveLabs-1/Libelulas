@@ -5,7 +5,8 @@
       <a href="/"><img class="logo" src="{% static 'static_media/logo-white.svg' %}" alt="logo-plidi" /></a>
     </div>
     <div class="column anchors">
-      <div class="anchor">CONVOCATORIAS</div>
+
+      <div class="anchor"><a href="{% url 'landing:verTorneos' %}">CONVOCATORIAS</a></div>
       <div class="anchor"><a href="{% url 'landing:ver_torneos' %}">TORNEOS</div>
       <div class="anchor"><a href="{% url 'landing:ver_equipos' %}">EQUIPOS</a></div>
       <div class="anchor">GALERÍA</div>
@@ -20,7 +21,7 @@
     <div class="logo-container">
       <li><a href="/"><img class="logo" src="{% static 'static_media/logo-white.svg' %}" alt="logo-plidi" /></a></li>
     </div>
-        <li><a href="#">CONVOCATORIAS</a></li>
+        <li><a href="{% url 'landing:verTorneos' %}">CONVOCATORIAS</a></li>
         <li><a href="{% url 'landing:ver_torneos' %}">TORNEOS</a></li>
         <li><a href="{% url 'landing:ver_equipos' %}">EQUIPOS</a></li>
         <li><a href="#">GALERÍA</a></li>
