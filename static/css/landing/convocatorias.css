@@ -1,0 +1,16 @@
+.card {
+  width: 300px;
+}
+
+i {
+  cursor: pointer;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+}
+
+.card{
+  padding: 12px 24px 12px 24px;
+}
