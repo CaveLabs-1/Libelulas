@@ -172,7 +172,7 @@ def carga_partidos(request):
         id_jornada= int(request.POST.get('jornada'))
         jornada = get_object_or_404(Jornada, id=id_jornada)
         partidos = Partido.objects.filter(jornada=jornada)
-        html = render_to_string('torneo/lista_partidos.html', {'partidos':partidos,'jornada':jornada})
+        html = render_to_string('torneo/lista_partidos.html', {'partidos':partidos,'jornada':jornada,'id_jornada':id_jornada})
         return HttpResponse(html)
 
 def editar_partido(request, id_partido):
