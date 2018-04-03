@@ -1,4 +1,4 @@
-
+from django.template.loader import render_to_string
 from django.shortcuts import render
 from equipo.models import Equipo
 from jugadora.models import Jugadora
@@ -12,6 +12,9 @@ from torneo.models import Asistencia
 from equipo.models import Equipo
 from django.shortcuts import get_object_or_404
 from torneo.models import Estadisticas
+from torneo.models import Jornada
+from django.http import *
+import datetime
 
 # Create your views here.
 
@@ -61,6 +64,7 @@ def ver_torneos(request):
 
 def detalle_torneo(request, pk):
     torneo = get_object_or_404(Torneo, pk=pk)
+    jornadas = Jornada.objects.filter(torneo=torneo)
     weones=[]
     for equipo in torneo.equipos.all():
         stats=Estadisticas.objects.filter(torneo=torneo).filter(equipo=equipo).first()
@@ -74,4 +78,12 @@ def detalle_torneo(request, pk):
         dg=gf-ge
         weones.append({'equipo':equipo, 'jj':jj, 'jg':jg,'jp':jp,'je':je,'gf':gf,'ge':ge,'dg':dg,'pts':pts})
     newlist = sorted(weones, key=lambda k: k['pts'], reverse=True)
-    return render (request, 'landing/detalle_torneo.html', {'torneo': torneo,'stats': newlist})                                          
+    return render (request, 'landing/detalle_torneo.html', {'torneo': torneo,'stats': newlist, 'jornadas': jornadas})                                          
+
+def carga_partidos(request):
+    if request.method == 'POST':
+        id_jornada= int(request.POST.get('jornada'))
+        jornada = get_object_or_404(Jornada, id=id_jornada)
+        partidos = Partido.objects.filter(jornada=jornada)
+        html = render_to_string('landing/lista_partidos.html', {'partidos':partidos,'jornada':jornada, 'datetime':datetime.date.today()})
+        return HttpResponse(html)
