@@ -27,14 +27,17 @@ def crear_torneo(request):
     if request.method == "POST":
         form = torneoForm(request.POST, request.FILES)
         if form.is_valid():
-            torneo = form
+            torneo = form.save(commit=False)
             torneo.save()
+            for equipo in form.cleaned_data['equipos']:
+                estadistica = Estadisticas(equipo=equipo,torneo=torneo)
+                estadistica.save()
             messages.success(request, 'Torneo agregado exitosamente')
             return HttpResponseRedirect(reverse('torneo:lista_torneos'))
         else:
             messages.warning(request, 'Hubo un error en la forma')
     else:
-            form = torneoForm()
+        form = torneoForm()
     return render(request, 'torneo/agregar_torneo.html', {'form': form, 'lista_equipo':lista_equipo})
 
 def editar_torneo(request, torneo_id):
@@ -43,17 +46,38 @@ def editar_torneo(request, torneo_id):
     if request.method == "POST":
         form = torneoForm(request.POST, request.FILES, instance=instance)
         if form.is_valid():
-            torneo = form
+            torneo = form.save(commit=False)
             torneo.save()
+            registros = Estadisticas.objects.filter(torneo=torneo)
+            equipos = []
+            for registro in registros:
+                equipo = Equipo.objects.get(id=registro.equipo.id)
+                equipos.append(equipo)
+            for equipo in form.cleaned_data['equipos']:
+                if equipo not in equipos:
+                    estadistica = Estadisticas(equipo=equipo,torneo=torneo)
+                    estadistica.save()
+            for equipo in equipos:
+                if equipo not in form.cleaned_data['equipos']:
+                    e = Estadisticas.objects.get(equipo=equipo,torneo=torneo)
+                    e.delete()
+            messages.success(request, 'Torneo agregado exitosamente')
+            return HttpResponseRedirect(reverse('torneo:lista_torneos'))
+
             messages.success(request, 'Torneo editado exitosamente')
             return HttpResponseRedirect(reverse('torneo:lista_torneos'))
         else:
             messages.warning(request, 'Hubo un error en la forma')
     return render(request, 'torneo/torneo_editar.html', {'form': form, 'torneo':instance})
 
-class eliminar_torneo(DeleteView):
-    model = Torneo
-    success_url = reverse_lazy('torneo:lista_torneos')
+def eliminar_torneo(request,id_torneo):
+    torneo = get_object_or_404(Torneo, id=id_torneo)
+    for equipo in torneo.equipos.all():
+        registro = Estadisticas.objects.get(torneo=torneo,equipo=equipo)
+        registro.delete()
+    torneo.delete()
+    messages.success(request, 'Torneo eliminado exitosamente')
+    return HttpResponseRedirect(reverse('torneo:lista_torneos'))
 
 def eliminar_equipo(request, id_equipo, id_torneo):
     torneo = get_object_or_404(Torneo, id=id_torneo)
@@ -96,30 +120,6 @@ def cerrar_registro(request, id_torneo):
         jornadas_visitante = create_schedule(lista_vuelta)
         id_last_j,fecha_inicial,fecha_fin = partidos(id_last_j,jornadas_local,fecha_inicial,fecha_fin,torneo)
         partidos(id_last_j,jornadas_visitante,fecha_inicial,fecha_fin,torneo)
-        messages.success(request,'El registro del torneo ha sido cerrado')
-        return HttpResponseRedirect(reverse('torneo:lista_torneos'))
-
-def create_schedule(list):
-    s = []
-    if len(list) % 2 == 1: list = list + ["BYE"]
-    for i in range(len(list)-1):
-        mid = len(list) / 2
-        l1 = list[:int(mid)]
-        l2 = list[int(mid):]
-        l2.reverse()
-        if(i % 2 == 1):
-            s = s + [ zip(l1, l2) ]
-        else:
-            s = s + [ zip(l2, l1) ]
-        list.insert(1, list.pop())
-    return s
-
-def partidos(id_last_j,jornadas_local,fecha_inicial,fecha_fin,torneo):
-    for i,semana in enumerate(jornadas_local):
-        descripcion = "J"+str(id_last_j)
-        jornada = Jornada(jornada=descripcion,torneo=torneo,fecha_inicio=fecha_inicial,fecha_fin=fecha_fin)
-        fecha_inicial = fecha_fin + timezone.timedelta(days=1)
-        fecha_fin =  fecha_inicial + timezone.timedelta(days=6)
         messages.success(request,'El registro del torneo ha sido cerrado')
         return HttpResponseRedirect(reverse('torneo:lista_torneos'))
 
