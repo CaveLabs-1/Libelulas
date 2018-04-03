@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+
+<div class="content">
+ <div class="container">
+   <h2>Convocatorias</h2>
+   <div class="card-container">
+
+
+
+
+{% for Torneo in torneos %}
+
+     <div class="card  tournament hoverable">
+       <div class="card-image waves-effect waves-block waves-light">
+         <div class="container">
+
+           <span class="black-text activator">{{ Torneo.nombre }}</span>
+
+         </div>
+       </div>
+       <div class="card-content ">
+        <div class="title">
+            <p align="center">{{ Torneo.fechaInicio }}</p>
+        </div>
+       </div>
+       <div class="card-image">
+
+        <i class="material-icons green activator hoverable">add</i>
+
+
+       </div>
+         <div class="card-reveal  blue-grey lighten-4">
+            <span class="card-title grey-text text-darken-4 center">Información:<i class="material-icons right">close</i></span>
+             <div class="card-panel">
+                 <i class="material-icons left black-text ">date_range</i>
+                 <span class="black-text">Fecha de inicio:</span>
+                 <br>
+                 <span class="blue-text text-darken-2">{{ Torneo.fechaInicio }} </span>
+             </div>
+             <div class="card-panel">
+                 <i class="material-icons left black-text ">person</i>
+                 <span class="black-text">Categoría:</span>
+                 <br>
+                 <span class="blue-text text-darken-2">{{ Torneo.categoria }} </span>
+             </div>
+             <div class="card-panel">
+                 <i class="material-icons left black-text ">attach_money</i>
+                 <span class="black-text">Costo:</span>
+                 <br>
+                 <span class="blue-text text-darken-2">${{ Torneo.costo }} pesos</span>
+             </div>
+             <div class="card-panel">
+                 <i class="material-icons left black-text ">event</i>
+                 <span class="black-text">Fecha de Junta:</span>
+                 <br>
+                 <span class="blue-text text-darken-2">{{ Torneo.fechaJunta }} </span>
+             </div>
+        </div>
+     </div>
+
+
+{% empty %}
+
+    <p>No hay torneos aún</p>
+
+{%endfor%}
+
+
+   </div>
+ </div>
+</div>
+
+{% endblock %}
+

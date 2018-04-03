@@ -1,3 +1,4 @@
+
 from django.shortcuts import render
 from equipo.models import Equipo
 from jugadora.models import Jugadora
@@ -13,6 +14,16 @@ from torneo.models import Estadisticas
 from django.shortcuts import get_object_or_404
 
 # Create your views here.
+
+from torneo.models import Torneo
+
+
+# Create your views here.
+
+def verTorneos (request):
+    torneos= Torneo.objects.filter(activo=True)
+    return render(request,'landing/torneos.html',{'torneos':torneos})
+  
 def ver_organizadores(request):
     return render(request, 'landing/organizadores.html')
 
@@ -65,4 +76,3 @@ def detalle_torneo(request, pk):
         weones.append({'equipo':equipo, 'jj':jj, 'jg':jg,'jp':jp,'je':je,'gf':gf,'ge':ge,'dg':dg,'pts':pts})
     newlist = sorted(weones, key=lambda k: (k['pts'],k['dg'],k['gf']), reverse=True) 
     return render (request, 'landing/detalle_torneo.html', {'torneo': torneo,'stats': newlist})
-    
