@@ -191,8 +191,8 @@ def editar_partido(request, id_partido):
 
 def mandar_codigoCedula(request, torneo_id, jornada_id):
 
-    torneo=Torneo.objects.get(id=torneo_id)
-    jornada=torneo.jornada_set.get(id=jornada_id)
+    torneo = get_object_or_404(Torneo, id=torneo_id)
+    jornada = get_object_or_404(torneo.jornada_set.all(), id=jornada_id)
 
     html_template = render_to_string('torneo/pdf_template.html', {'torneo':torneo,'jornada':jornada})
     pdf_file = HTML(string=html_template).write_pdf()
