@@ -19,13 +19,13 @@
       <h5 class="">VS.</h5>
       <span>{{partido.fecha}}</span>
       <span>Hora: {{partido.hora}}</span>
-      <br>
+      <br/>
       <span>Cancha: {{partido.cancha}}</span>
       <br>
+      {% if partido.fecha < datetime %}
+      <a class="waves-effect waves-light btn-small purple accent-1" href="{% url 'landing:detalle_partido' jornada.torneo.id partido %}">Ver Mas</a>
+      {% endif %}
       <br>
-      <a href='{% url "torneo:editar_partido" partido.id %}'><i class="material-icons icon-blue">mode_edit</i></a>
-        <br>
-      <a href='{% url "torneo:mandar_codigoCedula" id_jornada jornada.id %}'><i class="material-icons icon-blue">print</i></a>
     </div>
     <div class="col s5">
       <div class="row right-align">

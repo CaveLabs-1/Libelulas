@@ -402,3 +402,7 @@ a {
 .listado:hover{
   background-color: #dee0e2;
 }
+.equipo{
+  height: 50px;
+  width: 50px;
+}
