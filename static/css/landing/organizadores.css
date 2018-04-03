@@ -1,0 +1,31 @@
+/* Organizadores */
+.card {
+  width: 300px;
+}
+
+.card img {
+  border-radius: 50% !important;
+  width: 200px !important;
+  height: 200px;
+}
+
+.card > .card-image {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+}
+
+.card .card-content{
+  background-color: #fff;
+  text-align: center;
+}
+
+.card .card-content > span {
+  color: #031b4e;
+}
+
+.card .card-content > p {
+  color: rgba(3,27,78,.7)
+}

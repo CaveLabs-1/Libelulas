@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/landing/partido.css' %}">
+{% endblock %}
 {% block main %}
 <div class="header">
   <div class="image-header"></div>
@@ -25,17 +28,19 @@
     </div>
   </div>
 </div>
-<div class="match-content">
-  <div class="container">
+<div class="content">
+  <div class="container flex">
     <div class="team">
       <div class="team-name">
         <h6>{{equipo_local.nombre}}</h6>
       </div>
       <ul class="collection">
         {% for jugadora in jugadoras_local %}
-        <a href="#" class="collection-item">
+        <a href="#" class="collection-item flex">
           <strong>{{jugadora.Numero}}</strong>
-          <span>{{jugadora.Nombre}} {{jugadora.Apellido}}</span>
+          <div class="nombre">
+            <span class="nombre">{{jugadora.Nombre}} {{jugadora.Apellido}}</span>
+          </div>
           <span>{{jugadora.get_Posicion_display}}</span>
         </a>
         {% endfor %}

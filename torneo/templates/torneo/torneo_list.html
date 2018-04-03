@@ -12,12 +12,21 @@
       <span class="title"><a href="{% url 'torneo:detalle_torneo' Torneo.id %}">{{ Torneo.nombre }}</a></span>
       <p>Fecha: {{ Torneo.fechaInicio }}</p>
       <div class="secondary-content">
-        <a href="#" data-target="delete" data-form="{% url 'torneo:eliminar_torneo' Torneo.id %}" class="delete-button">
+        {% if Torneo.activo %}
+        <a href="#modal_torneo" class="boton-eliminar modal-trigger" data-id="{{Torneo.id}}" data-nombre="{{Torneo.nombre}}">
           <i class="medium material-icons icon-red">delete</i>
         </a>
+        <a class="modal-trigger boton-cerrar" href="#modal_torneo" data-id="{{Torneo.id}}" data-nombre="{{Torneo.nombre}}">
+           <i class="medium material-icons icon-green">done_all</i>
+         </a>
         <a href="{% url 'torneo:editar_torneo' Torneo.id %}">
            <i class="medium material-icons icon-blue">mode_edit</i>
          </a>
+         {% else %}
+         <a href="{% url 'torneo:editar_registro' Torneo.id %}">
+            <i class="medium material-icons icon-blue">date_range</i>
+          </a>
+         {% endif %}
       </div>
     </li>
     {% empty %}
@@ -29,5 +38,38 @@
     <i class="material-icons waves-effect waves-light">add</i>
   </a>
   </div>
+  <div id="modal_torneo" class="modal">
+      <div class="modal-content">
+
+      </div>
+      <div class="modal-footer">
+
+      </div>
+  </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.modal').modal() ;
+        }) ;
+
+        $(".boton-eliminar").click(function(){
+            var id = $(this).attr("data-id") ;
+            var nombre = $(this).attr("data-nombre") ;
+            $(".modal-content").html("<h4>¿Desea eliminar el torneo <strong>" + nombre + "</strong>?</h4>") ;
+            var botones = '<a href="#cancelar" class="modal-action modal-close cancel cancel-delete">Cancelar</a>  <a href="eliminar/' + id + '" class="modal-action modal-close delete-color confirmar-eliminar">Aceptar</a>' ;
+            $(".modal-footer").html(botones) ;
+        });
+
+        $(".boton-cerrar").click(function(){
+            var id = $(this).attr("data-id") ;
+            var nombre = $(this).attr("data-nombre") ;
+            $(".modal-content").html("<h4>¿Desea cerrar el registro del torneo <strong>" + nombre + "</strong>?</h4>") ;
+            var botones = '<a href="#cancelar" class="modal-action modal-close cancel cancel-delete">Cancelar</a>  <a href="cerrar_registro/' + id + '" class="modal-action modal-close delete-color confirmar-eliminar">Aceptar</a>' ;
+            $(".modal-footer").html(botones) ;
+        });
+    </script>
 {% endblock %}

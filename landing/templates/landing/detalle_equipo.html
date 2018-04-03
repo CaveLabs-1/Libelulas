@@ -1,4 +1,9 @@
-{% extends "base.html" %} {% load static %} {% block main %}
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/landing/detalle-equipo.css' %}">
+{% endblock %}
+{% block main %}
 <div class="header">
   <div class="image-header"></div>
   <div class="container">
@@ -13,24 +18,92 @@
     </div>
   </div>
 </div>
-<div class="content team-detail">
+<div class="content">
   <div class="container">
     <h3>Estadísticas</h3>
-    <div class="card-list">
-      <div class="card team-player team">
-        <span class="card-title">MEJOR GOLEADORA</span>
+    <div class="card-list flex space-between">
+      <div class="card">
+        <span class="card-title"><strong>MEJOR GOLEADORA </strong></span>
+        <ul class="collection">
+          <li class="collection-item avatar big align-items">
+            <img src="{% static 'static_media/default.jpg' %}" class="circle big"/>
+            <h6><strong>Diana Mancera</strong></h6>
+            <h6 class="secondary-content top">5</h6>
+          </li>
+          <li class="collection-item avatar align-items">
+            <img src="{% static 'static_media/default.jpg' %}" class="circle"/>
+            <span>Diana Mancera</span>
+            <span class="secondary-content no-top">5</span>
+          </li>
+          <li class="collection-item avatar align-items">
+            <img src="{% static 'static_media/default.jpg' %}" class="circle"/>
+            <span>Diana Mancera</span>
+            <span class="secondary-content no-top">5</span>
+          </li>
+        </ul>
       </div>
-      <div class="card team-player team">
-        <span class="card-title">MÁS FALTAS COMETIDAS</span>
+      <div class="card">
+        <span class="card-title"><strong>MÁS FALTAS COMETIDAS </strong></span>
+        <ul class="collection">
+          <li class="collection-item avatar big align-items">
+            <img src="{% static 'static_media/default.jpg' %}" class="circle big"/>
+            <h6><strong>Diana Mancera</strong></h6>
+            <h6 class="secondary-content top">5</h6>
+          </li>
+          <li class="collection-item avatar align-items">
+            <img src="{% static 'static_media/default.jpg' %}" class="circle"/>
+            <span>Diana Mancera</span>
+            <span class="secondary-content no-top">5</span>
+          </li>
+          <li class="collection-item avatar align-items">
+            <img src="{% static 'static_media/default.jpg' %}" class="circle"/>
+            <span>Diana Mancera</span>
+            <span class="secondary-content no-top">5</span>
+          </li>
+        </ul>
       </div>
-      <div class="card team-player team">
-        <span class="card-title">MÁS AMONESTACIONES</span>
+      <div class="card">
+        <span class="card-title"><strong>MÁS AMONESTACIONES </strong></span>
+        <ul class="collection">
+          <li class="collection-item avatar big align-items">
+            <img src="{% static 'static_media/default.jpg' %}" class="circle big"/>
+            <h6><strong>Diana Mancera</strong></h6>
+            <h6 class="secondary-content top">5</h6>
+          </li>
+          <li class="collection-item avatar align-items">
+            <img src="{% static 'static_media/default.jpg' %}" class="circle"/>
+            <span>Diana Mancera</span>
+            <span class="secondary-content no-top">5</span>
+          </li>
+          <li class="collection-item avatar align-items">
+            <img src="{% static 'static_media/default.jpg' %}" class="circle"/>
+            <span>Diana Mancera</span>
+            <span class="secondary-content no-top">5</span>
+          </li>
+        </ul>
       </div>
-      <div class="card team-player team">
-        <span class="card-title">MÁS EXPULSIONES</span>
+      <div class="card">
+        <span class="card-title"><strong>MÁS EXPULSIONES </strong></span>
+        <ul class="collection">
+          <li class="collection-item avatar big align-items">
+            <img src="{% static 'static_media/default.jpg' %}" class="circle big"/>
+            <h6><strong>Diana Mancera</strong></h6>
+            <h6 class="secondary-content top">5</h6>
+          </li>
+          <li class="collection-item avatar align-items">
+            <img src="{% static 'static_media/default.jpg' %}" class="circle"/>
+            <span>Diana Mancera</span>
+            <span class="secondary-content no-top">5</span>
+          </li>
+          <li class="collection-item avatar align-items">
+            <img src="{% static 'static_media/default.jpg' %}" class="circle"/>
+            <span>Diana Mancera</span>
+            <span class="secondary-content no-top">5</span>
+          </li>
+        </ul>
       </div>
-      <div class="card campeonatos-ganados team">
-        <span class="card-title">CAMPEONATOS</span>
+      <div class="card campeonatos-ganados">
+        <span class="card-title"><strong>CAMPEONATOS</strong></span>
         <div class="campeonato">
           <div class="image-column">
             <div class="circle-icon circle">
@@ -45,16 +118,24 @@
       </div>
     </div>
     <h3>Jugadoras</h3>
-    <ul class="collection">
+    <div class="jugadoras card-container wrap flex space-between">
       {% for jugadora in jugadoras_equipo %}
-      <li class="collection-item avatar">
-        <img src="{{ jugadora.Imagen.url }}" alt="{{jugadora.Nombre}} imagen" class="circle"/>
-        <span class="title">{{jugadora.Nombre}} {{jugadora.Apellido}}</span>
-        <p>#{{jugadora.Numero}}</p>
-        <p>{{jugadora.get_Posicion_display}}</p>
-      </li>
+      <div class="card team-player">
+        <div class="card-image">
+          {% if jugadora.Imagen %}
+            <img src="{{ jugadora.Imagen.url }}" alt="{{jugadora.Nombre}} imagen" class="circle"/>
+          {% else %}
+            <img src="{% static 'static_media/default.jpg' %}" alt="{{jugadora.Nombre}} imagen" class="circle"/>
+          {% endif %}
+        </div>
+        <div class="card-content">
+          <h6 class="title"><strong>{{jugadora.Nombre}} {{jugadora.Apellido}}</strong></h6>
+          <p>#{{jugadora.Numero}}</p>
+          <p>{{jugadora.get_Posicion_display}}</p>
+        </div>
+      </div>
       {% endfor %}
-    </ul>
+    </div>
   </div>
 </div>
 {% endblock %}
