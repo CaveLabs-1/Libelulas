@@ -8,7 +8,7 @@
   <div class="image-header"></div>
   <div class="container">
     <div class="image-column">
-      <img src={{equipo.logo.url}} alt="{{equipo.nombre}} logo"/>
+      <img src={{equipo.logo.url}} alt="{{equipo.nombre}} logo" class="circle"/>
     </div>
     <div class="info-column">
       <h2>{{ equipo.nombre }}</h2>
@@ -25,96 +25,130 @@
       <div class="card">
         <span class="card-title"><strong>MEJOR GOLEADORA </strong></span>
         <ul class="collection">
-          <li class="collection-item avatar big align-items">
-            <img src="{% static 'static_media/default.jpg' %}" class="circle big"/>
-            <h6><strong>Diana Mancera</strong></h6>
-            <h6 class="secondary-content top">5</h6>
-          </li>
-          <li class="collection-item avatar align-items">
-            <img src="{% static 'static_media/default.jpg' %}" class="circle"/>
-            <span>Diana Mancera</span>
-            <span class="secondary-content no-top">5</span>
-          </li>
-          <li class="collection-item avatar align-items">
-            <img src="{% static 'static_media/default.jpg' %}" class="circle"/>
-            <span>Diana Mancera</span>
-            <span class="secondary-content no-top">5</span>
-          </li>
+          {% for goles in top_goles %}
+          {% if forloop.first %}
+              <li class="collection-item avatar big align-items">
+                {% if goles.jugadora__Imagen %}
+                  <img src="/media/{{goles.jugadora__Imagen}}" alt="{{goles.jugadora__Nombre}} imagen" class="circle big"/>
+                {% else %}
+                  <img src="{% static 'static_media/default.jpg' %}" alt="{{goles.jugadora__Nombre}} imagen" class="circle big"/>
+                {% endif %}
+                <h6><strong>{{ goles.jugadora__Nombre }} {{ goles.jugadora__Apellido }}</strong></h6>
+                <h6 class="secondary-content top">{{ goles.goles}}</h6>
+              </li>
+            {% else %}
+              <li class="collection-item avatar align-items">
+                {% if goles.jugadora__Imagen %}
+                  <img src="/media/{{ goles.jugadora__Imagen }}" alt="{{goles.jugadora__Nombre}} imagen" class="circle"/>
+                {% else %}
+                  <img src="{% static 'static_media/default.jpg' %}" alt="{{goles.jugadora__Nombre}} imagen" class="circle"/>
+                {% endif %}
+                <span>{{goles.jugadora__Nombre}} {{goles.jugadora__Apellido}}</span>
+                <span class="secondary-content no-top">{{ goles.goles }}</span>
+              </li>
+              {% endif %}
+          {% endfor %}
         </ul>
       </div>
       <div class="card">
-        <span class="card-title"><strong>MÁS FALTAS COMETIDAS </strong></span>
+        <span class="card-title"><strong>FAIR PLAY</strong></span>
         <ul class="collection">
-          <li class="collection-item avatar big align-items">
-            <img src="{% static 'static_media/default.jpg' %}" class="circle big"/>
-            <h6><strong>Diana Mancera</strong></h6>
-            <h6 class="secondary-content top">5</h6>
-          </li>
-          <li class="collection-item avatar align-items">
-            <img src="{% static 'static_media/default.jpg' %}" class="circle"/>
-            <span>Diana Mancera</span>
-            <span class="secondary-content no-top">5</span>
-          </li>
-          <li class="collection-item avatar align-items">
-            <img src="{% static 'static_media/default.jpg' %}" class="circle"/>
-            <span>Diana Mancera</span>
-            <span class="secondary-content no-top">5</span>
-          </li>
+          {% for ta in top_tarjetas_azules %}
+            {% if forloop.first %}
+              <li class="collection-item avatar big align-items">
+                {% if ta.jugadora__Imagen %}
+                  <img src="/media/{{ ta.jugadora__Imagen }}" alt="{{ta.jugadora__Nombre}} imagen" class="circle big"/>
+                {% else %}
+                  <img src="{% static 'static_media/default.jpg' %}" alt="{{ta.jugadora__Nombre}} imagen" class="circle big"/>
+                {% endif %}
+                <h6><strong>{{ta.jugadora__Nombre}} {{ta.jugadora__Apellido}}</strong></h6>
+                <h6 class="secondary-content top">{{ta.ta}}</h6>
+              </li>
+            {% else %}
+              <li class="collection-item avatar align-items">
+                {% if ta.jugadora__Imagen %}
+                  <img src="/media/{{ ta.jugadora__Imagen }}" alt="{{ta.jugadora__Nombre}} imagen" class="circle"/>
+                {% else %}
+                  <img src="{% static 'static_media/default.jpg' %}" alt="{{ta.jugadora__Nombre}} imagen" class="circle"/>
+                {% endif %}
+                <span>{{ta.jugadora__Nombre}} {{ta.jugadora__Apellido}}</span>
+                <span class="secondary-content no-top">{{ta.ta}}</span>
+              </li>
+            {% endif %}
+          {% endfor %}
         </ul>
       </div>
       <div class="card">
         <span class="card-title"><strong>MÁS AMONESTACIONES </strong></span>
         <ul class="collection">
-          <li class="collection-item avatar big align-items">
-            <img src="{% static 'static_media/default.jpg' %}" class="circle big"/>
-            <h6><strong>Diana Mancera</strong></h6>
-            <h6 class="secondary-content top">5</h6>
-          </li>
-          <li class="collection-item avatar align-items">
-            <img src="{% static 'static_media/default.jpg' %}" class="circle"/>
-            <span>Diana Mancera</span>
-            <span class="secondary-content no-top">5</span>
-          </li>
-          <li class="collection-item avatar align-items">
-            <img src="{% static 'static_media/default.jpg' %}" class="circle"/>
-            <span>Diana Mancera</span>
-            <span class="secondary-content no-top">5</span>
-          </li>
+          {% for tam in top_tarjetas_amarillas %}
+            {% if forloop.first %}
+              <li class="collection-item avatar big align-items">
+                {% if tam.jugadora__Imagen %}
+                  <img src="/media/{{ tam.jugadora__Imagen }}" alt="{{tam.jugadora__Nombre}} imagen" class="circle big"/>
+                {% else %}
+                  <img src="{% static 'static_media/default.jpg' %}" alt="{{tam.jugadora__Nombre}} imagen" class="circle big"/>
+                {% endif %}
+                <h6><strong>{{tam.jugadora__Nombre}} {{tam.jugadora__Apellido}}</strong></h6>
+                <h6 class="secondary-content top">{{tam.tam}}</h6>
+              </li>
+            {% else %}
+              <li class="collection-item avatar align-items">
+                {% if tam.jugadora__Imagen %}
+                  <img src="/media/{{ tam.jugadora__Imagen }}" alt="{{tam.jugadora__Nombre}} imagen" class="circle"/>
+                {% else %}
+                  <img src="{% static 'static_media/default.jpg' %}" alt="{{tam.jugadora__Nombre}} imagen" class="circle"/>
+                {% endif %}
+                <span>{{tam.jugadora__Nombre}} {{tam.jugadora__Apellido}}</span>
+                <span class="secondary-content no-top">{{tam.tam}}</span>
+              </li>
+            {% endif %}
+          {% endfor %}
         </ul>
       </div>
       <div class="card">
         <span class="card-title"><strong>MÁS EXPULSIONES </strong></span>
         <ul class="collection">
-          <li class="collection-item avatar big align-items">
-            <img src="{% static 'static_media/default.jpg' %}" class="circle big"/>
-            <h6><strong>Diana Mancera</strong></h6>
-            <h6 class="secondary-content top">5</h6>
-          </li>
-          <li class="collection-item avatar align-items">
-            <img src="{% static 'static_media/default.jpg' %}" class="circle"/>
-            <span>Diana Mancera</span>
-            <span class="secondary-content no-top">5</span>
-          </li>
-          <li class="collection-item avatar align-items">
-            <img src="{% static 'static_media/default.jpg' %}" class="circle"/>
-            <span>Diana Mancera</span>
-            <span class="secondary-content no-top">5</span>
-          </li>
+          {% for tr in top_tarjetas_rojas %}
+            {% if forloop.first %}
+              <li class="collection-item avatar big align-items">
+                {% if tr.jugadora__Imagen %}
+                  <img src="/media/{{ tr.jugadora__Imagen }}" alt="{{tr.jugadora__Nombre}} imagen" class="circle big"/>
+                {% else %}
+                  <img src="{% static 'static_media/default.jpg' %}" alt="{{tr.jugadora__Nombre}} imagen" class="circle big"/>
+                {% endif %}
+                <h6><strong>{{tr.jugadora__Nombre}} {{tr.jugadora__Apellido}}</strong></h6>
+                <h6 class="secondary-content top">{{tr.tr}}</h6>
+              </li>
+            {% else %}
+              <li class="collection-item avatar align-items">
+                {% if tr.jugadora__Imagen %}
+                  <img src="/media/{{ tr.jugadora__Imagen }}" alt="{{tr.jugadora__Nombre}} imagen" class="circle"/>
+                {% else %}
+                  <img src="{% static 'static_media/default.jpg' %}" alt="{{tr.jugadora__Nombre}} imagen" class="circle"/>
+                {% endif %}
+                <span>{{tr.jugadora__Nombre}} {{tr.jugadora__Apellido}}</span>
+                <span class="secondary-content no-top">{{tr.tr}}</span>
+              </li>
+            {% endif %}
+          {% endfor %}
         </ul>
       </div>
       <div class="card campeonatos-ganados">
         <span class="card-title"><strong>CAMPEONATOS</strong></span>
-        <div class="campeonato">
-          <div class="image-column">
-            <div class="circle-icon circle">
-              <img src="{% static 'static_media/trophy.svg' %}" />
+        {% for torneo in torneos_ganados %}
+          <div class="campeonato">
+            <div class="image-column">
+              <div class="circle-icon circle">
+                <img src="{% static 'static_media/trophy.svg' %}" />
+              </div>
             </div>
-          </div>
-          <div class="text-column">
-            <p>Libelulas<p>
-            <span class="small">2018</p>
-          </div>
-        </div>
+            <div class="text-column">
+              <p><strong>{{torneo.torneo__nombre}}</strong><p>
+                <span class="small">{{torneo.torneo__fechaInicio | date:"o"}}</p>
+                </div>
+              </div>
+        {% endfor %}
       </div>
     </div>
     <h3>Jugadoras</h3>
