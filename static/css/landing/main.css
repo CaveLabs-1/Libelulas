@@ -17,10 +17,9 @@
   position: relative;
   height: 100%;
   width: 100%;
-  background-image: url("../../static_media/hero-final-hd.jpg");
+  background-image: url("../../static_media/landing.jpg");
   position: fixed;
   z-index: -1;
-  background-position: right;
 }
 
 .hero>.container {
@@ -38,7 +37,7 @@
 }
 
 .hero>.container>.text>h6 {
-  max-width: 90%;
+  max-width: 80%;
   line-height: 28px;
   letter-spacing: 1px;
 }
@@ -160,4 +159,21 @@
 
 .vision {
   height: 60px !important;
+}
+
+.centered-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-text > p {
+  text-align: center;
+  max-width: 770px;
+  line-height: 160%;
+}
+
+.centered-text > .button {
+  margin-top:24px;
 }

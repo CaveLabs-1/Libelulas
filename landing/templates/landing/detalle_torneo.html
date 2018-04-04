@@ -1,6 +1,12 @@
-{% extends "base.html" %} {% load static %} {% block main %}
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/landing/torneo.css' %}">
+{% endblock %}
+{% block main %}
 <div class="header">
   <div class="image-header"></div>
+  <div class="cover"></div>
   <div class="container">
     <div class="info-column">
       <h2>{{ torneo.nombre }}</h2>
@@ -30,7 +36,7 @@
         </thead>
         <tbody>
           {% for stat in stats %}
-            
+
           <tr>
             <td>{{ forloop.counter }}</td>
             <td><img src="{{ stat.equipo.logo.url }}" alt="" class="circle" height="32" width="32"  style="vertical-align:middle"><a href="{% url 'landing:detalle_equipo' stat.equipo.id %}" >{{stat.equipo.nombre}}</a></td>
@@ -111,4 +117,3 @@
         };
     </script>
 {% endblock %}
-
