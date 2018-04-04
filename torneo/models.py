@@ -34,7 +34,7 @@ class Estadisticas(models.Model):
     perdidos = models.IntegerField(verbose_name="Perdidos", default=0)
     goles_favor = models.IntegerField(verbose_name="GF", default=0)
     goles_contra = models.IntegerField(verbose_name="GC", default=0)
-
+    ganador = models.BooleanField(default=False)
 
 class Jornada(models.Model):
     jornada = models.CharField(max_length=50)
