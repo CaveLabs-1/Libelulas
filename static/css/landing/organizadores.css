@@ -29,3 +29,8 @@
 .card .card-content > p {
   color: rgba(3,27,78,.7)
 }
+
+.header > .image-header {
+  background-image: url("../../static_media/organizadores.jpg");
+  background-position: top;
+}
