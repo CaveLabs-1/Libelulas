@@ -109,3 +109,9 @@ def carga_partidos(request):
         partidos = Partido.objects.filter(jornada=jornada)
         html = render_to_string('landing/lista_partidos.html', {'partidos':partidos,'jornada':jornada, 'datetime':datetime.date.today()})
         return HttpResponse(html)
+
+def landing(request):
+    start_date = datetime.date.today()
+    end_date = start_date+ datetime.timedelta(366)
+    t = Partido.objects.filter(fecha__range=(start_date, end_date)).order_by("fecha")[:3]
+    return render(request, 'landing/main.html', {'partidos': t})
