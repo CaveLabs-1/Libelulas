@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+<div class="title-container">
+  <h2 class="admin-title">Registrar Cédula - Partido {{partido}}</h2>
+</div>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col s5 input-field">
+      <select>
+        <option value="" disabled selected>Seleccione..</option>
+        <option value="1">Gol</option>
+        <option value="2">Tarjeta Amarilla</option>
+        <option value="3">Tarjeta Roja</option>
+        <option value="4">Tarjeta Azul</option>
+      </select>
+      <label>Evento</label>
+    </div>
+    <div class="col s5 input-field">
+      <select>
+        <option value="" disabled selected>Seleccione..</option>
+        {% for asistencia in asistencias %}
+          <option value="{{asistencia.jugadora.id}}">{{asistencia.jugadora.Nombre}} {{asistencia.jugadora.Apellido}}</option>
+        {% endfor %}
+      </select>
+      <label>Jugadora</label>
+    </div>
+    <div class="col s2 input-field">
+      <input id="cantidad" type="number" class="validate" min="1">
+      <label for="cantidad">Cantidad</label>
+    </div>
+  </div>
+  <div class="col s12">
+    <div class="container-button">
+      <button class="submit" >Guardar</button>
+    </div>
+  </div>
+</div>
+<br>
+
+{% include 'torneo/lista_eventos.html'%}
+
+{% endblock %}

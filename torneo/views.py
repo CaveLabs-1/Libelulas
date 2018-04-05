@@ -204,4 +204,10 @@ def registrar_cedula(request, id_partido):
     return
 
 def registrar_eventos(request, id_partido):
-    return
+    partido = get_object_or_404(Partido, id=id_partido)
+    amarillas = Tarjetas_amarillas.objects.filter(partido=partido)
+    rojas = Tarjetas_rojas.objects.filter(partido=partido)
+    azules = Tarjetas_azules.objects.filter(partido=partido)
+    goles = Goles.objects.filter(partido=partido)
+    asistencias = Asistencia.objects.filter(partido=partido)
+    return render(request, 'torneo/registrar_eventos.html', {'amarillas':amarillas,'rojas':rojas,'azules':azules,'goles':goles,'asistencias':asistencias, 'partido':id_partido})
