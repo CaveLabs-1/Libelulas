@@ -31,10 +31,11 @@ def ver_equipos(request):
 def detalle_equipo(request, pk):
     equipo = get_object_or_404(Equipo, pk=pk)
     jugadoras_equipo = Equipo.objects.get(id=pk).jugadoras.all()
-    top_goles = Goles.objects.values('jugadora__Nombre', 'jugadora__Apellido', 'jugadora__Imagen').annotate(goles=Sum('cantidad')).filter(pk__in=jugadoras_equipo).order_by('-goles')[:3]
-    top_tarjetas_azules = Tarjetas_azules.objects.values('jugadora__Nombre', 'jugadora__Apellido', 'jugadora__Imagen', 'jugadora_id').annotate(ta=Count('jugadora_id')).filter(pk__in=jugadoras_equipo).order_by('-ta')[:3]
-    top_tarjetas_amarillas = Tarjetas_amarillas.objects.values('jugadora__Nombre', 'jugadora__Apellido', 'jugadora__Imagen').annotate(tam=Sum('cantidad')).filter(pk__in=jugadoras_equipo).order_by('-tam')[:3]
-    top_tarjetas_rojas = Tarjetas_rojas.objects.values('jugadora__Nombre', 'jugadora__Apellido', 'jugadora__Imagen').annotate(tr=Count('jugadora_id')).filter(pk__in=jugadoras_equipo).order_by('-tr')[:3]
+    top_goles = Goles.objects.values('jugadora__Nombre', 'jugadora__Apellido', 'jugadora__Imagen').filter(jugadora__equipo=pk).annotate(goles=Sum('cantidad')).order_by('-goles')[:3]
+    top_tarjetas_azules = Tarjetas_azules.objects.values('jugadora__Nombre', 'jugadora__Apellido', 'jugadora__Imagen', 'jugadora_id').filter(jugadora__equipo=pk).annotate(ta=Count('jugadora_id')).order_by('-ta')[:3]
+    top_tarjetas_amarillas = Tarjetas_amarillas.objects.values('jugadora__Nombre', 'jugadora__Apellido', 'jugadora__Imagen').filter(jugadora__equipo=pk).annotate(tam=Sum('cantidad')).order_by('-tam')[:3]
+    top_tarjetas_rojas = Tarjetas_rojas.objects.values('jugadora__Nombre', 'jugadora__Apellido', 'jugadora__Imagen', 'jugadora_id').filter(jugadora__equipo=pk).annotate(tr=Count('jugadora_id')).order_by('-tr')[:3]
+    print(top_tarjetas_rojas)
     torneos_ganados = Estadisticas.objects.all().filter(ganador=True).filter(equipo=pk).values('torneo__nombre', 'torneo__fechaInicio')
     return render (request, 'landing/detalle_equipo.html', {
                                                             'equipo': equipo,
@@ -54,6 +55,14 @@ def detalle_partido(request, id_torneo, id_partido):
     asistencia = Asistencia.objects.filter(partido_id=id_partido).values('jugadora_id')
     jugadoras_local = Jugadora.objects.filter(id__in=asistencia).filter(equipo=partido.equipo_local_id)
     jugadoras_visitante = Jugadora.objects.filter(id__in=asistencia).filter(equipo=partido.equipo_visitante_id)
+    tarjetas_rojas_local = Tarjetas_rojas.objects.filter(partido=id_partido).filter(jugadora__equipo=partido.equipo_local_id)
+    tarjetas_rojas_visitante = Tarjetas_rojas.objects.filter(partido=id_partido).filter(jugadora__equipo=partido.equipo_visitante_id)
+    tarjetas_amarillas_local = Tarjetas_amarillas.objects.filter(partido=id_partido).filter(jugadora__equipo=partido.equipo_local_id)
+    tarjetas_amarillas_visitante = Tarjetas_amarillas.objects.filter(partido=id_partido).filter(jugadora__equipo=partido.equipo_visitante_id)
+    goles_local = Goles.objects.filter(partido=id_partido).filter(jugadora__equipo=partido.equipo_local_id)
+    goles_visitante = Goles.objects.filter(partido=id_partido).filter(jugadora__equipo=partido.equipo_visitante_id)
+    tarjetas_azul_local = Tarjetas_azules.objects.filter(partido=id_partido).filter(jugadora__equipo=partido.equipo_local_id)
+    tarjetas_azul_visitante = Tarjetas_azules.objects.filter(partido=id_partido).filter(jugadora__equipo=partido.equipo_visitante_id)
     return render(request, 'landing/partido.html', {
                                                     'torneo' : torneo,
                                                     'partido' : partido,
@@ -61,6 +70,14 @@ def detalle_partido(request, id_torneo, id_partido):
                                                     'equipo_visitante': equipo_visitante,
                                                     'jugadoras_local' : jugadoras_local,
                                                     'jugadoras_visitante': jugadoras_visitante,
+                                                    'tarjetas_rojas_local': tarjetas_rojas_local,
+                                                    'tarjetas_rojas_visitante': tarjetas_rojas_visitante,
+                                                    'tarjetas_amarillas_local': tarjetas_amarillas_local,
+                                                    'tarjetas_amarillas_visitante': tarjetas_amarillas_visitante,
+                                                    'goles_local': goles_local,
+                                                    'goles_visitante': goles_visitante,
+                                                    'tarjetas_azul_local': tarjetas_azul_local,
+                                                    'tarjetas_azul_visitante': tarjetas_azul_visitante,
                                                      })
 
 def ver_torneos(request):

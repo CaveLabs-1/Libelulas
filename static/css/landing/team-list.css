@@ -20,6 +20,11 @@
   overflow: hidden;
 }
 
+.card-image > img {
+  width:100%;
+  height: 100% !important;
+}
+
 .header > .image-header {
   background-image: url("../../static_media/equipos.jpg");
   background-position: 50% -0;
