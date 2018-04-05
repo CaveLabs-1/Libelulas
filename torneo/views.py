@@ -202,3 +202,6 @@ def mandar_codigoCedula(request, torneo_id, jornada_id):
 
 def registrar_cedula(request, id_partido):
     return
+
+def registrar_eventos(request, id_partido):
+    return
