@@ -70,6 +70,7 @@ class Tarjetas_amarillas(models.Model):
 class Tarjetas_rojas(models.Model):
     partido = models.ForeignKey(Partido, on_delete = models.CASCADE)
     jugadora = models.ForeignKey(Jugadora, on_delete = models.CASCADE)
+    directa = models.BooleanField(default=False)
 
 class Tarjetas_azules(models.Model):
     partido = models.ForeignKey(Partido, on_delete = models.CASCADE)
@@ -78,8 +79,10 @@ class Tarjetas_azules(models.Model):
 class Goles(models.Model):
     partido = models.ForeignKey(Partido, on_delete = models.CASCADE)
     jugadora = models.ForeignKey(Jugadora, on_delete = models.CASCADE)
+    equipo = models.ForeignKey(Equipo, on_delete = models.CASCADE)
     cantidad = models.IntegerField(default = 0)
 
 class Asistencia(models.Model):
     partido = models.ForeignKey(Partido, on_delete = models.CASCADE)
     jugadora = models.ForeignKey(Jugadora, on_delete = models.CASCADE)
+    equipo = models.ForeignKey(Equipo, on_delete = models.CASCADE)
