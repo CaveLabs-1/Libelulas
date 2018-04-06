@@ -459,3 +459,58 @@ class EditarPartidoTest(TestCase):
         partido = Partido.objects.all()[:1].get()
         response = self.client.get(reverse('torneo:registrar_eventos',kwargs={'id_partido':partido.id}))
         self.assertEqual(str(response.context['partido']), partido.id)
+
+
+
+    def test_PDF_Cedula(self):
+
+        self.client.login(username='testuser2', password='12345')
+
+        e = Equipo.objects.create(
+            id=15,
+            nombre='Equipoasds',
+            representante='Juanito López',
+            telefono='4423471577',
+            correo='juanito@mail.com',
+            colorLocal='1',
+            colorVisitante='1',
+            cancha='Qro',
+            dia='1',
+            hora=datetime.datetime.now()
+        )
+        f = Equipo.objects.create(
+            id=20,
+            nombre='Equipos55',
+            representante='Juanito López',
+            telefono='4423471577',
+            correo='juanito@mail.com',
+            colorLocal='1',
+            colorVisitante='1',
+            cancha='Qro',
+            dia='2',
+            hora=datetime.datetime.now()
+        )
+
+        t1 = Torneo.objects.create(
+            id=5,
+            nombre="Torneo PRueba133",
+            categoria="1995",
+            fechaInicio='2010-12-12',
+            costo=int(12.12),
+            fechaJunta='1995-11-11',
+            costoCredencial=12,
+            activo=True
+        )
+        e.save()
+        f.save()
+        t1.save()
+        for equipo in Equipo.objects.all():
+            estadistica = Estadisticas(equipo=equipo, torneo=t1)
+            estadistica.save()
+
+        resp = self.client.get('/torneo/cerrar_registro/5', follow=True)
+
+        # Existe el partido
+        resp2 = self.client.get('/torneo/mandar_Cedula/' + str(t1.jornada_set.all().first().partido_set.all().first()))
+        self.assertTrue(resp2.status_code == 200)
+
