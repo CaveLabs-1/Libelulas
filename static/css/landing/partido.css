@@ -6,49 +6,213 @@
   padding-bottom: 6em;
 }
 
-.header .logo > img {
-  height:200px;
+.header .logo>img {
+  height: 200px;
   width: 200px;
-
 }
 
 .header .row {
   flex-direction: row;
 }
 
+.header .row h6 {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.torneo>h5 {
+  text-transform: uppercase;
+}
 
 .header .logo {
   display: flex;
   align-items: center;
   flex-direction: column;
+  width: auto !important;
+  padding-right: 24px;
+  padding-left: 24px;
 }
 
 .team {
-  width:35%;
+  width: 35%;
 }
 
-/* borrar color despues */
 .team-name {
-  background-color: #F19800;
-  padding: 5px 12px 12px 24px;
+  padding: 2px 0 2px 0;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.5px;
 }
 
 .collection {
-  margin-top: -7px;
+  margin-top: -0px;
+}
+
+.collection-item>.item-container {
+  align-items: center;
+  color: rgba(3, 27, 78, .7);
+}
+
+.collection-item:nth-of-type(2n) {
+  background-color: #f7f8fb !important;
+}
+
+.collection-item:hover {
+  background-color: #e0e0e0 !important;
+}
+
+.num {
+  width: 10%;
 }
 
 .nombre {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 80%;
+  width: 60%;
+}
+
+.pos {
+  width: 15%;
+}
+
+.icons {
+  width: 20%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.collection-item>.item-container>.pos {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.center-container {
+  flex-grow: 1;
 }
 
 .field {
-  flex-grow: 2;
   background-image: url("../../static_media/field.svg");
   background-position: center;
   background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 40em;
+}
+
+.local {
+  background-color: black;
+  color: white;
+}
+
+.visitante {
+  border: 2px solid black;
+}
+
+.team-container {
+  width: 30%;
+}
+
+.field-row {
+  width: 100%;
+  display: flex;
+  height: 13%;
+}
+
+.portero {
+  justify-content: center;
+}
+
+.defensa, .medio, .delantero {
+  justify-content: space-around;
+}
+
+.shirt {
+  width: 40px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shirt-local {
+  background-image: url('../../static_media/shirt.svg');
+  color: white;
+}
+
+.shirt-visitante {
+  background-image: url('../../static_media/shirtv.svg');
+}
+
+.tarjeta {
+  height: 25px;
+  width: 15px;
+  border-radius: 2px;
+}
+
+.tr {
+  background-color: #ff7777;
+}
+
+.tam {
+  background-color: #ffaf54;
+}
+
+.ta {
+  background-color: #7ccefc;
+}
+
+.gol {
+  height: 20px;
+  width: 20px;
+  background-image: url('../../static_media/ball.svg');
+  background-position: center;
   background-size: cover;
-  height: 75vh;
+}
+
+@media (min-width: 360px) and (max-width: 1060px) {
+  .content>.container {
+    flex-direction: column;
+  }
+  .team-container {
+    width: 100%;
+  }
+  .team-container>.local {
+    margin-bottom: 24px;
+  }
+  .team-container>.visitante {
+    margin-top: 24px;
+  }
+  .field {
+    height: 75em;
+  }
+  .pos {
+    width: 10%;
+  }
+  .content {
+    padding-top: 3em;
+    padding-bottom: 3em;
+  }
+  .team>.logo {
+    align-self: center;
+  }
+  .team>.logo>img {
+    display: none;
+  }
+  .header .row {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 767px) {
+  .header .container {
+    flex-direction: column;
+  }
+  .header .container .logo>img {
+    height: 100px;
+    width: 100px;
+  }
+  .header .container .logo {
+    padding: 0;
+  }
+  .field {
+    height: 50em;
+  }
 }

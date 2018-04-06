@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+<form class="container" method="POST">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col s12 m12 l12 center">
+      <h6>Plan Libélula de Desarrollo Integral</h6>
+      <h5>Cédula Arbitral</h5>
+    </div>
+    <div class="col s12 m12 l12 center">
+      <h6>Estadio: Santiago Bernabeu</h6>
+      <h6>Jueves 5 de abril de 2018 - 18:00 hrs.</h6>
+    </div>
+  </div>
+  <!-- Versión de Escritorio -->
+  <div class="row hide-on-small-only">
+    <div class="col m4 l4 center">
+      <h5>Real Madrid</h5>
+    </div>
+    <div class="input-field col m2 l2">
+      <input value="2" id="goles_local" name="goles_local" type="number" min="0" max="20">
+    </div>
+    <div class="input-field col m2 l2">
+      <input value="2" id="goles_visitante" name="goles_visitante" type="number" min="0" max="20">
+    </div>
+    <div class="col m4 l4 center">
+      <h5>Barcelona</h5>
+    </div>
+  </div>
+  <!-- Versión Móvil -->
+  <div class="row hide-on-med-and-up">
+    <div class="col s8">
+      <h5>Real Madrid</h5>
+    </div>
+    <div class="input-field col s4">
+      <input value="2" id="goles_local" name="goles_local" type="number" min="0" max="20">
+    </div>
+    <div class="col s8">
+      <h5>Barcelona</h5>
+    </div>
+    <div class="input-field col s4">
+      <input value="2" id="goles_visitante" name="goles_visitante" type="number" min="0" max="20">
+    </div>
+  </div>
+  <div class="row">
+    <!-- Jugadoras Equipo Local -->
+    <div class="col s12 m12 l12">
+      <table class="striped">
+        <thead>
+          <tr>
+            <th>Real Madrid</th>
+            <th>Barcelona</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <label>
+                <input id="5" name="asistencia" type="checkbox">
+                <span>María Anastasia Rodríguez Alfaro</span>
+              </label>
+            </td>
+            <td>
+              <label>
+                <input id="6" name="asistencia" type="checkbox">
+                <span>María Anastasia Rodríguez Alfaro</span>
+              </label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12 m12 l12">
+      <textarea id="notas" class="materialize-textarea"></textarea>
+      <label for="notas">Notas</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12 l12 m12 center">
+      <button class="btn" type="submit">Enviar</button>
+    </div>
+  </div>
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/js/materialize.min.js"></script>
+<script src=" https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js "></script>
+<script>
+    $(document).ready(function(){
+        var csrftoken = $.cookie('csrftoken');
+        function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+        $('select').formSelect();
+    });
+
+    $(document).ready(function() {
+      $('input[type=checkbox]').change(function(e) {
+        var url = '{% url "torneo:registrar_asistencia" %}';
+        var id_partido = {{ id_partido }} ;
+        var id_jugadora = $(this).attr('id') ;
+        var estado = $(this).is(":checked") ;
+        var contexto = {"id_partido":id_partido, "id_jugadora":id_jugadora, "estado":estado} ;
+        $.post(url,contexto).done(function(data){
+          alert(data) ;
+        });
+      });
+    });
+
+</script>
+{% endblock %}

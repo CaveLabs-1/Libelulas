@@ -6,13 +6,18 @@ from django.contrib import messages
 from django.shortcuts import get_object_or_404
 from torneo.models import *
 from equipo.models import Equipo
+from jugadora.models import Jugadora
 from django.views.generic.list import ListView
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
 from django.template.loader import render_to_string
+from django.db.models import Sum, Count
 from django.utils import timezone
 import datetime
 import uuid
+from weasyprint import HTML, CSS
+from django.template.loader import get_template
+from django.http import HttpResponse
 
 def lista_torneos(request):
     lista_torneos = Torneo.objects.all()
@@ -169,7 +174,7 @@ def carga_partidos(request):
         id_jornada= int(request.POST.get('jornada'))
         jornada = get_object_or_404(Jornada, id=id_jornada)
         partidos = Partido.objects.filter(jornada=jornada)
-        html = render_to_string('torneo/lista_partidos.html', {'partidos':partidos,'jornada':jornada})
+        html = render_to_string('torneo/lista_partidos.html', {'partidos':partidos,'jornada':jornada,'id_jornada':id_jornada})
         return HttpResponse(html)
 
 def editar_partido(request, id_partido):
@@ -185,3 +190,146 @@ def editar_partido(request, id_partido):
         else:
             messages.warning(request, 'Hubo un error en la forma')
     return render(request, 'torneo/editar_partido.html', {'form': form, 'partido':partido})
+
+def mandar_codigoCedula(request, torneo_id, jornada_id):
+
+    torneo = get_object_or_404(Torneo, id=torneo_id)
+    jornada = get_object_or_404(torneo.jornada_set.all(), id=jornada_id)
+
+    html_template = render_to_string('torneo/pdf_template.html', {'torneo':torneo,'jornada':jornada})
+    pdf_file = HTML(string=html_template).write_pdf()
+    response = HttpResponse(pdf_file, content_type='application/pdf')
+    response['Content-Disposition'] = 'filename="home_page.pdf"'
+    return response
+
+
+def mandar_Cedula(request, partido_id):
+
+    partido = Partido.objects.get(id = partido_id)
+
+    html_template = render_to_string('torneo/CedulaPDF_template.html', {'partido':partido})
+    pdf_file = HTML(string=html_template).write_pdf()
+    response = HttpResponse(pdf_file, content_type='application/pdf')
+    response['Content-Disposition'] = 'filename="home_page.pdf"'
+    return response
+  
+def registrar_cedula(request, id_partido):
+    return render(request, 'torneo/registrar_cedula.html', {'id_partido':id_partido})
+
+def registrar_asistencia(request):
+    if request.method == "POST":
+        id_partido = int(request.POST.get('id_partido'))
+        id_jugadora = int(request.POST.get('id_jugadora'))
+        estado = True if request.POST.get('estado') == 'true' else False
+        respuesta = "Nunca entra el culo."
+        if estado:
+            asistencia = Asistencia.objects.create(partido=id_partido, jugadora=id_jugadora)
+            asistencia.save()
+        else:
+            asistencia = Asistencia.objects.get(partido=id_partido, jugadora=id_jugadora)
+            asistencia.delete()
+    return HttpResponse(respuesta)
+
+def registrar_eventos(request, id_partido):
+    partido = get_object_or_404(Partido, id=id_partido)
+    amarillas = Tarjetas_amarillas.objects.filter(partido=partido)
+    rojas = Tarjetas_rojas.objects.filter(partido=partido)
+    azules = Tarjetas_azules.objects.filter(partido=partido)
+    goles = Goles.objects.filter(partido=partido)
+    asistencias = Asistencia.objects.filter(partido=partido)
+
+    if request.method == 'POST':
+        cantidad = int(request.POST.get('cantidad'))
+        evento = int(request.POST.get('evento'))
+        id_jugadora = int(request.POST.get('jugadora'))
+        jugadora = get_object_or_404(Jugadora, id=id_jugadora)
+        tarjetas_rojas = Tarjetas_rojas.objects.filter(partido=partido, jugadora=jugadora).count()
+        tarjetas_azules = Tarjetas_azules.objects.filter(partido=partido, jugadora=jugadora).count()
+        goles_local = Goles.objects.values('cantidad').filter(equipo=partido.equipo_local).aggregate(cantidad=Sum('cantidad'))
+        if goles_local['cantidad'] is None: goles_local['cantidad'] = 0
+        goles_visitante = Goles.objects.values('cantidad').filter(equipo=partido.equipo_visitante).aggregate(cantidad=Sum('cantidad'))
+        if goles_visitante['cantidad'] is None: goles_visitante['cantidad'] = 0
+
+        if evento == 1:
+            if cantidad > 0:
+                registro = Asistencia.objects.get(partido=partido,jugadora=jugadora)
+                if registro.equipo == partido.equipo_local:
+                    if goles_local['cantidad'] + cantidad <= partido.goles_local:
+                        gol = gol = Goles.objects.create(partido=partido, jugadora=jugadora, cantidad=cantidad, equipo=registro.equipo)
+                        gol.save()
+                elif registro.equipo == partido.equipo_visitante:
+                    if goles_visitante['cantidad'] + cantidad <= partido.goles_visitante:
+                        gol = gol = Goles.objects.create(partido=partido, jugadora=jugadora, cantidad=cantidad, equipo=registro.equipo)
+                        gol.save()
+
+        elif evento == 2:
+            if cantidad > 0 and tarjetas_rojas == 0:
+                tarjetas = Tarjetas_amarillas.objects.filter(partido=partido, jugadora=jugadora).aggregate(cantidad=Sum('cantidad'))
+                if tarjetas['cantidad'] is None: tarjetas['cantidad'] = 0
+                if tarjetas['cantidad'] == 0:
+                    if cantidad == 1:
+                        amarilla = Tarjetas_amarillas.objects.create(partido=partido, jugadora=jugadora, cantidad=cantidad)
+                        amarilla.save()
+                    elif cantidad == 2:
+                        amarilla = Tarjetas_amarillas.objects.create(partido=partido, jugadora=jugadora, cantidad=cantidad)
+                        amarilla.save()
+                        roja = Tarjetas_rojas.objects.create(partido=partido, jugadora=jugadora)
+                        roja.save()
+                elif tarjetas['cantidad'] == 1:
+                    if cantidad == 1:
+                        amarilla = Tarjetas_amarillas.objects.create(partido=partido, jugadora=jugadora, cantidad=cantidad)
+                        amarilla.save()
+                        roja = Tarjetas_rojas.objects.create(partido=partido, jugadora=jugadora)
+                        roja.save()
+
+        elif evento == 3:
+            if tarjetas_rojas == 0:
+                roja = Tarjetas_rojas.objects.create(partido=partido, jugadora=jugadora, directa=True)
+                roja.save()
+
+        elif evento == 4:
+            if tarjetas_azules == 0:
+                azul = Tarjetas_azules.objects.create(partido=partido, jugadora=jugadora)
+                azul.save()
+
+        amarillas = Tarjetas_amarillas.objects.filter(partido=partido)
+        rojas = Tarjetas_rojas.objects.filter(partido=partido)
+        azules = Tarjetas_azules.objects.filter(partido=partido)
+        goles = Goles.objects.filter(partido=partido)
+        asistencias = Asistencia.objects.filter(partido=partido)
+
+        html = render_to_string('torneo/lista_eventos.html', {'amarillas':amarillas,'rojas':rojas,'azules':azules,'goles':goles,'asistencias':asistencias, 'partido':partido})
+        return HttpResponse(html)
+
+    return render(request, 'torneo/registrar_eventos.html', {'amarillas':amarillas,'rojas':rojas,'azules':azules,'goles':goles,'asistencias':asistencias, 'partido':partido})
+
+def eliminar_evento(request, id_partido):
+    partido = get_object_or_404(Partido, id=id_partido)
+    if request.method == 'POST':
+        evento = int(request.POST.get('evento'))
+        id = int(request.POST.get('id'))
+
+        if evento == 1:
+            gol = Goles.objects.get(id=id)
+            gol.delete()
+
+        elif evento == 2:
+            tarjeta = Tarjetas_amarillas.objects.get(id=id)
+            tarjeta.delete()
+
+        elif evento == 3:
+            tarjeta = Tarjetas_rojas.objects.get(id=id)
+            tarjeta.delete()
+
+        elif evento == 4:
+            tarjeta = Tarjetas_azules.objects.get(id=id)
+            tarjeta.delete()
+
+        amarillas = Tarjetas_amarillas.objects.filter(partido=partido)
+        rojas = Tarjetas_rojas.objects.filter(partido=partido)
+        azules = Tarjetas_azules.objects.filter(partido=partido)
+        goles = Goles.objects.filter(partido=partido)
+        asistencias = Asistencia.objects.filter(partido=partido)
+
+        html = render_to_string('torneo/lista_eventos.html', {'amarillas':amarillas,'rojas':rojas,'azules':azules,'goles':goles,'asistencias':asistencias, 'partido':id_partido, 'partido':partido})
+        return HttpResponse(html)

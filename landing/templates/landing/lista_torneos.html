@@ -1,8 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/landing/torneo.css' %}">
+{% endblock %}
 {% block main %}
 <div class="header small-header">
   <div class="image-header"></div>
+  <div class="cover"></div>
   <div class="container">
     <h2>Torneos</h2>
   </div>
@@ -11,6 +15,7 @@
   <div class="container">
     <ul class="collection">
       {% for torneo in torneos %}
+      {% if not torneo.activo %}
       <a href="{% url 'landing:detalle_torneo' torneo.id %}">
         <li class="collection-item avatar listado">
           <span class="title">{{torneo.nombre}}</span>
@@ -18,6 +23,7 @@
           <p>Categoría: {{ torneo.categoria }}</p>
         </li>
       </a>
+      {% endif %}
       {% endfor %}
     </ul>
   </div>

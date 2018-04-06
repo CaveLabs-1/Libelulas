@@ -6,12 +6,13 @@
 {% block main %}
 <div class="header small-header">
   <div class="image-header"></div>
+  <div class="cover"></div>
   <div class="container">
     <h2>Equipos</h2>
   </div>
 </div>
 <div class="content team-list">
-  <div class="container">
+  <div class="container wrap">
     {% for equipo in equipos %}
     <div class="card">
       <a href="{% url 'landing:detalle_equipo' equipo.id %}">
@@ -20,7 +21,6 @@
         </div>
         <div class="card-content">
           <h6 class="title"><strong>{{equipo.nombre}}</strong></h6>
-          <span>Posicion</span>
         </div>
       </a>
     </div>
