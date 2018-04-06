@@ -39,8 +39,7 @@
        </div>
        <div class="card-content">
           <p>{{p.jornada.torneo.nombre }}</p>
-         <p>{{p.fecha}}</p>
-         <p>{{p.hora|time:"P"}}</p>
+<p>{{p.fecha|date:"D d M Y"}} - {{p.hora|time:"P"}}</p> 
          <p>Cancha: {{p.cancha}}</p>
        </div>
      </div>
