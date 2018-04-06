@@ -226,13 +226,12 @@ class LandingTestCase(TestCase):
         resp = self.client.get('/torneos/2')
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(t1,resp.context['torneo'])
-        self.assertTrue(resp.context['jornadas'].exists())
+
 
         # Entrar a un Torneo NO cerrado
         resp = self.client.get('/torneos/5')
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(t3,resp.context['torneo'])
-        self.assertFalse(resp.context['jornadas'].exists())
 
     def test_ver_partido(self):
         response = self.client.get('/torneos/1/partido/0')
