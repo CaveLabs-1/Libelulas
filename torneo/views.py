@@ -202,6 +202,17 @@ def mandar_codigoCedula(request, torneo_id, jornada_id):
     response['Content-Disposition'] = 'filename="home_page.pdf"'
     return response
 
+
+def mandar_Cedula(request, partido_id):
+
+    partido = Partido.objects.get(id = partido_id)
+
+    html_template = render_to_string('torneo/CedulaPDF_template.html', {'partido':partido})
+    pdf_file = HTML(string=html_template).write_pdf()
+    response = HttpResponse(pdf_file, content_type='application/pdf')
+    response['Content-Disposition'] = 'filename="home_page.pdf"'
+    return response
+  
 def registrar_cedula(request, id_partido):
     return
 
