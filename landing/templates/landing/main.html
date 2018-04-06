@@ -39,14 +39,14 @@
        </div>
        <div class="card-content">
           <p>{{p.jornada.torneo.nombre }}</p>
-<p>{{p.fecha|date:"D d M Y"}} - {{p.hora|time:"P"}}</p> 
+          <p>{{p.fecha|date:"D d M Y"}} - {{p.hora|time:"P"}}</p>
          <p>Cancha: {{p.cancha}}</p>
        </div>
      </div>
         {% endfor %}
    </div>
    <div class="cta-container">
-     <div class="button secondary-button"><a href="{% url 'torneo:lista_torneos' %}">Ver todos los torneos</a></div>
+     <div class="button secondary-button"><a href="{% url 'landing:ver_torneos' %}">Ver todos los torneos</a></div>
    </div>
    <div class="mision-vision">
      <div class="column">
