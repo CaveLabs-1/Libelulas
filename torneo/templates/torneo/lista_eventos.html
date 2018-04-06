@@ -1,0 +1,104 @@
+
+  <h5>Goles</h5>
+  <br>
+  {% if goles %}
+  <table class="centered">
+    <thead>
+      <tr>
+        <th>Jugadora</th>
+        <th>Cantidad</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    {% for gol in goles %}
+    <tr>
+      <td>{{ gol.jugadora }}</td>
+      <td>{{ gol.cantidad }}</td>
+      <td>
+        <a href="#" data-target="delete" data-form="" class="delete-button">
+          <i class="small material-icons icon-red" onclick="elimina_evento({{gol.id}},1)">delete</i>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  <table>
+  {% else %}
+    No hay goles registrados.
+  {% endif %}
+  <br>
+  <h5>Tarjetas Amarillas</h5>
+  <br>
+  {% if amarillas %}
+  <table class="centered">
+    <thead>
+      <tr>
+        <th>Jugadora</th>
+        <th>Cantidad</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    {% for tarjeta in amarillas %}
+    <tr>
+      <td>{{ tarjeta.jugadora }}</td>
+      <td>{{ tarjeta.cantidad }}</td>
+      <td>
+        <a href="#" data-target="delete" data-form="" class="delete-button">
+          <i class="small material-icons icon-red" onclick="elimina_evento({{tarjeta.id}},2)">delete</i>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  <table>
+  {% else %}
+    No hay tarjetas registradas.
+  {% endif %}
+  <br>
+  <h5>Tarjetas Rojas</h5>
+  <br>
+  {% if rojas %}
+  <table class="centered">
+    <thead>
+      <tr>
+        <th>Jugadora</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    {% for tarjeta in rojas %}
+    <tr>
+      <td>{{ tarjeta.jugadora }}</td>
+      <td>
+        <a href="#" data-target="delete" data-form="" class="delete-button">
+          <i class="small material-icons icon-red" onclick="elimina_evento({{tarjeta.id}},3)">delete</i>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  <table>
+  {% else %}
+    No hay tarjetas registradas.
+  {% endif %}
+  <br>
+  <h5>Tarjetas Azules</h5>
+  <br>
+  {% if azules %}
+  <table class="centered">
+    <thead>
+      <tr>
+        <th>Jugadora</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    {% for tarjeta in azules %}
+    <tr>
+      <td>{{ tarjeta.jugadora }}</td>
+      <td>
+        <a href="#" data-target="delete" data-form="" class="delete-button" onclick="elimina_evento({{tarjeta.id}},4)">
+          <i class="small material-icons icon-red">delete</i>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  <table>
+  {% else %}
+    No hay tarjetas registradas.
+  {% endif %}
