@@ -157,6 +157,83 @@ class LandingTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['equipo'], Equipo.objects.all().get(id=1))
 
+
+    def test_ver_tablaGeneral(self):
+        self.client.login(username='testuser2', password='12345')
+
+        e = Equipo.objects.create(
+            id=5,
+            nombre='Equipos',
+            representante='Juanito López',
+            logo='j.jpg',
+            telefono='4423471577',
+            correo='juanito@mail.com',
+            colorLocal='1',
+            colorVisitante='1',
+            cancha='Qro',
+            dia='1',
+            hora=datetime.datetime.now()
+        )
+        f = Equipo.objects.create(
+            id=6,
+            nombre='Equipos2',
+            logo='j.jpg',
+            representante='Juanito López',
+            telefono='4423471577',
+            correo='juanito@mail.com',
+            colorLocal='1',
+            colorVisitante='1',
+            cancha='Qro',
+            dia='2',
+            hora=datetime.datetime.now()
+        )
+
+        t1 = Torneo.objects.create(
+            id=2,
+            nombre="Torneo PRueba",
+            categoria="1995",
+            fechaInicio='2017-12-12',
+            costo=int(12.12),
+            fechaJunta='1995-11-11',
+            costoCredencial=12,
+            activo=True
+        )
+        t3 = Torneo.objects.create(
+            id=5,
+            nombre="Torneo PRueba",
+            categoria="1995",
+            fechaInicio='2017-12-12',
+            costo=int(12.12),
+            fechaJunta='1995-11-11',
+            costoCredencial=12,
+            activo=True
+        )
+        e.save()
+        f.save()
+        t1.save()
+        t3.save()
+        for equipo in Equipo.objects.all():
+            estadistica = Estadisticas(equipo=equipo, torneo=t1)
+            estadistica.save()
+
+        resp = self.client.get('/torneo/cerrar_registro/2', follow=True)
+
+        # Entrar a un Torneo No Existente
+        resp = self.client.get('/torneos/3')
+        self.assertEqual(resp.status_code, 404)
+
+        # Entrar a un Torneo Ya cerrado
+        resp = self.client.get('/torneos/2')
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(t1,resp.context['torneo'])
+        self.assertTrue(resp.context['jornadas'].exists())
+
+        # Entrar a un Torneo NO cerrado
+        resp = self.client.get('/torneos/5')
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(t3,resp.context['torneo'])
+        self.assertFalse(resp.context['jornadas'].exists())
+
     def test_ver_partido(self):
         response = self.client.get('/torneos/1/partido/0')
         self.assertEqual(response.status_code, 404)
@@ -175,3 +252,4 @@ class LandingTestCase(TestCase):
         self.assertQuerysetEqual(response.context['tarjetas_amarillas_visitante'], [])
         self.assertQuerysetEqual(response.context['goles_local'], [])
         self.assertQuerysetEqual(response.context['goles_visitante'].values('cantidad'), ["{'cantidad': 1}"])
+
