@@ -16,5 +16,6 @@ urlpatterns = [
     path('carga_partidos/', views.carga_partidos, name='carga_partidos'),
     path('editar_partido/<slug:id_partido>', views.editar_partido, name='editar_partido'),
     path('mandar_codigoCedula/<int:torneo_id>/<int:jornada_id>', views.mandar_codigoCedula, name='mandar_codigoCedula'),
+    path('mandar_Cedula/<slug:partido_id>', views.mandar_Cedula, name='mandar_cedula'),
 
 ]
