@@ -20,6 +20,7 @@
   background-image: url("../../static_media/landing.jpg");
   position: fixed;
   z-index: -1;
+  background-position: center;
 }
 
 .hero>.container {
@@ -76,6 +77,8 @@
   justify-content: center;
   padding-top: 37px;
   padding-bottom: 24px;
+  background-image: url('../../static_media/line.png');
+  background-position: center;
 }
 
 .vs-container {
@@ -89,10 +92,11 @@
 }
 
 .vs-circle {
+  background-color: white;
+  color: #031b4e;
+  letter-spacing: 0.7px;
   height: 57px;
   width: 57px;
-  background-color: #009CDE;
-  /* background-image: linear-gradient(307deg, #67caff, #6797ff); */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,10 +110,13 @@
   width: 100%;
 }
 
+.match .team {
+  border-radius: 50% !important;
+}
+
 .card-content {
   color: #fff;
   background-color: #009CDE;
-  /* background-image: linear-gradient(271deg, #67bbff, #679fff); */
   border-radius: 0 0 5px 5px !important;
 }
 
@@ -168,12 +175,42 @@
   align-items: center;
 }
 
-.centered-text > p {
+.centered-text>p {
   text-align: center;
   max-width: 770px;
   line-height: 160%;
 }
 
-.centered-text > .button {
-  margin-top:24px;
+.centered-text>.button {
+  margin-top: 24px;
+}
+
+@media (min-width: 500px) and (max-width: 530px) {
+  h1 {
+    font-size: 4.5em;
+    line-height: 115%;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 499px) {
+  h1 {
+    font-size: 3.5em;
+    line-height: 115%;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 1060px) {
+  .hero>.container>.text {
+    max-width: 100%;
+  }
+  .card-container {
+    justify-content: center;
+  }
+  .centered-text>h3 {
+    text-align: center;
+  }
+  .content {
+    padding-top: 3em;
+    padding-bottom: 5em;
+  }
 }

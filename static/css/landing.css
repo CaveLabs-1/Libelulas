@@ -24,6 +24,10 @@ body {
   cursor: pointer;
 }
 
+.sidenav .anchor {
+  color: #031b4e !important;
+}
+
 .mobile-nav {
   background-color: transparent !important;
   position: fixed;
@@ -359,11 +363,17 @@ a {
   .team-detail .team-player {
     max-width: 100%;
   }
+
 }
 
 @media (min-width: 360px) and (max-width: 1060px) {
   .card-list {
     justify-content: center;
+  }
+
+  .content {
+    padding-top: 3em;
+    padding-bottom: 3em;
   }
 
   .navbar {
@@ -375,10 +385,6 @@ a {
     padding-left: 24px;
   }
 
-  .hero > .container > .text {
-    max-width: 100%;
-  }
-
   .hero > .container {
     padding-right:24px;
     padding-left: 24px;
@@ -386,11 +392,6 @@ a {
 
   .content {
     padding: 24px;
-  }
-
-  h1 {
-    font-size: 3.5em;
-    line-height: 115%;
   }
 
   .footer > .container > .anchors {
