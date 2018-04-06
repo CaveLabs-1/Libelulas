@@ -453,3 +453,9 @@ class EditarPartidoTest(TestCase):
         resp = self.client.post(reverse('torneo:editar_partido',kwargs={'id_partido':partido.id}),form_data)
         partido = Partido.objects.get(id=id_partido)
         self.assertEqual(partido.fecha, fecha)
+
+    def test_checar_acceso_arbitro(self):
+        self.client.logout()
+        partido = Partido.objects.all()[:1].get()
+        response = self.client.get(reverse('torneo:registrar_eventos',kwargs={'id_partido':partido.id}))
+        self.assertEqual(str(response.context['partido']), partido.id)

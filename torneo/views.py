@@ -284,10 +284,10 @@ def registrar_eventos(request, id_partido):
         goles = Goles.objects.filter(partido=partido)
         asistencias = Asistencia.objects.filter(partido=partido)
 
-        html = render_to_string('torneo/lista_eventos.html', {'amarillas':amarillas,'rojas':rojas,'azules':azules,'goles':goles,'asistencias':asistencias, 'partido':id_partido, 'partido':partido})
+        html = render_to_string('torneo/lista_eventos.html', {'amarillas':amarillas,'rojas':rojas,'azules':azules,'goles':goles,'asistencias':asistencias, 'partido':partido})
         return HttpResponse(html)
 
-    return render(request, 'torneo/registrar_eventos.html', {'amarillas':amarillas,'rojas':rojas,'azules':azules,'goles':goles,'asistencias':asistencias, 'partido':id_partido, 'partido':partido})
+    return render(request, 'torneo/registrar_eventos.html', {'amarillas':amarillas,'rojas':rojas,'azules':azules,'goles':goles,'asistencias':asistencias, 'partido':partido})
 
 def eliminar_evento(request, id_partido):
     partido = get_object_or_404(Partido, id=id_partido)

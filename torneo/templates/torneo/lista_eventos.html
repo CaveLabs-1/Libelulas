@@ -60,12 +60,20 @@
     <thead>
       <tr>
         <th>Jugadora</th>
+        <th>Directa</th>
         <th>Acción</th>
       </tr>
     </thead>
     {% for tarjeta in rojas %}
     <tr>
       <td>{{ tarjeta.jugadora }}</td>
+      <td>
+        {% if tarjeta.directa %}
+          Sí
+        {% else %}
+          No
+        {% endif %}
+      </td>
       <td>
         <a href="#" data-target="delete" data-form="" class="delete-button">
           <i class="small material-icons icon-red" onclick="elimina_evento({{tarjeta.id}},3)">delete</i>
