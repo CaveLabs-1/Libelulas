@@ -158,6 +158,8 @@ class LandingTestCase(TestCase):
         self.assertEqual(response.context['equipo'], Equipo.objects.all().get(id=1))
 
     def test_ver_partido(self):
+        response = self.client.get('/torneos/1/partido/0')
+        self.assertEqual(response.status_code, 404)
         response = self.client.get('/torneos/1/partido/006369')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['equipo_local'], Equipo.objects.all().get(nombre='Real Madrid F.C.'))
