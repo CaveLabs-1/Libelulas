@@ -17,5 +17,6 @@ urlpatterns = [
     path('editar_partido/<slug:id_partido>', views.editar_partido, name='editar_partido'),
     path('mandar_codigoCedula/<int:torneo_id>/<int:jornada_id>', views.mandar_codigoCedula, name='mandar_codigoCedula'),
     path('registrar_cedula/<slug:id_partido>', views.registrar_cedula, name='registrar_cedula'),
+    path('registrar_asistencia', views.registrar_asistencia, name='registrar_asistencia'),
     path('registrar_eventos/<slug:id_partido>', views.registrar_eventos, name='registrar_eventos'),
 ]

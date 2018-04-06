@@ -201,7 +201,21 @@ def mandar_codigoCedula(request, torneo_id, jornada_id):
     return response
 
 def registrar_cedula(request, id_partido):
-    return
+    return render(request, 'torneo/registrar_cedula.html', {'id_partido':id_partido})
+
+def registrar_asistencia(request):
+    if request.method == "POST":
+        id_partido = int(request.POST.get('id_partido'))
+        id_jugadora = int(request.POST.get('id_jugadora'))
+        estado = True if request.POST.get('estado') == 'true' else False
+        respuesta = "Nunca entra el culo."
+        if estado:
+            asistencia = Asistencia.objects.create(partido=id_partido, jugadora=id_jugadora)
+            asistencia.save()
+        else:
+            asistencia = Asistencia.objects.get(partido=id_partido, jugadora=id_jugadora)
+            asistencia.delete()
+    return HttpResponse(respuesta)
 
 def registrar_eventos(request, id_partido):
     return
