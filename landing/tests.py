@@ -125,7 +125,3 @@ class LandingTestCase(TestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(t3,resp.context['torneo'])
         self.assertFalse(resp.context['jornadas'].exists())
-
-
-
-
