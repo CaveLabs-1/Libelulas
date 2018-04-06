@@ -50,6 +50,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .card-image > img {
@@ -84,4 +85,9 @@
     flex-direction: column;
     align-items: center;
   }
+}
+
+.header > .image-header {
+  background-image: url("../../static_media/equipos.jpg");
+  background-position: 50% -0;
 }

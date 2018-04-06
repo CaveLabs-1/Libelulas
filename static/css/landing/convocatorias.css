@@ -14,3 +14,8 @@ i {
 .card{
   padding: 12px 24px 12px 24px;
 }
+
+.header > .image-header {
+  background-image: url("../../static_media/Torneos.jpg");
+  background-position: center;
+}

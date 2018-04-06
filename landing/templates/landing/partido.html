@@ -6,126 +6,186 @@
 {% block main %}
 <div class="header">
   <div class="image-header"></div>
+  <div class="cover"></div>
   <div class="container">
     <div class="team row">
       <div class="logo">
-        <img src="{{equipo_local.logo.url}}" alt="{{equipo_local.nombre}} logo" />
-        <h6>{{equipo_local.nombre}}</h6>
+        <img src="{{equipo_local.logo.url}}" alt="{{equipo_local.nombre}} logo" class="circle"/>
+        <h6><strong>{{equipo_local.nombre}}</strong></h6>
       </div>
       <h2>{{partido.goles_local}}</h2>
     </div>
     <div class="torneo">
-      <h6>Torneo {{torneo.nombre}}</h6>
+      <h5>Torneo {{torneo.nombre}}</h5>
       <p>Jornada 12</p>
       <p>{{partido.fecha}} {{partido.hora}}</p>
+      <p>Árbitro: {{partido.arbitro}}</p>
     </div>
     <div class="team row">
       <h2>{{partido.goles_visitante}}</h2>
       <div class="logo">
-        <img src="{{equipo_visitante.logo.url}}" alt="{{equipo_visitante.nombre}} logo" />
-        <h6>{{equipo_visitante.nombre}}</h6>
+        <img src="{{equipo_visitante.logo.url}}" alt="{{equipo_visitante.nombre}} logo" class="circle"/>
+        <h6><strong>{{equipo_visitante.nombre}}</strong></h6>
       </div>
     </div>
   </div>
 </div>
 <div class="content">
   <div class="container flex">
-    <div class="team">
-      <div class="team-name">
+    <div class="team-container">
+      <div class="team-name local">
         <h6>{{equipo_local.nombre}}</h6>
       </div>
       <ul class="collection">
         {% for jugadora in jugadoras_local %}
-        <a href="#" class="collection-item flex">
-          <strong>{{jugadora.Numero}}</strong>
-          <div class="nombre">
-            <span class="nombre">{{jugadora.Nombre}} {{jugadora.Apellido}}</span>
+        <a href="#" class="collection-item">
+          <div class="item-container flex">
+            <strong class="num">{{jugadora.Numero}}</strong>
+            <div class="nombre">
+              <span class="nombre">{{jugadora.Nombre}} {{jugadora.Apellido}}</span>
+            </div>
+            <span class="pos">{{jugadora.get_Posicion_display|slice:":3"}}</span>
+            <div class="icons">
+              {% for tr in tarjetas_rojas_local %}
+                {% if jugadora.id == tr.jugadora_id %}
+                  <div class="tarjeta tr"></div>
+                {% endif %}
+              {% endfor %}
+              {% for tam in tarjetas_amarillas_local %}
+                {% if jugadora.id == tam.jugadora_id %}
+                <div class="tarjeta tam"></div>
+                {% endif %}
+              {% endfor %}
+              {% for gol in goles_local %}
+                {% if jugadora.id == gol.jugadora_id %}
+                <div class="gol"></div>
+                {% endif %}
+              {% endfor %}
+              {% for ta in tarjetas_azul_local %}
+                {% if jugadora.id == ta.jugadora_id %}
+                <div class="tarjeta ta"></div>
+                {% endif %}
+              {% endfor %}
+            </div>
           </div>
-          <span>{{jugadora.get_Posicion_display}}</span>
         </a>
         {% endfor %}
       </ul>
     </div>
-    <div class="field">
-      <div class="portero">
-        {% if jugadora.Posicion == 4 %}
-          <div class="shirt">
-            {{jugadora.Numero}}
-          </div>
-        {% endif %}
+    <div class="center-container">
+      <div class="field">
+        <div class="field-row portero">
+          {% for jugadora in jugadoras_local %}
+            {% if jugadora.Posicion == 4 %}
+            <div class="shirt shirt-local">
+              {{ jugadora.Numero }}
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="field-row defensa">
+          {% for jugadora in jugadoras_local %}
+            {% if jugadora.Posicion == 3 %}
+            <div class="shirt shirt-local">
+              {{ jugadora.Numero }}
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="field-row medio">
+          {% for jugadora in jugadoras_local %}
+            {% if jugadora.Posicion == 2 %}
+            <div class="shirt shirt-local">
+              {{ jugadora.Numero }}
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="field-row delantero">
+          {% for jugadora in jugadoras_local %}
+            {% if jugadora.Posicion == 1 %}
+            <div class="shirt shirt-local">
+              {{ jugadora.Numero }}
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="field-row delantero">
+          {% for jugadora in jugadoras_visitante %}
+            {% if jugadora.Posicion == 1 %}
+            <div class="shirt shirt-visitante">
+              {{ jugadora.Numero }}
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="field-row medio">
+          {% for jugadora in jugadoras_visitante %}
+            {% if jugadora.Posicion == 2 %}
+            <div class="shirt shirt-visitante">
+              {{ jugadora.Numero }}
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="field-row defensa">
+          {% for jugadora in jugadoras_visitante %}
+            {% if jugadora.Posicion == 3 %}
+            <div class="shirt shirt-visitante">
+              {{ jugadora.Numero }}
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="field-row portero">
+          {% for jugadora in jugadoras_local %}
+            {% if jugadora.Posicion == 4 %}
+            <div class="shirt shirt-visitante">
+              {{ jugadora.Numero }}
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
       </div>
-      <div class="defensa">
-        {% for jugadora in jugadoras_local %}
-          {% if jugadora.Posicion == 3 %}
-          <div class="shirt">
-            {{ jugadora.Numero }}
-          </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-      <div class="medio">
-        {% for jugadora in jugadoras_local %}
-          {% if jugadora.Posicion == 2 %}
-          <div class="shirt">
-            {{ jugadora.Numero }}
-          </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-      <div class="delantero">
-        {% for jugadora in jugadoras_local %}
-          {% if jugadora.Posicion == 1 %}
-          <div class="shirt">
-            {{ jugadora.Numero }}
-          </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-      <div class="delantero">
-        {% for jugadora in jugadoras_visitante %}
-          {% if jugadora.Posicion == 1 %}
-          <div class="shirt">
-            {{ jugadora.Numero }}
-          </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-      <div class="medio">
-        {% for jugadora in jugadoras_visitante %}
-          {% if jugadora.Posicion == 2 %}
-          <div class="shirt">
-            {{ jugadora.Numero }}
-          </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-      <div class="defensa">
-        {% for jugadora in jugadoras_visitante %}
-          {% if jugadora.Posicion == 3 %}
-          <div class="shirt">
-            {{ jugadora.Numero }}
-          </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-      <div class="portero">
-        {% if jugadora.Posicion == 4 %}
-          <div class="shirt">
-            {{jugadora.Numero}}
-          </div>
-        {% endif %}
+      <div class="informacion">
       </div>
     </div>
-    <div class="team">
-      <div class="team-name">
+    <div class="team-container">
+      <div class="team-name visitante">
         <h6>{{equipo_visitante.nombre}}</h6>
       </div>
       <ul class="collection">
         {% for jugadora in jugadoras_visitante %}
         <a href="#" class="collection-item">
-          <strong>{{jugadora.Numero}}</strong>
-          <span>{{jugadora.Nombre}} {{jugadora.Apellido}}</span>
-          <span>{{jugadora.get_Posicion_display}}</span>
+          <div class="item-container flex">
+            <strong class="num">{{jugadora.Numero}}</strong>
+            <div class="nombre">
+              <span class="nombre">{{jugadora.Nombre}} {{jugadora.Apellido}}</span>
+            </div>
+            <span class="pos">{{jugadora.get_Posicion_display|slice:":3"}}</span>
+            <div class="icons">
+              {% for tr in tarjetas_rojas_visitante %}
+                {% if jugadora.id == tr.jugadora_id %}
+                  <div class="tarjeta tr"></div>
+                {% endif %}
+              {% endfor %}
+              {% for tam in tarjetas_amarillas_visitante %}
+                {% if jugadora.id == tam.jugadora_id %}
+                <div class="tarjeta tam"></div>
+                {% endif %}
+              {% endfor %}
+              {% for gol in goles_visitante %}
+                {% if jugadora.id == gol.jugadora_id %}
+                <div class="gol"></div>
+                {% endif %}
+              {% endfor %}
+              {% for ta in tarjetas_azul_visitante %}
+                {% if jugadora.id == ta.jugadora_id %}
+                <div class="tarjeta ta"></div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
         </a>
         {% endfor %}
       </ul>

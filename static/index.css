@@ -80,7 +80,7 @@ form>.form-column {
 }
 
 .submit {
-  background-image: linear-gradient(175deg, #67c8ff, #6795ff);
+  background-color: #009CDE;
   border-radius: 50px;
   border-style: none;
   box-shadow: 0 8px 6px 0 rgba(239, 239, 239, 0.47);
@@ -88,12 +88,22 @@ form>.form-column {
   cursor: pointer;
   font-weight: bold;
   letter-spacing: 43;
-  padding: 0.75em 2.62em 0.75em 2.62em;
+  padding: 0.6em 2.62em 0.6em 2.62em;
+  transition: all 0.4s;
+}
+
+.submit:active {
+  background-color: #0073a3;
+}
+
+.submit:hover {
+  background-color: #008eca;
+  transition: all 0.4s;
 }
 
 .upload {
   align-items: center;
-  background-image: linear-gradient(to bottom, #ff7982, #ff78b8);
+  background-image: linear-gradient(to bottom, #ffb841, #F19800);
   display: flex;
   justify-content: center;
   position: relative;
@@ -191,7 +201,7 @@ textarea {
 }
 
 .success {
-  background-color: #71cf74;
+  background-color: #98BF13;
 }
 
 .warning {
@@ -339,7 +349,7 @@ p {
 }
 
 .red-background {
-  background-image: linear-gradient(to bottom, #ff7a80, #ff78be);
+  background-image: linear-gradient(to bottom, #ffb841, #F19800);
 }
 
 .container-title {
@@ -383,7 +393,7 @@ p {
 }
 
 .btn {
-  background-color: #ff78b8 !important;
+  background-color: #F19800 !important;
 }
 
 .title-container {
@@ -414,12 +424,12 @@ h4 {
     -webkit-appearance: none;
 }
 
-.datepicker-date-display, .is-selected, .timepicker-digital-display, .clockpicker-tick:hover, .clockpicker-canvas line, .clockpicker-canvas-bearing, .clockpicker-canvas-bg {
-  background-color: #ff78b8 !important;
+.datepicker-date-display, .is-selected, .timepicker-digital-display, .clockpicker-tick:hover, .clockpicker-canvas line, .clockpicker-canvas-bearing, .clockpicker-canvas-bg, .tabs .indicator {
+  background-color: #F19800 !important;
 }
 
-.datepicker-today, .datepicker-done, .dropdown-content li>a, .dropdown-content li>span, .timepicker-close{
-  color:#ff78b8 !important;
+.datepicker-today, .datepicker-done, .dropdown-content li>a, .dropdown-content li>span, .timepicker-close, .tabs .tab a.active, .tabs .tab a{
+  color:#F19800 !important;
 }
 
 .datepicker-table td.is-today {
@@ -437,21 +447,21 @@ h4 {
   background-color: #e1aac4;
 }
 input:focus{
- border-bottom: 1px solid #ff78b8 !important;
- box-shadow: 0 1px 0 0 #ff78b8 !important;
+ border-bottom: 1px solid #F19800 !important;
+ box-shadow: 0 1px 0 0 #F19800 !important;
 }
 
 .timepicker-tick:hover {
-  background: #ff78b8 !important;
+  background: #F19800 !important;
 }
 .timepicker-canvas line {
-  stroke: #ff78b8 !important;
+  stroke: #F19800 !important;
 }
 .timepicker-canvas-bearing {
-  fill: #ff78b8 !important;
+  fill: #F19800 !important;
 }
 .timepicker-canvas-bg {
-  fill: #ff78b8 !important;
+  fill: #F19800 !important;
 }
 
 .equipo{
