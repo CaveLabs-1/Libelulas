@@ -2,6 +2,7 @@ from django.test import TestCase
 from equipo.models import Equipo
 from jugadora.models import Jugadora
 from torneo.models import *
+from freezegun import freeze_time
 import datetime
 # Create your tests here.
 
@@ -113,6 +114,18 @@ class LandingTestCase(TestCase):
             hora='10:15',
             cancha='Loma Dorada',
         )
+        Partido.objects.create(
+            id='006370',
+            jornada_id='1',
+            equipo_local_id=1,
+            equipo_visitante_id=2,
+            goles_local=0,
+            goles_visitante=1,
+            notas='Esto es una nota',
+            fecha='2017-05-05',
+            hora='10:15',
+            cancha='Loma Dorada',
+        )
         Goles.objects.create(
             partido_id='006369',
             jugadora_id='2',
@@ -156,6 +169,12 @@ class LandingTestCase(TestCase):
         response = self.client.get('/equipos/equipo/1')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['equipo'], Equipo.objects.all().get(id=1))
+
+    @freeze_time("2018-05-01")
+    def test_ver_main(self):
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertQuerysetEqual(response.context['partidos'], ['<Partido: 006369>'])
 
 
     def test_ver_tablaGeneral(self):
@@ -251,4 +270,3 @@ class LandingTestCase(TestCase):
         self.assertQuerysetEqual(response.context['tarjetas_amarillas_visitante'], [])
         self.assertQuerysetEqual(response.context['goles_local'], [])
         self.assertQuerysetEqual(response.context['goles_visitante'].values('cantidad'), ["{'cantidad': 1}"])
-
