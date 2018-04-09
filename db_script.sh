@@ -190,6 +190,7 @@ ec.save();
 ed = Equipo.objects.create(
 
 
+
    nombre = 'Equipo Def',
    representante = 'Juan De',
    telefono = '4426483003',
