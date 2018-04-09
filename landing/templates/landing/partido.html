@@ -19,7 +19,6 @@
       <h5>Torneo {{torneo.nombre}}</h5>
       <p>Jornada 12</p>
       <p>{{partido.fecha}} {{partido.hora}}</p>
-      <p>Árbitro: {{partido.arbitro}}</p>
     </div>
     <div class="team row">
       <h2>{{partido.goles_visitante}}</h2>
@@ -148,6 +147,8 @@
         </div>
       </div>
       <div class="informacion">
+        <p><strong>Árbitro: </strong>{{partido.arbitro}}</p>
+        <p><strong>Notas: </strong> {{ partido.Notas }} </p>
       </div>
     </div>
     <div class="team-container">

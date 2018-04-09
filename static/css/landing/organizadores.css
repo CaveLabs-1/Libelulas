@@ -4,9 +4,8 @@
 }
 
 .card img {
-  border-radius: 50% !important;
-  width: 200px !important;
-  height: 200px;
+  width: 300px !important;
+  height: 260px;
 }
 
 .card > .card-image {
