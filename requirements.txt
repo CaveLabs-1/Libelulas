@@ -18,3 +18,4 @@ six==1.11.0
 tinycss2==0.6.1
 WeasyPrint==0.42.3
 webencodings==0.5.1
+freezegun==0.3.10
