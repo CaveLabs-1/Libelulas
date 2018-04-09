@@ -24,7 +24,9 @@
         </a>
         </li>
       {% endif %}
-      {% endfor %}
+      {% empty %}
+      <p>No hay torneos aún</p>
+      {%endfor%}
     </ul>
   </div>
 </div>
