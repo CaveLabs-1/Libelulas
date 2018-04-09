@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'administrador',
     'torneo',
     'landing',
+    'coaches'
 ]
 
 MIDDLEWARE = [
