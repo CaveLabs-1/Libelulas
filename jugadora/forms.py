@@ -20,7 +20,7 @@ class jugadoraForm(ModelForm):
 
     class Meta:
         model = Jugadora
-        fields = ('Nombre', 'Apellido', 'Nacimiento', 'Numero', 'Posicion', 'Notas', 'Imagen')
+        fields = ('Nombre', 'Apellido', 'Nacimiento', 'Numero', 'Posicion', 'NumPoliza', 'NUI', 'Notas', 'Imagen')
         widgets = {
             'Imagen': forms.FileInput(),
         }

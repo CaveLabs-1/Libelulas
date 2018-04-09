@@ -4,6 +4,7 @@ from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.core.validators import MinValueValidator, MaxValueValidator
 import sys, os
+import datetime
 
 # Create your models here.
 
@@ -22,6 +23,9 @@ class Jugadora(models.Model):
     Posicion = models.IntegerField(default='', choices=POSICION, verbose_name='Posición')
     Notas = models.TextField(max_length=150, default='', verbose_name='Comentarios', null=True, blank=True)
     Imagen = models.ImageField(upload_to='jugadora', verbose_name='Foto', null=True, blank=True)
+    FechaDeAfiliacion = models.DateField(default='', verbose_name='Fecha de Afiliacón')
+    NumPoliza  = models.CharField(max_length=50, default='', verbose_name='Numero de Póliza', null=True, blank=True)
+    NUI = models.CharField(max_length=50, default='', verbose_name='NUI', null=True, blank=True)
 
     def __str__(self):
         return self.Nombre + str(self.pk)
@@ -29,9 +33,6 @@ class Jugadora(models.Model):
     def save(self, *args, **kw):
 
         if self.Imagen:
-
-
-
             # Opening the uploaded image
             im = Image.open(self.Imagen)
 
@@ -53,6 +54,7 @@ class Jugadora(models.Model):
             # change the imagefield value to be the newley modifed image value
             self.Imagen = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.Imagen.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
 
+        self.FechaDeAfiliacion = datetime.date.today()
         super(Jugadora,self).save(*args, **kw)
         # super(Jugadora, self).save()
 
