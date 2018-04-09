@@ -187,6 +187,27 @@ ec.jugadoras.add(d)
 ec.save();
 
 
+ed = Equipo.objects.create(
+
+
+   nombre = 'Equipo Def',
+   representante = 'Juan De',
+   telefono = '4426483003',
+   correo = 'rr100@live.com.mx',
+   logo =  SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/balon4.jpg', 'rb').read(), content_type='image/jpeg'),
+   colorLocal  = 6,
+   colorVisitante = 5,
+   cancha = 'Estadio D',
+   dia = 4,
+   hora = '15:05'
+   )
+
+ed.save();
+
+ed.jugadoras.add(d)
+ed.save();
+
+
 
 
 
