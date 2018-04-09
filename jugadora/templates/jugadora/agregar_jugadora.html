@@ -63,6 +63,22 @@
       </p>
       {{ form.Posicion.errors }}
 
+      <p>
+        <label>
+          {{ form.NumPoliza.label_tag }}
+        </label>
+        {{ form.NumPoliza }}
+      </p>
+      {{ form.NumPoliza.errors }}
+
+      <p>
+        <label>
+          {{ form.NUI.label_tag }}
+        </label>
+        {{ form.NUI }}
+      </p>
+      {{ form.NUI.errors }}
+
       {% if equipo == '' %}
           <p>
               <label>
