@@ -38,7 +38,7 @@
 }
 
 .hero>.container>.text>h6 {
-  max-width: 80%;
+  max-width: 75%;
   line-height: 28px;
   letter-spacing: 1px;
 }
@@ -78,6 +78,9 @@
   padding-top: 37px;
   padding-bottom: 24px;
   background-image: url('../../static_media/line.png');
+  /* background-size: 30% 100%; */
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
 }
 

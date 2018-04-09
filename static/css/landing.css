@@ -95,9 +95,18 @@ body {
   justify-content: space-between;
 }
 
-.logo {
+.navbar .logo {
   width: 64px;
   align-self: flex-start;
+  background-image: url('../static_media/logo-white.svg');
+  background-image: cover;
+  background-position: center;
+  height: 64px;
+  background-repeat: no-repeat;
+}
+
+.colored .logo {
+  background-image: url('../static_media/logo.svg');
 }
 
 .mobile-nav {

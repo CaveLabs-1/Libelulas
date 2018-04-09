@@ -16,13 +16,13 @@
     <ul class="collection">
       {% for torneo in torneos %}
       {% if not torneo.activo %}
-      <a href="{% url 'landing:detalle_torneo' torneo.id %}">
         <li class="collection-item avatar listado">
+          <a href="{% url 'landing:detalle_torneo' torneo.id %}">
           <span class="title">{{torneo.nombre}}</span>
           <p>{{ torneo.fechaInicio }}</p>
           <p>Categoría: {{ torneo.categoria }}</p>
+        </a>
         </li>
-      </a>
       {% endif %}
       {% endfor %}
     </ul>
