@@ -11,6 +11,8 @@ python manage.py makemigrations equipo
 python manage.py migrate
 python manage.py makemigrations torneo
 python manage.py migrate
+python manage.py makemigrations coaches
+python manage.py migrate
 sudo systemctl restart gunicorn
 deactivate
 cd ~
