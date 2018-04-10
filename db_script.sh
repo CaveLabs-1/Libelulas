@@ -2,43 +2,24 @@
 
 
 
-echo ''
-echo 'Ejecutando script de generacion de base de datos'
-> database.sql
-echo ''
-echo 'Borrado de base de datos'
-echo ''
-echo 'drop database libelulas;' >> database.sql
-echo ''
-echo 'Creacion de base de datos'
-echo ''
-echo 'create database libelulas;' >> database.sql
-
-
-psql  < "database.sql"
-
-rm ./database.sql
-echo ''
-echo 'Borrado de migraciones'
-echo ''
-
 find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
 find . -path "*/migrations/*.pyc"  -delete
 echo ''
 echo 'Borrado de creación de migraciones'
 echo ''
 
-python manage.py makemigrations torneo
-python manage.py makemigrations jugadora
-python manage.py makemigrations landing
-python manage.py makemigrations equipo
+python3 manage.py makemigrations torneo
+python3 manage.py makemigrations jugadora
+python3 manage.py makemigrations landing
+python3 manage.py makemigrations equipo
+python3 manage.py makemigrations coaches
 
 echo ''
 echo 'Ejecutando de migraciones '
 echo ''
 
 
-python manage.py migrate
+python3 manage.py migrate
 
 
 echo ''
@@ -46,14 +27,14 @@ echo '>>>>>>Creacion de superusuario U:libelulas  P:0123456abc '
 echo ''
 
 
-./manage.py shell -c "from django.contrib.auth.models import User; User.objects.create_superuser('libelulas', 'libelulas@example.com', '0123456abc')"
+python3 manage.py shell -c "from django.contrib.auth.models import User; User.objects.create_superuser('libelulas', 'libelulas@example.com', '0123456abc')"
 
 echo ''
 echo 'creacion Jugadora'
 echo ''
 
 
-./manage.py shell -c "
+python3 manage.py shell -c "
 from django.db import models;
 from jugadora.models import Jugadora;
 from equipo.models import Equipo;
@@ -223,4 +204,4 @@ echo ''
 echo 'Corriendo servidor ...'
 echo ''
 
-python manage.py runserver
+python3 manage.py runserver $IP:$PORT
