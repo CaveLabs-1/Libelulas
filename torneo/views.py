@@ -167,7 +167,7 @@ def partidos(id_last_j,jornadas_local,fecha_inicial,fecha_fin,torneo):
 def editar_registro(request, id_torneo):
     torneo = get_object_or_404(Torneo, id=id_torneo)
     jornadas = Jornada.objects.filter(torneo=torneo)
-    return render(request, 'torneo/editar_registro.html', {'jornadas':jornadas})
+    return render(request, 'torneo/editar_registro.html', {'jornadas':jornadas, 'torneo':torneo})
 
 def carga_partidos(request):
     if request.method == 'POST':

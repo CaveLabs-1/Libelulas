@@ -433,18 +433,18 @@ h4 {
 }
 
 .datepicker-table td.is-today {
-  color: #e1aac4;
+  color: #F19800;
 }
 
 .datepicker-day-button:focus {
-  background-color: #e1aac4;
+  background-color: #F19800;
 }
 
 .month-prev:focus{
-  background-color: #e1aac4;
+  background-color: #F19800;
 }
 .month-next:focus{
-  background-color: #e1aac4;
+  background-color: #F19800;
 }
 input:focus{
  border-bottom: 1px solid #F19800 !important;
