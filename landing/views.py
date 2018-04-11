@@ -49,20 +49,22 @@ def detalle_equipo(request, pk):
                                                             })
 
 def detalle_jugadora(request, id_equipo, id_jugadora):
+    jugadora = get_object_or_404(Jugadora, pk=id_jugadora)
     today = date.today()
     equipo = Equipo.objects.get(id=id_equipo)
-    jugadora = Equipo.objects.get(id=id_equipo).jugadoras.get(id=id_jugadora)
     edad = today.year - jugadora.Nacimiento.year - ((today.month, today.day) < (jugadora.Nacimiento.month, jugadora.Nacimiento.day))
     asistencia = Asistencia.objects.filter(jugadora_id=id_jugadora).filter(equipo_id=id_equipo).count()
     asistencia_equipo = Asistencia.objects.filter(equipo_id=id_equipo).count()
     asistenciaE = asistencia/ asistencia_equipo
     goles = Goles.objects.filter(jugadora_id=id_jugadora).filter(equipo_id=id_equipo).aggregate(Sum('cantidad'))['cantidad__sum']
     goles_equipo = Goles.objects.filter(equipo_id=id_equipo).aggregate(Sum('cantidad'))['cantidad__sum']
-    golesE = goles / goles_equipo
+    if(goles == None):
+        golesE = 0
+    else:
+        golesE = goles/goles_equipo
     tarjetas_rojas = Tarjetas_rojas.objects.filter(jugadora_id=id_jugadora).count()
     tarjetas_amarillas = Tarjetas_amarillas.objects.filter(jugadora_id=id_jugadora).aggregate(Sum('cantidad'))['cantidad__sum']
     tarjetas_azul = Tarjetas_azules.objects.filter(jugadora_id=id_jugadora).count()
-    print(tarjetas_amarillas)
     return render(request, 'landing/detalle_jugadora.html', {
                                                                 'jugadora': jugadora,
                                                                 'equipo': equipo,
