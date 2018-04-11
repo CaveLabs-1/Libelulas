@@ -70,13 +70,12 @@ def editar_jugadora(request, jugadora_id):
     return render(request, 'jugadora/editar_jugadora.html', {'form': form, 'jugadora': instance })
 
 def ver_jugadoras(request):
-    jugadoras = Jugadora.objects.all()
+    jugadoras = Jugadora.objects.filter(activo=True)
     return render(request, 'jugadora/ver_jugadoras.html', {'jugadoras': jugadoras})
 
 class eliminar_jugadora(DeleteView):
     model = Jugadora
     success_url = reverse_lazy('jugadora:ver_jugadoras')
-
 
 def detalle_jugadora(request, pk):
     jugadora = get_object_or_404(Jugadora, pk=pk)
