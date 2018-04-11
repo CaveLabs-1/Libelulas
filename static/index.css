@@ -468,3 +468,9 @@ input:focus{
   height: 50px;
   width: 50px;
 }
+#opcionesID{
+  display:flex;
+  align-items: center;
+  height:62px;
+  justify-content: center;
+}
