@@ -81,7 +81,7 @@ def aceptar_PreRegistro(request, id_preregistro):
     pre = get_object_or_404(PreRegistro, id=id_preregistro)
     pre.codigo = uuid.uuid4().hex[:16].upper()
     pre.save()
-    liga = request.build_absolute_uri(reverse('administrador:aceptar_PreRegistro',  kwargs={'id_preregistro': pre.codigo}))
+    liga = request.build_absolute_uri(reverse('coaches:registrar_equipo',  kwargs={'codigo': pre.codigo}))
     message = "¡Gracias por solicitar un registro en Plan Libélula! Sólo hay un paso más para poder inscribirse en un " \
               "torneo. Para activar su cuenta, haga clic en el siguiente enlace: "+liga+" Si eso no funciona, copie y pegue " \
               "el enlace en la barra de direcciones de su navegador"
@@ -90,7 +90,7 @@ def aceptar_PreRegistro(request, id_preregistro):
         'Aceptación de Pre Registro',
         message,
         'A01208598@itesm.mx',
-        [pre.Correo],
+        [pre.correo],
         fail_silently=False,
     )
     return HttpResponseRedirect(reverse('administrador:lista_PreRegistro'))
