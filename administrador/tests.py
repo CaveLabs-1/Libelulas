@@ -32,3 +32,6 @@ class UserTestCase(TestCase):
     def test_create_user_default_password(self):
         self.client.post('/administrador/agregar_administrador/', {"first_name": "", "username": "croman", "email":"carlosromanrivera@hotmail.com"})
         self.assertEqual(User.objects.last().check_password("temporal"), True)
+
+    def test_create(self):
+        self.assertTrue(True)
