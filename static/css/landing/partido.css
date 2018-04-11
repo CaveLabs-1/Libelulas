@@ -215,4 +215,11 @@
   .field {
     height: 50em;
   }
+  .image-header {
+    top: 0;
+  }
+  .cover {
+    top: 0;
+    height: 120vh;
+  }
 }

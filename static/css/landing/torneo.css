@@ -11,3 +11,13 @@ td img {
   margin-top: 12px;
   padding: 6px 6px 6px 6px
 }
+
+@media (min-width: 360px) and (max-width: 767px) {
+  .image-header {
+    top: 0;
+  }
+  .cover {
+    top: 0;
+    height: 120vh;
+  }
+}

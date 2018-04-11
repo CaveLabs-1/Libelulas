@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/landing/detalle-jugadora.css' %}">
+{% endblock %}
+{% block main %}
+<div class="header">
+  <div class="image-header"></div>
+  <div class="cover"></div>
+  <div class="container">
+    <div class="image-column">
+      {% if jugadora.Imagen %}
+        <img src={{jugadora.Imagen.url}} alt="{{jugadora.nombre}} imagen" class="circle"/>
+      {% else %}
+        <img src="{% static 'static_media/default.jpg' %}" alt="{{jugadora.Nombre}} imagen" class="circle"/>
+      {% endif %}
+    </div>
+    <div class="info-column">
+      <h2>{{ jugadora.Nombre }} {{ jugadora.Apellido }}</h2>
+      <h6><strong>Posición: </strong>{{jugadora.get_Posicion_display}}</h6>
+      <h6><strong>Edad: </strong>{{edad}} años</h6>
+      <h6><strong>Número: </strong>{{jugadora.Numero}}</h6>
+      <h6><strong>Equipo: </strong>{{equipo.nombre}}</h6>
+    </div>
+  </div>
+</div>
+<div class="content">
+  <div class="container">
+    <h3>Estadísticas</h3>
+    <div class="card-list flex space-between">
+      <div class="card">
+        <div class="title flex">
+          <div class="circle-icon circle">
+            <img src="{% static 'static_media/trophy.svg' %}" />
+          </div>
+          <span class="card-title"><strong>ESTADÍSTICAS HISTÓRICAS</strong></span>
+        </div>
+        <div class="container">
+          <div class="column">
+            <h6>De {{asistencia_equipo}} partidos ha jugado</h6>
+            <div class="graph" id="partidos" data-value="{{asistenciaE}} {{asistencia}}">
+              <span class="absolute">partidos</span>
+            </div>
+            <h5><strong>Partidos Jugados</strong></h5>
+          </div>
+          <div class="column">
+            <h6>De {{goles_equipo}} goles ha anotado</h6>
+            <div class="graph" id="golesAnotados" data-value="{{golesE}} {{goles}}">
+              <span class="absolute goles">goles</span>
+            </div>
+            <h5><strong>Goles Anotados</strong></h5>
+          </div>
+          <div class="cards">
+            <div class="container">
+              <div class="flex tarjetas">
+                <div class="tarjeta tr">
+                  {{tarjetas_rojas}}
+                </div>
+                <div class="tarjeta tam">
+                  {% if tarjetas_amarillas == None %}
+                    0
+                  {% else %}
+                    {{ tarjetas_amarillas }}
+                  {% endif %}
+                </div>
+                <div class="tarjeta ta">
+                  {{ tarjetas_azul }}
+                </div>
+              </div>
+              <h5>Tarjetas</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <span class="card-title"><strong>COMENTARIOS DEL COACH</strong></span>
+      <p>{{jugadora.Comentarios}}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
