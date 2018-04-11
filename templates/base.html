@@ -22,6 +22,7 @@
     {% block navbar %}
     {% if request.resolver_match.app_name == 'landing' %}
       {% include "navbar.html" %}
+    {% elif  request.resolver_match.app_name == 'coaches' %}
     {% else %}
       {% include "nav.html" %}
     {% endif %}

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block main %}
+
+<div class="container">
+    <h3>Lista de Pre-Registros</h3>
+    <ul class="collection">
+        {% for pre in PreRegistros %}
+            <li class="collection-item">
+                <div class="row">
+                    <div class="col s8 m10 l10">
+                        <br>
+                        <span class="title"><ALE>{{ pre.Nombre }}</ALE></span>
+                        <br>
+                        <span class="title">{{pre.Correo}}</span>
+                    </div>
+
+                    <div id="opcionesID" class="secondary-content">
+                        {% if pre.codigo == None %}
+                            <br>
+                            <a onclick="myFunction()" href="{% url 'administrador:aceptar_PreRegistro' pre.id %}" class="secondary-content"><i class="medium material-icons icon-blue">done</i></a>
+                            <a class="modal-trigger secondary-content boton-eliminar" href="#delete-modal" data-id="{{pre.id}}" data-nombre="Ale"><i class="medium material-icons icon-red">highlight_off</i></a>
+                        {% else %}
+                            <h5>Aceptado</h5>
+                        {% endif %}
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+
+<div id="delete-modal" class="modal">
+    <div class="modal-content">
+
+    </div>
+    <div class="modal-footer">
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.modal').modal() ;
+        }) ;
+
+        $(".boton-eliminar").click(function(){
+            var id = $(this).attr("data-id") ;
+            var nombre = $(this).attr("data-nombre") ;
+            $(".modal-content").html("<h4>¿Desea eliminar el pre registro de <strong>" + nombre + "</strong>?</h4>") ;
+            var botones = '<a href="#cancelar" class="modal-action modal-close cancel cancel-delete">Cancelar</a>  <a href="/administrador/eliminar_PreRegistro/' + id + '" class="modal-action modal-close delete-color confirmar-eliminar">Aceptar</a>' ;
+            $(".modal-footer").html(botones) ;
+        }) ;
+
+        function myFunction() {
+            newHTML=' <div class="preloader-wrapper small active">\n' +
+                '      <div class="spinner-layer spinner-blue">\n' +
+                '        <div class="circle-clipper left">\n' +
+                '          <div class="circle"></div>\n' +
+                '        </div><div class="gap-patch">\n' +
+                '          <div class="circle"></div>\n' +
+                '        </div><div class="circle-clipper right">\n' +
+                '          <div class="circle"></div>\n' +
+                '        </div>\n' +
+                '      </div>'
+
+            $("#opcionesID").html(newHTML);
+
+        }
+
+
+    </script>
+{% endblock %}

@@ -478,4 +478,10 @@ input:focus{
 .delete-button{
     color: #F19800;
 
+
+#opcionesID{
+  display:flex;
+  align-items: center;
+  height:62px;
+  justify-content: center;
 }
