@@ -28,6 +28,7 @@
     {% endif %}
     {% endblock navbar %}
     <body>
+      {{request.resolver_match.app_name}}
         <div class="modal" id="delete"></div>
         {% if messages %}
             {% for message in messages %}

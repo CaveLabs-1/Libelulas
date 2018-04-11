@@ -27,7 +27,7 @@ def ver_organizadores(request):
     return render(request, 'landing/organizadores.html')
 
 def ver_equipos(request):
-    equipos = Equipo.objects.filter(activo=True)
+    equipos = Equipo.objects.all().filter(activo=True)
     return render(request, 'landing/lista_equipos.html', {'equipos': equipos})
 
 def detalle_equipo(request, pk):
