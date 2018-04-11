@@ -6,7 +6,6 @@ from jugadora.models import Jugadora
 import sys, os
 import uuid
 
-
 class Torneo(models.Model):
     nombre = models.CharField(max_length=100, verbose_name="Nombre del Torneo")
     categoria = models.IntegerField(verbose_name="Categoria", validators=[MaxValueValidator(datetime.datetime.now().year )])
@@ -44,7 +43,6 @@ class Jornada(models.Model):
 
     def __str__(self):
         return self.jornada
-
 
 class Partido(models.Model):
     id = models.CharField(primary_key=True, editable=False, max_length=6)

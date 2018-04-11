@@ -1,11 +1,10 @@
-from django.forms import ModelForm
+from django.forms import *
 from .models import *
 from django.forms.widgets import FileInput
 from django import forms
 from equipo.models import Equipo
 
 class torneoForm(ModelForm):
-
 
     def __init__(self, *args, **kwargs):
         super(torneoForm, self).__init__(*args, **kwargs)
@@ -31,3 +30,8 @@ class PartidoForm(forms.ModelForm):
             'hora',
             'cancha',
         )
+
+class CedulaForm(forms.ModelForm):
+    class Meta:
+        model = Partido
+        fields = ('goles_local', 'goles_visitante', 'notas', 'arbitro')
