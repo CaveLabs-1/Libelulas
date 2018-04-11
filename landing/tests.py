@@ -4,6 +4,8 @@ from jugadora.models import Jugadora
 from torneo.models import *
 from freezegun import freeze_time
 import datetime
+from django.db.models import Sum
+from django.db.models import Count
 # Create your tests here.
 
 class LandingTestCase(TestCase):
@@ -41,6 +43,9 @@ class LandingTestCase(TestCase):
             Nacimiento='1995-09-22',
             Numero='1',
             Posicion=3,
+            FechaDeAfiliacion='2000-10-10',
+            NumPoliza='asdf',
+            NUI='1235',
         )
         jugadora2 = Jugadora.objects.create(
             id=2,
@@ -49,6 +54,9 @@ class LandingTestCase(TestCase):
             Nacimiento='1995-10-23',
             Numero='2',
             Posicion=3,
+            FechaDeAfiliacion='2000-10-10',
+            NumPoliza='asdfg',
+            NUI='12356',
         )
         jugadora3 = Jugadora.objects.create(
             id=3,
@@ -57,6 +65,9 @@ class LandingTestCase(TestCase):
             Nacimiento='1995-08-20',
             Numero='5',
             Posicion=2,
+            FechaDeAfiliacion='2000-10-10',
+            NumPoliza='asdfj',
+            NUI='12354',
         )
         equipo1.jugadoras.add(jugadora1)
         equipo2.jugadoras.add(jugadora2)
@@ -175,6 +186,22 @@ class LandingTestCase(TestCase):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
         self.assertQuerysetEqual(response.context['partidos'], ['<Partido: 006369>'])
+
+    @freeze_time("2018-05-01")
+    def test_ver_jugadora(self):
+        response = self.client.get('/equipos/equipo/1/jugadora/6')
+        self.assertEqual(response.status_code, 404)
+        response = self.client.get('/equipos/equipo/1/jugadora/1')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context['jugadora'], Jugadora.objects.get(id=1))
+        self.assertEqual(response.context['tarjetas_rojas'], Tarjetas_rojas.objects.filter(jugadora_id=1).count())
+        self.assertEqual(response.context['tarjetas_azul'], Tarjetas_azules.objects.filter(jugadora_id=1).count())
+        self.assertEqual(response.context['tarjetas_amarillas'], Tarjetas_amarillas.objects.filter(jugadora_id=1).aggregate(Sum('cantidad'))['cantidad__sum'])
+        self.assertEqual(response.context['goles'], Goles.objects.filter(jugadora_id=1).filter(equipo_id=1).aggregate(Sum('cantidad'))['cantidad__sum'])
+        self.assertEqual(response.context['asistencia'], Asistencia.objects.filter(jugadora_id=1).filter(equipo_id=1).count())
+        self.assertEqual(response.context['edad'], 22)
+        self.assertEqual(response.context['equipo'], Equipo.objects.get(id=1))
+
 
 
     def test_ver_tablaGeneral(self):

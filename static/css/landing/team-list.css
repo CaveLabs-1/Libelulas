@@ -35,3 +35,13 @@
     flex-wrap: wrap;
   }
 }
+
+@media (min-width: 360px) and (max-width: 767px) {
+  .image-header {
+    top: 0;
+  }
+  .cover {
+    top: 0;
+    height: 120vh;
+  }
+}
