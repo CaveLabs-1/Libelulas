@@ -12,7 +12,9 @@
         <i class="large material-icons waves-effect waves-light">add</i>
       </a>
   </div>
-  <ul class="collection">
+   <input id="searchbox" type="text" placeholder="Búsqueda" />
+  <ul id="friendlist" class="collection">
+   
     {% for jugadora in jugadoras %}
     <li class="collection-item avatar">
       {% if jugadora.Imagen %}
@@ -44,4 +46,26 @@
 
 
 
+{% endblock %}
+{% block scripts %}
+{{ block.super }}
+
+<script>
+
+jQuery.expr[':'].Contains = function(a, i, m) {
+    return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
+};
+
+$(function() {
+    $('#searchbox').on('keyup', function() {
+        var w = $(this).val();
+        if (w) {
+            $('#friendlist li').hide();
+            $('#friendlist li:Contains('+w+')').show();
+        } else {
+            $('#friendlist li').show();                  
+        }
+    });
+});
+</script>
 {% endblock %}

@@ -128,6 +128,7 @@ LOGIN_REQUIRED_URLS_EXCEPTIONS = (
     r'/torneo/registrar_cedula/',
     r'/torneo/registrar_eventos/',
     r'/torneo/eliminar_evento/',
+    r'/coaches/',
 )
 
 DATE_INPUT_FORMATS = ['%m-%d-%Y']
