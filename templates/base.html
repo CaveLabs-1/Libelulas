@@ -22,11 +22,13 @@
     {% block navbar %}
     {% if request.resolver_match.app_name == 'landing' %}
       {% include "navbar.html" %}
+    {% elif  request.resolver_match.app_name == 'coaches' %}
     {% else %}
       {% include "nav.html" %}
     {% endif %}
     {% endblock navbar %}
     <body>
+      {{request.resolver_match.app_name}}
         <div class="modal" id="delete"></div>
         {% if messages %}
             {% for message in messages %}

@@ -204,4 +204,7 @@ echo ''
 echo 'Corriendo servidor ...'
 echo ''
 
-python3 manage.py runserver $IP:$PORT
+python3 manage.py runserver
+
+
+
