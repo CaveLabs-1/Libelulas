@@ -21,7 +21,7 @@ def pre_registro(request, id_torneo):
             return HttpResponseRedirect(reverse('coaches:registrar_jugadora', kwargs={'codigo':codigo,'id_equipo':registro.equipo.id}))
     else:
         form = PreForm()
-    return render(request, 'coaches/pre_registro.html', {'form': form})
+    return render(request, 'coaches/pre_registro.html', {'form': form, 'torneo': torneo})
 
 def registrar_jugadora(request, codigo, id_equipo):
     lista_equipo = get_object_or_404(Equipo,id=id_equipo)
