@@ -88,7 +88,7 @@ def aceptar_PreRegistro(request, id_preregistro):
 
     send_mail(
         'Aceptación de Pre Registro',
-        'Here is the message.',
+        message,
         'A01208598@itesm.mx',
         [pre.Correo],
         fail_silently=False,

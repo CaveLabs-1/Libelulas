@@ -5,4 +5,4 @@ class PreForm(forms.ModelForm):
 
     class Meta:
         model = PreRegistro
-        fields = ('nombre', 'correo', 'notas')
+        fields = ('Nombre', 'Correo', 'Notas')
