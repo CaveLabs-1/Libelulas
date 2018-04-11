@@ -1,0 +1,113 @@
+<!doctype html>
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block main %}
+<div class="title-container">
+  <h2>Agregar Jugadora<h2>
+</div>
+<form class="container flex" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="image-column">
+    <div class="image-circle upload">
+      <img id="upload" class="upload-change"/>
+      <div class="generic-photo">
+        <img class="camera-icon" src="{% static 'static_media/photo-camera.svg' %}"/>
+        <span>Agregar Foto</span>
+      </div>
+      <div class="absolute-icons">
+          {{ form.Imagen }}
+      </div>
+    </div>
+    {{ form.Imagen.errors }}
+  </div>
+  <div class="form-column">
+      <p>
+        <label>
+          {{ form.Nombre.label_tag }}
+        </label>
+        {{ form.Nombre }}
+      </p>
+      {{ form.Nombre.errors }}
+      <p>
+        <label>
+          {{ form.Apellido.label_tag }}
+        </label>
+        {{ form.Apellido }}
+      </p>
+      {{ form.Apellido.errors }}
+      <p>
+        <label>
+          {{ form.Nacimiento.label_tag }}
+        </label>
+        {{ form.Nacimiento }}
+      </p>
+      {{ form.Nacimiento.errors }}
+      <p>
+        <label>
+          {{ form.Numero.label_tag }}
+        </label>
+        {{ form.Numero }}
+      </p>
+      {{ form.Numero.errors }}
+      <p>
+        <label>
+          {{ form.Posicion.label_tag }}
+        </label>
+        {{ form.Posicion }}
+      </p>
+      {{ form.Posicion.errors }}
+
+      <p>
+        <label>
+          {{ form.NumPoliza.label_tag }}
+        </label>
+        {{ form.NumPoliza }}
+      </p>
+      {{ form.NumPoliza.errors }}
+
+      <p>
+        <label>
+          {{ form.NUI.label_tag }}
+        </label>
+        {{ form.NUI }}
+      </p>
+      {{ form.NUI.errors }}
+
+      {% if equipo == '' %}
+          <p>
+              <label>
+                  {{ form.equipo.label_tag }}
+              </label>
+              {{ form.equipo }}
+          </p>
+           {{ form.equipo.errors }}
+      {% else %}
+          <p>
+              <label>
+                   Equipo
+              </label>
+              <select name="{{ form.equipo.name }}" required id="{{ form.equipo.id_for_label }}" disabled required>
+                <option value="{{ lista_equipo.pk }}" selected>{{ lista_equipo.nombre }}</option>
+              </select>
+          </p>
+
+
+      {% endif %}
+
+      <p>
+        <label>
+          {{ form.Notas.label_tag }}
+        </label>
+        {{ form.Notas }}
+      </p>
+      {{ form.Notas.errors }}
+
+
+
+    <div class="container-button">
+      <a href="{% url 'coaches:terminar_registro' codigo %}"><button class="cancel" type="button">Guardar y cerrar solicitud</button></a>
+      <button class="submit" type="submit">Guardar y agregar jugadora</button>
+    </div>
+  </div>
+</form>
+{% endblock %}
