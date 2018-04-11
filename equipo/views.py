@@ -31,7 +31,6 @@ def agregar_equipo(request):
             messages.warning(request, 'Hubo un error en la forma')
     else:
             form = equipoForm()
-
     return render(request, 'equipo/agregar_equipo.html', {'form': form})
 
 

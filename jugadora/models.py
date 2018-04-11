@@ -26,6 +26,7 @@ class Jugadora(models.Model):
     FechaDeAfiliacion = models.DateField(default='', verbose_name='Fecha de Afiliacón')
     NumPoliza  = models.CharField(max_length=50, default='', verbose_name='Numero de Póliza', null=True, blank=True)
     NUI = models.CharField(max_length=50, default='', verbose_name='NUI', null=True, blank=True)
+    activo = models.BooleanField(default = True)
 
     def __str__(self):
         return self.Nombre + str(self.pk)

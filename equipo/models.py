@@ -86,6 +86,7 @@ class Equipo(models.Model):
     hora = models.TimeField(
         verbose_name='Hora de Juego',
         )
+    activo = models.BooleanField(default = True)
 
 
     def __str__(self):
