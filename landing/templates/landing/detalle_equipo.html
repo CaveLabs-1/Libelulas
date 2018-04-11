@@ -156,18 +156,20 @@
     <div class="jugadoras card-container wrap flex space-between">
       {% for jugadora in jugadoras_equipo %}
       <div class="card team-player">
-        <div class="card-image">
-          {% if jugadora.Imagen %}
-            <img src="{{ jugadora.Imagen.url }}" alt="{{jugadora.Nombre}} imagen" class="circle"/>
-          {% else %}
-            <img src="{% static 'static_media/default.jpg' %}" alt="{{jugadora.Nombre}} imagen" class="circle"/>
-          {% endif %}
-        </div>
-        <div class="card-content">
-          <h6 class="title"><strong>{{jugadora.Nombre}} {{jugadora.Apellido}}</strong></h6>
-          <p>#{{jugadora.Numero}}</p>
-          <p>{{jugadora.get_Posicion_display}}</p>
-        </div>
+        <a href="{% url 'landing:detalle_jugadora' equipo.id jugadora.id %}">
+          <div class="card-image">
+            {% if jugadora.Imagen %}
+              <img src="{{ jugadora.Imagen.url }}" alt="{{jugadora.Nombre}} imagen" class="circle"/>
+            {% else %}
+              <img src="{% static 'static_media/default.jpg' %}" alt="{{jugadora.Nombre}} imagen" class="circle"/>
+            {% endif %}
+          </div>
+          <div class="card-content">
+            <h6 class="title"><strong>{{jugadora.Nombre}} {{jugadora.Apellido}}</strong></h6>
+            <p>#{{jugadora.Numero}}</p>
+            <p>{{jugadora.get_Posicion_display}}</p>
+          </div>
+        </a>
       </div>
       {% endfor %}
     </div>
