@@ -25,6 +25,7 @@ def pre_registro(request, id_torneo):
 
 def registrar_jugadora(request, codigo, id_equipo):
     lista_equipo = get_object_or_404(Equipo,id=id_equipo)
+    registro = get_object_or_404(PreRegistro,codigo=codigo)
     if request.method == "POST":
         form = jugadoraEquipoForm(request.POST, request.FILES)
         if form.is_valid():
