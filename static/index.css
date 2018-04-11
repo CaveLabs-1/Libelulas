@@ -468,3 +468,14 @@ input:focus{
   height: 50px;
   width: 50px;
 }
+
+
+
+.icon-orange {
+  color: #F19800;
+}
+
+.delete-button{
+    color: #F19800;
+
+}
