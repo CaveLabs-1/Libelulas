@@ -29,23 +29,27 @@
           {% for goles in top_goles %}
           {% if forloop.first %}
               <li class="collection-item avatar big align-items">
-                {% if goles.jugadora__Imagen %}
-                  <img src="/media/{{goles.jugadora__Imagen}}" alt="{{goles.jugadora__Nombre}} imagen" class="circle big"/>
-                {% else %}
-                  <img src="{% static 'static_media/default.jpg' %}" alt="{{goles.jugadora__Nombre}} imagen" class="circle big"/>
-                {% endif %}
-                <h6><strong>{{ goles.jugadora__Nombre }} {{ goles.jugadora__Apellido }}</strong></h6>
-                <h6 class="secondary-content top">{{ goles.goles}}</h6>
+                <a href="{% url 'landing:detalle_jugadora' equipo.id goles.jugadora__id %}">
+                  {% if goles.jugadora__Imagen %}
+                    <img src="/media/{{goles.jugadora__Imagen}}" alt="{{goles.jugadora__Nombre}} imagen" class="circle big"/>
+                  {% else %}
+                    <img src="{% static 'static_media/default.jpg' %}" alt="{{goles.jugadora__Nombre}} imagen" class="circle big"/>
+                  {% endif %}
+                  <h6><strong>{{ goles.jugadora__Nombre }} {{ goles.jugadora__Apellido }}</strong></h6>
+                  <h6 class="secondary-content top">{{ goles.goles}}</h6>
+                </a>
               </li>
             {% else %}
               <li class="collection-item avatar align-items">
-                {% if goles.jugadora__Imagen %}
-                  <img src="/media/{{ goles.jugadora__Imagen }}" alt="{{goles.jugadora__Nombre}} imagen" class="circle"/>
-                {% else %}
-                  <img src="{% static 'static_media/default.jpg' %}" alt="{{goles.jugadora__Nombre}} imagen" class="circle"/>
-                {% endif %}
-                <span>{{goles.jugadora__Nombre}} {{goles.jugadora__Apellido}}</span>
-                <span class="secondary-content no-top">{{ goles.goles }}</span>
+                <a href="{% url 'landing:detalle_jugadora' equipo.id goles.jugadora__id %}">
+                  {% if goles.jugadora__Imagen %}
+                    <img src="/media/{{ goles.jugadora__Imagen }}" alt="{{goles.jugadora__Nombre}} imagen" class="circle"/>
+                  {% else %}
+                    <img src="{% static 'static_media/default.jpg' %}" alt="{{goles.jugadora__Nombre}} imagen" class="circle"/>
+                  {% endif %}
+                  <span>{{goles.jugadora__Nombre}} {{goles.jugadora__Apellido}}</span>
+                  <span class="secondary-content no-top">{{ goles.goles }}</span>
+                </a>
               </li>
               {% endif %}
           {% endfor %}
@@ -57,23 +61,27 @@
           {% for ta in top_tarjetas_azules %}
             {% if forloop.first %}
               <li class="collection-item avatar big align-items">
-                {% if ta.jugadora__Imagen %}
-                  <img src="/media/{{ ta.jugadora__Imagen }}" alt="{{ta.jugadora__Nombre}} imagen" class="circle big"/>
-                {% else %}
-                  <img src="{% static 'static_media/default.jpg' %}" alt="{{ta.jugadora__Nombre}} imagen" class="circle big"/>
-                {% endif %}
-                <h6><strong>{{ta.jugadora__Nombre}} {{ta.jugadora__Apellido}}</strong></h6>
-                <h6 class="secondary-content top">{{ta.ta}}</h6>
+                <a href="{% url 'landing:detalle_jugadora' equipo.id ta.jugadora__id %}">
+                  {% if ta.jugadora__Imagen %}
+                    <img src="/media/{{ ta.jugadora__Imagen }}" alt="{{ta.jugadora__Nombre}} imagen" class="circle big"/>
+                  {% else %}
+                    <img src="{% static 'static_media/default.jpg' %}" alt="{{ta.jugadora__Nombre}} imagen" class="circle big"/>
+                  {% endif %}
+                  <h6><strong>{{ta.jugadora__Nombre}} {{ta.jugadora__Apellido}}</strong></h6>
+                  <h6 class="secondary-content top">{{ta.ta}}</h6>
+                </a>
               </li>
             {% else %}
               <li class="collection-item avatar align-items">
-                {% if ta.jugadora__Imagen %}
-                  <img src="/media/{{ ta.jugadora__Imagen }}" alt="{{ta.jugadora__Nombre}} imagen" class="circle"/>
-                {% else %}
-                  <img src="{% static 'static_media/default.jpg' %}" alt="{{ta.jugadora__Nombre}} imagen" class="circle"/>
-                {% endif %}
-                <span>{{ta.jugadora__Nombre}} {{ta.jugadora__Apellido}}</span>
-                <span class="secondary-content no-top">{{ta.ta}}</span>
+                <a href="{% url 'landing:detalle_jugadora' equipo.id ta.jugadora__id %}">
+                  {% if ta.jugadora__Imagen %}
+                    <img src="/media/{{ ta.jugadora__Imagen }}" alt="{{ta.jugadora__Nombre}} imagen" class="circle"/>
+                  {% else %}
+                    <img src="{% static 'static_media/default.jpg' %}" alt="{{ta.jugadora__Nombre}} imagen" class="circle"/>
+                  {% endif %}
+                  <span>{{ta.jugadora__Nombre}} {{ta.jugadora__Apellido}}</span>
+                  <span class="secondary-content no-top">{{ta.ta}}</span>
+                </a>
               </li>
             {% endif %}
           {% endfor %}
@@ -85,23 +93,27 @@
           {% for tam in top_tarjetas_amarillas %}
             {% if forloop.first %}
               <li class="collection-item avatar big align-items">
-                {% if tam.jugadora__Imagen %}
-                  <img src="/media/{{ tam.jugadora__Imagen }}" alt="{{tam.jugadora__Nombre}} imagen" class="circle big"/>
-                {% else %}
-                  <img src="{% static 'static_media/default.jpg' %}" alt="{{tam.jugadora__Nombre}} imagen" class="circle big"/>
-                {% endif %}
-                <h6><strong>{{tam.jugadora__Nombre}} {{tam.jugadora__Apellido}}</strong></h6>
-                <h6 class="secondary-content top">{{tam.tam}}</h6>
+                <a href="{% url 'landing:detalle_jugadora' equipo.id tam.jugadora__id %}">
+                  {% if tam.jugadora__Imagen %}
+                    <img src="/media/{{ tam.jugadora__Imagen }}" alt="{{tam.jugadora__Nombre}} imagen" class="circle big"/>
+                  {% else %}
+                    <img src="{% static 'static_media/default.jpg' %}" alt="{{tam.jugadora__Nombre}} imagen" class="circle big"/>
+                  {% endif %}
+                  <h6><strong>{{tam.jugadora__Nombre}} {{tam.jugadora__Apellido}}</strong></h6>
+                  <h6 class="secondary-content top">{{tam.tam}}</h6>
+                </a>
               </li>
             {% else %}
               <li class="collection-item avatar align-items">
-                {% if tam.jugadora__Imagen %}
-                  <img src="/media/{{ tam.jugadora__Imagen }}" alt="{{tam.jugadora__Nombre}} imagen" class="circle"/>
-                {% else %}
-                  <img src="{% static 'static_media/default.jpg' %}" alt="{{tam.jugadora__Nombre}} imagen" class="circle"/>
-                {% endif %}
-                <span>{{tam.jugadora__Nombre}} {{tam.jugadora__Apellido}}</span>
-                <span class="secondary-content no-top">{{tam.tam}}</span>
+                <a href="{% url 'landing:detalle_jugadora' equipo.id tam.jugadora__id %}">
+                  {% if tam.jugadora__Imagen %}
+                    <img src="/media/{{ tam.jugadora__Imagen }}" alt="{{tam.jugadora__Nombre}} imagen" class="circle"/>
+                  {% else %}
+                    <img src="{% static 'static_media/default.jpg' %}" alt="{{tam.jugadora__Nombre}} imagen" class="circle"/>
+                  {% endif %}
+                  <span>{{tam.jugadora__Nombre}} {{tam.jugadora__Apellido}}</span>
+                  <span class="secondary-content no-top">{{tam.tam}}</span>
+                </a>
               </li>
             {% endif %}
           {% endfor %}
@@ -113,23 +125,27 @@
           {% for tr in top_tarjetas_rojas %}
             {% if forloop.first %}
               <li class="collection-item avatar big align-items">
-                {% if tr.jugadora__Imagen %}
-                  <img src="/media/{{ tr.jugadora__Imagen }}" alt="{{tr.jugadora__Nombre}} imagen" class="circle big"/>
-                {% else %}
-                  <img src="{% static 'static_media/default.jpg' %}" alt="{{tr.jugadora__Nombre}} imagen" class="circle big"/>
-                {% endif %}
-                <h6><strong>{{tr.jugadora__Nombre}} {{tr.jugadora__Apellido}}</strong></h6>
-                <h6 class="secondary-content top">{{tr.tr}}</h6>
+                <a href="{% url 'landing:detalle_jugadora' equipo.id tr.jugadora__id %}">
+                  {% if tr.jugadora__Imagen %}
+                    <img src="/media/{{ tr.jugadora__Imagen }}" alt="{{tr.jugadora__Nombre}} imagen" class="circle big"/>
+                  {% else %}
+                    <img src="{% static 'static_media/default.jpg' %}" alt="{{tr.jugadora__Nombre}} imagen" class="circle big"/>
+                  {% endif %}
+                  <h6><strong>{{tr.jugadora__Nombre}} {{tr.jugadora__Apellido}}</strong></h6>
+                  <h6 class="secondary-content top">{{tr.tr}}</h6>
+                </a>
               </li>
             {% else %}
               <li class="collection-item avatar align-items">
-                {% if tr.jugadora__Imagen %}
-                  <img src="/media/{{ tr.jugadora__Imagen }}" alt="{{tr.jugadora__Nombre}} imagen" class="circle"/>
-                {% else %}
-                  <img src="{% static 'static_media/default.jpg' %}" alt="{{tr.jugadora__Nombre}} imagen" class="circle"/>
-                {% endif %}
-                <span>{{tr.jugadora__Nombre}} {{tr.jugadora__Apellido}}</span>
-                <span class="secondary-content no-top">{{tr.tr}}</span>
+                <a href="{% url 'landing:detalle_jugadora' equipo.id tr.jugadora__id %}">
+                  {% if tr.jugadora__Imagen %}
+                    <img src="/media/{{ tr.jugadora__Imagen }}" alt="{{tr.jugadora__Nombre}} imagen" class="circle"/>
+                  {% else %}
+                    <img src="{% static 'static_media/default.jpg' %}" alt="{{tr.jugadora__Nombre}} imagen" class="circle"/>
+                  {% endif %}
+                  <span>{{tr.jugadora__Nombre}} {{tr.jugadora__Apellido}}</span>
+                  <span class="secondary-content no-top">{{tr.tr}}</span>
+                </a>
               </li>
             {% endif %}
           {% endfor %}
@@ -156,18 +172,20 @@
     <div class="jugadoras card-container wrap flex space-between">
       {% for jugadora in jugadoras_equipo %}
       <div class="card team-player">
-        <div class="card-image">
-          {% if jugadora.Imagen %}
-            <img src="{{ jugadora.Imagen.url }}" alt="{{jugadora.Nombre}} imagen" class="circle"/>
-          {% else %}
-            <img src="{% static 'static_media/default.jpg' %}" alt="{{jugadora.Nombre}} imagen" class="circle"/>
-          {% endif %}
-        </div>
-        <div class="card-content">
-          <h6 class="title"><strong>{{jugadora.Nombre}} {{jugadora.Apellido}}</strong></h6>
-          <p>#{{jugadora.Numero}}</p>
-          <p>{{jugadora.get_Posicion_display}}</p>
-        </div>
+        <a href="{% url 'landing:detalle_jugadora' equipo.id jugadora.id %}">
+          <div class="card-image">
+            {% if jugadora.Imagen %}
+              <img src="{{ jugadora.Imagen.url }}" alt="{{jugadora.Nombre}} imagen" class="circle"/>
+            {% else %}
+              <img src="{% static 'static_media/default.jpg' %}" alt="{{jugadora.Nombre}} imagen" class="circle"/>
+            {% endif %}
+          </div>
+          <div class="card-content">
+            <h6 class="title"><strong>{{jugadora.Nombre}} {{jugadora.Apellido}}</strong></h6>
+            <p>#{{jugadora.Numero}}</p>
+            <p>{{jugadora.get_Posicion_display}}</p>
+          </div>
+        </a>
       </div>
       {% endfor %}
     </div>

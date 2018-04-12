@@ -27,8 +27,8 @@
             <p align="center">{{ Torneo.fechaInicio }}</p>
           </div>
         </div>
-        <div class="card-image icons">
-          <i class="material-icons green activator hoverable">add</i>
+        <div class="card-image icons  black hoverable">
+            <span class="activator" style="color: white"> Más Información + </span>
         </div>
         <div class="card-reveal  blue-grey lighten-4">
           <span class="card-title grey-text text-darken-4 center">Información:<i class="material-icons right">close</i></span>
@@ -55,6 +55,13 @@
             <span class="black-text">Fecha de Junta:</span>
             <br>
             <span class="blue-text text-darken-2">{{ Torneo.fechaJunta }} </span>
+          </div>
+            <div class="card-panel">
+            <i class="material-icons left black-text ">attach_file</i>
+            <span class="black-text">Anexo:</span>
+            <br>
+                <a href="{{ Torneo.anexo.url }}">Documento Anexo</a>
+
           </div>
         </div>
       </div>

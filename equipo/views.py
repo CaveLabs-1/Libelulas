@@ -31,14 +31,12 @@ def agregar_equipo(request):
             messages.warning(request, 'Hubo un error en la forma')
     else:
             form = equipoForm()
-
     return render(request, 'equipo/agregar_equipo.html', {'form': form})
 
 
 class lista_equipos(ListView):
-
     model = Equipo
-    paginate_by = 10
+    queryset = Equipo.objects.filter(activo=True)
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
@@ -46,8 +44,7 @@ class lista_equipos(ListView):
 
 def detalle_equipo(request, equipo_id):
     equipo = get_object_or_404(Equipo ,pk=equipo_id)
-    jugadoras_equipo = Equipo.objects.get(id=equipo_id).jugadoras.all()
-    print (jugadoras_equipo)
+    jugadoras_equipo = Equipo.objects.get(id=equipo_id).jugadoras.filter(activo=True)
     return render(request, 'equipo/equipo_detail.html', {'equipo': equipo, 'jugadoras_equipo': jugadoras_equipo })
 
 def editar_equipo(request, pk):

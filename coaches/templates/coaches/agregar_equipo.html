@@ -1,11 +1,13 @@
 <!doctype html>
 {% extends "base.html" %}
 {% load staticfiles %}
+{% block navbar %}
+{% endblock %}
 {% block main %}
 <div class="title-container">
   <h2>Agregar Equipo<h2>
 </div>
-<form  class="container flex" method="POST" enctype="multipart/form-data">
+<form class="container flex" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   <div class="image-column">
     <div class="image-circle upload">
@@ -85,7 +87,6 @@
       </p>
       {{ form.hora.errors }}
     <div class="container-button">
-      <a href="{% url 'equipo:lista_equipos' %}"><button class="cancel" type="button">Cancelar</button></a>
       <button class="submit" type="submit">Guardar</button>
     </div>
   </div>

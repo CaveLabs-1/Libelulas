@@ -132,3 +132,11 @@ LOGIN_REQUIRED_URLS_EXCEPTIONS = (
 )
 
 DATE_INPUT_FORMATS = ['%m-%d-%Y']
+
+EMAIL_HOST_USER = 'planlibelula@gmail.com'
+EMAIL_HOST_PASSWORD = 'cepcqro123'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+

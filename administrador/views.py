@@ -4,6 +4,9 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from .models import User
+from coaches.models import PreRegistro
+import uuid
+from django.core.mail import send_mail
 
 def lista_administrador(request):
     lista = User.objects.all()
@@ -62,4 +65,34 @@ def eliminar_administrador(request, id_administrador):
     administrador.delete()
     messages.warning(request, 'Administrador eliminado exitosamente.')
     return HttpResponseRedirect(reverse('administrador:lista_administrador'))
+
+
+
+def eliminar_preregsitro(request, id_preregistro):
+    pre = get_object_or_404(PreRegistro, id=id_preregistro)
+    pre.delete()
+    messages.warning(request, 'Pre-registro eliminado exitosamente.')
+    return HttpResponseRedirect(reverse('administrador:lista_PreRegistro'))
+
+def lista_PreRegistro(request):
+    PreResgistros = PreRegistro.objects.all()
+    return render(request, 'lista_preRegistro.html', {'PreRegistros': PreResgistros})
+
+def aceptar_PreRegistro(request, id_preregistro):
+    pre = get_object_or_404(PreRegistro, id=id_preregistro)
+    pre.codigo = uuid.uuid4().hex[:16].upper()
+    pre.save()
+    liga = request.build_absolute_uri(reverse('coaches:registrar_equipo',  kwargs={'codigo': pre.codigo}))
+    message = "¡Gracias por solicitar un registro en Plan Libélula! Sólo hay un paso más para poder inscribirse en un " \
+              "torneo. Para activar su cuenta, haga clic en el siguiente enlace: "+liga+" Si eso no funciona, copie y pegue " \
+              "el enlace en la barra de direcciones de su navegador"
+
+    send_mail(
+        'Aceptación de Pre Registro',
+        message,
+        'A01208598@itesm.mx',
+        [pre.correo],
+        fail_silently=False,
+    )
+    return HttpResponseRedirect(reverse('administrador:lista_PreRegistro'))
 

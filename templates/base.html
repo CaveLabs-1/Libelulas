@@ -22,11 +22,13 @@
     {% block navbar %}
     {% if request.resolver_match.app_name == 'landing' %}
       {% include "navbar.html" %}
+    {% elif  request.resolver_match.app_name == 'coaches' %}
     {% else %}
       {% include "nav.html" %}
     {% endif %}
     {% endblock navbar %}
     <body>
+      {{request.resolver_match.app_name}}
         <div class="modal" id="delete"></div>
         {% if messages %}
             {% for message in messages %}
@@ -86,6 +88,8 @@
         </script>
         {% if request.resolver_match.app_name == 'landing' %}
           <script type="text/javascript" src="{% static '/js/landing.js' %}"></script>
+          <script src="https://cdn.rawgit.com/dropbox/zxcvbn/v1.0/zxcvbn.js"></script>
+          <script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js"></script>
         {% else %}
           <script type="text/javascript" src="{% static '/index.js' %}"></script>
         {% endif %}
