@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/landing/social.css' %}">
+{% endblock %}
+{% block main %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.12';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="header small-header">
+  <div class="image-header"></div>
+  <div class="cover"></div>
+  <div class="container"align="left">
+    <h2>Social</h2>
+  </div>
+</div>
+<div class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 m12">
+      <div class="fb-page" data-href="https://www.facebook.com/PlanLibelula/" data-tabs="timeline" data-width="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/PlanLibelula/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/PlanLibelula/">Plan Libélula Desarrollo Integral</a></blockquote></div>
+      </div>
+      <div class="col l6 m12">
+        <img src="{% static 'static_media/slogan.svg' %}" width="500px" height="500px"/>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

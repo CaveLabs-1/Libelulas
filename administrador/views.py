@@ -67,6 +67,7 @@ def eliminar_administrador(request, id_administrador):
     return HttpResponseRedirect(reverse('administrador:lista_administrador'))
 
 
+
 def eliminar_preregsitro(request, id_preregistro):
     pre = get_object_or_404(PreRegistro, id=id_preregistro)
     pre.delete()
@@ -94,7 +95,4 @@ def aceptar_PreRegistro(request, id_preregistro):
         fail_silently=False,
     )
     return HttpResponseRedirect(reverse('administrador:lista_PreRegistro'))
-
-
-
 
