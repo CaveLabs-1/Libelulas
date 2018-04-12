@@ -30,6 +30,12 @@ def ver_equipos(request):
     equipos = Equipo.objects.all().filter(activo=True)
     return render(request, 'landing/lista_equipos.html', {'equipos': equipos})
 
+def social(request):
+    return render(request, 'landing/social.html')
+
+def galeria(request):
+    return render(request, 'landing/galeria.html')
+
 def detalle_equipo(request, pk):
     equipo = get_object_or_404(Equipo, pk=pk)
     jugadoras_equipo = Equipo.objects.get(id=pk).jugadoras.all()
