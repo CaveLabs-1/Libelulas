@@ -3,7 +3,7 @@ from .forms import *
 from django.urls import reverse
 from django.http import *
 from django.contrib import messages
-from django.shortcuts import get_object_or_404
+from django.shortcuts import *
 from torneo.models import *
 from equipo.models import *
 from jugadora.models import *
@@ -19,6 +19,7 @@ import uuid
 from weasyprint import HTML, CSS
 from django.template.loader import get_template
 from django.http import HttpResponse
+
 
 def lista_torneos(request):
     lista_torneos = Torneo.objects.all()
@@ -422,3 +423,41 @@ def eliminar_evento(request, id_partido):
 
         html = render_to_string('torneo/lista_eventos.html', {'amarillas':amarillas,'rojas':rojas,'azules':azules,'goles':goles,'asistencias':asistencias, 'partido':id_partido, 'partido':partido})
         return HttpResponse(html)
+
+def nueva_jornada(request, id_torneo):
+    torneo = get_object_or_404(Torneo, id=id_torneo)
+    if request.method == "POST":
+        form = JornadaForm(request.POST)
+        if form.is_valid():
+            jornada = form.save(commit=False)
+            jornada.torneo = torneo
+            jornada.save()
+            messages.success(request, 'Jornada creada exitosamente.')
+            return redirect('/torneo/editar_registro/'+str(id_torneo))
+        else:
+            messages.warning(request, 'Hubo un error en la forma')
+    else:
+        form = JornadaForm()
+    return render(request, 'torneo/nueva_jornada.html', {'form': form, 'torneo':torneo})
+
+def nuevo_partido(request, id_jornada):
+    jornada = get_object_or_404(Jornada, id=id_jornada)
+    if request.method == "POST":
+        form = NuevoPartidoForm(request.POST)
+        if form.is_valid():
+            partido = form.save(commit=False)
+            partido.jornada = jornada
+            partido.id = uuid.uuid4().hex[:6].upper()
+            partido.save()
+            messages.success(request, 'Partido creado exitosamente.')
+            return redirect('/torneo/editar_registro/'+str(jornada.torneo.id))
+        else:
+            messages.warning(request, 'Hubo un error en la forma')
+    else:
+        torneo = get_object_or_404(Torneo, id=jornada.torneo.id)
+        equipos = torneo.equipos.all()
+        form = NuevoPartidoForm()
+        form.fields["equipo_visitante"].queryset = equipos
+        form.fields["equipo_local"].queryset = equipos
+    return render(request, 'torneo/nuevo_partido.html', {'form': form, 'jornada':jornada})
+    

@@ -1,5 +1,7 @@
-<h4 class="center-align">Jornada {{jornada.jornada}}</h4><h6> <a href='{% url "torneo:mandar_codigoCedula" jornada.torneo.id jornada.id %}'><i class="material-icons icon-blue">print</i>Imprimir Claves de Acceso</a></h6>
-
+<h4 class="center-align">Jornada {{jornada.jornada}}</h4>
+<h6><a href='{% url "torneo:mandar_codigoCedula" jornada.torneo.id jornada.id %}'><i class="material-icons icon-blue">print</i>Imprimir Claves de Acceso</a></h6>
+<a href='{% url "torneo:nuevo_partido" jornada.id %}' class="btn">Nuevo Partido</a>
+<br/>
 <br>
 {% for partido in partidos %}
   <div class="row valign-wrapper">
