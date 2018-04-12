@@ -72,3 +72,6 @@ def eliminar_jugadora(request, equipo_id, idJugadora):
     j =  Jugadora.objects.get(id=idJugadora)
     Equipo.objects.get(id=equipo_id).jugadoras.remove(j)
     return HttpResponseRedirect(reverse_lazy('equipo:lista_equipos'))
+    
+def welcome(request):
+    return render(request, 'equipo/welcome.html')

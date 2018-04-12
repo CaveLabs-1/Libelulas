@@ -62,3 +62,4 @@ def eliminar_administrador(request, id_administrador):
     administrador.delete()
     messages.warning(request, 'Administrador eliminado exitosamente.')
     return HttpResponseRedirect(reverse('administrador:lista_administrador'))
+

@@ -1,8 +1,10 @@
-.container {
-  justify-content: center;
-}
 
 .fb-container {
   max-width: 500px;
   width: 100%;
+}
+
+.header > .image-header {
+  background-image: url("../../static_media/social.jpg");
+  background-position: 50% -0;
 }
