@@ -35,3 +35,19 @@ class CedulaForm(forms.ModelForm):
     class Meta:
         model = Partido
         fields = ('goles_local', 'goles_visitante', 'notas', 'arbitro')
+
+class JornadaForm(forms.ModelForm):
+    class Meta:
+        model = Jornada
+        fields = ('fecha_inicio', 'fecha_fin', 'jornada')
+        
+class NuevoPartidoForm(forms.ModelForm):
+    class Meta:
+        model = Partido
+        fields = (
+            'fecha',
+            'hora',
+            'cancha',
+            'equipo_local',
+            'equipo_visitante',
+        )

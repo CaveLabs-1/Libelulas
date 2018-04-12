@@ -21,5 +21,6 @@ urlpatterns = [
     path('registrar_asistencia', views.registrar_asistencia, name='registrar_asistencia'),
     path('registrar_eventos/<slug:id_partido>', views.registrar_eventos, name='registrar_eventos'),
     path('eliminar_evento/<slug:id_partido>', views.eliminar_evento, name='eliminar_evento'),
-
+    path('nueva_jornada/<int:id_torneo>', views.nueva_jornada, name='nueva_jornada'),
+    path('nuevo_partido/<int:id_jornada>', views.nuevo_partido, name='nuevo_partido'),
 ]
