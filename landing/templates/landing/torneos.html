@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="{% static 'css/landing/convocatorias.css' %}">
 {% endblock %}
 {% block main %}
-
+{% now "Y-m-d" as today %}
 <div class="header small-header">
   <div class="image-header"></div>
   <div class="cover"></div>
@@ -16,6 +16,9 @@
   <div class="container">
     <div class="card-container flex space-between">
       {% for Torneo in torneos %}
+
+
+
       <div class="card hoverable">
         <div class="card-image waves-effect waves-block waves-light">
           <div class="container">
@@ -64,6 +67,17 @@
                 <a href="{{ Torneo.anexo.url }}">Documento Anexo</a>
             {% endif %}
           </div>
+            {% if today >= Torneo.unDiaAntesJunta|date:"Y-m-d" %}
+
+            {% else %}
+                <div class="card-panel">
+                    <i class="material-icons left black-text ">format_align_center</i>
+                    <span class="black-text">Pre-Registro:</span>
+                    <br>
+                    <a href="{% url 'coaches:pre_registro' Torneo.id %}" class="waves-effect waves-light btn">Solicitar</a>
+                </div>
+            {% endif %}
+
         </div>
       </div>
       {% empty %}
