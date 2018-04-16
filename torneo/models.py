@@ -8,7 +8,8 @@ import uuid
 
 class Torneo(models.Model):
     nombre = models.CharField(max_length=100, verbose_name="Nombre del Torneo")
-    categoria = models.IntegerField(verbose_name="Categoria", validators=[MaxValueValidator(datetime.datetime.now().year )])
+    categoria = models.IntegerField(verbose_name="Categoría desde:")
+    categoriaMax = models.IntegerField(verbose_name="Categoría hasta:", validators=[MaxValueValidator(datetime.datetime.now().year )])
     fechaInicio = models.DateField(verbose_name="Fecha Inicio")
     anexo = models.FileField(upload_to='media/torneo', blank=True, null=True, verbose_name="Documento Anexo")
     costo = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Costo Inscripcion", validators=[MinValueValidator(0)])

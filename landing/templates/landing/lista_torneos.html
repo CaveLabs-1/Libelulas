@@ -20,7 +20,11 @@
           <a href="{% url 'landing:detalle_torneo' torneo.id %}">
           <span class="title">{{torneo.nombre}}</span>
           <p>{{ torneo.fechaInicio }}</p>
-          <p>Categoría: {{ torneo.categoria }}</p>
+          {% if torneo.categoria == 0 and torneo.categoriaMax == 100 %}
+            <p>Categoría: Libre</p>
+            {% else %}
+            <p>Categoría: {{ torneo.categoria }} - {{ torneo.categoriaMax }} </p>
+            {% endif %}
         </a>
         </li>
       {% endif %}
