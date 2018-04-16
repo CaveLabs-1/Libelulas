@@ -18,7 +18,6 @@ def pre_registro(request, id_torneo):
             registro.torneo = torneo
             registro.save()
             messages.success(request, 'Solicitud de pre-registro enviada')
-            return HttpResponseRedirect(reverse('coaches:registrar_jugadora', kwargs={'codigo':codigo,'id_equipo':registro.equipo.id}))
     else:
         form = PreForm()
     return render(request, 'coaches/pre_registro.html', {'form': form, 'torneo': torneo})
@@ -63,7 +62,7 @@ def registrar_equipo(request, codigo):
 
 def terminar_registro(request, codigo):
     registro = get_object_or_404(PreRegistro,codigo=codigo)
-    registro.codigo = ""
+    registro.codigo = None
     registro.save()
     messages.success(request, 'La solicitud será procesada por el administrador')
     return HttpResponseRedirect(reverse('landing:ver_equipos'))
