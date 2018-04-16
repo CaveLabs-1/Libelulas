@@ -358,7 +358,7 @@ p {
 }
 
 .delete-color {
-  background-color: #ff7178;
+  background-color: #F19800;
   border-radius: 50px;
   border-style: none;
   box-shadow: 0 8px 6px 0 rgba(239, 239, 239, 0.47);
@@ -367,6 +367,15 @@ p {
   font-weight: bold;
   letter-spacing: 43;
   padding: 0.75em 2.62em 0.75em 2.62em;
+}
+
+
+.delete-button {
+  color: #F19800;
+}
+
+.delete-color {
+  color: #F19800;
 }
 
 .cancel-delete {
@@ -475,9 +484,13 @@ input:focus{
   color: #F19800;
 }
 
-.delete-button{
-    color: #F19800;
+.delete-button {
+  color: #F19800;
+}
 
+.delete-color {
+  color: #F19800;
+}
 
 #opcionesID{
   display:flex;

@@ -13,13 +13,57 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 </head>
+
+<style>
+    table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+    tr:nth-child(even) {background-color: #a9a9a9;}
+th {
+    background-color: black;
+    color: white;
+}
+    table {
+    width: 100%;
+}
+    table, h1,h2, th, tr, td, body{
+        font-family: 'Roboto', sans-serif;
+        font-size: 10px;
+
+    }
+    @page {
+size: Letter portrait;
+}
+
+
+</style>
+
 <body>
-<h2>Plan Libelula Desarollo Integral</h2>
-<h3 class="center-align">Cedula</h3>
-<p>Arbitro: {{ partido.arbitro }}</p>
+<h1>Plan Libelula Desarollo Integral</h1>
+<h3>Cédula</h3>
+
+
+        <div class="row row center-align">
+            <div class="col s4"><p>Arbitro: {{ partido.arbitro }}</p></div>
+            <div class="col s4 align-wrapper"><br><hr></div>
+        </div>
+<br>
+<!----
 <p>Acta del partido de Futbol del torneo {{ partido }} efectuado el dia {{ partido }} a las {{ partido }} hrs. En el campo {{partido }} de la ciudad
 de QRO con tiempos de BLAH cada uno y descanso intermendio de BLAH. Entre los equipos de {{ partido }} y {{ partido }}
 en el cual BLAH existe tolerancia de BLAH minutos</p>
+--->
+<div class="row">
+    <div class="col s12 m12 l12">Equipo Local: {{ partido.equipo_local.nombre }}&emsp;&emsp;
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Equipo Visitante: {{ partido.equipo_visitante.nombre }}</div>
+</div>
+<br>
 
 <div class="row">
     <div class="col s12">
@@ -66,7 +110,11 @@ en el cual BLAH existe tolerancia de BLAH minutos</p>
         </table>
 
         <div align="center">
-            <p>cambios</p>
+            <p>Cambios</p>
+            <div class="col s4 align-wrapper"><br><hr></div>
+            <div class="col s4 align-wrapper"><br><hr></div>
+            <div class="col s4 align-wrapper"><br><hr></div>
+
         </div>
         <hr>
             <table  class="browser-default">
@@ -116,31 +164,30 @@ en el cual BLAH existe tolerancia de BLAH minutos</p>
 
 <div class="row">
 
-        <div class="row center-align">
-            <div class="col s4 align-wrapper"><br><hr></div>
-            <div class="col s4">Director Tec.</div>
-            <div class="col s4 align-wrapper"><br><hr></div>
-        </div>
 
         <div class="row row center-align">
-            <div class="col s4 align-wrapper"><br><hr></div>
             <div class="col s4">Auxiliar 1</div>
             <div class="col s4 align-wrapper"><br><hr></div>
         </div>
 
         <div class="row center-align ">
-            <div class="col s4 align-wrapper"><br><hr></div>
             <div class="col s4">Auxiliar 2</div>
             <div class="col s4 align-wrapper"><br><hr></div>
         </div>
 
         <div class="row center-align">
-            <div class="col s4 align-wrapper"><br><hr></div>
             <div class="col s4">Total de Goles</div>
             <div class="col s4 align-wrapper"><br><hr></div>
         </div>
+
+        <div class="row center-align">
+            <div class="col s4">Ïncidente</div>
+            <div class="col s4 align-wrapper"><br><hr></div>
+            <div class="col s4 align-wrapper"><br><hr></div>
+            <div class="col s4 align-wrapper"><br><hr></div>
+            <div class="col s4 align-wrapper"><br><hr></div>
+        </div>
 </div>
-<p>Incidente:</p>
 
 </body>
 </html>
