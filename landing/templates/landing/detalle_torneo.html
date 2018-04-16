@@ -1,14 +1,22 @@
-{% extends "base.html" %} {% load static %} {% block styles %}
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
 <link rel="stylesheet" href="{% static 'css/landing/torneo.css' %}"> {% endblock %} {% block main %}
 <div class="header">
   <div class="image-header"></div>
   <div class="cover"></div>
   <div class="container">
     <div class="info-column">
-      <h2>{{ torneo.nombre }}</h2> {% if torneo.categoria == 0 and torneo.categoriaMax == 100 %}
-      <h6><strong>Categoría:</strong> Libre</h6> {% else %}
-      <h6><strong>Categoría:</strong> {{ torneo.categoria }} - {{ torneo.categoriaMax }} </h6> {% endif %}
-      <h6><strong>Fecha de Inicio: </strong>{{torneo.fechaInicio}}</h6>
+      <h2>{{ torneo.nombre }}</h2>
+      {% if torneo.categoria == 0 and torneo.categoriaMax == 100 %}
+        <h6><strong>Categoría:</strong> Libre</h6>
+      {% else %}
+        <h6><strong>Categoría:</strong>
+          {{ torneo.categoria }} - {{ torneo.categoriaMax }}
+        </h6>
+      {% endif %}
+      <h6><strong>Fecha de Inicio: </strong>
+        {{torneo.fechaInicio}}</h6>
     </div>
   </div>
 </div>
@@ -17,10 +25,10 @@
     <div class="row">
       <div class="col s12">
         <ul class="tabs">
-          <li class="tab col s3"><a  class="active" href="#test1">Tabla General</a></li>
+          <li class="tab col s3"><a class="active" href="#test1">Tabla General</a></li>
           <li class="tab col s3"><a href="#test2">Partidos</a></li>
-          <li class="tab col s3"><a href="#test3">Estadísticas por Equipo</a></li>
-          <li class="tab col s3"><a href="#test4">Estadísticas por Jugadora</a></li>
+          <!-- <li class="tab col s3"><a href="#test3">Estadísticas por Equipo</a></li> -->
+          <li class="tab col s3"><a href="#test3">Estadísticas por Jugadora</a></li>
         </ul>
       </div>
       <div id="test1">
@@ -43,19 +51,18 @@
           </thead>
           <tbody>
             {% for stat in stats %}
-
-            <tr>
-              <td>{{ forloop.counter }}</td>
-              <td><img src="{{ stat.equipo.logo.url }}" alt="" class="circle" height="32" width="32" style="vertical-align:middle"><a href="{% url 'landing:detalle_equipo' stat.equipo.id %}">{{stat.equipo.nombre}}</a></td>
-              <td>{{ stat.pts }}</td>
-              <td>{{ stat.jj }}</td>
-              <td>{{ stat.jg }}</td>
-              <td>{{ stat.jp }}</td>
-              <td>{{ stat.je }}</td>
-              <td>{{ stat.gf }}</td>
-              <td>{{ stat.ge }}</td>
-              <td>{{ stat.dg }}</td>
-            </tr>
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><img src="{{ stat.equipo.logo.url }}" alt="" class="circle" height="32" width="32" style="vertical-align:middle"><a href="{% url 'landing:detalle_equipo' stat.equipo.id %}">{{stat.equipo.nombre}}</a></td>
+                <td>{{ stat.pts }}</td>
+                <td>{{ stat.jj }}</td>
+                <td>{{ stat.jg }}</td>
+                <td>{{ stat.jp }}</td>
+                <td>{{ stat.je }}</td>
+                <td>{{ stat.gf }}</td>
+                <td>{{ stat.ge }}</td>
+                <td>{{ stat.dg }}</td>
+              </tr>
             {% endfor %}
           </tbody>
         </table>
@@ -74,7 +81,6 @@
         <hr/>
       </div>
       <div id="test2">
-
         <h3>Calendadio por Jornadas</h3>
         {% for jornada in jornadas %}
         <div class="col">
@@ -90,72 +96,128 @@
           <div class="card">
             <span class="card-title"><strong>MEJOR GOLEADORA </strong></span>
             <ul class="collection">
-              <!-- {% for goles in top_goles %}
-              {% if forloop.first %}
-                  <li class="collection-item avatar big align-items">
-                    <a href="{% url 'landing:detalle_jugadora' equipo.id goles.jugadora__id %}">
-                      {% if goles.jugadora__Imagen %}
-                        <img src="/media/{{goles.jugadora__Imagen}}" alt="{{goles.jugadora__Nombre}} imagen" class="circle big"/>
-                      {% else %}
-                        <img src="{% static 'static_media/default.jpg' %}" alt="{{goles.jugadora__Nombre}} imagen" class="circle big"/>
-                      {% endif %}
-                      <h6><strong>{{ goles.jugadora__Nombre }} {{ goles.jugadora__Apellido }}</strong></h6>
-                      <h6 class="secondary-content top">{{ goles.goles}}</h6>
-                    </a>
-                  </li>
-                {% else %}
-                  <li class="collection-item avatar align-items">
-                    <a href="{% url 'landing:detalle_jugadora' equipo.id goles.jugadora__id %}">
-                      {% if goles.jugadora__Imagen %}
-                        <img src="/media/{{ goles.jugadora__Imagen }}" alt="{{goles.jugadora__Nombre}} imagen" class="circle"/>
-                      {% else %}
-                        <img src="{% static 'static_media/default.jpg' %}" alt="{{goles.jugadora__Nombre}} imagen" class="circle"/>
-                      {% endif %}
-                      <span>{{goles.jugadora__Nombre}} {{goles.jugadora__Apellido}}</span>
-                      <span class="secondary-content no-top">{{ goles.goles }}</span>
-                    </a>
-                  </li>
-                  {% endif %}
-              {% endfor %} -->
+              {% for gol in goles %} {% if forloop.first %}
+              <li class="collection-item avatar big align-items">
+                {% if gol.jugadora__Imagen %}
+                <img src="/media/{{gol.jugadora__Imagen}}" alt="{{goles.jugadora__Nombre}} imagen" class="circle big" /> {% else %}
+                <img src="{% static 'static_media/default.jpg' %}" alt="{{goles.jugadora__Nombre}} imagen" class="circle big" /> {% endif %}
+                <h6><strong>{{ gol.jugadora__Nombre }} {{ gol.jugadora__Apellido }}</strong></h6>
+                <h6 class="secondary-content top">{{ gol.goles}}</h6>
+              </li>
+              {% else %}
+              <li class="collection-item avatar align-items">
+                {% if gol.jugadora__Imagen %}
+                <img src="/media/{{ gol.jugadora__Imagen }}" alt="{{gol.jugadora__Nombre}} imagen" class="circle" /> {% else %}
+                <img src="{% static 'static_media/default.jpg' %}" alt="{{gol.jugadora__Nombre}} imagen" class="circle" /> {% endif %}
+                <span>{{gol.jugadora__Nombre}} {{gol.jugadora__Apellido}}</span>
+                <span class="secondary-content no-top">{{ gol.goles }}</span>
+              </li>
+              {% endif %} {% endfor %}
             </ul>
           </div>
+          <div class="card">
+            <span class="card-title"><strong>MÁS AMONESTACIONES</strong></span>
+            <ul class="collection">
+              {% for ta in amarillas %} {% if forloop.first %}
+              <li class="collection-item avatar big align-items">
+                {% if ta.jugadora__Imagen %}
+                <img src="/media/{{ta.jugadora__Imagen}}" alt="{{ta.jugadora__Nombre}} imagen" class="circle big" /> {% else %}
+                <img src="{% static 'static_media/default.jpg' %}" alt="{{ta.jugadora__Nombre}} imagen" class="circle big" /> {% endif %}
+                <h6><strong>{{ ta.jugadora__Nombre }} {{ ta.jugadora__Apellido }}</strong></h6>
+                <h6 class="secondary-content top">{{ ta.total}}</h6>
+              </li>
+              {% else %}
+              <li class="collection-item avatar align-items">
+                {% if ta.jugadora__Imagen %}
+                <img src="/media/{{ ta.jugadora__Imagen }}" alt="{{ta.jugadora__Nombre}} imagen" class="circle" /> {% else %}
+                <img src="{% static 'static_media/default.jpg' %}" alt="{{ta.jugadora__Nombre}} imagen" class="circle" /> {% endif %}
+                <span>{{ta.jugadora__Nombre}} {{ta.jugadora__Apellido}}</span>
+                <span class="secondary-content no-top">{{ ta.total }}</span>
+              </li>
+              {% endif %} {% endfor %}
+            </ul>
+          </div>
+          <div class="card">
+            <span class="card-title"><strong>MÁS EXPULSIONES</strong></span>
+            <ul class="collection">
+              {% for ta in rojas%} {% if forloop.first %}
+              <li class="collection-item avatar big align-items">
+                {% if ta.jugadora__Imagen %}
+                <img src="/media/{{ta.jugadora__Imagen}}" alt="{{ta.jugadora__Nombre}} imagen" class="circle big" /> {% else %}
+                <img src="{% static 'static_media/default.jpg' %}" alt="{{ta.jugadora__Nombre}} imagen" class="circle big" /> {% endif %}
+                <h6><strong>{{ ta.jugadora__Nombre }} {{ ta.jugadora__Apellido }}</strong></h6>
+                <h6 class="secondary-content top">{{ ta.total}}</h6>
+              </li>
+              {% else %}
+              <li class="collection-item avatar align-items">
+                {% if ta.jugadora__Imagen %}
+                <img src="/media/{{ ta.jugadora__Imagen }}" alt="{{ta.jugadora__Nombre}} imagen" class="circle" /> {% else %}
+                <img src="{% static 'static_media/default.jpg' %}" alt="{{ta.jugadora__Nombre}} imagen" class="circle" /> {% endif %}
+                <span>{{ta.jugadora__Nombre}} {{ta.jugadora__Apellido}}</span>
+                <span class="secondary-content no-top">{{ ta.total }}</span>
+              </li>
+              {% endif %} {% endfor %}
+            </ul>
+          </div>
+          <div class="card">
+            <span class="card-title"><strong>FAIR PLAY</strong></span>
+            <ul class="collection">
+              {% for ta in azules %} {% if forloop.first %}
+              <li class="collection-item avatar big align-items">
+                {% if ta.jugadora__Imagen %}
+                <img src="/media/{{ta.jugadora__Imagen}}" alt="{{ta.jugadora__Nombre}} imagen" class="circle big" /> {% else %}
+                <img src="{% static 'static_media/default.jpg' %}" alt="{{ta.jugadora__Nombre}} imagen" class="circle big" /> {% endif %}
+                <h6><strong>{{ ta.jugadora__Nombre }} {{ ta.jugadora__Apellido }}</strong></h6>
+                <h6 class="secondary-content top">{{ ta.total}}</h6>
+              </li>
+              {% else %}
+              <li class="collection-item avatar align-items">
+                {% if ta.jugadora__Imagen %}
+                <img src="/media/{{ ta.jugadora__Imagen }}" alt="{{ta.jugadora__Nombre}} imagen" class="circle" /> {% else %}
+                <img src="{% static 'static_media/default.jpg' %}" alt="{{ta.jugadora__Nombre}} imagen" class="circle" /> {% endif %}
+                <span>{{ta.jugadora__Nombre}} {{ta.jugadora__Apellido}}</span>
+                <span class="secondary-content no-top">{{ ta.total }}</span>
+              </li>
+              {% endif %} {% endfor %}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-{% endblock %} {% block scripts %} {{ block.super }}
-<script src=" https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js "></script>
-<script type="text/javascript">
-  $(document).ready(function() {
-    var csrftoken = $.cookie('csrftoken');
+  {% endblock %} {% block scripts %} {{ block.super }}
+  <script src=" https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js "></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var csrftoken = $.cookie('csrftoken');
 
-    function csrfSafeMethod(method) {
-      // these HTTP methods do not require CSRF protection
-      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-    }
-    $.ajaxSetup({
-      beforeSend: function(xhr, settings) {
-        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-          xhr.setRequestHeader("X-CSRFToken", csrftoken);
-        }
+      function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
       }
-    });
-    $('.modal').modal();
-  });
-
-  function carga_partidos(jornada) {
-
-    var url = '{% url "landing:carga_partidos" %}';
-
-    var jornada = jornada
-
-    $.post(url, {
-        jornada: jornada
-      })
-      .done(function(data) {
-        $('#partidos').html(data);
+      $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+          }
+        }
       });
-    return false;
-  };
-</script>
-{% endblock %}
+      $('.modal').modal();
+    });
+
+    function carga_partidos(jornada) {
+
+      var url = '{% url "landing:carga_partidos" %}';
+
+      var jornada = jornada
+
+      $.post(url, {
+          jornada: jornada
+        })
+        .done(function(data) {
+          $('#partidos').html(data);
+        });
+      return false;
+    };
+  </script>
+  {% endblock %}

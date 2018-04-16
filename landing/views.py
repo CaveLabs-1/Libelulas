@@ -139,13 +139,10 @@ def detalle_torneo(request, pk):
         dg=gf-ge
         weones.append({'equipo':equipo, 'jj':jj, 'jg':jg,'jp':jp,'je':je,'gf':gf,'ge':ge,'dg':dg,'pts':pts})
     newlist = sorted(weones, key=lambda k: k['pts'], reverse=True)
-    golit = Goles.objects.filter(partido__jornada__torneo= torneo).values('jugadora__Nombre', 'jugadora', 'jugadora__Apellido').annotate(goles=Sum('cantidad')).order_by('-goles')[:3]
-    tarjetasAma = Tarjetas_amarillas.objects.filter(partido__jornada__torneo= torneo).values('jugadora__Nombre', 'jugadora', 'jugadora__Apellido').annotate(total=Sum('cantidad')).order_by('-total')[:3]
-    tarjetasR = Tarjetas_rojas.objects.filter(partido__jornada__torneo= torneo).values('jugadora__Nombre', 'jugadora', 'jugadora__Apellido').annotate(total=Count('jugadora')).order_by('-total')[:3]
-    tarjetasAzul = Tarjetas_azules.objects.filter(partido__jornada__torneo= torneo).values('jugadora__Nombre', 'jugadora', 'jugadora__Apellido').annotate(total=Count('jugadora')).order_by('-total')[:3]
-    print(tarjetasAma)
-    print(tarjetasR)
-    print(tarjetasAzul)
+    golit = Goles.objects.filter(partido__jornada__torneo= torneo).values('jugadora__Nombre', 'jugadora', 'jugadora__Apellido', 'jugadora__Imagen').annotate(goles=Sum('cantidad')).order_by('-goles')[:3]
+    tarjetasAma = Tarjetas_amarillas.objects.filter(partido__jornada__torneo= torneo).values('jugadora__Nombre', 'jugadora', 'jugadora__Apellido', 'jugadora__Imagen').annotate(total=Sum('cantidad')).order_by('-total')[:3]
+    tarjetasR = Tarjetas_rojas.objects.filter(partido__jornada__torneo= torneo).values('jugadora__Nombre', 'jugadora', 'jugadora__Apellido', 'jugadora__Imagen').annotate(total=Count('jugadora')).order_by('-total')[:3]
+    tarjetasAzul = Tarjetas_azules.objects.filter(partido__jornada__torneo= torneo).values('jugadora__Nombre', 'jugadora', 'jugadora__Apellido', 'jugadora__Imagen').annotate(total=Count('jugadora')).order_by('-total')[:3]
     return render (request, 'landing/detalle_torneo.html', {'torneo': torneo,'stats': newlist, 'jornadas': jornadas, 'goles': golit, 'amarillas':tarjetasAma, 'rojas': tarjetasR, 'azules': tarjetasAzul })
 
 def carga_partidos(request):

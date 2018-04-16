@@ -12,6 +12,32 @@ td img {
   padding: 6px 6px 6px 6px
 }
 
+.card-list {
+  flex-wrap: wrap;
+}
+
+.card {
+  width:450px;
+}
+
+.card {
+  padding: 12px 24px 12px 24px;
+}
+
+.collection-item > .big {
+  height: 60px !important;
+  width: 60px !important;
+}
+
+.collection > .big {
+  padding-left: 85px !important;
+}
+
+.col {
+    margin-bottom: 32px ;
+}
+
+
 @media (min-width: 360px) and (max-width: 767px) {
   .image-header {
     top: 0;
