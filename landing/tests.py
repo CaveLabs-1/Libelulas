@@ -322,5 +322,9 @@ class LandingTestCase(TestCase):
         )
         resp = self.client.get('/coaches/pre_registro/5')
         resp2 = self.client.get('/coaches/pre_registro/6')
+
+        #Intentar pre registro a un torneo tarde
         self.assertTrue(resp.status_code == 404)
+
+        # Intentar pre registro a un torneo a tiempo
         self.assertTrue(resp2.status_code == 200)
