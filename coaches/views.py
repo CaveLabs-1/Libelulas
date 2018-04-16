@@ -57,7 +57,7 @@ def registrar_equipo(request, codigo):
             registro.equipo = equipo
             registro.save()
             messages.success(request, 'Equipo creado exitosamente')
-            return HttpResponseRedirect(reverse('coaches:registrar_equipo',kwargs={'codigo':codigo}))
+            return HttpResponseRedirect(reverse('coaches:registrar_jugadora',kwargs={'codigo':codigo,'id_equipo':equipo.id}))
         else:
             messages.warning(request, 'Hubo un error en la forma')
     else:
@@ -68,5 +68,4 @@ def terminar_registro(request, codigo):
     registro = get_object_or_404(PreRegistro,codigo=codigo)
     registro.codigo = None
     registro.save()
-    messages.success(request, 'La solicitud será procesada por el administrador')
     return HttpResponseRedirect(reverse('landing:ver_equipos'))

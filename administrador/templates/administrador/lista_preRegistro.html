@@ -29,10 +29,10 @@
                         </div>
 
                         <div id="opcionesID" class="secondary-content flex">
-                            {% if pre.codigo == None %}
+                            {% if pre.equipo == None %}
                                 <br>
                                 <a onclick="myFunction()" href="{% url 'administrador:aceptar_PreRegistro' pre.id %}" class="secondary-content"><i class="medium material-icons icon-blue">done</i></a>
-                                <a class="modal-trigger secondary-content boton-eliminar" href="#delete-modal" data-id="{{pre.id}}" data-nombre="Ale"><i class="medium material-icons icon-red">highlight_off</i></a>
+                                <a class="modal-trigger secondary-content boton-eliminar" href="#delete-modal" data-id="{{pre.id}}" data-nombre="{{pre.nombre}}"><i class="medium material-icons icon-red">highlight_off</i></a>
                             {% else %}
                                 <h6>Aceptada</h6>
                             {% endif %}
@@ -51,7 +51,7 @@
                   <span class="title"><a href="{% url 'administrador:detalle_equipo' pre.equipo.id %}">{{ pre.equipo.nombre }}</a></span>
                   <p>Representante: {{ pre.equipo.representante }}</p>
                   <div class="secondary-content">
-                     <a href="#" data-nombre="{{pre.equipo.nombre}}" data-id="{{pre.equipo.id}}">
+                     <a class="modal-trigger aceptar-equipo" href="#delete-modal" data-nombre="{{pre.equipo.nombre}}" data-id="{{pre.equipo.id}}">
                        <i class="medium material-icons icon-blue">done</i>
                      </a>
                      <a class="modal-trigger eliminar-equipo" href="#delete-modal" data-nombre="{{pre.equipo.nombre}}" data-id="{{pre.equipo.id}}">

@@ -36,9 +36,10 @@ def crear_torneo(request):
         if form.is_valid():
             torneo = form.save(commit=False)
             torneo.save()
-            for equipo in form.cleaned_data['equipos']:
-                estadistica = Estadisticas(equipo=equipo,torneo=torneo)
-                estadistica.save()
+            if form.cleaned_data['equipos']:
+                for equipo in form.cleaned_data['equipos']:
+                    estadistica = Estadisticas(equipo=equipo,torneo=torneo)
+                    estadistica.save()
             messages.success(request, 'Torneo agregado exitosamente')
             return HttpResponseRedirect(reverse('torneo:lista_torneos'))
         else:
@@ -460,4 +461,3 @@ def nuevo_partido(request, id_jornada):
         form.fields["equipo_visitante"].queryset = equipos
         form.fields["equipo_local"].queryset = equipos
     return render(request, 'torneo/nuevo_partido.html', {'form': form, 'jornada':jornada})
-    
