@@ -11,7 +11,7 @@ from django.core.mail import send_mail
 
 def lista_administrador(request):
     lista = User.objects.all()
-    return render(request, 'administradorlista_administrador.html', {'lista': lista})
+    return render(request, 'administrador/lista_administrador.html', {'lista': lista})
 
 def agregar_administrador(request):
     if request.method == "POST":
