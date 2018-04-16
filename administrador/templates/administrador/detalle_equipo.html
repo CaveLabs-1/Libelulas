@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+
+<div class="title-container">
+  <h2 id="team-title">{{equipo.nombre}}</h2>
+  <h2 class="hidden" id="player-title">Jugadoras - {{equipo.nombre}}</h2>
+</div>
+<div class="container">
+  <div class="row tab-row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a id='info' href="#informacion">Información</a>
+          <li class="tab col s3"><a id='player' href="#jugadoras">Jugadoras</a>
+      </ul>
+    </div>
+  </div>
+  <div class="row" id="informacion">
+    <div class="col s12 m3">
+      <img class="logo-equipo" src="{{equipo.logo.url}}">
+    </div>
+    <div class="col s12 m9">
+      <div class="input-field col s12">
+        <input disabled value="{{equipo.nombre}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+        <label for="disabled">Nombre de Equipo</label>
+      </div>
+      <div class="input-field col s12">
+        <input disabled value="{{equipo.representante}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+        <label for="disabled">Coach</label>
+      </div>
+      <div class="input-field col s12 m6">
+        <input disabled value="{{equipo.correo}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+        <label for="disabled">Correo Electrónico</label>
+      </div>
+      <div class="input-field col s12 m6">
+        <input disabled value="{{equipo.telefono}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+        <label for="disabled">Teléfono</label>
+      </div>
+      <div class="input-field col s12">
+        <input disabled value="{{equipo.cancha}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+        <label for="disabled">Cancha</label>
+      </div>
+      <div class="input-field col s12">
+        <input disabled value="{{equipo.get_dia_display}} {{equipo.hora}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+        <label for="disabled">Horario</label>
+      </div>
+      <div class="input-field col s6 m3">
+        <input disabled value="{{equipo.get_colorLocal_display}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+        <label for="disabled">Color Local</label>
+      </div>
+      <div class="input-field col s6 m3">
+        <input disabled value="{{equipo.get_colorVisitante_display}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+        <label for="disabled">Color Visitante</label>
+      </div>
+    </div>
+  </div>
+  <div class="row" id="jugadoras">
+    {% include 'administrador/lista_jugadoras.html'%}
+  </div>
+</div>
+  <script>
+  document.getElementById('player').onclick = function() {
+    if (document.getElementById('player-title').className === 'hidden') {
+      document.getElementById('player-title').classList.remove('hidden');
+      document.getElementById('team-title').classList.add('hidden');
+    }
+  }
+
+  document.getElementById('info').onclick = function() {
+    if (document.getElementById('team-title').className === 'hidden') {
+      document.getElementById('team-title').classList.remove('hidden');
+      document.getElementById('player-title').classList.add('hidden');
+    }
+  }
+
+  function myFunction() {
+          newHTML=' <div class="preloader-wrapper small active">\n' +
+              '      <div class="spinner-layer spinner-blue">\n' +
+              '        <div class="circle-clipper left">\n' +
+              '          <div class="circle"></div>\n' +
+              '        </div><div class="gap-patch">\n' +
+              '          <div class="circle"></div>\n' +
+              '        </div><div class="circle-clipper right">\n' +
+              '          <div class="circle"></div>\n' +
+              '        </div>\n' +
+              '      </div>'
+
+          $("#opcionesID").html(newHTML);
+
+      }
+  </script>
+
+  {% endblock %}
