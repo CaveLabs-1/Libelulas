@@ -297,3 +297,30 @@ class LandingTestCase(TestCase):
         self.assertQuerysetEqual(response.context['tarjetas_amarillas_visitante'], [])
         self.assertQuerysetEqual(response.context['goles_local'], [])
         self.assertQuerysetEqual(response.context['goles_visitante'].values('cantidad'), ["{'cantidad': 1}"])
+
+    def test_pre_registro(self):
+        t3 = Torneo.objects.create(
+            id=5,
+            nombre="Torneo PRueba",
+            categoria="1995",
+            fechaInicio='2017-12-12',
+            costo=int(12.12),
+            fechaJunta='1995-11-11',
+            costoCredencial=12,
+            activo=True
+        )
+
+        t4 = Torneo.objects.create(
+            id=6,
+            nombre="Torneo PRueba",
+            categoria="1995",
+            fechaInicio='2017-12-12',
+            costo=int(12.12),
+            fechaJunta='2019-11-11',
+            costoCredencial=12,
+            activo=True
+        )
+        resp = self.client.get('/coaches/pre_registro/5')
+        resp2 = self.client.get('/coaches/pre_registro/6')
+        self.assertTrue(resp.status_code == 404)
+        self.assertTrue(resp2.status_code == 200)
