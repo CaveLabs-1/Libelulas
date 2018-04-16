@@ -5,6 +5,8 @@ from django import forms
 from equipo.models import Equipo
 
 class torneoForm(ModelForm):
+    lista_equipos = Equipo.objects.filter(activo=True)
+    equipos = forms.ModelChoiceField(lista_equipos, required=False)
 
     def __init__(self, *args, **kwargs):
         super(torneoForm, self).__init__(*args, **kwargs)
@@ -14,7 +16,7 @@ class torneoForm(ModelForm):
         self.fields['fechaInicio'].widget.input_type = 'date'
         self.fields['fechaJunta'].widget.attrs['class'] = 'datepicker'
         self.fields['fechaJunta'].widget.input_type = 'date'
-        
+
     class Meta:
         model = Torneo
         fields = ('nombre', 'categoria', 'categoriaMax', 'fechaInicio', 'anexo', 'costo', 'costoCredencial', 'equipos', 'fechaJunta')
@@ -40,7 +42,7 @@ class JornadaForm(forms.ModelForm):
     class Meta:
         model = Jornada
         fields = ('fecha_inicio', 'fecha_fin', 'jornada')
-        
+
 class NuevoPartidoForm(forms.ModelForm):
     class Meta:
         model = Partido
