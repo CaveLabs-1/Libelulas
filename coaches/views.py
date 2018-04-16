@@ -8,9 +8,13 @@ from torneo.models import *
 from equipo.models import *
 from equipo.forms import equipoForm
 from jugadora.forms import *
+from django.http import Http404
+import datetime
 
 def pre_registro(request, id_torneo):
     torneo = get_object_or_404(Torneo,id=id_torneo)
+    if datetime.date.today() >= torneo.unDiaAntesJunta():
+        raise Http404("Ya no se permiten mas registro")
     if request.method == "POST":
         form = PreForm(request.POST)
         if form.is_valid():
