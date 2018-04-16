@@ -70,6 +70,34 @@
       </br>
       <hr/>
       <div class="row">
+        <h3>Goles</h3>
+        {% for gol in goles %}
+          {{ gol.jugadora__Nombre }} {{ gol.jugadora__Apellido }}, id jugadora: {{ gol.jugadora }}, goles: {{ gol.goles}}
+          <br>
+        {% endfor %}
+      </div>
+      <div class="row">
+        <h3>Tarjetas Amarillas</h3>
+        {% for gol in amarillas %}
+          {{ gol.jugadora__Nombre }} {{ gol.jugadora__Apellido }}, id jugadora: {{ gol.jugadora }}, amarillas: {{ gol.total}}
+          <br>
+        {% endfor %}
+      </div>
+      <div class="row">
+        <h3>Tarjetas Rojas</h3>
+        {% for gol in rojas %}
+          {{ gol.jugadora__Nombre }} {{ gol.jugadora__Apellido }}, id jugadora: {{ gol.jugadora }}, rojas: {{ gol.total}}
+          <br>
+        {% endfor %}
+      </div>
+      <div class="row">
+        <h3>Tarjestas Azules</h3>
+        {% for gol in azules %}
+          {{ gol.jugadora__Nombre }} {{ gol.jugadora__Apellido }}, id jugadora: {{ gol.jugadora }}, azules: {{ gol.total}}
+          <br>
+        {% endfor %}
+      </div>
+      <div class="row">
         <h3>Calendadio por Jornadas</h3>
         {% for jornada in jornadas %}
         <div class="col">
