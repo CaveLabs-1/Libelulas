@@ -14,10 +14,10 @@ class torneoForm(ModelForm):
         self.fields['fechaInicio'].widget.input_type = 'date'
         self.fields['fechaJunta'].widget.attrs['class'] = 'datepicker'
         self.fields['fechaJunta'].widget.input_type = 'date'
-
+        
     class Meta:
         model = Torneo
-        fields = ('nombre', 'categoria', 'fechaInicio', 'anexo', 'costo', 'costoCredencial', 'equipos', 'fechaJunta')
+        fields = ('nombre', 'categoria', 'categoriaMax', 'fechaInicio', 'anexo', 'costo', 'costoCredencial', 'equipos', 'fechaJunta')
         widgets = {
             'anexo': forms.FileInput(),
         }

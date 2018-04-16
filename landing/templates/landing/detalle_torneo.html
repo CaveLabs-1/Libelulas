@@ -10,7 +10,11 @@
   <div class="container">
     <div class="info-column">
       <h2>{{ torneo.nombre }}</h2>
-      <h6><strong>Categoría: </strong>{{torneo.categoria}}</h6>
+      {% if torneo.categoria == 0  and torneo.categoriaMax == 100 %}
+      <h6><strong>Categoría:</strong> Libre</h6>
+      {% else %}
+      <h6><strong>Categoría:</strong> {{ torneo.categoria }} - {{ torneo.categoriaMax }} </h6>
+      {% endif %}
       <h6><strong>Fecha de Inicio: </strong>{{torneo.fechaInicio}}</h6>
     </div>
   </div>

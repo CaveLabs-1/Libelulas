@@ -42,7 +42,11 @@
             <i class="material-icons left black-text ">person</i>
             <span class="black-text">Categoría:</span>
             <br>
-            <span class="blue-text text-darken-2">{{ Torneo.categoria }} </span>
+            {% if Torneo.categoria == 0 and Torneo.categoriaMax == 100 %}
+            <span class="blue-text text-darken-2">Libre</span>
+            {% else %}
+            <span class="blue-text text-darken-2">{{ Torneo.categoria }} - {{ Torneo.categoriaMax }} </span>
+            {% endif %}
           </div>
           <div class="card-panel">
             <i class="material-icons left black-text ">attach_money</i>

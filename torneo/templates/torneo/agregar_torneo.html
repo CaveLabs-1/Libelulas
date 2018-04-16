@@ -7,7 +7,7 @@
 <form class="container" action="{% url 'torneo:crear_torneo' %}" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   <div class="row">
-    <div class="col s6 m6 l6">
+    <div class="col s12 m6 l6">
       <p>
         <label>
           {{ form.nombre.label_tag }}
@@ -15,13 +15,30 @@
       </p>
       {{ form.nombre.errors }}
     </div>
-    <div class="col s6 m6 l6">
+    <div class="col s12 m2 l2" id="min">
       <p>
         <label>
           {{ form.categoria.label_tag }}
         </label> {{ form.categoria }}
       </p>
       {{ form.categoria.errors }}</div>
+    <div class="col s12 m2 l2" id="max">
+      <p>
+        <label>
+          {{ form.categoriaMax.label_tag }}
+        </label> {{ form.categoriaMax }}
+      </p>
+      {{ form.categoriaMax.errors }}</div>
+    <div class="col s12 m2 l2">
+        <p>
+          <br>
+          <label>
+            <input type="checkbox" id="chk" />
+            <span>Categoria Libre</span>
+          </label>
+        </p>
+      </div>  
+      
     <div class="col s12">
       <label>
           {{ form.fechaInicio.label_tag }}
@@ -86,7 +103,13 @@
 </form>
 {% endblock %}
 
-<script>
+
+
+
+{% block scripts %}
+    {{ block.super }}
+    
+  <script>
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15, // Creates a dropdown of 15 years to control year,
@@ -95,4 +118,46 @@
     close: 'Ok',
     closeOnSelect: false // Close upon selecting a date,
   });
-</script>
+  </script>
+  <script>
+    $(function() {
+    
+      var checkbox = $("#chk");
+      var hidden1 = $("#min");
+      var hidden2 = $("#max");
+      var hiddena = document.getElementById("id_categoria");
+      var hiddenb = document.getElementById("id_categoriaMax");
+      
+      checkbox.change(function() {
+        // Check to see if the checkbox is checked.
+        // If it is, show the fields and populate the input.
+        // If not, hide the fields.
+        if (checkbox.is(':checked')) {
+          // Show the hidden fields.
+          hidden1.hide();
+          hiddena.value= 0;
+          hidden2.hide();
+          hiddenb.value = 100;
+          // Populate the input.
+          
+        } else {
+          // Make sure that the hidden fields are indeed
+          // hidden.
+          hidden1.show();
+          hidden2.show();
+          
+          // You may also want to clear the value of the 
+          // hidden fields here. Just in case somebody 
+          // shows the fields, enters data to them and then 
+          // unticks the checkbox.
+          //
+          // This would do the job:
+          //
+          // $("#hidden_field").val("");
+        }
+      });
+    });
+  
+ 
+  </script>
+{% endblock %}
