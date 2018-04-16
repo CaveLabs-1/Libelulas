@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block main %}
+
+<div class="container">
+    <h2>Solicitudes</h2>
+    <div class="row">
+        <div class="col s12">
+          <ul class="tabs">
+            <li class="tab col s3"><a class="active" href="#pre">Pre Registro</a></li>
+            <li class="tab col s3"><a href="#equipos">Equipos</a></li>
+          </ul>
+        </div>
+    </div>
+    <div id="pre" class="col s12">
+        <ul class="collection">
+            {% for pre in PreRegistros %}
+                <li class="collection-item">
+                    <div class="row">
+                        <div class="col s8 m10 l10">
+                            <br>
+                            <span class="title"><ALE>{{ pre.nombre }}</ALE></span>
+                            <br>
+                            <span class="title">{{pre.correo}}</span>
+                            {% if pre.notas %}
+                            <br>
+                            <span class="title">Comentarios: {{pre.notas}}</span>
+                            {% endif %}
+                        </div>
+
+                        <div id="opcionesID" class="secondary-content flex">
+                            {% if pre.codigo == None %}
+                                <br>
+                                <a onclick="myFunction()" href="{% url 'administrador:aceptar_PreRegistro' pre.id %}" class="secondary-content"><i class="medium material-icons icon-blue">done</i></a>
+                                <a class="modal-trigger secondary-content boton-eliminar" href="#delete-modal" data-id="{{pre.id}}" data-nombre="Ale"><i class="medium material-icons icon-red">highlight_off</i></a>
+                            {% else %}
+                                <h6>Aceptada</h6>
+                            {% endif %}
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div id="equipos" class="col s12">
+        <ul class="collection">
+            {% for pre in PreRegistros %}
+                {% if pre.equipo %}
+                <li class="collection-item avatar">
+                  <img src="{{ pre.equipo.logo.url }}" alt="" class="circle">
+                  <span class="title"><a href="{% url 'administrador:detalle_equipo' pre.equipo.id %}">{{ pre.equipo.nombre }}</a></span>
+                  <p>Representante: {{ pre.equipo.representante }}</p>
+                  <div class="secondary-content">
+                     <a href="#" data-nombre="{{pre.equipo.nombre}}" data-id="{{pre.equipo.id}}">
+                       <i class="medium material-icons icon-blue">done</i>
+                     </a>
+                     <a class="modal-trigger eliminar-equipo" href="#delete-modal" data-nombre="{{pre.equipo.nombre}}" data-id="{{pre.equipo.id}}">
+                       <i class="medium material-icons icon-red">highlight_off</i>
+                     </a>
+                  </div>
+                </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+
+
+<div id="delete-modal" class="modal">
+    <div class="modal-content">
+
+    </div>
+    <div class="modal-footer">
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.modal').modal() ;
+        }) ;
+
+        $(".boton-eliminar").click(function(){
+            var id = $(this).attr("data-id") ;
+            var nombre = $(this).attr("data-nombre") ;
+            $(".modal-content").html("<h4>¿Desea eliminar el pre registro de <strong>" + nombre + "</strong>?</h4>") ;
+            var botones = '<a href="#cancelar" class="modal-action modal-close cancel cancel-delete">Cancelar</a>  <a href="/administrador/eliminar_PreRegistro/' + id + '" class="modal-action modal-close delete-color confirmar-eliminar">Aceptar</a>' ;
+            $(".modal-footer").html(botones) ;
+        });
+
+        function myFunction() {
+            newHTML=' <div class="preloader-wrapper small active">\n' +
+                '      <div class="spinner-layer spinner-blue">\n' +
+                '        <div class="circle-clipper left">\n' +
+                '          <div class="circle"></div>\n' +
+                '        </div><div class="gap-patch">\n' +
+                '          <div class="circle"></div>\n' +
+                '        </div><div class="circle-clipper right">\n' +
+                '          <div class="circle"></div>\n' +
+                '        </div>\n' +
+                '      </div>'
+
+            $("#opcionesID").html(newHTML);
+
+        }
+
+        $(".aceptar-equipo").click(function(){
+            var id = $(this).attr("data-id") ;
+            var nombre = $(this).attr("data-nombre") ;
+            $(".modal-content").html("<h4>¿Desea aceptar el pre registro de el equipo <strong>" + nombre + "</strong>?</h4>") ;
+            var botones = '<a href="#cancelar" class="modal-action modal-close cancel cancel-delete">Cancelar</a>  <a href="/administrador/aceptar_equipo/' + id + '" class="modal-action modal-close submit confirmar-eliminar">Aceptar</a>' ;
+            $(".modal-footer").html(botones) ;
+        });
+
+        $(".eliminar-equipo").click(function(){
+            var id = $(this).attr("data-id") ;
+            var nombre = $(this).attr("data-nombre") ;
+            $(".modal-content").html("<h4>¿Desea eliminar el pre registro de el equipo <strong>" + nombre + "</strong>?</h4><br><p>Esta acción hará que las jugadoras registradas a este equipo también sean eliminadas.</p>") ;
+            var botones = '<a href="#cancelar" class="modal-action modal-close cancel cancel-delete">Cancelar</a>  <a href="/administrador/eliminar_equipo/' + id + '" class="modal-action modal-close delete-color confirmar-eliminar">Aceptar</a>' ;
+            $(".modal-footer").html(botones) ;
+        });
+
+
+    </script>
+{% endblock %}

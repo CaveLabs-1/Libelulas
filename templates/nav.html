@@ -13,7 +13,7 @@
         <li><a href="{% url 'torneo:lista_torneos' %}">TORNEOS</a></li>
         {% if user.is_staff %}
         <li><a href="{% url 'administrador:lista_administrador' %}">ADMINISTRADORES</a></li>
-        <li><a href="{% url 'administrador:lista_PreRegistro' %}">PRE-REGISTRO</a></li>
+        <li><a href="{% url 'administrador:lista_PreRegistro' %}">SOLICITUDES</a></li>
         {% endif %}
         <li><a href="{% url 'logout' %}"><i class="material-icons">exit_to_app</i></a></li>
       </ul>
@@ -28,8 +28,8 @@
         <li><a href="{% url 'torneo:lista_torneos' %}">TORNEOS</a></li>
         {% if user.is_staff %}
         <li><a href="{% url 'administrador:lista_administrador' %}">ADMINISTRADORES</a></li>
+        <li><a href="{% url 'administrador:lista_PreRegistro' %}">SOLICITUDES</a></li>
         {% endif %}
         <li><a href="{% url 'logout' %}"><i class="material-icons">exit_to_app</i></a></li>
   </ul>
 {% load static %}
-  

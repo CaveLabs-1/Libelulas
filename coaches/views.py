@@ -17,7 +17,7 @@ def pre_registro(request, id_torneo):
             registro = form.save(commit=False)
             registro.torneo = torneo
             registro.save()
-            messages.success(request, 'Solicitud de pre-registro enviada')
+            return HttpResponseRedirect(reverse('landing:ver_equipos'))
     else:
         form = PreForm()
     return render(request, 'coaches/pre_registro.html', {'form': form, 'torneo': torneo})
