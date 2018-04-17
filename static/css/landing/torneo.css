@@ -18,13 +18,28 @@ td img {
 
 .card {
   width:450px;
-}
-
-.card {
   padding: 12px 24px 12px 24px;
 }
 
-.collection-item > .big {
+.no-top {
+  top: inherit !important;
+}
+
+.top {
+  top: 23px !important;
+}
+
+.card .collection-item {
+  display: flex;
+  align-items: center;
+}
+
+.card .collection-item > a {
+  display: flex;
+  align-items: center;
+}
+
+a > .big {
   height: 60px !important;
   width: 60px !important;
 }

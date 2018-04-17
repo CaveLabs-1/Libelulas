@@ -267,7 +267,8 @@
           <div class="card">
             <span class="card-title"><strong>FAIR PLAY</strong></span>
             <ul class="collection">
-              {% for ta in azules %} {% if forloop.first %}
+              {% for ta in azules %}
+              {% if forloop.first %}
               <li class="collection-item avatar big align-items">
                 <a href="{% url 'landing:detalle_jugadora' ta.jugadora__equipo ta.jugadora__id %}">
                   {% if ta.jugadora__Imagen %}
