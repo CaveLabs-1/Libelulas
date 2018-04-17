@@ -141,10 +141,25 @@ def detalle_torneo(request, pk):
     newlist = sorted(weones, key=lambda k: k['pts'], reverse=True)
     golit = Goles.objects.filter(partido__jornada__torneo= torneo).values('jugadora__Nombre', 'jugadora', 'jugadora__Apellido', 'jugadora__Imagen', 'jugadora__equipo' , 'jugadora__id').annotate(goles=Sum('cantidad')).order_by('-goles')[:3]
     tarjetasAma = Tarjetas_amarillas.objects.filter(partido__jornada__torneo= torneo).values('jugadora__Nombre', 'jugadora', 'jugadora__Apellido', 'jugadora__Imagen', 'jugadora__equipo', 'jugadora__id').annotate(total=Sum('cantidad')).order_by('-total')[:3]
-    print(tarjetasAma.values('jugadora__equipo'))
     tarjetasR = Tarjetas_rojas.objects.filter(partido__jornada__torneo= torneo).values('jugadora__Nombre', 'jugadora', 'jugadora__Apellido', 'jugadora__Imagen', 'jugadora__equipo', 'jugadora__id').annotate(total=Count('jugadora')).order_by('-total')[:3]
     tarjetasAzul = Tarjetas_azules.objects.filter(partido__jornada__torneo= torneo).values('jugadora__Nombre', 'jugadora', 'jugadora__Apellido', 'jugadora__Imagen', 'jugadora__equipo', 'jugadora__id').annotate(total=Count('jugadora')).order_by('-total')[:3]
-    return render (request, 'landing/detalle_torneo.html', {'torneo': torneo,'stats': newlist, 'jornadas': jornadas, 'goles': golit, 'amarillas':tarjetasAma, 'rojas': tarjetasR, 'azules': tarjetasAzul })
+    golEquipos = Goles.objects.filter(partido__jornada__torneo=torneo).values('equipo__nombre', 'equipo__logo', 'equipo__id').annotate(goles=Sum('cantidad')).order_by('-goles')[:3]
+    taEquipo = Tarjetas_amarillas.objects.filter(partido__jornada__torneo=torneo).values('jugadora__equipo__nombre', 'jugadora__equipo__logo', 'jugadora__equipo__id').annotate(total=Sum('cantidad')).order_by('-total')[:3]
+    tazEquipo = Tarjetas_azules.objects.filter(partido__jornada__torneo=torneo).values('jugadora__equipo__nombre', 'jugadora__equipo__logo', 'jugadora__equipo__id').annotate(total=Count('jugadora')).order_by('-total')[:3]
+    trEquipo = Tarjetas_rojas.objects.filter(partido__jornada__torneo=torneo).values('jugadora__equipo__nombre', 'jugadora__equipo__logo', 'jugadora__equipo__id').annotate(total=Count('jugadora')).order_by('-total')[:3]
+    return render (request, 'landing/detalle_torneo.html', {
+                                                                'torneo': torneo,
+                                                                'stats': newlist,
+                                                                'jornadas': jornadas,
+                                                                'goles': golit,
+                                                                'amarillas':tarjetasAma,
+                                                                'rojas': tarjetasR,
+                                                                'azules': tarjetasAzul,
+                                                                'golEquipos': golEquipos,
+                                                                'taEquipo': taEquipo,
+                                                                'tazEquipo': tazEquipo,
+                                                                'trEquipo': trEquipo
+                                                                })
 
 def carga_partidos(request):
     if request.method == 'POST':
