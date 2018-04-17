@@ -461,3 +461,20 @@ def nuevo_partido(request, id_jornada):
         form.fields["equipo_local"].queryset = equipos
     return render(request, 'torneo/nuevo_partido.html', {'form': form, 'jornada':jornada})
     
+def ganador(request, id_torneo):
+    torneo = get_object_or_404(Torneo, id=id_torneo)
+    form = GanadorForm()
+    if request.method == "POST":
+        form = GanadorForm(request.POST)
+        torneo.ganador = True
+        torneo.save()
+        team = request.POST.get('equipos')
+        stats =  get_object_or_404(Estadisticas, torneo=torneo, equipo=team)
+        stats.ganador = True
+        stats.save()
+        messages.success(request, 'Ganador del torneo registrado exitosamente.')
+        return redirect('/torneo/')
+    else:
+        equipos = torneo.equipos.all()
+        form.fields["equipos"].queryset = equipos
+    return render(request, 'torneo/ganador.html', {'form': form, 'torneo': torneo})
