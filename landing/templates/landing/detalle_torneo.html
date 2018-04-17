@@ -27,8 +27,8 @@
         <ul class="tabs">
           <li class="tab col s3"><a class="active" href="#test1">Tabla General</a></li>
           <li class="tab col s3"><a href="#test2">Partidos</a></li>
-          <!-- <li class="tab col s3"><a href="#test3">Estadísticas por Equipo</a></li> -->
-          <li class="tab col s3"><a href="#test3">Estadísticas por Jugadora</a></li>
+          <li class="tab col s3"><a href="#test3">Estadísticas por Equipo</a></li>
+          <li class="tab col s3"><a href="#test4">Estadísticas por Jugadora</a></li>
         </ul>
       </div>
       <div id="test1">
@@ -91,7 +91,7 @@
         </div>
       </div>
       <div id="test3">
-        <h3>Estadísticas</h3>
+        <h3>Estadísticas por Equipo</h3>
         <div class="card-list flex space-between">
           <div class="card">
             <span class="card-title"><strong>MEJOR GOLEADORA </strong></span>
@@ -177,6 +177,115 @@
                 <img src="{% static 'static_media/default.jpg' %}" alt="{{ta.jugadora__Nombre}} imagen" class="circle" /> {% endif %}
                 <span>{{ta.jugadora__Nombre}} {{ta.jugadora__Apellido}}</span>
                 <span class="secondary-content no-top">{{ ta.total }}</span>
+              </li>
+              {% endif %} {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="test4">
+        <h3>Estadísticas por Jugadora</h3>
+        <div class="card-list flex space-between">
+          <div class="card">
+            <span class="card-title"><strong>MEJOR GOLEADORA </strong></span>
+            <ul class="collection">
+              {% for gol in goles %} {% if forloop.first %}
+              <li class="collection-item avatar big align-items">
+                <a href="{% url 'landing:detalle_jugadora' gol.jugadora__equipo gol.jugadora__id %}">
+                  {% if gol.jugadora__Imagen %}
+                  <img src="/media/{{gol.jugadora__Imagen}}" alt="{{goles.jugadora__Nombre}} imagen" class="circle big" /> {% else %}
+                  <img src="{% static 'static_media/default.jpg' %}" alt="{{goles.jugadora__Nombre}} imagen" class="circle big" /> {% endif %}
+                  <h6><strong>{{ gol.jugadora__Nombre }} {{ gol.jugadora__Apellido }}</strong></h6>
+                  <h6 class="secondary-content top">{{ gol.goles}}</h6>
+                </a>
+              </li>
+              {% else %}
+              <li class="collection-item avatar align-items">
+                <a href="{% url 'landing:detalle_jugadora' gol.jugadora__equipo gol.jugadora__id %}">
+                  {% if gol.jugadora__Imagen %}
+                  <img src="/media/{{ gol.jugadora__Imagen }}" alt="{{gol.jugadora__Nombre}} imagen" class="circle" /> {% else %}
+                  <img src="{% static 'static_media/default.jpg' %}" alt="{{gol.jugadora__Nombre}} imagen" class="circle" /> {% endif %}
+                  <span>{{gol.jugadora__Nombre}} {{gol.jugadora__Apellido}}</span>
+                  <span class="secondary-content no-top">{{ gol.goles }}</span>
+                </a>
+              </li>
+              {% endif %} {% endfor %}
+            </ul>
+          </div>
+          <div class="card">
+            <span class="card-title"><strong>MÁS AMONESTACIONES</strong></span>
+            <ul class="collection">
+              {% for ta in amarillas %} {% if forloop.first %}
+              <li class="collection-item avatar big align-items">
+                <a href="{% url 'landing:detalle_jugadora' ta.jugadora__equipo ta.jugadora__id %}">
+                  {% if ta.jugadora__Imagen %}
+                  <img src="/media/{{ta.jugadora__Imagen}}" alt="{{ta.jugadora__Nombre}} imagen" class="circle big" /> {% else %}
+                  <img src="{% static 'static_media/default.jpg' %}" alt="{{ta.jugadora__Nombre}} imagen" class="circle big" /> {% endif %}
+                  <h6><strong>{{ ta.jugadora__Nombre }} {{ ta.jugadora__Apellido }}</strong></h6>
+                  <h6 class="secondary-content top">{{ ta.total}}</h6>
+                </a>
+              </li>
+              {% else %}
+              <li class="collection-item avatar align-items">
+                <a href="{% url 'landing:detalle_jugadora' ta.jugadora__equipo ta.jugadora__id %}">
+                  {% if ta.jugadora__Imagen %}
+                  <img src="/media/{{ ta.jugadora__Imagen }}" alt="{{ta.jugadora__Nombre}} imagen" class="circle" /> {% else %}
+                  <img src="{% static 'static_media/default.jpg' %}" alt="{{ta.jugadora__Nombre}} imagen" class="circle" /> {% endif %}
+                  <span>{{ta.jugadora__Nombre}} {{ta.jugadora__Apellido}}</span>
+                  <span class="secondary-content no-top">{{ ta.total }}</span>
+                </a>
+              </li>
+              {% endif %} {% endfor %}
+            </ul>
+          </div>
+          <div class="card">
+            <span class="card-title"><strong>MÁS EXPULSIONES</strong></span>
+            <ul class="collection">
+              {% for ta in rojas%} {% if forloop.first %}
+              <li class="collection-item avatar big align-items">
+                <a href="{% url 'landing:detalle_jugadora' ta.jugadora__equipo ta.jugadora__id %}">
+                  {% if ta.jugadora__Imagen %}
+                  <img src="/media/{{ta.jugadora__Imagen}}" alt="{{ta.jugadora__Nombre}} imagen" class="circle big" /> {% else %}
+                  <img src="{% static 'static_media/default.jpg' %}" alt="{{ta.jugadora__Nombre}} imagen" class="circle big" /> {% endif %}
+                  <h6><strong>{{ ta.jugadora__Nombre }} {{ ta.jugadora__Apellido }}</strong></h6>
+                  <h6 class="secondary-content top">{{ ta.total}}</h6>
+                </a>
+              </li>
+              {% else %}
+              <li class="collection-item avatar align-items">
+                <a href="{% url 'landing:detalle_jugadora' ta.jugadora__equipo ta.jugadora__id %}">
+                  {% if ta.jugadora__Imagen %}
+                  <img src="/media/{{ ta.jugadora__Imagen }}" alt="{{ta.jugadora__Nombre}} imagen" class="circle" /> {% else %}
+                  <img src="{% static 'static_media/default.jpg' %}" alt="{{ta.jugadora__Nombre}} imagen" class="circle" /> {% endif %}
+                  <span>{{ta.jugadora__Nombre}} {{ta.jugadora__Apellido}}</span>
+                  <span class="secondary-content no-top">{{ ta.total }}</span>
+                </a>
+              </li>
+              {% endif %} {% endfor %}
+            </ul>
+          </div>
+          <div class="card">
+            <span class="card-title"><strong>FAIR PLAY</strong></span>
+            <ul class="collection">
+              {% for ta in azules %} {% if forloop.first %}
+              <li class="collection-item avatar big align-items">
+                <a href="{% url 'landing:detalle_jugadora' ta.jugadora__equipo ta.jugadora__id %}">
+                  {% if ta.jugadora__Imagen %}
+                  <img src="/media/{{ta.jugadora__Imagen}}" alt="{{ta.jugadora__Nombre}} imagen" class="circle big" /> {% else %}
+                  <img src="{% static 'static_media/default.jpg' %}" alt="{{ta.jugadora__Nombre}} imagen" class="circle big" /> {% endif %}
+                  <h6><strong>{{ ta.jugadora__Nombre }} {{ ta.jugadora__Apellido }}</strong></h6>
+                  <h6 class="secondary-content top">{{ ta.total}}</h6>
+                </a>
+              </li>
+              {% else %}
+              <li class="collection-item avatar align-items">
+                <a href="{% url 'landing:detalle_jugadora' ta.jugadora__equipo ta.jugadora__id %}">
+                  {% if ta.jugadora__Imagen %}
+                  <img src="/media/{{ ta.jugadora__Imagen }}" alt="{{ta.jugadora__Nombre}} imagen" class="circle" /> {% else %}
+                  <img src="{% static 'static_media/default.jpg' %}" alt="{{ta.jugadora__Nombre}} imagen" class="circle" /> {% endif %}
+                  <span>{{ta.jugadora__Nombre}} {{ta.jugadora__Apellido}}</span>
+                  <span class="secondary-content no-top">{{ ta.total }}</span>
+                </a>
               </li>
               {% endif %} {% endfor %}
             </ul>
