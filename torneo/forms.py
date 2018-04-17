@@ -6,7 +6,6 @@ from equipo.models import Equipo
 
 class torneoForm(ModelForm):
     lista_equipos = Equipo.objects.filter(activo=True)
-    equipos = forms.ModelChoiceField(lista_equipos, required=False)
 
     def __init__(self, *args, **kwargs):
         super(torneoForm, self).__init__(*args, **kwargs)
