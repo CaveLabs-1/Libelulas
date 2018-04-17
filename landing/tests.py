@@ -75,7 +75,8 @@ class LandingTestCase(TestCase):
         torneo = Torneo.objects.create(
             id=1,
             nombre='Libelulas',
-            categoria= 95,
+            categoria= 96,
+            categoriaMax = 94,
             fechaInicio = '2018-05-05',
             anexo = '',
             costo = '100.00',
@@ -237,7 +238,8 @@ class LandingTestCase(TestCase):
         t1 = Torneo.objects.create(
             id=2,
             nombre="Torneo PRueba",
-            categoria="1995",
+            categoria="95",
+            categoriaMax = "94",
             fechaInicio='2017-12-12',
             costo=int(12.12),
             fechaJunta='1995-11-11',
@@ -245,9 +247,10 @@ class LandingTestCase(TestCase):
             activo=True
         )
         t3 = Torneo.objects.create(
-            id=5,
+            id=3,
             nombre="Torneo PRueba",
-            categoria="1995",
+            categoria="95",
+            categoriaMax = "94",
             fechaInicio='2017-12-12',
             costo=int(12.12),
             fechaJunta='1995-11-11',
@@ -265,7 +268,7 @@ class LandingTestCase(TestCase):
         resp = self.client.get('/torneo/cerrar_registro/2', follow=True)
 
         # Entrar a un Torneo No Existente
-        resp = self.client.get('/torneos/3')
+        resp = self.client.get('/torneos/50')
         self.assertEqual(resp.status_code, 404)
 
         # Entrar a un Torneo Ya cerrado
@@ -273,9 +276,8 @@ class LandingTestCase(TestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(t1,resp.context['torneo'])
 
-
         # Entrar a un Torneo NO cerrado
-        resp = self.client.get('/torneos/5')
+        resp = self.client.get('/torneos/3')
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(t3,resp.context['torneo'])
 
@@ -298,11 +300,13 @@ class LandingTestCase(TestCase):
         self.assertQuerysetEqual(response.context['goles_local'], [])
         self.assertQuerysetEqual(response.context['goles_visitante'].values('cantidad'), ["{'cantidad': 1}"])
 
+    @freeze_time("2018-05-01")
     def test_pre_registro(self):
         t3 = Torneo.objects.create(
             id=5,
             nombre="Torneo PRueba",
             categoria="1995",
+            categoriaMax = "1994",
             fechaInicio='2017-12-12',
             costo=int(12.12),
             fechaJunta='1995-11-11',
@@ -314,6 +318,7 @@ class LandingTestCase(TestCase):
             id=6,
             nombre="Torneo PRueba",
             categoria="1995",
+            categoriaMax = "1994",
             fechaInicio='2017-12-12',
             costo=int(12.12),
             fechaJunta='2019-11-11',
