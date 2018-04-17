@@ -215,6 +215,18 @@ def mandar_Cedula(request, partido_id):
     response['Content-Disposition'] = 'filename="home_page.pdf"'
     return response
 
+def accesar_cedula(request):
+    if request.method == 'POST':
+          form = AccesarCedula(data=request.POST)
+          if form.is_valid():
+              print(form)
+              id_partido = form.cleaned_data['id_partido']
+              id_torneo = form.cleaned_data['id_torneo']
+              partido = get_object_or_404(Partido, id=id_partido)
+              return HttpResponseRedirect(reverse('torneo:registrar_cedula',kwargs={'id_torneo':id_torneo, 'id_partido':id_partido}))
+    form = AccesarCedula()
+    return render(request, 'torneo/accesar_cedula.html', {'form':form})
+
 def registrar_cedula(request, id_torneo, id_partido):
     if request.method == 'POST':
         form = CedulaForm(data=request.POST)
@@ -460,4 +472,3 @@ def nuevo_partido(request, id_jornada):
         form.fields["equipo_visitante"].queryset = equipos
         form.fields["equipo_local"].queryset = equipos
     return render(request, 'torneo/nuevo_partido.html', {'form': form, 'jornada':jornada})
-    

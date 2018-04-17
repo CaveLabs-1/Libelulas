@@ -4,6 +4,10 @@ from django.forms.widgets import FileInput
 from django import forms
 from equipo.models import Equipo
 
+class AccesarCedula(forms.Form):
+    id_torneo = forms.CharField(label='ID Torneo', max_length=10)
+    id_partido = forms.CharField(label='ID Partido', max_length=10)
+
 class torneoForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
@@ -14,7 +18,7 @@ class torneoForm(ModelForm):
         self.fields['fechaInicio'].widget.input_type = 'date'
         self.fields['fechaJunta'].widget.attrs['class'] = 'datepicker'
         self.fields['fechaJunta'].widget.input_type = 'date'
-        
+
     class Meta:
         model = Torneo
         fields = ('nombre', 'categoria', 'categoriaMax', 'fechaInicio', 'anexo', 'costo', 'costoCredencial', 'equipos', 'fechaJunta')
@@ -40,7 +44,7 @@ class JornadaForm(forms.ModelForm):
     class Meta:
         model = Jornada
         fields = ('fecha_inicio', 'fecha_fin', 'jornada')
-        
+
 class NuevoPartidoForm(forms.ModelForm):
     class Meta:
         model = Partido
