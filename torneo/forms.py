@@ -4,6 +4,10 @@ from django.forms.widgets import FileInput
 from django import forms
 from equipo.models import Equipo
 
+class AccesarCedula(forms.Form):
+    id_torneo = forms.CharField(label='ID Torneo', max_length=10)
+    id_partido = forms.CharField(label='ID Partido', max_length=10)
+
 class torneoForm(ModelForm):
     lista_equipos = Equipo.objects.filter(activo=True)
     equipos = forms.ModelChoiceField(lista_equipos, required=False)
