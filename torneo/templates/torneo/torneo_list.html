@@ -24,6 +24,13 @@
            <i class="medium material-icons icon-blue">mode_edit</i>
          </a>
          {% else %}
+             {% if not Torneo.ganador %}
+             <a href="{% url 'torneo:ganador' Torneo.id %}">
+                <i class="medium material-icons icon-yellow">grade</i>
+              </a>
+             {% else %}
+                <i class="medium material-icons icon-black">grade</i>
+             {% endif %}
          <a href="{% url 'torneo:editar_registro' Torneo.id %}">
             <i class="medium material-icons icon-blue">date_range</i>
           </a>
