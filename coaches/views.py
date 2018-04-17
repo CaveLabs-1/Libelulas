@@ -8,17 +8,20 @@ from torneo.models import *
 from equipo.models import *
 from equipo.forms import equipoForm
 from jugadora.forms import *
+from django.http import Http404
+import datetime
 
 def pre_registro(request, id_torneo):
     torneo = get_object_or_404(Torneo,id=id_torneo)
+    if datetime.date.today() >= torneo.unDiaAntesJunta():
+        raise Http404("Ya no se permiten mas registro")
     if request.method == "POST":
         form = PreForm(request.POST)
         if form.is_valid():
             registro = form.save(commit=False)
             registro.torneo = torneo
             registro.save()
-            messages.success(request, 'Solicitud de pre-registro enviada')
-            return HttpResponseRedirect(reverse('coaches:registrar_jugadora', kwargs={'codigo':codigo,'id_equipo':registro.equipo.id}))
+            return HttpResponseRedirect(reverse('landing:ver_equipos'))
     else:
         form = PreForm()
     return render(request, 'coaches/pre_registro.html', {'form': form, 'torneo': torneo})
@@ -54,7 +57,7 @@ def registrar_equipo(request, codigo):
             registro.equipo = equipo
             registro.save()
             messages.success(request, 'Equipo creado exitosamente')
-            return HttpResponseRedirect(reverse('coaches:registrar_equipo',kwargs={'codigo':codigo}))
+            return HttpResponseRedirect(reverse('coaches:registrar_jugadora',kwargs={'codigo':codigo,'id_equipo':equipo.id}))
         else:
             messages.warning(request, 'Hubo un error en la forma')
     else:
@@ -63,7 +66,6 @@ def registrar_equipo(request, codigo):
 
 def terminar_registro(request, codigo):
     registro = get_object_or_404(PreRegistro,codigo=codigo)
-    registro.codigo = ""
+    registro.codigo = None
     registro.save()
-    messages.success(request, 'La solicitud será procesada por el administrador')
     return HttpResponseRedirect(reverse('landing:ver_equipos'))

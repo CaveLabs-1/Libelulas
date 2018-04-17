@@ -36,9 +36,10 @@ def crear_torneo(request):
         if form.is_valid():
             torneo = form.save(commit=False)
             torneo.save()
-            for equipo in form.cleaned_data['equipos']:
-                estadistica = Estadisticas(equipo=equipo,torneo=torneo)
-                estadistica.save()
+            if form.cleaned_data['equipos']:
+                for equipo in form.cleaned_data['equipos']:
+                    estadistica = Estadisticas(equipo=equipo,torneo=torneo)
+                    estadistica.save()
             messages.success(request, 'Torneo agregado exitosamente')
             return HttpResponseRedirect(reverse('torneo:lista_torneos'))
         else:
@@ -214,6 +215,18 @@ def mandar_Cedula(request, partido_id):
     response = HttpResponse(pdf_file, content_type='application/pdf')
     response['Content-Disposition'] = 'filename="home_page.pdf"'
     return response
+
+def accesar_cedula(request):
+    if request.method == 'POST':
+          form = AccesarCedula(data=request.POST)
+          if form.is_valid():
+              print(form)
+              id_partido = form.cleaned_data['id_partido']
+              id_torneo = form.cleaned_data['id_torneo']
+              partido = get_object_or_404(Partido, id=id_partido)
+              return HttpResponseRedirect(reverse('torneo:registrar_cedula',kwargs={'id_torneo':id_torneo, 'id_partido':id_partido}))
+    form = AccesarCedula()
+    return render(request, 'torneo/accesar_cedula.html', {'form':form})
 
 def registrar_cedula(request, id_torneo, id_partido):
     if request.method == 'POST':

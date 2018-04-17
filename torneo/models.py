@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 import datetime
+from datetime import timedelta
 from equipo.models import Equipo
 from jugadora.models import Jugadora
 import sys, os
@@ -24,6 +25,9 @@ class Torneo(models.Model):
             if os.path.isfile(self.anexo.path):
                 os.remove(self.anexo.path)
         super().delete()
+
+    def unDiaAntesJunta(self):
+        return self.fechaJunta - timedelta(days=1)
 
 class Estadisticas(models.Model):
     torneo = models.ForeignKey(Torneo, on_delete = models.CASCADE)
