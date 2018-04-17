@@ -24,4 +24,5 @@ urlpatterns = [
     path('eliminar_evento/<slug:id_partido>', views.eliminar_evento, name='eliminar_evento'),
     path('nueva_jornada/<int:id_torneo>', views.nueva_jornada, name='nueva_jornada'),
     path('nuevo_partido/<int:id_jornada>', views.nuevo_partido, name='nuevo_partido'),
+    path('ganador/<int:id_torneo>', views.ganador, name='ganador'),
 ]

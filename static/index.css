@@ -468,7 +468,12 @@ input:focus{
   height: 50px;
   width: 50px;
 }
-
+.icon-yellow {
+  color: #ffd54f ;
+}
+.icon-black {
+  color: #757575 ;
+}
 
 
 .icon-orange {

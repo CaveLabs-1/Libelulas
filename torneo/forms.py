@@ -56,3 +56,16 @@ class NuevoPartidoForm(forms.ModelForm):
             'equipo_local',
             'equipo_visitante',
         )
+class GanadorForm(forms.ModelForm):
+    # def __init__(self, *args, **kwargs):
+    #     self.fields['equipos'].widget.attrs['class'] = 'select'
+    
+    class Meta:
+        model= Torneo
+        fields = (
+            'equipos',
+        )
+        widgets = {
+            'equipos': forms.Select(),
+        }
+        
