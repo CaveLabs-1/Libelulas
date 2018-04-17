@@ -58,7 +58,12 @@
   height: 300px;
 }
 
-.collection-item > .big {
+.collection-item > a {
+  display: flex;
+  align-items: center;
+}
+
+a > .big {
   height: 60px !important;
   width: 60px !important;
 }
