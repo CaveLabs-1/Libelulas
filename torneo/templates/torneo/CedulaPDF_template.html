@@ -13,27 +13,70 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 </head>
-<body>
-<h2>Plan Libelula Desarollo Integral</h2>
-<h3 class="center-align">Cedula</h3>
-<p>Arbitro: {{ partido.arbitro }}</p>
-<p>Acta del partido de Futbol del torneo {{ partido }} efectuado el dia {{ partido }} a las {{ partido }} hrs. En el campo {{partido }} de la ciudad
-de QRO con tiempos de BLAH cada uno y descanso intermendio de BLAH. Entre los equipos de {{ partido }} y {{ partido }}
-en el cual BLAH existe tolerancia de BLAH minutos</p>
 
+<style>
+    table {
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid black;
+}
+    tr:nth-child(even) {background-color: #a9a9a9;}
+th {
+    background-color: black;
+    color: white;
+}
+    table {
+    width: 100%;
+}
+    table, h1,h2, th, tr, td, body{
+        font-family: 'Roboto', sans-serif;
+        font-size: 10px;
+    }
+    @page {
+size: A4 portrait;
+}</style>
+<body>
+<h3>Plan Libelula Desarollo Integral</h3>
+<h3 style="text-align: center">{{ partido.equipo_local.nombre }}&nbsp;&nbsp;&nbsp;&nbsp;VS&nbsp;&nbsp;&nbsp;&nbsp;   {{ partido.equipo_visitante.nombre }}</h3>
+
+
+
+<div class="row">
+
+        <div class="row center-align">
+            <div class="col s4">Arbitro:&nbsp;&nbsp;&nbsp;&nbsp;_________________________________________________________________________________</div>
+        </div>
+<br>
+
+        <div class="row row center-align">
+            <div class="col s4">Auxiliar 1: _________________________________________________________________________________</div>
+        </div>
+    <br>
+
+
+        <div class="row center-align ">
+            <div class="col s4">Auxiliar 2: _________________________________________________________________________________</div>
+        </div>
+    <br>
+
+
+</div>
+
+<br><br>
 <div class="row">
     <div class="col s12">
         <table  class="browser-default">
             <thead>
                 <tr>
-                    <th>Folio</th>
+                    <th>Asis.</th>
                     <th>No.</th>
                     <th>Apellido Nombre</th>
                     <th>Goles</th>
                     <th>AM</th>
                     <th>EXP</th>
                     <th> </th>
-                    <th>Folio</th>
+                    <th>Asis.</th>
                     <th>No.</th>
                     <th>Apellido Nombre</th>
                     <th>Goles</th>
@@ -65,21 +108,26 @@ en el cual BLAH existe tolerancia de BLAH minutos</p>
             </tbody>
         </table>
 
+
+
+    <p style="text-align: left">Representante {{ partido.equipo_local.nombre }}: {{ partido.equipo_local.representante }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Representante {{ partido.equipo_visitante.nombre }} :   {{ partido.equipo_visitante.representante }}</p>
+
+
         <div align="center">
-            <p>cambios</p>
+            <h2>Cambios</h2>
         </div>
         <hr>
             <table  class="browser-default">
             <thead>
                 <tr>
-                    <th>Folio</th>
+                    <th>Asis.</th>
                     <th>No.</th>
                     <th>Apellido Nombre</th>
                     <th>Goles</th>
                     <th>AM</th>
                     <th>EXP</th>
                     <th> </th>
-                    <th>Folio</th>
+                    <th>Asis.</th>
                     <th>No.</th>
                     <th>Apellido Nombre</th>
                     <th>Goles</th>
@@ -114,33 +162,20 @@ en el cual BLAH existe tolerancia de BLAH minutos</p>
 </div>
 <br>
 
-<div class="row">
 
+<br>
         <div class="row center-align">
-            <div class="col s4 align-wrapper"><br><hr></div>
-            <div class="col s4">Director Tec.</div>
-            <div class="col s4 align-wrapper"><br><hr></div>
+            <div class="col s4"><h3>Total de Goles: &nbsp;&nbsp;&nbsp;&nbsp;{{partido.equipo_local.nombre}}:________________  VS {{partido.equipo_visitante.nombre}}________________ </h3></div>
         </div>
+    <br>
 
-        <div class="row row center-align">
-            <div class="col s4 align-wrapper"><br><hr></div>
-            <div class="col s4">Auxiliar 1</div>
-            <div class="col s4 align-wrapper"><br><hr></div>
-        </div>
-
-        <div class="row center-align ">
-            <div class="col s4 align-wrapper"><br><hr></div>
-            <div class="col s4">Auxiliar 2</div>
-            <div class="col s4 align-wrapper"><br><hr></div>
-        </div>
-
-        <div class="row center-align">
-            <div class="col s4 align-wrapper"><br><hr></div>
-            <div class="col s4">Total de Goles</div>
-            <div class="col s4 align-wrapper"><br><hr></div>
-        </div>
-</div>
 <p>Incidente:</p>
+            <div class="col s4 align-wrapper"><br><hr></div>
+
+            <div class="col s4 align-wrapper"><br><hr></div>
+
+            <div class="col s4 align-wrapper"><br><hr></div>
+
 
 </body>
 </html>
