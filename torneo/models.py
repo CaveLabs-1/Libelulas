@@ -62,6 +62,7 @@ class Partido(models.Model):
     fecha = models.DateField(verbose_name="Fecha Partido")
     hora = models.TimeField(verbose_name='Hora de Juego')
     cancha = models.CharField(max_length=50, blank=True)
+    registrado = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.id)

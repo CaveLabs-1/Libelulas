@@ -205,7 +205,6 @@ def mandar_codigoCedula(request, torneo_id, jornada_id):
     response['Content-Disposition'] = 'filename="home_page.pdf"'
     return response
 
-
 def mandar_Cedula(request, partido_id):
 
     partido = Partido.objects.get(id = partido_id)
@@ -220,7 +219,6 @@ def accesar_cedula(request):
     if request.method == 'POST':
           form = AccesarCedula(data=request.POST)
           if form.is_valid():
-              print(form)
               id_partido = form.cleaned_data['id_partido']
               id_torneo = form.cleaned_data['id_torneo']
               partido = get_object_or_404(Partido, id=id_partido)
@@ -232,23 +230,63 @@ def registrar_cedula(request, id_torneo, id_partido):
     if request.method == 'POST':
         form = CedulaForm(data=request.POST)
         if form.is_valid():
-            # Registra Cédula
+            # Obtener instancia del partido a actualizar.
             update = Partido.objects.get(id=id_partido)
+            # Guarda los datos del partido original. Los usaremos en caso de que sea actualización y no registro.
+            goles_local_anterior = update.goles_local
+            goles_visitante_anterior = update.goles_visitante
+            # Actualiza la información del partido.
             update.goles_local = form.cleaned_data['goles_local']
             update.goles_visitante = form.cleaned_data['goles_visitante']
             update.notas = form.cleaned_data['notas']
             update.arbitro = form.cleaned_data['arbitro']
             update.save()
             messages.success(request, 'Cédula registrada exitosamente.')
-            # Obtener Estadísticas Equipo Local
+            # Obtener estadísticas del equipo local.
             equipo_local = update.equipo_local_id
             estadisticas_local = Estadisticas.objects.get(torneo=id_torneo, equipo=equipo_local)
-            # Obtener Estadísticas Equipo Visitante
+            # Obtener estadísticas del equipo visitante.
             equipo_visitante = update.equipo_visitante_id
             estadisticas_visitante = Estadisticas.objects.get(torneo=id_torneo, equipo=equipo_visitante)
-            # Actualiza Estadísticas En General
-            estadisticas_local.jugados = estadisticas_local.jugados + 1
-            estadisticas_visitante.jugados = estadisticas_visitante.jugados + 1
+            # Si es actualización, primero elimina las estadísticas registradas previamente.
+            if update.registrado == True:
+                estadisticas_local.goles_favor = estadisticas_local.goles_favor - goles_local_anterior
+                estadisticas_local.goles_contra = estadisticas_local.goles_contra - goles_visitante_anterior
+                estadisticas_visitante.goles_favor = estadisticas_visitante.goles_favor - goles_visitante_anterior
+                estadisticas_visitante.goles_contra = estadisticas_visitante.goles_contra - goles_local_anterior
+                # Restablece los puntos y partidos ganados/perdidos en caso de que gane haya ganado el local.
+                if goles_local_anterior > goles_visitante_anterior:
+                    # Actualizar estadísticas local (Ganador)
+                    estadisticas_local.puntos = estadisticas_local.puntos - 3
+                    estadisticas_local.ganados = estadisticas_local.ganados - 1
+                    # Actualizar estadísticas visitante (Perdedor)
+                    estadisticas_visitante.perdidos = estadisticas_visitante.perdidos - 1
+                # Restablece los puntos y partidos ganados/perdidos en caso de que gane haya ganado el visitante.
+                elif goles_visitante_anterior > goles_local_anterior:
+                    # Actualizar estadísticas visitante (Ganador)
+                    estadisticas_visitante.puntos = estadisticas_visitante.puntos - 3
+                    estadisticas_visitante.ganados = estadisticas_visitante.ganados - 1
+                    # Actualizar estadísticas local (Perdedor)
+                    estadisticas_local.perdidos = estadisticas_local.perdidos - 1
+                # Restablece los puntos y partidos ganados/perdidos en caso de que gane haya ganado sido empate.
+                else:
+                    # Actualizar estadísticas local (Empate)
+                    estadisticas_local.puntos = estadisticas_local.puntos - 1
+                    estadisticas_local.empatados = estadisticas_local.ganados - 1
+                    # Actualizar estadísticas visitante (Empate)
+                    estadisticas_visitante.puntos = estadisticas_visitante.puntos - 1
+                    estadisticas_visitante.empatados = estadisticas_local.ganados - 1
+                # Guardar Cambios
+                estadisticas_local.save()
+                estadisticas_visitante.save()
+            else:
+                # Prende la bandera de que el juego ya fue registrado y a partir de ahora se actualizará.
+                update.registrado = True
+                update.save()
+                # Actualiza partidos jugados de ambos equipos.
+                estadisticas_local.jugados = estadisticas_local.jugados + 1
+                estadisticas_visitante.jugados = estadisticas_visitante.jugados + 1
+            # Ahora sí actualizamos las estadísticas con los campos actualizados del partido.
             estadisticas_local.goles_favor = estadisticas_local.goles_favor + update.goles_local
             estadisticas_local.goles_contra = estadisticas_local.goles_contra + update.goles_visitante
             estadisticas_visitante.goles_favor = estadisticas_visitante.goles_favor + update.goles_visitante
@@ -305,7 +343,6 @@ def registrar_cedula(request, id_torneo, id_partido):
                 jugadoras[cont] = {'id':'nada'}
             cont = cont + 1
             if i < cant_jugadoras_visitantes:
-                print(i)
                 jugadoras[cont] = {'id':jugadoras_visitantes[i].id, 'nombre':jugadoras_visitantes[i].Nombre + " " + jugadoras_visitantes[i].Apellido, 'equipo':equipo_visitante_id}
             else:
                 jugadoras[cont] = {'id':'nada'}
@@ -473,7 +510,7 @@ def nuevo_partido(request, id_jornada):
         form.fields["equipo_visitante"].queryset = equipos
         form.fields["equipo_local"].queryset = equipos
     return render(request, 'torneo/nuevo_partido.html', {'form': form, 'jornada':jornada})
-    
+
 def ganador(request, id_torneo):
     torneo = get_object_or_404(Torneo, id=id_torneo)
     form = GanadorForm()
