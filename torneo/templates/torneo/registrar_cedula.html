@@ -52,7 +52,7 @@
                 {% if values.id != "nada" %}
                   <td>
                     <label>
-                      <input type="checkbox" jugadora="{{values.id}}" partido="{{id_partido}}" equipo="{{values.equipo}}">
+                      <input type="checkbox" jugadora="{{values.id}}" partido="{{id_partido}}" equipo="{{values.equipo}}" {% if values.asistencia == 1 %}checked{% endif %}>
                       <span>{{values.nombre}}</span>
                     </label>
                   </td>
@@ -64,7 +64,7 @@
               {% if values.id != "nada" %}
                   <td>
                     <label>
-                      <input type="checkbox" jugadora="{{values.id}}" partido="{{id_partido}}" equipo="{{values.equipo}}">
+                      <input type="checkbox" jugadora="{{values.id}}" partido="{{id_partido}}" equipo="{{values.equipo}}" {% if values.asistencia == 1 %}checked{% endif %}>
                       <span>{{values.nombre}}</span>
                     </label>
                   </td>
