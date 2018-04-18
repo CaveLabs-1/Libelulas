@@ -329,6 +329,7 @@ def registrar_cedula(request, id_torneo, id_partido):
         equipo_visitante_id = Partido.objects.get(id=id_partido).equipo_visitante_id
         equipo_visitante = Equipo.objects.get(pk=equipo_visitante_id)
         jugadoras_visitantes = equipo_visitante.jugadoras.all()
+        print(jugadoras_visitantes)
         cant_jugadoras_visitantes = jugadoras_visitantes.count()
         if cant_jugadoras_locales >= cant_jugadoras_visitantes:
             maximo = cant_jugadoras_locales
@@ -336,14 +337,25 @@ def registrar_cedula(request, id_torneo, id_partido):
             maximo = cant_jugadoras_visitantes
         jugadoras = dict()
         cont = 0
+        asistencia = 0
         for i in range(0,maximo):
             if i < cant_jugadoras_locales:
-                jugadoras[cont] = {'id':jugadoras_locales[i].id,'nombre':jugadoras_locales[i].Nombre + " " + jugadoras_locales[i].Apellido, 'equipo':equipo_local_id}
+                asistencia = Asistencia.objects.filter(partido=id_partido,jugadora=jugadoras_locales[i].id,equipo=equipo_local_id)
+                if asistencia:
+                    asistencia = 1
+                else:
+                    asistencia = 0
+                jugadoras[cont] = {'id':jugadoras_locales[i].id,'nombre':jugadoras_locales[i].Nombre + " " + jugadoras_locales[i].Apellido, 'equipo':equipo_local_id, 'asistencia':asistencia}
             else:
                 jugadoras[cont] = {'id':'nada'}
             cont = cont + 1
             if i < cant_jugadoras_visitantes:
-                jugadoras[cont] = {'id':jugadoras_visitantes[i].id, 'nombre':jugadoras_visitantes[i].Nombre + " " + jugadoras_visitantes[i].Apellido, 'equipo':equipo_visitante_id}
+                asistencia = Asistencia.objects.filter(partido=id_partido,jugadora=jugadoras_visitantes[i].id,equipo=equipo_visitante_id)
+                if asistencia:
+                    asistencia = 1
+                else:
+                    asistencia = 0
+                jugadoras[cont] = {'id':jugadoras_visitantes[i].id, 'nombre':jugadoras_visitantes[i].Nombre + " " + jugadoras_visitantes[i].Apellido, 'equipo':equipo_visitante_id, 'asistencia':asistencia}
             else:
                 jugadoras[cont] = {'id':'nada'}
             cont = cont + 1
