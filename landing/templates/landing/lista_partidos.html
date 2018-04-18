@@ -1,4 +1,4 @@
-<h4 class="center-align">Jornada {{jornada.jornada}}</h4>
+<h4 class="center-align">{{jornada.jornada}}</h4>
 <br>
 {% for partido in partidos %}
   <div class="row valign-wrapper">
@@ -9,7 +9,6 @@
             <img src="{{ partido.equipo_local.logo.url }}" alt="" class="circle valign equipo">
             <span class="title">{{ partido.equipo_local.nombre }}</span>
             <p>Representante: {{ partido.equipo_local.representante }}</p>
-            <p>Telefono: {{ partido.equipo_local.telefono }}</p>
             <p>Color: {{ partido.equipo_local.get_colorLocal_display }}</p>
           </div>
         </div>
@@ -23,7 +22,7 @@
       <span>Cancha: {{partido.cancha}}</span>
       <br>
       {% if partido.fecha < datetime %}
-      <a class="waves-effect waves-light btn-small purple accent-1" href="{% url 'landing:detalle_partido' jornada.torneo.id partido %}">Ver Mas</a>
+      <a href="{% url 'landing:detalle_partido' jornada.torneo.id partido %}"><div class="button secondary-button">Ver Mas</div></a>
       {% endif %}
       <br>
     </div>
@@ -34,7 +33,6 @@
             <span class="title">{{ partido.equipo_visitante.nombre }}</span>
             <img src="{{ partido.equipo_visitante.logo.url }}" alt="" class="circle valign equipo">
             <p>Representante: {{ partido.equipo_visitante.representante }}</p>
-            <p>Telefono: {{ partido.equipo_visitante.telefono }}</p>
             <p>Color: {{ partido.equipo_visitante.get_colorVisitante_display }}</p>
           </div>
         </div>

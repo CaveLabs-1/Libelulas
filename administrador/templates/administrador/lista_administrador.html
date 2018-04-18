@@ -16,7 +16,7 @@
                     <div class="secondary-content">
                         <br>
                         <a href="{% url 'administrador:editar_administrador' administrador.id %}" class="secondary-content"><i class="medium material-icons icon-blue">mode_edit</i></a>
-                        <a class="modal-trigger secondary-content boton-eliminar" href="#delete-modal" data-id="{{administrador.id}}" data-nombre="{{administrador.first_name}}"><i class="medium material-icons icon-red">delete</i></a>
+                        <a class="modal-trigger secondary-content boton-eliminar" href="#delete-modal" data-id="{{administrador.id}}" data-nombre="{{administrador.first_name}}"><i class="medium material-icons icon-orange">delete</i></a>
                     </div>
                 </div>
             </li>
@@ -52,7 +52,7 @@
             var id = $(this).attr("data-id") ;
             var nombre = $(this).attr("data-nombre") ;
             $(".modal-content").html("<h4>¿Desea eliminar al administrador <strong>" + nombre + "</strong>?</h4>") ;
-            var botones = '<a href="#cancelar" class="modal-action modal-close cancel cancel-delete">Cancelar</a>  <a href="/administrador/eliminar_administrador/' + id + '" class="modal-action modal-close delete-color confirmar-eliminar">Aceptar</a>' ;
+            var botones = '<a href="#cancelar" class="modal-action modal-close cancel cancel-delete">Cancelar</a>  <a href="/administrador/eliminar_administrador/' + id + '" class="modal-action modal-close delete-color confirmar-eliminar" style="background-color: #F19800">Aceptar</a>' ;
             $(".modal-footer").html(botones) ;
         }) ;
     </script>

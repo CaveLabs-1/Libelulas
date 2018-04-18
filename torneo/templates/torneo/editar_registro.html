@@ -3,7 +3,7 @@
 {% block main %}
 
 <div class="title-container">
-    <h2 class="admin-title">Roles de juego</h2>
+    <h2 class="admin-title">Roles de juego {{ torneo.nombre }}</h2>
 </div>
 <div class="container">
     <div class="row">
@@ -12,11 +12,22 @@
             <a href="#{{jornada.id}}" onclick="carga_partidos({{jornada.id}})"><h6>{{jornada.jornada}}</h6></a>
         </div>
         {% endfor %}
+        <div class="col">
+            <a class="modal-trigger boton-crear btn" href="#modal_torneo" data-id="{{torneo.id}}" data-nombre="{{torneo.nombre}}"><h6>Crear Jornada</h6></a>
+        </div>
     </div>
     <hr />
     <div id="partidos">
 
     </div>
+    <div id="modal_torneo" class="modal">
+      <div class="modal-content">
+
+      </div>
+      <div class="modal-footer">
+
+      </div>
+  </div>
 </div>
 {% endblock %}
 
@@ -53,6 +64,14 @@
             var nombre = $(this).attr("data-nombre") ;
             $(".modal-content").html("<h4>¿Desea cerrar el registro del torneo <strong>" + nombre + "</strong>?</h4>") ;
             var botones = '<a href="#cancelar" class="modal-action modal-close cancel cancel-delete">Cancelar</a>  <a href="cerrar_registro/' + id + '" class="modal-action modal-close delete-color confirmar-eliminar">Aceptar</a>' ;
+            $(".modal-footer").html(botones) ;
+        });
+        
+        $(".boton-crear").click(function(){
+            var id = $(this).attr("data-id") ;
+            var nombre = $(this).attr("data-nombre") ;
+            $(".modal-content").html("<h4>¿Desea crear una nueva jornada en el torneo <strong>" + nombre + "</strong>?</h4>") ;
+            var botones = '<a href="#cancelar" class="modal-action modal-close cancel cancel-delete">Cancelar</a>  <a href="../nueva_jornada/' + id + '" class="modal-action modal-close delete-color confirmar-eliminar">Aceptar</a>' ;
             $(".modal-footer").html(botones) ;
         });
 

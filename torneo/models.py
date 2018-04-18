@@ -1,21 +1,23 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 import datetime
+from datetime import timedelta
 from equipo.models import Equipo
 from jugadora.models import Jugadora
 import sys, os
 import uuid
 
-
 class Torneo(models.Model):
     nombre = models.CharField(max_length=100, verbose_name="Nombre del Torneo")
-    categoria = models.IntegerField(verbose_name="Categoria", validators=[MaxValueValidator(datetime.datetime.now().year )])
+    categoria = models.IntegerField(verbose_name="Categoría desde:")
+    categoriaMax = models.IntegerField(verbose_name="Categoría hasta:", validators=[MaxValueValidator(datetime.datetime.now().year )])
     fechaInicio = models.DateField(verbose_name="Fecha Inicio")
     anexo = models.FileField(upload_to='media/torneo', blank=True, null=True, verbose_name="Documento Anexo")
     costo = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Costo Inscripcion", validators=[MinValueValidator(0)])
     costoCredencial = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Costo de Credencial", validators=[MinValueValidator(0)])
     equipos = models.ManyToManyField(Equipo ,through='Estadisticas')
     activo = models.BooleanField(default = True)
+    ganador = models.BooleanField(default = False)
     fechaJunta = models.DateField(verbose_name="Fecha de la siguiente junta")
 
     def delete(self):
@@ -23,6 +25,9 @@ class Torneo(models.Model):
             if os.path.isfile(self.anexo.path):
                 os.remove(self.anexo.path)
         super().delete()
+
+    def unDiaAntesJunta(self):
+        return self.fechaJunta - timedelta(days=1)
 
 class Estadisticas(models.Model):
     torneo = models.ForeignKey(Torneo, on_delete = models.CASCADE)
@@ -45,7 +50,6 @@ class Jornada(models.Model):
     def __str__(self):
         return self.jornada
 
-
 class Partido(models.Model):
     id = models.CharField(primary_key=True, editable=False, max_length=6)
     jornada = models.ForeignKey(Jornada, on_delete = models.CASCADE)
@@ -58,6 +62,7 @@ class Partido(models.Model):
     fecha = models.DateField(verbose_name="Fecha Partido")
     hora = models.TimeField(verbose_name='Hora de Juego')
     cancha = models.CharField(max_length=50, blank=True)
+    registrado = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.id)

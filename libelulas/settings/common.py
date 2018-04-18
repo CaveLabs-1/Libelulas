@@ -15,7 +15,6 @@ from django.urls import reverse_lazy
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -30,6 +29,7 @@ INSTALLED_APPS = [
     'administrador',
     'torneo',
     'landing',
+    'coaches'
 ]
 
 MIDDLEWARE = [
@@ -63,7 +63,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'libelulas.wsgi.application'
 
-
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
@@ -82,8 +81,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
@@ -97,7 +94,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
@@ -106,14 +102,12 @@ STATICFILES_DIRS = [
 ]
 STATIC_URL = '/static/'
 
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-LOGIN_REDIRECT_URL = reverse_lazy('equipo:lista_equipos')
+LOGIN_REDIRECT_URL = reverse_lazy('equipo:welcome')
 LOGIN_URL = reverse_lazy('login')
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
-
 
 LOGIN_REQUIRED_URLS = (
     r'/equipo/',
@@ -121,12 +115,22 @@ LOGIN_REQUIRED_URLS = (
     r'/administrador/',
     r'/torneo/',
 )
+
 LOGIN_REQUIRED_URLS_EXCEPTIONS = (
     r'^login/$',
     r'^$',
+    r'/torneo/accesar_cedula/',
     r'/torneo/registrar_cedula/',
     r'/torneo/registrar_eventos/',
     r'/torneo/eliminar_evento/',
+    r'/coaches/',
 )
 
 DATE_INPUT_FORMATS = ['%m-%d-%Y']
+
+EMAIL_HOST_USER = 'planlibelula@gmail.com'
+EMAIL_HOST_PASSWORD = 'cepcqro123'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

@@ -4,9 +4,8 @@
 }
 
 .card img {
-  border-radius: 50% !important;
-  width: 200px !important;
-  height: 200px;
+  width: 300px !important;
+  height: 260px;
 }
 
 .card > .card-image {
@@ -33,4 +32,17 @@
 .header > .image-header {
   background-image: url("../../static_media/organizadores.jpg");
   background-position: top;
+}
+.content > .container {
+  flex-wrap: wrap;
+}
+
+@media (min-width: 360px) and (max-width: 767px) {
+  .image-header {
+    top: 0;
+  }
+  .cover {
+    top: 0;
+    height: 120vh;
+  }
 }

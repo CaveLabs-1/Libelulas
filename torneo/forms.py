@@ -1,11 +1,15 @@
-from django.forms import ModelForm
+from django.forms import *
 from .models import *
 from django.forms.widgets import FileInput
 from django import forms
 from equipo.models import Equipo
 
-class torneoForm(ModelForm):
+class AccesarCedula(forms.Form):
+    id_torneo = forms.CharField(label='ID Torneo', max_length=10)
+    id_partido = forms.CharField(label='ID Partido', max_length=10)
 
+class torneoForm(ModelForm):
+    lista_equipos = Equipo.objects.filter(activo=True)
 
     def __init__(self, *args, **kwargs):
         super(torneoForm, self).__init__(*args, **kwargs)
@@ -18,7 +22,7 @@ class torneoForm(ModelForm):
 
     class Meta:
         model = Torneo
-        fields = ('nombre', 'categoria', 'fechaInicio', 'anexo', 'costo', 'costoCredencial', 'equipos', 'fechaJunta')
+        fields = ('nombre', 'categoria', 'categoriaMax', 'fechaInicio', 'anexo', 'costo', 'costoCredencial', 'equipos', 'fechaJunta')
         widgets = {
             'anexo': forms.FileInput(),
         }
@@ -31,3 +35,37 @@ class PartidoForm(forms.ModelForm):
             'hora',
             'cancha',
         )
+
+class CedulaForm(forms.ModelForm):
+    class Meta:
+        model = Partido
+        fields = ('goles_local', 'goles_visitante', 'notas', 'arbitro')
+
+class JornadaForm(forms.ModelForm):
+    class Meta:
+        model = Jornada
+        fields = ('fecha_inicio', 'fecha_fin', 'jornada')
+
+class NuevoPartidoForm(forms.ModelForm):
+    class Meta:
+        model = Partido
+        fields = (
+            'fecha',
+            'hora',
+            'cancha',
+            'equipo_local',
+            'equipo_visitante',
+        )
+class GanadorForm(forms.ModelForm):
+    # def __init__(self, *args, **kwargs):
+    #     self.fields['equipos'].widget.attrs['class'] = 'select'
+    
+    class Meta:
+        model= Torneo
+        fields = (
+            'equipos',
+        )
+        widgets = {
+            'equipos': forms.Select(),
+        }
+        

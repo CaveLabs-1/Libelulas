@@ -1,0 +1,143 @@
+.circle-icon {
+  width:50px;
+  height: 50px;
+  background-color: #F19800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 12px;
+}
+
+.circle-icon > img {
+  max-height: 50%;
+}
+
+.card {
+  width: 100%;
+  padding: 12px 24px 12px 24px;
+}
+
+.card > .title {
+  align-items: center;
+  padding-top: 12px;
+}
+
+.card > .container {
+  width: 100%;
+  display: flex;
+  padding-top: 24px;
+  flex-wrap: wrap;
+}
+
+.card .column {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.column > h6 {
+  color: rgba(3, 27, 78, .6);
+  margin-bottom: 24px;
+}
+
+.card h5 {
+  color: rgba(3,27,78,.7);
+  margin-bottom: 24px;
+}
+
+.graph-container {
+  width: 50%;
+}
+
+.graph {
+  position: relative;
+  font-size: 2em;
+}
+
+.absolute {
+  position: absolute;
+  color: rgba(3, 27, 78, .6);
+  font-size: 0.6em;
+  left:0;
+  right:0;
+  top: 60%;
+  margin: 0 auto;
+  width: 60px;
+}
+
+.goles {
+  width: 40px;
+}
+
+.tarjeta {
+  height: 125px;
+  max-width: 80px;
+  width: 100%;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tr {
+  background-color: #ff7777;
+}
+
+.tam {
+  background-color: #ffaf54;
+}
+
+.ta {
+  background-color: #7ccefc;
+}
+
+.cards {
+  width: 100%;
+}
+
+.cards > .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tarjetas {
+  padding-top: 36px;
+  width: 60%;
+  justify-content: space-between;
+}
+
+.header > .image-header {
+  background-image: url("../../static_media/equipos.jpg");
+  background-position: 50% -0;
+}
+
+@media (min-width: 360px) and (max-width: 767px) {
+  .image-header {
+    top: 0;
+  }
+  .cover {
+    top: 0;
+    height: 120vh;
+  }
+  .image-column > img {
+    height: 150px !important;
+    width: 150px !important;
+    margin-top: 64px;
+  }
+
+  .header > .container {
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 64px;
+  }
+  .info-column {
+    text-align: center;
+  }
+
+  .tarjeta {
+    max-width: 45px;
+    height: 80px;
+  }
+}

@@ -75,15 +75,15 @@
           <p><strong>Posición:</strong> {{ jugadora.get_Posicion_display }}</p>
         </div>
         <div class="secondary-content">
-          <a class="modal-trigger delete-button" href="#borrarJugadorEquipoModal">
-            <i class="medium material-icons icon-red">delete</i>
+          <a class="modal-trigger delete-button" href="#borrarJugadorEquipoModal{{ jugadora.id}}">
+            <i class="medium material-icons icon-orange">delete</i>
           </a>
           <a href="{% url 'jugadora:editar_jugadora' jugadora.id %}">
              <i class="medium material-icons icon-blue">mode_edit</i>
            </a>
         </div>
       </li>
-      <div id="borrarJugadorEquipoModal" class="modal">
+      <div id="borrarJugadorEquipoModal{{ jugadora.id }}" class="modal">
         <form action="{% url 'equipo:eliminar_jugadora' equipo.id jugadora.id %}" method="post">
           {% csrf_token %}
           <div class="modal-content">

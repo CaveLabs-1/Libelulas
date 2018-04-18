@@ -358,7 +358,7 @@ p {
 }
 
 .delete-color {
-  background-color: #ff7178;
+  background-color: #F19800;
   border-radius: 50px;
   border-style: none;
   box-shadow: 0 8px 6px 0 rgba(239, 239, 239, 0.47);
@@ -433,18 +433,18 @@ h4 {
 }
 
 .datepicker-table td.is-today {
-  color: #e1aac4;
+  color: #F19800;
 }
 
 .datepicker-day-button:focus {
-  background-color: #e1aac4;
+  background-color: #F19800;
 }
 
 .month-prev:focus{
-  background-color: #e1aac4;
+  background-color: #F19800;
 }
 .month-next:focus{
-  background-color: #e1aac4;
+  background-color: #F19800;
 }
 input:focus{
  border-bottom: 1px solid #F19800 !important;
@@ -467,4 +467,26 @@ input:focus{
 .equipo{
   height: 50px;
   width: 50px;
+}
+.icon-yellow {
+  color: #ffd54f ;
+}
+.icon-black {
+  color: #757575 ;
+}
+
+
+.icon-orange {
+  color: #F19800;
+}
+
+.delete-button{
+    color: #F19800;
+
+
+#opcionesID{
+  display:flex;
+  align-items: center;
+  height:62px;
+  justify-content: center;
 }

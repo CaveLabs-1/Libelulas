@@ -7,20 +7,34 @@
 </div>
 <form  class="container flex" action="{% url 'equipo:editar_equipo' equipo.id %}" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
-  <div class="image-column">
+
+
+
+      <div class="image-column">
     <div class="image-circle upload">
-      <img class="upload-change" src="{{ equipo.logo.url }}" />
+        {% if equipo.logo == '' %}
+            <img class="upload-change" src="{% static 'static_media/default.jpg' %}" alt="" />
+        {% else %}
+            <img class="upload-change" src="{{ equipo.logo.url }}" alt="{{  equipo.logo.url  }}" />
+        {% endif %}
+
+
       <img id="upload" class="upload-change"/>
       <div class="generic-photo">
         <img class="camera-icon" src="{% static 'static_media/photo-camera.svg' %}"/>
-        <span>Agregar Logo</span>
+        <span>Cambiar Foto</span>
       </div>
       <div class="absolute-icons">
           {{ form.logo }}
       </div>
     </div>
-    {{ form.logo.errors }}
+    {{ form.Imagen.logo }}
   </div>
+
+
+
+
+
   <div class="form-column">
       <p>
         <label>

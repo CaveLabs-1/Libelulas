@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block main %}
+<div class="title-container">
+  <h4>Agregar partido en la jornada: {{ jornada.jornada }}
+  <h4>En el torneo: {{ jornada.torneo.nombre }}</h4>
+</div>
+<form class="container" action="{% url 'torneo:nuevo_partido' jornada.id %}" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col s6 m6 l6">
+    <p>
+        <label>
+          {{ form.fecha.label_tag }}
+        </label>
+        <input type="date" name="{{form.fecha.html_name}}" class="datepicker" id="{{form.fecha.id_for_label}}" value="{{ form.fecha.value|date:"Y-m-d" }}" required/>
+        <span class="helper-text">Fecha debe estar entre {{jornada.fecha_inicio}} y {{jornada.fecha_fin}}</span>
+      </p>
+      {{ form.fecha.errors }}
+    </div>
+    <div class="col s6 m6 l6">
+      <p>
+        <label>
+          {{ form.hora.label_tag }}
+        </label>
+        <input type="text" name="{{form.hora.html_name}}" class="timepicker" id="{{form.hora.id_for_label}}" value="{{ form.hora.value}}" required/>
+      </p>
+      {{ form.hora.errors }}
+    </div>
+    <div class="input-field col s12 m12 l12">
+        {{form.cancha}}
+        <label>
+          {{ form.cancha.label_tag }}
+        </label>
+      {{ form.cancha.errors }}
+    </div>
+    <div class="input-field col s12 m12 l6">
+        {{form.equipo_local}}
+        <label>
+          {{ form.equipo_local.label_tag }}
+        </label>
+      {{ form.equipo_local.errors }}
+    </div>
+    <div class="input-field col s12 m12 l6">
+          {{form.equipo_visitante}}
+        <label>
+          {{ form.equipo_visitante.label_tag }}
+        </label>
+          {{ form.equipo_visitante.errors }}
+    </div>
+    <div class="col s12">
+      <div class="container-button">
+        <a href="{% url 'torneo:lista_torneos' %}" class="cancel">Cancelar</a>
+        <button class="submit" type="submit">Guardar</button>
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}
+
+<script>
+  $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year,
+    today: 'Today',
+    clear: 'Clear',
+    close: 'Ok',
+    closeOnSelect: false // Close upon selecting a date,
+  });
+</script>

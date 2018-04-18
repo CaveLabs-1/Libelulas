@@ -20,7 +20,25 @@ class jugadoraForm(ModelForm):
 
     class Meta:
         model = Jugadora
-        fields = ('Nombre', 'Apellido', 'Nacimiento', 'Numero', 'Posicion', 'Notas', 'Imagen')
+        fields = ('Nombre', 'Apellido', 'Nacimiento', 'Numero', 'Posicion', 'NumPoliza', 'NUI', 'Notas', 'Imagen')
+        widgets = {
+            'Imagen': forms.FileInput(),
+        }
+
+class jugadoraEquipoForm(ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(jugadoraEquipoForm, self).__init__(*args, **kwargs)
+        self.fields['Imagen'].widget.attrs['class'] = 'inputfile'
+        self.fields['Nacimiento'].widget.input_type = 'date'
+        self.fields['Numero'].widget.attrs['min'] = '0'
+        self.fields['Numero'].widget.attrs['max'] = '1000'
+        self.fields['Imagen'].widget.attrs['onchange'] = 'loadFile(event)'
+        self.fields['Nacimiento'].widget.attrs['class'] = 'datepicker'
+
+    class Meta:
+        model = Jugadora
+        fields = ('Nombre', 'Apellido', 'Nacimiento', 'Numero', 'Posicion', 'NumPoliza', 'NUI', 'Notas', 'Imagen')
         widgets = {
             'Imagen': forms.FileInput(),
         }

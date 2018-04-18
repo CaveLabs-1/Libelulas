@@ -6,7 +6,8 @@
   <h2 class="admin-title">Equipos</h2>
 </div>
 <div class="container">
-  <ul class="collection">
+  <input id="searchbox" type="text" placeholder="Búsqueda" />
+  <ul id="friendlist" class="collection">
     {% for Equipo in object_list %}
     <li class="collection-item avatar">
       <img src="{{ Equipo.logo.url }}" alt="" class="circle">
@@ -14,7 +15,7 @@
       <p>Representante: {{ Equipo.representante }}</p>
       <div class="secondary-content">
         <a href="#" data-target="delete" data-form="{% url 'equipo:borrar_equipo' Equipo.id %}" class="delete-button">
-          <i class="medium material-icons icon-red">delete</i>
+          <i class="medium material-icons icon-orange">delete</i>
         </a>
         <a href="{% url 'equipo:editar_equipo' Equipo.id %}">
            <i class="medium material-icons icon-blue">mode_edit</i>
@@ -32,4 +33,26 @@
   </div>
 </div>
 
+{% endblock %}
+{% block scripts %}
+{{ block.super }}
+
+<script>
+
+jQuery.expr[':'].Contains = function(a, i, m) {
+    return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
+};
+
+$(function() {
+    $('#searchbox').on('keyup', function() {
+        var w = $(this).val();
+        if (w) {
+            $('#friendlist li').hide();
+            $('#friendlist li:Contains('+w+')').show();
+        } else {
+            $('#friendlist li').show();
+        }
+    });
+});
+</script>
 {% endblock %}

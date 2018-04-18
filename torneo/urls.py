@@ -17,9 +17,12 @@ urlpatterns = [
     path('editar_partido/<slug:id_partido>', views.editar_partido, name='editar_partido'),
     path('mandar_codigoCedula/<int:torneo_id>/<int:jornada_id>', views.mandar_codigoCedula, name='mandar_codigoCedula'),
     path('mandar_Cedula/<slug:partido_id>', views.mandar_Cedula, name='mandar_cedula'),
-    path('registrar_cedula/<slug:id_partido>', views.registrar_cedula, name='registrar_cedula'),
+    path('accesar_cedula/', views.accesar_cedula, name='accesar_cedula'),
+    path('registrar_cedula/<slug:id_torneo>/<slug:id_partido>', views.registrar_cedula, name='registrar_cedula'),
     path('registrar_asistencia', views.registrar_asistencia, name='registrar_asistencia'),
     path('registrar_eventos/<slug:id_partido>', views.registrar_eventos, name='registrar_eventos'),
     path('eliminar_evento/<slug:id_partido>', views.eliminar_evento, name='eliminar_evento'),
-
+    path('nueva_jornada/<int:id_torneo>', views.nueva_jornada, name='nueva_jornada'),
+    path('nuevo_partido/<int:id_jornada>', views.nuevo_partido, name='nuevo_partido'),
+    path('ganador/<int:id_torneo>', views.ganador, name='ganador'),
 ]

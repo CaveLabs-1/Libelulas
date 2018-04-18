@@ -16,15 +16,21 @@
     <ul class="collection">
       {% for torneo in torneos %}
       {% if not torneo.activo %}
-      <a href="{% url 'landing:detalle_torneo' torneo.id %}">
         <li class="collection-item avatar listado">
+          <a href="{% url 'landing:detalle_torneo' torneo.id %}">
           <span class="title">{{torneo.nombre}}</span>
           <p>{{ torneo.fechaInicio }}</p>
-          <p>Categoría: {{ torneo.categoria }}</p>
+          {% if torneo.categoria == 0 and torneo.categoriaMax == 100 %}
+            <p>Categoría: Libre</p>
+            {% else %}
+            <p>Categoría: {{ torneo.categoria }} - {{ torneo.categoriaMax }} </p>
+            {% endif %}
+        </a>
         </li>
-      </a>
       {% endif %}
-      {% endfor %}
+      {% empty %}
+      <p>No hay torneos aún</p>
+      {%endfor%}
     </ul>
   </div>
 </div>

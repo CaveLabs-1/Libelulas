@@ -24,7 +24,9 @@
         </div>
       </a>
     </div>
-    {% endfor %}
+      {% empty %}
+      <p>No hay equipos aún</p>
+      {%endfor%}
   </div>
 </div>
 {% endblock %}

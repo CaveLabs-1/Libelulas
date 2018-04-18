@@ -3,21 +3,23 @@ from .forms import *
 from django.urls import reverse
 from django.http import *
 from django.contrib import messages
-from django.shortcuts import get_object_or_404
+from django.shortcuts import *
 from torneo.models import *
-from equipo.models import Equipo
-from jugadora.models import Jugadora
+from equipo.models import *
+from jugadora.models import *
 from django.views.generic.list import ListView
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
 from django.template.loader import render_to_string
 from django.db.models import Sum, Count
 from django.utils import timezone
+from torneo.forms import *
 import datetime
 import uuid
 from weasyprint import HTML, CSS
 from django.template.loader import get_template
 from django.http import HttpResponse
+
 
 def lista_torneos(request):
     lista_torneos = Torneo.objects.all()
@@ -34,9 +36,10 @@ def crear_torneo(request):
         if form.is_valid():
             torneo = form.save(commit=False)
             torneo.save()
-            for equipo in form.cleaned_data['equipos']:
-                estadistica = Estadisticas(equipo=equipo,torneo=torneo)
-                estadistica.save()
+            if form.cleaned_data['equipos']:
+                for equipo in form.cleaned_data['equipos']:
+                    estadistica = Estadisticas(equipo=equipo,torneo=torneo)
+                    estadistica.save()
             messages.success(request, 'Torneo agregado exitosamente')
             return HttpResponseRedirect(reverse('torneo:lista_torneos'))
         else:
@@ -167,7 +170,7 @@ def partidos(id_last_j,jornadas_local,fecha_inicial,fecha_fin,torneo):
 def editar_registro(request, id_torneo):
     torneo = get_object_or_404(Torneo, id=id_torneo)
     jornadas = Jornada.objects.filter(torneo=torneo)
-    return render(request, 'torneo/editar_registro.html', {'jornadas':jornadas})
+    return render(request, 'torneo/editar_registro.html', {'jornadas':jornadas, 'torneo':torneo})
 
 def carga_partidos(request):
     if request.method == 'POST':
@@ -202,7 +205,6 @@ def mandar_codigoCedula(request, torneo_id, jornada_id):
     response['Content-Disposition'] = 'filename="home_page.pdf"'
     return response
 
-
 def mandar_Cedula(request, partido_id):
 
     partido = Partido.objects.get(id = partido_id)
@@ -212,23 +214,161 @@ def mandar_Cedula(request, partido_id):
     response = HttpResponse(pdf_file, content_type='application/pdf')
     response['Content-Disposition'] = 'filename="home_page.pdf"'
     return response
-  
-def registrar_cedula(request, id_partido):
-    return render(request, 'torneo/registrar_cedula.html', {'id_partido':id_partido})
+
+def accesar_cedula(request):
+    if request.method == 'POST':
+          form = AccesarCedula(data=request.POST)
+          if form.is_valid():
+              id_partido = form.cleaned_data['id_partido']
+              id_torneo = form.cleaned_data['id_torneo']
+              partido = get_object_or_404(Partido, id=id_partido)
+              return HttpResponseRedirect(reverse('torneo:registrar_cedula',kwargs={'id_torneo':id_torneo, 'id_partido':id_partido}))
+    form = AccesarCedula()
+    return render(request, 'torneo/accesar_cedula.html', {'form':form})
+
+def registrar_cedula(request, id_torneo, id_partido):
+    if request.method == 'POST':
+        form = CedulaForm(data=request.POST)
+        if form.is_valid():
+            # Obtener instancia del partido a actualizar.
+            update = Partido.objects.get(id=id_partido)
+            # Guarda los datos del partido original. Los usaremos en caso de que sea actualización y no registro.
+            goles_local_anterior = update.goles_local
+            goles_visitante_anterior = update.goles_visitante
+            # Actualiza la información del partido.
+            update.goles_local = form.cleaned_data['goles_local']
+            update.goles_visitante = form.cleaned_data['goles_visitante']
+            update.notas = form.cleaned_data['notas']
+            update.arbitro = form.cleaned_data['arbitro']
+            update.save()
+            messages.success(request, 'Cédula registrada exitosamente.')
+            # Obtener estadísticas del equipo local.
+            equipo_local = update.equipo_local_id
+            estadisticas_local = Estadisticas.objects.get(torneo=id_torneo, equipo=equipo_local)
+            # Obtener estadísticas del equipo visitante.
+            equipo_visitante = update.equipo_visitante_id
+            estadisticas_visitante = Estadisticas.objects.get(torneo=id_torneo, equipo=equipo_visitante)
+            # Si es actualización, primero elimina las estadísticas registradas previamente.
+            if update.registrado == True:
+                estadisticas_local.goles_favor = estadisticas_local.goles_favor - goles_local_anterior
+                estadisticas_local.goles_contra = estadisticas_local.goles_contra - goles_visitante_anterior
+                estadisticas_visitante.goles_favor = estadisticas_visitante.goles_favor - goles_visitante_anterior
+                estadisticas_visitante.goles_contra = estadisticas_visitante.goles_contra - goles_local_anterior
+                # Restablece los puntos y partidos ganados/perdidos en caso de que gane haya ganado el local.
+                if goles_local_anterior > goles_visitante_anterior:
+                    # Actualizar estadísticas local (Ganador)
+                    estadisticas_local.puntos = estadisticas_local.puntos - 3
+                    estadisticas_local.ganados = estadisticas_local.ganados - 1
+                    # Actualizar estadísticas visitante (Perdedor)
+                    estadisticas_visitante.perdidos = estadisticas_visitante.perdidos - 1
+                # Restablece los puntos y partidos ganados/perdidos en caso de que gane haya ganado el visitante.
+                elif goles_visitante_anterior > goles_local_anterior:
+                    # Actualizar estadísticas visitante (Ganador)
+                    estadisticas_visitante.puntos = estadisticas_visitante.puntos - 3
+                    estadisticas_visitante.ganados = estadisticas_visitante.ganados - 1
+                    # Actualizar estadísticas local (Perdedor)
+                    estadisticas_local.perdidos = estadisticas_local.perdidos - 1
+                # Restablece los puntos y partidos ganados/perdidos en caso de que gane haya ganado sido empate.
+                else:
+                    # Actualizar estadísticas local (Empate)
+                    estadisticas_local.puntos = estadisticas_local.puntos - 1
+                    estadisticas_local.empatados = estadisticas_local.ganados - 1
+                    # Actualizar estadísticas visitante (Empate)
+                    estadisticas_visitante.puntos = estadisticas_visitante.puntos - 1
+                    estadisticas_visitante.empatados = estadisticas_local.ganados - 1
+                # Guardar Cambios
+                estadisticas_local.save()
+                estadisticas_visitante.save()
+            else:
+                # Prende la bandera de que el juego ya fue registrado y a partir de ahora se actualizará.
+                update.registrado = True
+                update.save()
+                # Actualiza partidos jugados de ambos equipos.
+                estadisticas_local.jugados = estadisticas_local.jugados + 1
+                estadisticas_visitante.jugados = estadisticas_visitante.jugados + 1
+            # Ahora sí actualizamos las estadísticas con los campos actualizados del partido.
+            estadisticas_local.goles_favor = estadisticas_local.goles_favor + update.goles_local
+            estadisticas_local.goles_contra = estadisticas_local.goles_contra + update.goles_visitante
+            estadisticas_visitante.goles_favor = estadisticas_visitante.goles_favor + update.goles_visitante
+            estadisticas_visitante.goles_contra = estadisticas_visitante.goles_contra + update.goles_local
+            # Gana el Local
+            if update.goles_local > update.goles_visitante:
+                # Actualizar Estadísiticas Local (Ganador)
+                estadisticas_local.puntos = estadisticas_local.puntos + 3
+                estadisticas_local.ganados = estadisticas_local.ganados + 1
+                # Actualizar Estadísiticas Visitante (Perdedor)
+                estadisticas_visitante.perdidos = estadisticas_visitante.perdidos + 1
+            # Gana el Visitante
+            elif update.goles_visitante > update.goles_local:
+                # Actualizar Estadísiticas Visitante (Ganador)
+                estadisticas_visitante.puntos = estadisticas_visitante.puntos + 3
+                estadisticas_visitante.ganados = estadisticas_visitante.ganados + 1
+                # Actualizar Estadísiticas Local (Perdedor)
+                estadisticas_local.perdidos = estadisticas_local.perdidos + 1
+            # Visitante
+            else:
+                # Actualizar Estadísiticas Local (Empate)
+                estadisticas_local.puntos = estadisticas_local.puntos + 1
+                estadisticas_local.empatados = estadisticas_local.ganados + 1
+                # Actualizar Estadísiticas Visitante (Empate)
+                estadisticas_visitante.puntos = estadisticas_visitante.puntos + 1
+                estadisticas_visitante.empatados = estadisticas_local.ganados + 1
+            # Guardar Cambios
+            estadisticas_local.save()
+            estadisticas_visitante.save()
+            return HttpResponseRedirect(reverse('torneo:registrar_eventos',kwargs={'id_partido':id_partido}))
+        else:
+            return HttpResponse(form.errors.as_text())
+    else:
+        form = CedulaForm()
+        partido = Partido.objects.get(id=id_partido)
+        equipo_local_id = Partido.objects.get(id=id_partido).equipo_local_id
+        equipo_local = Equipo.objects.get(pk=equipo_local_id)
+        jugadoras_locales = equipo_local.jugadoras.all()
+        cant_jugadoras_locales = jugadoras_locales.count()
+        equipo_visitante_id = Partido.objects.get(id=id_partido).equipo_visitante_id
+        equipo_visitante = Equipo.objects.get(pk=equipo_visitante_id)
+        jugadoras_visitantes = equipo_visitante.jugadoras.all()
+        cant_jugadoras_visitantes = jugadoras_visitantes.count()
+        if cant_jugadoras_locales >= cant_jugadoras_visitantes:
+            maximo = cant_jugadoras_locales
+        else:
+            maximo = cant_jugadoras_visitantes
+        jugadoras = dict()
+        cont = 0
+        for i in range(0,maximo):
+            if i < cant_jugadoras_locales:
+                jugadoras[cont] = {'id':jugadoras_locales[i].id,'nombre':jugadoras_locales[i].Nombre + " " + jugadoras_locales[i].Apellido, 'equipo':equipo_local_id}
+            else:
+                jugadoras[cont] = {'id':'nada'}
+            cont = cont + 1
+            if i < cant_jugadoras_visitantes:
+                jugadoras[cont] = {'id':jugadoras_visitantes[i].id, 'nombre':jugadoras_visitantes[i].Nombre + " " + jugadoras_visitantes[i].Apellido, 'equipo':equipo_visitante_id}
+            else:
+                jugadoras[cont] = {'id':'nada'}
+            cont = cont + 1
+        informacion = {'id_torneo':id_torneo,'id_partido':id_partido,'partido':partido,'equipo_local':equipo_local,'equipo_visitante':equipo_visitante,'jugadoras':jugadoras,'form':form}
+        return render(request, 'torneo/registrar_cedula.html', informacion)
 
 def registrar_asistencia(request):
     if request.method == "POST":
-        id_partido = int(request.POST.get('id_partido'))
-        id_jugadora = int(request.POST.get('id_jugadora'))
+        id_equipo = request.POST.get('id_equipo')
+        equipo = get_object_or_404(Equipo, id=id_equipo)
+        id_partido = request.POST.get('id_partido')
+        partido = get_object_or_404(Partido, id=id_partido)
+        id_jugadora = request.POST.get('id_jugadora')
+        jugadora = get_object_or_404(Jugadora, id=id_jugadora)
         estado = True if request.POST.get('estado') == 'true' else False
-        respuesta = "Nunca entra el culo."
+        status = "Hubo un error al actualizar la asistencia."
         if estado:
-            asistencia = Asistencia.objects.create(partido=id_partido, jugadora=id_jugadora)
+            asistencia = Asistencia.objects.create(partido=partido, jugadora=jugadora, equipo=equipo)
             asistencia.save()
+            status = "Se registró la asistencia."
         else:
-            asistencia = Asistencia.objects.get(partido=id_partido, jugadora=id_jugadora)
+            asistencia = Asistencia.objects.get(partido=partido, jugadora=jugadora, equipo=equipo)
             asistencia.delete()
-    return HttpResponse(respuesta)
+            status = "Se eliminó la asistencia."
+    return HttpResponse(status)
 
 def registrar_eventos(request, id_partido):
     partido = get_object_or_404(Partido, id=id_partido)
@@ -333,3 +473,58 @@ def eliminar_evento(request, id_partido):
 
         html = render_to_string('torneo/lista_eventos.html', {'amarillas':amarillas,'rojas':rojas,'azules':azules,'goles':goles,'asistencias':asistencias, 'partido':id_partido, 'partido':partido})
         return HttpResponse(html)
+
+def nueva_jornada(request, id_torneo):
+    torneo = get_object_or_404(Torneo, id=id_torneo)
+    if request.method == "POST":
+        form = JornadaForm(request.POST)
+        if form.is_valid():
+            jornada = form.save(commit=False)
+            jornada.torneo = torneo
+            jornada.save()
+            messages.success(request, 'Jornada creada exitosamente.')
+            return redirect('/torneo/editar_registro/'+str(id_torneo))
+        else:
+            messages.warning(request, 'Hubo un error en la forma')
+    else:
+        form = JornadaForm()
+    return render(request, 'torneo/nueva_jornada.html', {'form': form, 'torneo':torneo})
+
+def nuevo_partido(request, id_jornada):
+    jornada = get_object_or_404(Jornada, id=id_jornada)
+    if request.method == "POST":
+        form = NuevoPartidoForm(request.POST)
+        if form.is_valid():
+            partido = form.save(commit=False)
+            partido.jornada = jornada
+            partido.id = uuid.uuid4().hex[:6].upper()
+            partido.save()
+            messages.success(request, 'Partido creado exitosamente.')
+            return redirect('/torneo/editar_registro/'+str(jornada.torneo.id))
+        else:
+            messages.warning(request, 'Hubo un error en la forma')
+    else:
+        torneo = get_object_or_404(Torneo, id=jornada.torneo.id)
+        equipos = torneo.equipos.all()
+        form = NuevoPartidoForm()
+        form.fields["equipo_visitante"].queryset = equipos
+        form.fields["equipo_local"].queryset = equipos
+    return render(request, 'torneo/nuevo_partido.html', {'form': form, 'jornada':jornada})
+
+def ganador(request, id_torneo):
+    torneo = get_object_or_404(Torneo, id=id_torneo)
+    form = GanadorForm()
+    if request.method == "POST":
+        form = GanadorForm(request.POST)
+        torneo.ganador = True
+        torneo.save()
+        team = request.POST.get('equipos')
+        stats =  get_object_or_404(Estadisticas, torneo=torneo, equipo=team)
+        stats.ganador = True
+        stats.save()
+        messages.success(request, 'Ganador del torneo registrado exitosamente.')
+        return redirect('/torneo/')
+    else:
+        equipos = torneo.equipos.all()
+        form.fields["equipos"].queryset = equipos
+    return render(request, 'torneo/ganador.html', {'form': form, 'torneo': torneo})

@@ -2,3 +2,63 @@
   background-image: url("../../static_media/Torneos.jpg");
   background-position: center;
 }
+
+td img {
+  margin-right: 12px;
+}
+
+.button {
+  margin-top: 12px;
+  padding: 6px 6px 6px 6px
+}
+
+.card-list {
+  flex-wrap: wrap;
+}
+
+.card {
+  width:450px;
+  padding: 12px 24px 12px 24px;
+}
+
+.no-top {
+  top: inherit !important;
+}
+
+.top {
+  top: 23px !important;
+}
+
+.card .collection-item {
+  display: flex;
+  align-items: center;
+}
+
+.card .collection-item > a {
+  display: flex;
+  align-items: center;
+}
+
+a > .big {
+  height: 60px !important;
+  width: 60px !important;
+}
+
+.collection > .big {
+  padding-left: 85px !important;
+}
+
+.col {
+    margin-bottom: 32px ;
+}
+
+
+@media (min-width: 360px) and (max-width: 767px) {
+  .image-header {
+    top: 0;
+  }
+  .cover {
+    top: 0;
+    height: 120vh;
+  }
+}

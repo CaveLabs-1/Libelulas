@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+<form class="container" method="POST" action="{% url "torneo:accesar_cedula" %}">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col s12 m12 l12 center">
+      <h6>Plan Libélula de Desarrollo Integral</h6>
+      <h5>Accesar Cédula</h5>
+    </div>
+  </div>
+  <!-- Versión de Escritorio -->
+  <div class="row">
+      <div class="input-field col s12 m6 l6">
+        <input id="{{form.id_torneo.id_for_label}}" name="{{form.id_torneo.html_name}}" type="text">
+        <label for="{{form.id_torneo.id_for_label}}">ID Torneo</label>
+      </div>
+      <div class="input-field col s12 m6 l6">
+        <input id="{{form.id_partido.id_for_label}}" name="{{form.id_partido.html_name}}" type="text">
+        <label for="{{form.id_partido.id_for_label}}">ID Partido</label>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col s12 l12 m12 center">
+      <button class="btn" type="submit">Enviar</button>
+    </div>
+  </div>
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/js/materialize.min.js"></script>
+<script src=" https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js "></script>
+{% endblock %}

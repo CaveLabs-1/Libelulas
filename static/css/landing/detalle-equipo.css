@@ -58,7 +58,12 @@
   height: 300px;
 }
 
-.collection-item > .big {
+.collection-item > a {
+  display: flex;
+  align-items: center;
+}
+
+a > .big {
   height: 60px !important;
   width: 60px !important;
 }
@@ -81,6 +86,13 @@
 }
 
 @media (min-width: 360px) and (max-width: 767px) {
+  .image-header {
+    top: 0;
+  }
+  .cover {
+    top: 0;
+    height: 120vh;
+  }
   .header > .container {
     flex-direction: column;
     align-items: center;

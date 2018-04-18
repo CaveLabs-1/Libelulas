@@ -12,10 +12,21 @@
         <input disabled value="{{torneo.nombre}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
         <label for="disabled">Nombre</label>
       </div>
+      {% if torneo.categoria == 0 and torneo.categoriaMax == 100 %}
+      <div class="input-field col s12">
+        <input disabled value="Categoria Libre" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
+        <label for="disabled">Categoria</label>
+      </div>
+      {% else %}
       <div class="input-field col s12">
         <input disabled value="{{torneo.categoria}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
-        <label for="disabled">Categoría</label>
+        <label for="disabled">Categoría Minima</label>
       </div>
+      <div class="input-field col s12">
+        <input disabled value="{{torneo.categoriaMax}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
+        <label for="disabled">Categoría Maxima</label>
+      </div>
+      {% endif %}
       <div class="input-field col s12">
         <input disabled value="{{torneo.fechaInicio}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
         <label for="disabled">Fecha de Inicio</label>
@@ -44,7 +55,7 @@
           <p>Representante: {{ Equipo.representante }}</p>
           <div class="secondary-content">
             {% if torneo.activo %}
-            <a href="{% url 'torneo:eliminar_equipo' Equipo.id torneo.id %}"><i class="material-icons icon-red">cancel</i></a>
+            <a href="{% url 'torneo:eliminar_equipo' Equipo.id torneo.id %}"><i class="material-icons icon-orange">cancel</i></a>
             {% endif %}
           </div>
         </li>

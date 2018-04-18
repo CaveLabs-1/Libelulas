@@ -9,4 +9,13 @@ urlpatterns = [
     path('editar_administrador/<int:id_administrador>/', views.editar_administrador, name='editar_administrador'),
     path('eliminar_administrador/<int:id_administrador>/', views.eliminar_administrador, name='eliminar_administrador'),
     path('lista_administrador/', views.lista_administrador, name='lista_administrador'),
+    path('lista_PreRegistro/', views.lista_PreRegistro, name='lista_PreRegistro'),
+    path('eliminar_PreRegistro/<int:id_preregistro>/', views.eliminar_preregsitro, name='eliminar_PreRegistro'),
+    path('aceptar_PreRegistro/<slug:id_preregistro>/', views.aceptar_PreRegistro, name='aceptar_PreRegistro'),
+    path ('detalle_equipo/<int:equipo_id>/', views.detalle_equipo, name='detalle_equipo'),
+    path ('aceptar_jugadora/<int:id_jugadora>/', views.aceptar_jugadora, name='aceptar_jugadora'),
+    path ('eliminar_jugadora/<int:id_jugadora>/<int:id_equipo>', views.eliminar_jugadora, name='eliminar_jugadora'),
+    path ('aceptar_equipo/<int:id_equipo>/', views.aceptar_equipo, name='aceptar_equipo'),
+    path ('eliminar_equipo/<int:id_equipo>/', views.eliminar_equipo, name='eliminar_equipo'),
+    path ('validar_jugadoras/<int:id_equipo>/', views.validar_jugadoras, name='validar_jugadoras'),
 ]
