@@ -14,28 +14,15 @@ window.addEventListener('scroll', function (e) {
   }
 });
 
-let imagesDiv = document.getElementById('imagesDiv')
-var xhr = new XMLHttpRequest();
-xhr.open("GET", "https://graph.facebook.com/447400552307374?fields=albums.fields(photos.fields(source))&access_token=EAACEdEose0cBAPggV2Sv96dkcMbZAVAr0EyHOqBG9RkACwcgQKvw9PVxvTHCwaqrDz6ZBzanr4qZBrDGEfLFphqFZCEORHr856wSdmu0a4dXNfExRLJGs7SK9TpPxY8QSF4vkcQhSnQIjW6uGsmOIZB0x8l2dYe3xiwcKCDbIjLcP7BbNLAfhUGAIwW0mygBvmxpctpLZCSgZDZD", true);
-xhr.onload = function (e) {
-  if (xhr.readyState === 4) {
-    if (xhr.status === 200) {
-      let photos = JSON.parse(xhr.response);
-      photos = photos.albums.data;
-      for(let i = 0; i < photos.length; i++) {
-        for(let j = 0; j < photos[i].photos.data.length; j++) {
-          imagesDiv.innerHTML += '<img src='+photos[i].photos.data[j].source+' />'
-        }
-      }
-    } else {
-      console.error(xhr.statusText);
+let listaGoles = document.getElementsByClassName('gol-container');
+if (listaGoles) {
+  for(let i = 0; i < listaGoles.length; i++) {
+    let el = listaGoles[i];
+    for(let j = 0; j < el.getAttribute('data-value'); j++) {
+      el.innerHTML += '<div class="gol"></div>'
     }
   }
-};
-xhr.onerror = function (e) {
-  console.error(xhr.statusText);
-};
-xhr.send(null);
+}
 
 let partidosJugados = document.getElementById('partidos');
 let golesAnotados = document.getElementById('golesAnotados');
@@ -99,4 +86,24 @@ if (partidosJugados && golesAnotados) {
     bar2.animate(golesAnotadosE);
     bar2.text.style.color = 'rgba(3,27,78,.7)';
   };
+}
+
+
+let elements = document.getElementsByClassName("activator");
+
+for(var i=0; i < elements.length;i++) {
+  let element = elements[i];
+  element.addEventListener("click",  function() {
+    this.parentNode.classList.add('big');
+  });
+}
+
+let closeElements = document.getElementsByClassName("close");
+
+for(var i=0; i < closeElements.length;i++) {
+  let element = closeElements[i];
+  console.log(element)
+  element.addEventListener("click",  function() {
+    this.parentNode.parentNode.classList.remove('big');
+  });
 }

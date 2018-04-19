@@ -5,6 +5,10 @@
   <h2 class="admin-title center">Registrar Cédula</h2>
 </div>
 <br>
+<div>
+  <h5 class="admin-title center">{{partido.equipo_local.nombre}} {{partido.goles_local}} - {{partido.goles_visitante}} {{partido.equipo_visitante.nombre}}</h5>
+</div>
+<br>
 <div class="container">
   <div class="row">
     <div class="col s12 l5 input-field">
@@ -33,7 +37,8 @@
   </div>
   <div class="col s12">
     <div class="container-button">
-      <button onclick="agregar_evento()" class="submit">Guardar</button>
+      <a href="{% url 'landing:detalle_partido' partido.jornada.torneo.id partido.id%}" class="cancel back">Terminar</a>
+      <button onclick="agregar_evento()" class="submit">Agregar</button>
     </div>
   </div>
 </div>
@@ -82,9 +87,14 @@
                 cantidad:cantidad
             })
             .done(function( data ) {
-                $('#eventos').html(data);
+              if(data['estatus'] == 'OK'){
+                $('#eventos').html(data['html']);
                 $('#cantidad').val(0);
                 $('select').formSelect();
+              }
+              else{
+                location.reload();
+              }
             });
 
             return false;

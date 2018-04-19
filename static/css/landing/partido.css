@@ -78,6 +78,14 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.gol-container {
+  display: flex;
+  max-width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .collection-item>.item-container>.pos {
@@ -153,6 +161,10 @@
 
 .tam {
   background-color: #ffaf54;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .ta {

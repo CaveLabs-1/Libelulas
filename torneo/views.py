@@ -84,7 +84,7 @@ def eliminar_torneo(request,id_torneo):
         registro = Estadisticas.objects.get(torneo=torneo,equipo=equipo)
         registro.delete()
     torneo.delete()
-    messages.success(request, 'Torneo eliminado exitosamente')
+    messages.warning(request, 'Torneo eliminado exitosamente')
     return HttpResponseRedirect(reverse('torneo:lista_torneos'))
 
 def eliminar_equipo(request, id_equipo, id_torneo):
@@ -111,25 +111,29 @@ def registrar_partido(request, id_partido):
 def cerrar_registro(request, id_torneo):
     torneo = get_object_or_404(Torneo, id=id_torneo)
     if torneo.activo:
-        torneo.activo = False
-        torneo.save()
         fecha_inicial = torneo.fechaInicio
         fecha_fin =  fecha_inicial + timezone.timedelta(days=6)
         equipos = torneo.equipos.all()
-        id_last_j = 1
-        lista = []
-        for equipo in equipos:
-            lista.append(equipo.nombre)
-        lista_vuelta = []
-        for equipo in equipos:
-            lista_vuelta.append(equipo.nombre)
-        lista_vuelta = lista_vuelta[::-1]
-        jornadas_local = create_schedule(lista)
-        jornadas_visitante = create_schedule(lista_vuelta)
-        id_last_j,fecha_inicial,fecha_fin = partidos(id_last_j,jornadas_local,fecha_inicial,fecha_fin,torneo)
-        partidos(id_last_j,jornadas_visitante,fecha_inicial,fecha_fin,torneo)
-        messages.success(request,'El registro del torneo ha sido cerrado')
-        return HttpResponseRedirect(reverse('torneo:lista_torneos'))
+        if len(equipos) >= 2:
+            torneo.activo = False
+            torneo.save()
+            id_last_j = 1
+            lista = []
+            for equipo in equipos:
+                lista.append(equipo.nombre)
+            lista_vuelta = []
+            for equipo in equipos:
+                lista_vuelta.append(equipo.nombre)
+            lista_vuelta = lista_vuelta[::-1]
+            jornadas_local = create_schedule(lista)
+            jornadas_visitante = create_schedule(lista_vuelta)
+            id_last_j,fecha_inicial,fecha_fin = partidos(id_last_j,jornadas_local,fecha_inicial,fecha_fin,torneo)
+            partidos(id_last_j,jornadas_visitante,fecha_inicial,fecha_fin,torneo)
+            messages.success(request,'El registro del torneo ha sido cerrado')
+            return HttpResponseRedirect(reverse('torneo:lista_torneos'))
+        else:
+            messages.warning(request, 'El registro debe de tener mas de un equipo para ser registrado')
+            return HttpResponseRedirect(reverse('torneo:lista_torneos'))
 
 def create_schedule(list):
     s = []
@@ -413,6 +417,10 @@ def registrar_eventos(request, id_partido):
                     if goles_visitante['cantidad'] + cantidad <= partido.goles_visitante:
                         gol = gol = Goles.objects.create(partido=partido, jugadora=jugadora, cantidad=cantidad, equipo=registro.equipo)
                         gol.save()
+            else:
+                messages.warning(request, 'Cantidad Inválida de goles')
+                response = {'estatus':'ERROR'}
+                return JsonResponse(response)
 
         elif evento == 2:
             if cantidad > 0 and tarjetas_rojas == 0:
@@ -427,22 +435,46 @@ def registrar_eventos(request, id_partido):
                         amarilla.save()
                         roja = Tarjetas_rojas.objects.create(partido=partido, jugadora=jugadora)
                         roja.save()
+                    else:
+                        messages.warning(request, 'Cantidad inválida tarjetas amarillas')
+                        response = {'estatus':'ERROR'}
+                        return JsonResponse(response)
                 elif tarjetas['cantidad'] == 1:
                     if cantidad == 1:
                         amarilla = Tarjetas_amarillas.objects.create(partido=partido, jugadora=jugadora, cantidad=cantidad)
                         amarilla.save()
                         roja = Tarjetas_rojas.objects.create(partido=partido, jugadora=jugadora)
                         roja.save()
+                    else:
+                        messages.warning(request, 'Cantidad inválida tarjetas amarillas')
+                        response = {'estatus':'ERROR'}
+                        return JsonResponse(response)
+                else:
+                    messages.warning(request, 'Cantidad inválida tarjetas amarillas')
+                    response = {'estatus':'ERROR'}
+                    return JsonResponse(response)
+            else:
+                messages.warning(request, 'Cantidad inválida tarjetas rojas o amarillas')
+                response = {'estatus':'ERROR'}
+                return JsonResponse(response)
 
         elif evento == 3:
             if tarjetas_rojas == 0:
                 roja = Tarjetas_rojas.objects.create(partido=partido, jugadora=jugadora, directa=True)
                 roja.save()
+            else:
+                messages.warning(request, 'Cantidad inválida tarjetas rojas')
+                response = {'estatus':'ERROR'}
+                return JsonResponse(response)
 
         elif evento == 4:
             if tarjetas_azules == 0:
                 azul = Tarjetas_azules.objects.create(partido=partido, jugadora=jugadora)
                 azul.save()
+            else:
+                messages.warning(request, 'Cantidad inválida tarjetas azules')
+                response = {'estatus':'ERROR'}
+                return JsonResponse(response)
 
         amarillas = Tarjetas_amarillas.objects.filter(partido=partido)
         rojas = Tarjetas_rojas.objects.filter(partido=partido)
@@ -451,7 +483,8 @@ def registrar_eventos(request, id_partido):
         asistencias = Asistencia.objects.filter(partido=partido)
 
         html = render_to_string('torneo/lista_eventos.html', {'amarillas':amarillas,'rojas':rojas,'azules':azules,'goles':goles,'asistencias':asistencias, 'partido':partido})
-        return HttpResponse(html)
+        response = {'html':html,'estatus':'OK'}
+        return JsonResponse(response)
 
     return render(request, 'torneo/registrar_eventos.html', {'amarillas':amarillas,'rojas':rojas,'azules':azules,'goles':goles,'asistencias':asistencias, 'partido':partido})
 
@@ -540,3 +573,4 @@ def ganador(request, id_torneo):
         equipos = torneo.equipos.all()
         form.fields["equipos"].queryset = equipos
     return render(request, 'torneo/ganador.html', {'form': form, 'torneo': torneo})
+

@@ -52,6 +52,9 @@
         <input disabled value="{{equipo.get_colorVisitante_display}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
         <label for="disabled">Color Visitante</label>
       </div>
+      <div class="col s12">
+       <a href="{% url 'equipo:lista_equipos' %}" class="cancel back">Regresar</a>
+      </div>
     </div>
   </div>
   <div class="row" id="jugadoras">
@@ -100,6 +103,7 @@
         <li>No hay jugadoras registradas en este equipo aun.</li>
       {% endfor %}
     </ul>
+    <a href="{% url 'equipo:lista_equipos' %}" class="cancel back">Regresar</a>
   </div>
 </div>
   <script>

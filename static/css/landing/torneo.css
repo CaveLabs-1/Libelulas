@@ -62,3 +62,7 @@ a > .big {
     height: 120vh;
   }
 }
+
+.icon-yellow {
+  color: #ffd54f ;
+}

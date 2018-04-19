@@ -17,7 +17,7 @@
     </div>
     <div class="torneo">
       <h5>Torneo {{torneo.nombre}}</h5>
-      <p>Jornada 12</p>
+      <p>Jornada {{partido.jornada_id}}</p>
       <p>{{partido.fecha}} {{partido.hora}}</p>
     </div>
     <div class="team row">
@@ -52,12 +52,18 @@
               {% endfor %}
               {% for tam in tarjetas_amarillas_local %}
                 {% if jugadora.id == tam.jugadora_id %}
-                <div class="tarjeta tam"></div>
+                <div class="tarjeta tam">
+                  {% if tam.cantidad > 1 %}
+                  {{tam.cantidad}}
+                  {% endif %}
+                </div>
                 {% endif %}
               {% endfor %}
               {% for gol in goles_local %}
                 {% if jugadora.id == gol.jugadora_id %}
-                <div class="gol"></div>
+                {% for g in gol.cantidad %}
+                  <div class="gol-container" data-value="{{gol.cantidad}}"></div>
+                {% endfor %}
                 {% endif %}
               {% endfor %}
               {% for ta in tarjetas_azul_local %}
@@ -177,7 +183,7 @@
               {% endfor %}
               {% for gol in goles_visitante %}
                 {% if jugadora.id == gol.jugadora_id %}
-                <div class="gol"></div>
+                  <div class="gol-container" data-value="{{gol.cantidad}}"></div>
                 {% endif %}
               {% endfor %}
               {% for ta in tarjetas_azul_visitante %}
