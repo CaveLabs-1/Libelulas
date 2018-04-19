@@ -103,7 +103,7 @@ def detalle_partido(request, id_torneo, id_partido):
     tarjetas_amarillas_local = Tarjetas_amarillas.objects.filter(partido=id_partido).filter(jugadora__equipo=partido.equipo_local_id)
     tarjetas_amarillas_visitante = Tarjetas_amarillas.objects.filter(partido=id_partido).filter(jugadora__equipo=partido.equipo_visitante_id)
     goles_local = Goles.objects.filter(partido=id_partido).filter(jugadora__equipo=partido.equipo_local_id)
-    goles_visitante = Goles.objects.filter(partido=id_partido).filter(jugadora__equipo=partido.equipo_visitante_id)
+    goles_visitante = Goles.objects.all().filter(partido=id_partido).filter(equipo=partido.equipo_visitante_id)
     tarjetas_azul_local = Tarjetas_azules.objects.filter(partido=id_partido).filter(jugadora__equipo=partido.equipo_local_id)
     tarjetas_azul_visitante = Tarjetas_azules.objects.filter(partido=id_partido).filter(jugadora__equipo=partido.equipo_visitante_id)
     return render(request, 'landing/partido.html', {

@@ -84,7 +84,7 @@ def eliminar_torneo(request,id_torneo):
         registro = Estadisticas.objects.get(torneo=torneo,equipo=equipo)
         registro.delete()
     torneo.delete()
-    messages.success(request, 'Torneo eliminado exitosamente')
+    messages.warning(request, 'Torneo eliminado exitosamente')
     return HttpResponseRedirect(reverse('torneo:lista_torneos'))
 
 def eliminar_equipo(request, id_equipo, id_torneo):
@@ -132,7 +132,7 @@ def cerrar_registro(request, id_torneo):
             messages.success(request,'El registro del torneo ha sido cerrado')
             return HttpResponseRedirect(reverse('torneo:lista_torneos'))
         else:
-            messages.warning(request, 'No se puede cerrar el registro del torneo si no hay más de 1 equipo registrado.')
+            messages.warning(request, 'El registro debe de tener mas de un equipo para ser registrado')
             return HttpResponseRedirect(reverse('torneo:lista_torneos'))
 
 def create_schedule(list):
@@ -573,3 +573,4 @@ def ganador(request, id_torneo):
         equipos = torneo.equipos.all()
         form.fields["equipos"].queryset = equipos
     return render(request, 'torneo/ganador.html', {'form': form, 'torneo': torneo})
+
