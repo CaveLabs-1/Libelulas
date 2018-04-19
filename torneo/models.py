@@ -18,7 +18,7 @@ class Torneo(models.Model):
     anexo = models.FileField(upload_to='media/torneo', blank=True, null=True, verbose_name="Documento Anexo")
     costo = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Costo Inscripcion", validators=[MinValueValidator(0)])
     costoCredencial = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Costo de Credencial", validators=[MinValueValidator(0)])
-    equipos = models.ManyToManyField(Equipo ,through='Estadisticas')
+    equipos = models.ManyToManyField(Equipo ,blank=True ,through='Estadisticas')
     activo = models.BooleanField(default = True)
     ganador = models.BooleanField(default = False)
     fechaJunta = models.DateField(verbose_name="Fecha de la siguiente junta")
