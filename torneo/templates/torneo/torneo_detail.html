@@ -27,15 +27,30 @@
         <label for="disabled">Categoría Maxima</label>
       </div>
       {% endif %}
+    <div class="input-field col s12">
+        <input disabled value="{{torneo.fechaJunta}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
+        <label for="disabled">Fecha Junta</label>
+      </div>
       <div class="input-field col s12">
         <input disabled value="{{torneo.fechaInicio}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
         <label for="disabled">Fecha de Inicio</label>
       </div>
+
       <div class="input-field col s12">
         <input disabled value="{{torneo.costo}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
         <label for="disabled">Costo</label>
       </div>
+    <div class="input-field col s12">
+        <input disabled value="{{torneo.costoCredencial}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
+        <label for="disabled">Costo Credencial</label>
+      </div>
     </div>
+
+
+
+
+
+
     <div class="file-field col 12 input-field">
       <div class="file-path-wrapper">
         {% if torneo.anexo == '' %}
