@@ -110,26 +110,31 @@ def registrar_partido(request, id_partido):
 
 def cerrar_registro(request, id_torneo):
     torneo = get_object_or_404(Torneo, id=id_torneo)
-    if torneo.activo:
-        torneo.activo = False
-        torneo.save()
-        fecha_inicial = torneo.fechaInicio
-        fecha_fin =  fecha_inicial + timezone.timedelta(days=6)
-        equipos = torneo.equipos.all()
-        id_last_j = 1
-        lista = []
-        for equipo in equipos:
-            lista.append(equipo.nombre)
-        lista_vuelta = []
-        for equipo in equipos:
-            lista_vuelta.append(equipo.nombre)
-        lista_vuelta = lista_vuelta[::-1]
-        jornadas_local = create_schedule(lista)
-        jornadas_visitante = create_schedule(lista_vuelta)
-        id_last_j,fecha_inicial,fecha_fin = partidos(id_last_j,jornadas_local,fecha_inicial,fecha_fin,torneo)
-        partidos(id_last_j,jornadas_visitante,fecha_inicial,fecha_fin,torneo)
-        messages.success(request,'El registro del torneo ha sido cerrado')
+    equipos = torneo.equipos.all()
+    if(equipos.count()>=2):
+        if torneo.activo:
+            torneo.activo = False
+            torneo.save()
+            fecha_inicial = torneo.fechaInicio
+            fecha_fin =  fecha_inicial + timezone.timedelta(days=6)
+            id_last_j = 1
+            lista = []
+            for equipo in equipos:
+                lista.append(equipo.nombre)
+            lista_vuelta = []
+            for equipo in equipos:
+                lista_vuelta.append(equipo.nombre)
+            lista_vuelta = lista_vuelta[::-1]
+            jornadas_local = create_schedule(lista)
+            jornadas_visitante = create_schedule(lista_vuelta)
+            id_last_j,fecha_inicial,fecha_fin = partidos(id_last_j,jornadas_local,fecha_inicial,fecha_fin,torneo)
+            partidos(id_last_j,jornadas_visitante,fecha_inicial,fecha_fin,torneo)
+            messages.success(request,'El registro del torneo ha sido cerrado')
+            return HttpResponseRedirect(reverse('torneo:lista_torneos'))
+    else:
+        messages.warning(request, 'El registro debe de tener mas de un equipo para ser registrado')
         return HttpResponseRedirect(reverse('torneo:lista_torneos'))
+
 
 def create_schedule(list):
     s = []
@@ -540,3 +545,4 @@ def ganador(request, id_torneo):
         equipos = torneo.equipos.all()
         form.fields["equipos"].queryset = equipos
     return render(request, 'torneo/ganador.html', {'form': form, 'torneo': torneo})
+
