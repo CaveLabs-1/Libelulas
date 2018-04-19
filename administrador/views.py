@@ -127,8 +127,6 @@ def aceptar_equipo(request, id_equipo):
 def eliminar_equipo(request, id_equipo):
     equipo = get_object_or_404(Equipo ,id=id_equipo)
     equipo.delete()
-    pre = get_object_or_404(PreRegistro, equipo=equipo)
-    pre.delete()
     messages.success(request, 'Equipo eliminado exitosamente.')
     return HttpResponseRedirect(reverse('administrador:lista_PreRegistro'))
 
