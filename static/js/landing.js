@@ -14,6 +14,16 @@ window.addEventListener('scroll', function (e) {
   }
 });
 
+let listaGoles = document.getElementsByClassName('gol-container');
+if (listaGoles) {
+  for(let i = 0; i < listaGoles.length; i++) {
+    let el = listaGoles[i];
+    for(let j = 0; j < el.getAttribute('data-value'); j++) {
+      el.innerHTML += '<div class="gol"></div>'
+    }
+  }
+}
+
 let partidosJugados = document.getElementById('partidos');
 let golesAnotados = document.getElementById('golesAnotados');
 if (partidosJugados && golesAnotados) {
