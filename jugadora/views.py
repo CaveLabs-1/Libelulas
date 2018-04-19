@@ -75,7 +75,13 @@ def ver_jugadoras(request):
 
 class eliminar_jugadora(DeleteView):
     model = Jugadora
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(request, 'Jugadora eliminada exitosamente')
+        return super(eliminar_jugadora, self).delete(request, *args, **kwargs)
     success_url = reverse_lazy('jugadora:ver_jugadoras')
+
+
 
 def detalle_jugadora(request, pk):
     jugadora = get_object_or_404(Jugadora, pk=pk)
