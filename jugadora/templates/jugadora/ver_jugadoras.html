@@ -26,7 +26,7 @@
       <p><strong>Fecha de nacimiento:</strong> {{ jugadora.Nacimiento }}</p>
       <div class="flex">
         <p><strong>Número de playera:</strong> {{ jugadora.Numero }}</p>&nbsp;&nbsp;
-        <p><strong>Posición:</strong> {{ jugadora.Posicion }}</p>
+        <p><strong>Posición:</strong> {{ jugadora.get_Posicion_display }}</p>
       </div>
       <div class="secondary-content">
         <a href="#" data-target="delete" data-form="{% url 'jugadora:eliminar_jugadora' jugadora.id %}" class="delete-button">

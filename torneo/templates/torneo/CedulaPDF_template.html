@@ -14,6 +14,29 @@
 
 </head>
 
+<STYLE>
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+table td, th {
+    text-align: left;
+}
+
+
+table.left {
+    width: 50%;
+    float: left;
+
+}
+
+table.right {
+    width: 50%;
+    float: right;
+}
+
+
+</STYLE>
 <style>
     table {
     border-collapse: collapse;
@@ -43,138 +66,111 @@ size: A4 portrait;
 
 
 <div class="row">
-
-        <div class="row center-align">
-            <div class="col s4">Arbitro:&nbsp;&nbsp;&nbsp;&nbsp;_________________________________________________________________________________</div>
-        </div>
-<br>
-
-        <div class="row row center-align">
-            <div class="col s4">Auxiliar 1: _________________________________________________________________________________</div>
-        </div>
-    <br>
-
-
-        <div class="row center-align ">
-            <div class="col s4">Auxiliar 2: _________________________________________________________________________________</div>
-        </div>
-    <br>
-
-
+    <h2>Arbitro:&nbsp;&nbsp;&nbsp;&nbsp;_________________________________________________________________________________</h2>
 </div>
-
-<br><br>
 <div class="row">
-    <div class="col s12">
-        <table  class="browser-default">
-            <thead>
-                <tr>
-                    <th>Asis.</th>
-                    <th>No.</th>
-                    <th>Apellido Nombre</th>
-                    <th>Goles</th>
-                    <th>AM</th>
-                    <th>EXP</th>
-                    <th> </th>
-                    <th>Asis.</th>
-                    <th>No.</th>
-                    <th>Apellido Nombre</th>
-                    <th>Goles</th>
-                    <th>AM</th>
-                    <th>EXP</th>
-                </tr>
-            </thead>
+    <h2>Auxiliar 1: _______________________________________________________________________________</h2>
+</div>
+<div class="row">
+    <h2>Auxiliar 2: _______________________________________________________________________________</h2>
+</div>
+<br>
 
-            <tbody>
-                <tr>
-                {% for jugadora in partido.equipo_local.jugadoras.all %}
-                    <td></td>
-                    <td>{{ jugadora.Numero }}</td>
-                    <td><p>{{ jugadora.Nombre }} {{ jugadora.Apellido }}</p></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                {% endfor %}
-                    <td></td>
-                {% for jugadora in partido.equipo_visitante.jugadoras.all %}
-                    <td></td>
-                    <td>{{ jugadora.Numero }}</td>
-                    <td><p>{{ jugadora.Nombre }} {{ jugadora.Apellido }}</p></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                {% endfor %}
-                </tr>
-            </tbody>
-        </table>
-
-
-
-    <p style="text-align: left">Representante {{ partido.equipo_local.nombre }}: {{ partido.equipo_local.representante }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Representante {{ partido.equipo_visitante.nombre }} :   {{ partido.equipo_visitante.representante }}</p>
-
-
-        <div align="center">
-            <h2>Cambios</h2>
-        </div>
-        <hr>
-            <table  class="browser-default">
-            <thead>
-                <tr>
-                    <th>Asis.</th>
-                    <th>No.</th>
-                    <th>Apellido Nombre</th>
-                    <th>Goles</th>
-                    <th>AM</th>
-                    <th>EXP</th>
-                    <th> </th>
-                    <th>Asis.</th>
-                    <th>No.</th>
-                    <th>Apellido Nombre</th>
-                    <th>Goles</th>
-                    <th>AM</th>
-                    <th>EXP</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr>
-                {% for jugadora in partido.equipo_local.jugadoras.all %}
-                    <td></td>
-                    <td>{{ jugadora.Numero }}</td>
-                    <td><p>{{ jugadora.Nombre }} {{ jugadora.Apellido }}</p></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                {% endfor %}
-                    <td></td>
-                {% for jugadora in partido.equipo_visitante.jugadoras.all %}
-                    <td></td>
-                    <td>{{ jugadora.Numero }}</td>
-                    <td><p>{{ jugadora.Nombre }} {{ jugadora.Apellido }}</p></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                {% endfor %}
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<div class="row">
+    <h3 style="text-align: center">Representante {{ partido.equipo_local.nombre }}: {{ partido.equipo_local.representante }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Representante {{ partido.equipo_visitante.nombre }} :   {{ partido.equipo_visitante.representante }}</h3>
 </div>
 <br>
 
 
-<br>
-        <div class="row center-align">
-            <div class="col s4"><h3>Total de Goles: &nbsp;&nbsp;&nbsp;&nbsp;{{partido.equipo_local.nombre}}:________________  VS {{partido.equipo_visitante.nombre}}________________ </h3></div>
-        </div>
+
+<div>
+ <table  class="left" id="t1">
+            <thead>
+                <tr>
+                    <th>Asis.</th>
+                    <th>No.</th>
+                    <th>Nombre Completo</th>
+                    <th>Goles</th>
+                    <th>AM</th>
+                    <th>EXP</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for jugadora in partido.equipo_local.jugadoras.all %}
+                    <tr>
+                    <td></td>
+                    <td>{{ jugadora.Numero }}</td>
+                    <td><p>{{ jugadora.Nombre }} {{ jugadora.Apellido }}</p></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                     </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+ <table  class="right" id="t2">
+            <thead>
+                <tr>
+                    <th>Asis.</th>
+                    <th>No.</th>
+                    <th>Nombre Completo</th>
+                    <th>Goles</th>
+                    <th>AM</th>
+                    <th>EXP</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for jugadora in partido.equipo_visitante.jugadoras.all %}
+                     <tr>
+                    <td></td>
+                    <td>{{ jugadora.Numero }}</td>
+                    <td><p>{{ jugadora.Nombre }} {{ jugadora.Apellido }}</p></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                     </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+</div>
+
+<style>
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+</style>
+
+<div class="footer">
+
+    <h3>Cambios:</h3>
+            <div class="col s4 align-wrapper"><br><hr></div>
+            <div class="col s4 align-wrapper"><br><hr></div>
+            <div class="col s4 align-wrapper"><br><hr></div>
+            <div class="col s4 align-wrapper"><br><hr></div>
+    <div class="col s4 align-wrapper"><br><hr></div>
     <br>
+    <br>
+        <h3>Total de Goles: &nbsp;&nbsp;&nbsp;&nbsp;{{partido.equipo_local.nombre}}:________________  VS {{partido.equipo_visitante.nombre}}________________ </h3>
+<br><br>
 
-<p>Incidente:</p>
+    <h3>Incidentes:</h3>
             <div class="col s4 align-wrapper"><br><hr></div>
 
             <div class="col s4 align-wrapper"><br><hr></div>
 
             <div class="col s4 align-wrapper"><br><hr></div>
+</div>
+
 
 
 </body>
