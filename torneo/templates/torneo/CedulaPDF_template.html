@@ -2,19 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-     <meta charset="utf-8">
         <title>Plan Libélula Desarrollo Integral</title>
         <!--Import Google Icon Font-->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!--Import materialize.css-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/css/materialize.min.css">
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 </head>
 
-<STYLE>
+<style>
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -36,8 +32,7 @@ table.right {
 }
 
 
-</STYLE>
-<style>
+
     table {
     border-collapse: collapse;
 }
@@ -54,25 +49,30 @@ th {
 }
     table, h1,h2, th, tr, td, body{
         font-family: 'Roboto', sans-serif;
-        font-size: 10px;
     }
     @page {
 size: A4 portrait;
-}</style>
+}
+
+body{
+    font-size: 10px;
+}
+
+</style>
 <body>
-<h3>Plan Libelula Desarollo Integral</h3>
-<h3 style="text-align: center">{{ partido.equipo_local.nombre }}&nbsp;&nbsp;&nbsp;&nbsp;VS&nbsp;&nbsp;&nbsp;&nbsp;   {{ partido.equipo_visitante.nombre }}</h3>
+<h1>Plan Libélula Desarollo Integral</h1><bt></bt>
+<h2 style="text-align: center">{{ partido.equipo_local.nombre }}&nbsp;&nbsp;&nbsp;&nbsp;VS&nbsp;&nbsp;&nbsp;&nbsp;   {{ partido.equipo_visitante.nombre }}</h2><br>
 
 
 
 <div class="row">
-    <h2>Arbitro:&nbsp;&nbsp;&nbsp;&nbsp;_________________________________________________________________________________</h2>
+    <h4>Arbitro:__________________________________</h4>
 </div>
 <div class="row">
-    <h2>Auxiliar 1: _______________________________________________________________________________</h2>
+    <h4>Auxiliar 1: __________________________________</h4>
 </div>
 <div class="row">
-    <h2>Auxiliar 2: _______________________________________________________________________________</h2>
+    <h4>Auxiliar 2: __________________________________</h4>
 </div>
 <br>
 
