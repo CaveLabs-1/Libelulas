@@ -44,8 +44,13 @@
             <h5><strong>Partidos Jugados</strong></h5>
           </div>
           <div class="column">
+            {% if goles_equipo == None %}
+            <h6>De 0 goles ha anotado</h6>
+            <div class="graph" id="golesAnotados" data-value="{{golesE}} 0">
+            {% else %}
             <h6>De {{goles_equipo}} goles ha anotado</h6>
             <div class="graph" id="golesAnotados" data-value="{{golesE}} {{goles}}">
+            {% endif %}
               <span class="absolute goles">goles</span>
             </div>
             <h5><strong>Goles Anotados</strong></h5>
