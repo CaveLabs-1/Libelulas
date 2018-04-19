@@ -84,7 +84,7 @@ def eliminar_torneo(request,id_torneo):
         registro = Estadisticas.objects.get(torneo=torneo,equipo=equipo)
         registro.delete()
     torneo.delete()
-    messages.success(request, 'Torneo eliminado exitosamente')
+    messages.warning(request, 'Torneo eliminado exitosamente')
     return HttpResponseRedirect(reverse('torneo:lista_torneos'))
 
 def eliminar_equipo(request, id_equipo, id_torneo):
