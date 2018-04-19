@@ -63,6 +63,7 @@ def editar_equipo(request, pk):
 
 class borrar_equipo(DeleteView):
     model = Equipo
+    success_message = "Equipo fue eliminado exitosamente"
     success_url = reverse_lazy('equipo:lista_equipos')
 
 def eliminar_jugadora(request, equipo_id, idJugadora):
