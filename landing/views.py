@@ -62,7 +62,10 @@ def detalle_jugadora(request, id_equipo, id_jugadora):
     edad = today.year - jugadora.Nacimiento.year - ((today.month, today.day) < (jugadora.Nacimiento.month, jugadora.Nacimiento.day))
     asistencia = Asistencia.objects.filter(jugadora_id=id_jugadora).filter(equipo_id=id_equipo).count()
     asistencia_equipo = Asistencia.objects.filter(equipo_id=id_equipo).count()
-    asistenciaE = asistencia/ asistencia_equipo
+    if(asistencia == 0):
+        asistenciaE = 0
+    else:
+        asistenciaE = asistencia/ asistencia_equipo
     goles = Goles.objects.filter(jugadora_id=id_jugadora).filter(equipo_id=id_equipo).aggregate(Sum('cantidad'))['cantidad__sum']
     goles_equipo = Goles.objects.filter(equipo_id=id_equipo).aggregate(Sum('cantidad'))['cantidad__sum']
     if(goles == None):
