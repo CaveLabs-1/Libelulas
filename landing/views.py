@@ -21,7 +21,8 @@ from torneo.models import Torneo
 
 def verTorneos (request):
     torneos= Torneo.objects.filter(activo=True)
-    return render(request,'landing/torneos.html',{'torneos':torneos})
+    equipos = Torneo.objects.filter(activo=True).values('equipos__nombre', 'equipos__logo', 'id', 'equipos__id')
+    return render(request,'landing/torneos.html',{'torneos':torneos, 'equipos': equipos})
 
 def ver_organizadores(request):
     return render(request, 'landing/organizadores.html')
@@ -61,7 +62,10 @@ def detalle_jugadora(request, id_equipo, id_jugadora):
     edad = today.year - jugadora.Nacimiento.year - ((today.month, today.day) < (jugadora.Nacimiento.month, jugadora.Nacimiento.day))
     asistencia = Asistencia.objects.filter(jugadora_id=id_jugadora).filter(equipo_id=id_equipo).count()
     asistencia_equipo = Asistencia.objects.filter(equipo_id=id_equipo).count()
-    asistenciaE = asistencia/ asistencia_equipo
+    if(asistencia == 0):
+        asistenciaE = 0
+    else:
+        asistenciaE = asistencia/ asistencia_equipo
     goles = Goles.objects.filter(jugadora_id=id_jugadora).filter(equipo_id=id_equipo).aggregate(Sum('cantidad'))['cantidad__sum']
     goles_equipo = Goles.objects.filter(equipo_id=id_equipo).aggregate(Sum('cantidad'))['cantidad__sum']
     if(goles == None):
@@ -137,7 +141,8 @@ def detalle_torneo(request, pk):
         gf=stats.goles_favor
         ge=stats.goles_contra
         dg=gf-ge
-        weones.append({'equipo':equipo, 'jj':jj, 'jg':jg,'jp':jp,'je':je,'gf':gf,'ge':ge,'dg':dg,'pts':pts})
+        win=stats.ganador
+        weones.append({'equipo':equipo, 'jj':jj, 'jg':jg,'jp':jp,'je':je,'gf':gf,'ge':ge,'dg':dg,'pts':pts, 'win':win})
     newlist = sorted(weones, key=lambda k: k['pts'], reverse=True)
     golit = Goles.objects.filter(partido__jornada__torneo= torneo).values('jugadora__Nombre', 'jugadora', 'jugadora__Apellido', 'jugadora__Imagen', 'jugadora__equipo' , 'jugadora__id').annotate(goles=Sum('cantidad')).order_by('-goles')[:3]
     tarjetasAma = Tarjetas_amarillas.objects.filter(partido__jornada__torneo= torneo).values('jugadora__Nombre', 'jugadora', 'jugadora__Apellido', 'jugadora__Imagen', 'jugadora__equipo', 'jugadora__id').annotate(total=Sum('cantidad')).order_by('-total')[:3]
