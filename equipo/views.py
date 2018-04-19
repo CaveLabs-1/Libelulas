@@ -63,15 +63,13 @@ def editar_equipo(request, pk):
 
 class borrar_equipo(DeleteView):
     model = Equipo
-    success_url = reverse_lazy('equipo:lista_equipos')
-    warning_message = "Equipo eliminado exitosamente"
-
     def delete(self, request, *args, **kwargs):
-        messages.warning(self.request, self.warning_message)
+        messages.success(request, 'Equipo eliminado exitosamente')
         return super(borrar_equipo, self).delete(request, *args, **kwargs)
+    success_url = reverse_lazy('equipo:lista_equipos')
 
 def eliminar_jugadora(request, equipo_id, idJugadora):
-    j =  Jugadora.objects.get(id=idJugadora)
+    j = Jugadora.objects.get(id=idJugadora)
     Equipo.objects.get(id=equipo_id).jugadoras.remove(j)
     messages.warning(request, 'Jugadora eliminada exitosamente del equipo')
     return HttpResponseRedirect(reverse_lazy('equipo:lista_equipos'))
