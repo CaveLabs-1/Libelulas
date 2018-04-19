@@ -16,25 +16,21 @@
   <div class="container">
     <div class="card-container flex space-between">
       {% for Torneo in torneos %}
-
-
-
       <div class="card hoverable">
         <div class="card-image waves-effect waves-block waves-light">
           <div class="container">
             <h5 class="black-text activator center">{{ Torneo.nombre }}</h5>
           </div>
         </div>
-        <div class="card-content">
-          <div class="title">
-            <p align="center">{{ Torneo.fechaInicio }}</p>
-          </div>
+        <p class="date" align="center">{{ Torneo.fechaInicio }}</p>
+        <div class="button secondary-button card-image icons hoverable activator">
+            Más Información +
         </div>
-        <div class="card-image icons  black hoverable">
-            <span class="activator" style="color: white"> Más Información + </span>
-        </div>
-        <div class="card-reveal  blue-grey lighten-4">
-          <span class="card-title grey-text text-darken-4 center">Información:<i class="material-icons right">close</i></span>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4 center close">
+            Información:
+            <i class="material-icons right">close</i>
+          </span>
           <div class="card-panel">
             <i class="material-icons left black-text ">date_range</i>
             <span class="black-text">Fecha de inicio:</span>
@@ -71,6 +67,21 @@
                 <a href="{{ Torneo.anexo.url }}">Documento Anexo</a>
             {% endif %}
           </div>
+          <div class="card-panel">
+            <span class="black-text">Equipos:</span>
+            <ul class="collection">
+            {% for equipo in equipos %}
+            {% if equipo.id == Torneo.id %}
+            <li class="collection-item avatar">
+              <a href="{% url 'landing:detalle_equipo' equipo.equipos__id %}">
+                <img src="/media/{{equipo.equipos__logo}}" class="circle"/>
+                <p><strong>{{equipo.equipos__nombre}}</strong></p>
+              </a>
+            </li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+          </div>
             {% if today >= Torneo.unDiaAntesJunta|date:"Y-m-d" %}
 
             {% else %}
@@ -78,7 +89,9 @@
                     <i class="material-icons left black-text ">format_align_center</i>
                     <span class="black-text">Pre-Registro:</span>
                     <br>
-                    <a href="{% url 'coaches:pre_registro' Torneo.id %}" class="waves-effect waves-light btn">Solicitar</a>
+                    <div class="cta-container">
+                      <a href="{% url 'coaches:pre_registro' Torneo.id %}" class="button primary-button waves-effect waves-light btn">Solicitar</a>
+                    </div>
                 </div>
             {% endif %}
 
