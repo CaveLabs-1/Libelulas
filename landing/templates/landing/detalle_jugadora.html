@@ -12,14 +12,14 @@
       {% if jugadora.Imagen %}
         <img src={{jugadora.Imagen.url}} alt="{{jugadora.nombre}} imagen" class="circle"/>
       {% else %}
-        <img src="{% static 'static_media/default.jpg' %}" alt="{{jugadora.Nombre}} imagen" class="circle"/>
+        <img src="{% static 'static_media/default.jpg' %}" alt="{{jugadora.nombre}} imagen" class="circle"/>
       {% endif %}
     </div>
     <div class="info-column">
-      <h2>{{ jugadora.Nombre }} {{ jugadora.Apellido }}</h2>
+      <h2>{{ jugadora.nombre }} {{ jugadora.apellido }}</h2>
       <h6><strong>Posición: </strong>{{jugadora.get_Posicion_display}}</h6>
       <h6><strong>Edad: </strong>{{edad}} años</h6>
-      <h6><strong>Número: </strong>{{jugadora.Numero}}</h6>
+      <h6><strong>Número: </strong>{{jugadora.numero}}</h6>
       <h6><strong>Equipo: </strong>{{equipo.nombre}}</h6>
     </div>
   </div>

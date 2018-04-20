@@ -22,10 +22,10 @@
       {% else %}
         <img src="{% static 'static_media/default.jpg' %}" alt="" class="circle" />
       {% endif %}
-        <a href="{% url 'jugadora:detalle_jugadora' jugadora.id %}"><span class="title">{{ jugadora.Nombre}} {{ jugadora.Apellido }}</span></a>
-      <p><strong>Fecha de nacimiento:</strong> {{ jugadora.Nacimiento }}</p>
+        <a href="{% url 'jugadora:detalle_jugadora' jugadora.id %}"><span class="title">{{ jugadora.nombre}} {{ jugadora.apellido }}</span></a>
+      <p><strong>Fecha de nacimiento:</strong> {{ jugadora.nacimiento }}</p>
       <div class="flex">
-        <p><strong>Número de playera:</strong> {{ jugadora.Numero }}</p>&nbsp;&nbsp;
+        <p><strong>Número de playera:</strong> {{ jugadora.numero }}</p>&nbsp;&nbsp;
         <p><strong>Posición:</strong> {{ jugadora.get_Posicion_display }}</p>
       </div>
       <div class="secondary-content">

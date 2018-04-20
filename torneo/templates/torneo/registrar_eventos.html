@@ -25,7 +25,7 @@
       <select id="jugadora">
         <option value="" disabled selected>Seleccione..</option>
         {% for asistencia in asistencias %}
-          <option value="{{asistencia.jugadora.id}}">{{partido.equipo_local.nombre}}: {{asistencia.jugadora.Numero}}:  {{asistencia.jugadora.Nombre}} {{asistencia.jugadora.Apellido}}</option>
+          <option value="{{asistencia.jugadora.id}}">{{partido.equipo_local.nombre}}: {{asistencia.jugadora.numero}}:  {{asistencia.jugadora.nombre}} {{asistencia.jugadora.apellido}}</option>
         {% endfor %}
       </select>
       <label>Jugadora</label>
