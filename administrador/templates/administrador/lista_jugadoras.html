@@ -1,5 +1,8 @@
 {% load static %}
 <ul class="collection">
+
+    #Desplegar lista de jugadoras
+
   {% for jugadora in jugadoras_equipo %}
   <li class="collection-item avatar">
     {% if jugadora.Imagen %}
@@ -13,6 +16,9 @@
       <p><strong>Número:</strong> {{ jugadora.Numero }}</p>&nbsp;&nbsp;
       <p><strong>Posición:</strong> {{ jugadora.get_Posicion_display }}</p>
     </div>
+
+    #Se valida el registro de la jugadora
+
     {% if validar %}
     <div class="secondary-content">
       <a href="{% url 'administrador:aceptar_jugadora' jugadora.id %}">
@@ -28,8 +34,12 @@
     <li>No hay jugadoras registradas en este equipo aun.</li>
   {% endfor %}
 </ul>
+
+#Desplegar botón para terminar la solucitud, si es valido el registro
+
 {% if validar %}
 <div class="container-button">
-  <a href="{% url 'administrador:lista_PreRegistro' %}"><button class="submit" type="button">Terminar Solicitud</button></a>
+  <a href="{% url 'administrador:lista_PreRegistro' %}">
+      <button class="submit" type="button">Terminar Solicitud</button></a>
 </div>
 {% endif %}

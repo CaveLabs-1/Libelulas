@@ -2,6 +2,8 @@
 {% load static %}
 {% block main %}
 
+    #Desplegar detalles de equipo
+
 <div class="title-container">
   <h2 id="team-title">{{equipo.nombre}}</h2>
   <h2 class="hidden" id="player-title">Jugadoras - {{equipo.nombre}}</h2>
@@ -54,10 +56,14 @@
       </div>
     </div>
   </div>
+
   <div class="row" id="jugadoras">
     {% include 'administrador/lista_jugadoras.html'%}
   </div>
 </div>
+
+    #Scripts para visualizar correctamente los detalles de equipo
+
   <script>
   document.getElementById('player').onclick = function() {
     if (document.getElementById('player-title').className === 'hidden') {

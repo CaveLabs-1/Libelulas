@@ -2,6 +2,8 @@
 {% load staticfiles %}
 {% block main %}
 
+    #Desplegar lista de administradores
+
 <div class="container">
     <ul class="collection">
         {% for administrador in lista %}
@@ -13,16 +15,24 @@
                         <br>
                         <span class="title">{{administrador.email}}</span>
                     </div>
+
+                    #Desplegar iconos para editar y borrar
+
                     <div class="secondary-content">
                         <br>
-                        <a href="{% url 'administrador:editar_administrador' administrador.id %}" class="secondary-content"><i class="medium material-icons icon-blue">mode_edit</i></a>
-                        <a class="modal-trigger secondary-content boton-eliminar" href="#delete-modal" data-id="{{administrador.id}}" data-nombre="{{administrador.first_name}}"><i class="medium material-icons icon-orange">delete</i></a>
+                        <a href="{% url 'administrador:editar_administrador' administrador.id %}"
+                           class="secondary-content"><i class="medium material-icons icon-blue">mode_edit</i></a>
+                        <a class="modal-trigger secondary-content boton-eliminar" href="#delete-modal"
+                           data-id="{{administrador.id}}" data-nombre="{{administrador.first_name}}">
+                            <i class="medium material-icons icon-orange">delete</i></a>
                     </div>
                 </div>
             </li>
         {% endfor %}
     </ul>
 </div>
+
+    #Desplegar iconos para agregar administrador
 
 <div class="fixed-action-btn horizontal">
     <a href="{% url 'administrador:agregar_administrador' %}" class="btn-floating btn-large red-background">
@@ -41,6 +51,9 @@
 
 {% endblock %}
 
+
+    #Scripts para modals de confirmación para borrar administrador
+
 {% block scripts %}
     {{ block.super }}
     <script type="text/javascript">
@@ -52,7 +65,10 @@
             var id = $(this).attr("data-id") ;
             var nombre = $(this).attr("data-nombre") ;
             $(".modal-content").html("<h4>¿Desea eliminar al administrador <strong>" + nombre + "</strong>?</h4>") ;
-            var botones = '<a href="#cancelar" class="modal-action modal-close cancel cancel-delete">Cancelar</a>  <a href="/administrador/eliminar_administrador/' + id + '" class="modal-action modal-close delete-color confirmar-eliminar" style="background-color: #F19800">Aceptar</a>' ;
+            var botones = '<a href="#cancelar" class="modal-action modal-close cancel cancel-delete">Cancelar</a>  ' +
+                '<a href="/administrador/eliminar_administrador/' + id + '' +
+                '" class="modal-action modal-close delete-color confirmar-eliminar" ' +
+                'style="background-color: #F19800">Aceptar</a>' ;
             $(".modal-footer").html(botones) ;
         }) ;
     </script>
