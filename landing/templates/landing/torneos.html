@@ -22,7 +22,7 @@
             <h5 class="black-text activator center">{{ Torneo.nombre }}</h5>
           </div>
         </div>
-        <p class="date" align="center">{{ Torneo.fechaInicio }}</p>
+        <p class="date" align="center">{{ Torneo.fecha_inicio }}</p>
         <div class="button secondary-button card-image icons hoverable activator">
             Más Información +
         </div>
@@ -35,16 +35,16 @@
             <i class="material-icons left black-text ">date_range</i>
             <span class="black-text">Fecha de inicio:</span>
             <br>
-            <span class="blue-text text-darken-2">{{ Torneo.fechaInicio }} </span>
+            <span class="blue-text text-darken-2">{{ Torneo.fecha_inicio }} </span>
           </div>
           <div class="card-panel">
             <i class="material-icons left black-text ">person</i>
             <span class="black-text">Categoría:</span>
             <br>
-            {% if Torneo.categoria == 0 and Torneo.categoriaMax == 100 %}
+            {% if Torneo.categoria == 0 and Torneo.categoria_max == 100 %}
             <span class="blue-text text-darken-2">Libre</span>
             {% else %}
-            <span class="blue-text text-darken-2">{{ Torneo.categoria }} - {{ Torneo.categoriaMax }} </span>
+            <span class="blue-text text-darken-2">{{ Torneo.categoria }} - {{ Torneo.categoria_max }} </span>
             {% endif %}
           </div>
           <div class="card-panel">
@@ -57,7 +57,7 @@
             <i class="material-icons left black-text ">event</i>
             <span class="black-text">Fecha de Junta:</span>
             <br>
-            <span class="blue-text text-darken-2">{{ Torneo.fechaJunta }} </span>
+            <span class="blue-text text-darken-2">{{ Torneo.fecha_junta }} </span>
           </div>
             <div class="card-panel">
             <i class="material-icons left black-text ">attach_file</i>

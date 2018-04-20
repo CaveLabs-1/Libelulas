@@ -1,7 +1,8 @@
 let nav = document.getElementById('navbar');
 let mobileNav = document.getElementById('mobile-nav');
 window.addEventListener('scroll', function (e) {
-  if (document.documentElement.scrollTop || document.body.scrollTop > window.innerHeight) {
+  if (document.documentElement.scrollTop
+    || document.body.scrollTop > window.innerHeight) {
     mobileNav.classList.add('colored');
     mobileNav.classList.remove('transparent');
     nav.classList.add('colored');

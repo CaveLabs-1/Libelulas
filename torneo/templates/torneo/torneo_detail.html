@@ -12,7 +12,7 @@
         <input disabled value="{{torneo.nombre}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
         <label for="disabled">Nombre</label>
       </div>
-      {% if torneo.categoria == 0 and torneo.categoriaMax == 100 %}
+      {% if torneo.categoria == 0 and torneo.categoria_max == 100 %}
       <div class="input-field col s12">
         <input disabled value="Categoria Libre" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
         <label for="disabled">Categoria</label>
@@ -23,16 +23,16 @@
         <label for="disabled">Categoría Minima</label>
       </div>
       <div class="input-field col s12">
-        <input disabled value="{{torneo.categoriaMax}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
+        <input disabled value="{{torneo.categoria_max}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
         <label for="disabled">Categoría Maxima</label>
       </div>
       {% endif %}
     <div class="input-field col s12">
-        <input disabled value="{{torneo.fechaJunta}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
+        <input disabled value="{{torneo.fecha_junta}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
         <label for="disabled">Fecha Junta</label>
       </div>
       <div class="input-field col s12">
-        <input disabled value="{{torneo.fechaInicio}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
+        <input disabled value="{{torneo.fecha_inicio}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
         <label for="disabled">Fecha de Inicio</label>
       </div>
 
@@ -41,7 +41,7 @@
         <label for="disabled">Costo</label>
       </div>
     <div class="input-field col s12">
-        <input disabled value="{{torneo.costoCredencial}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
+        <input disabled value="{{torneo.costo_credencial}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;" />
         <label for="disabled">Costo Credencial</label>
       </div>
     </div>
