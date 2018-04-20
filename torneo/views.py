@@ -377,7 +377,7 @@ def registrar_cedula(request, id_torneo, id_partido):
                     asistencia = 1
                 else:
                     asistencia = 0
-                jugadoras[cont] = {'id':jugadoras_locales[i].id,'nombre':jugadoras_locales[i].Nombre + " " + jugadoras_locales[i].Apellido, 'equipo':equipo_local_id, 'asistencia':asistencia}
+                jugadoras[cont] = {'id':jugadoras_locales[i].id,'nombre':jugadoras_locales[i].Nombre + " " + jugadoras_locales[i].Apellido, 'numero':jugadoras_locales[i].Numero, 'equipo':equipo_local_id, 'asistencia':asistencia}
             else:
                 jugadoras[cont] = {'id':'nada'}
             cont = cont + 1
@@ -387,7 +387,7 @@ def registrar_cedula(request, id_torneo, id_partido):
                     asistencia = 1
                 else:
                     asistencia = 0
-                jugadoras[cont] = {'id':jugadoras_visitantes[i].id, 'nombre':jugadoras_visitantes[i].Nombre + " " + jugadoras_visitantes[i].Apellido, 'equipo':equipo_visitante_id, 'asistencia':asistencia}
+                jugadoras[cont] = {'id':jugadoras_visitantes[i].id, 'nombre':jugadoras_visitantes[i].Nombre + " " + jugadoras_visitantes[i].Apellido, 'numero':jugadoras_visitantes[i].Numero, 'equipo':equipo_visitante_id, 'asistencia':asistencia}
             else:
                 jugadoras[cont] = {'id':'nada'}
             cont = cont + 1

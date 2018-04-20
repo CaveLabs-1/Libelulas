@@ -4,6 +4,25 @@
   <link rel="stylesheet" href="{% static 'css/landing/social.css' %}">
 {% endblock %}
 {% block main %}
+
+        <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+
+    <style>
+
+#quote{
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 5em;
+    color: rgb(174, 204, 88);
+    text-align: center;
+}
+
+    #quote-div{
+
+        text-align: center;
+    }
+
+    </style>
+
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -25,8 +44,12 @@
       <div class="col l6 m12">
       <div class="fb-page" data-href="https://www.facebook.com/PlanLibelula/" data-tabs="timeline" data-width="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/PlanLibelula/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/PlanLibelula/">Plan Libélula Desarrollo Integral</a></blockquote></div>
       </div>
-      <div class="col l6 m12">
-        <img src="{% static 'static_media/slogan.svg' %}" width="500px" height="500px"/>
+      <div class="col l6 m12" id="quote-div" >
+          <span id="quote">"Las oportunidades no pasan, las creas..." <br>- Chris Grosser.</span>
+
+
+
+
       </div>
     </div>
   </div>
