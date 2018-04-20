@@ -25,10 +25,10 @@
     <div class="col s12 m2 l2" id="max">
       <p>
         <label>
-          {{ form.categoriaMax.label_tag }}
-        </label> {{ form.categoriaMax }}
+          {{ form.categoria_max.label_tag }}
+        </label> {{ form.categoria_max }}
       </p>
-      {{ form.categoriaMax.errors }}</div>
+      {{ form.categoria_max.errors }}</div>
     <div class="col s12 m2 l2">
         <p>
           <br>
@@ -41,20 +41,20 @@
       
     <div class="col s12">
       <label>
-          {{ form.fechaInicio.label_tag }}
+          {{ form.fecha_inicio.label_tag }}
         </label>
-      <input type="date" name="{{form.fechaInicio.html_name}}" required="" class="datepicker" id="{{form.fechaInicio.id_for_label}}" /> {{ form.fechaInicio.errors }}
+      <input type="date" name="{{form.fecha_inicio.html_name}}" required="" class="datepicker" id="{{form.fecha_inicio.id_for_label}}" /> {{ form.fecha_inicio.errors }}
     </div>
 
       <div class="col s12">
             <p>
               <label>
-                  {{ form.fechaJunta.label_tag }}
+                  {{ form.fecha_junta.label_tag }}
               </label>
-            {{ form.fechaJunta }}
+            {{ form.fecha_junta }}
 
           </p>
-            {{ form.fechaJunta.errors }}
+            {{ form.fecha_junta.errors }}
         </div>
     <div class="col s12" style="margin-top:24px">
       <div class="file-field input-field">
@@ -79,11 +79,11 @@
       <div class="col s12">
           <p>
             <label>
-              {{ form.costoCredencial.label_tag }}
+              {{ form.costo_credencial.label_tag }}
             </label>
-            <input name="costoCredencial" type="number" min="0.00" max="10000.00" step="0.01" />
+            <input name="costo_credencial" type="number" min="0.00" max="10000.00" step="0.01" />
           </p>
-          {{ form.costoCredencial.errors }}
+          {{ form.costo_credencial.errors }}
       </div>
     <div class="col s12">
       <p>
@@ -126,7 +126,7 @@
       var hidden1 = $("#min");
       var hidden2 = $("#max");
       var hiddena = document.getElementById("id_categoria");
-      var hiddenb = document.getElementById("id_categoriaMax");
+      var hiddenb = document.getElementById("id_categoria_max");
       
       checkbox.change(function() {
         // Check to see if the checkbox is checked.

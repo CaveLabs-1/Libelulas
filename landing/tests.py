@@ -76,13 +76,13 @@ class LandingTestCase(TestCase):
             id=1,
             nombre='Libelulas',
             categoria= 96,
-            categoriaMax = 94,
-            fechaInicio = '2018-05-05',
+            categoria_max = 94,
+            fecha_inicio = '2018-05-05',
             anexo = '',
             costo = '100.00',
-            costoCredencial = '200.50',
+            costo_credencial = '200.50',
             activo = False,
-            fechaJunta = '2018-05-04',
+            fecha_junta = '2018-05-04',
         )
         Estadisticas.objects.create(
             torneo_id=1,
@@ -154,7 +154,7 @@ class LandingTestCase(TestCase):
             jugadora_id='2',
             equipo_id='2',
         )
-        Tarjetas_amarillas.objects.create(
+        TarjetasAmarillas.objects.create(
             partido_id='006369',
             jugadora_id='1',
             cantidad='1'
@@ -163,7 +163,7 @@ class LandingTestCase(TestCase):
             partido_id='006369',
             jugadora_id='2',
         )
-        Tarjetas_rojas.objects.create(
+        TarjetasRojas.objects.create(
             partido_id='006369',
             jugadora_id='1',
             directa=True,
@@ -195,9 +195,9 @@ class LandingTestCase(TestCase):
         response = self.client.get('/equipos/equipo/1/jugadora/1')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['jugadora'], Jugadora.objects.get(id=1))
-        self.assertEqual(response.context['tarjetas_rojas'], Tarjetas_rojas.objects.filter(jugadora_id=1).count())
+        self.assertEqual(response.context['tarjetas_rojas'], TarjetasRojas.objects.filter(jugadora_id=1).count())
         self.assertEqual(response.context['tarjetas_azul'], Tarjetas_azules.objects.filter(jugadora_id=1).count())
-        self.assertEqual(response.context['tarjetas_amarillas'], Tarjetas_amarillas.objects.filter(jugadora_id=1).aggregate(Sum('cantidad'))['cantidad__sum'])
+        self.assertEqual(response.context['tarjetas_amarillas'], TarjetasAmarillas.objects.filter(jugadora_id=1).aggregate(Sum('cantidad'))['cantidad__sum'])
         self.assertEqual(response.context['goles'], Goles.objects.filter(jugadora_id=1).filter(equipo_id=1).aggregate(Sum('cantidad'))['cantidad__sum'])
         self.assertEqual(response.context['asistencia'], Asistencia.objects.filter(jugadora_id=1).filter(equipo_id=1).count())
         self.assertEqual(response.context['edad'], 22)
@@ -239,22 +239,22 @@ class LandingTestCase(TestCase):
             id=2,
             nombre="Torneo PRueba",
             categoria="95",
-            categoriaMax = "94",
-            fechaInicio='2017-12-12',
+            categoria_max = "94",
+            fecha_inicio='2017-12-12',
             costo=int(12.12),
-            fechaJunta='1995-11-11',
-            costoCredencial=12,
+            fecha_junta='1995-11-11',
+            costo_credencial=12,
             activo=True
         )
         t3 = Torneo.objects.create(
             id=3,
             nombre="Torneo PRueba",
             categoria="95",
-            categoriaMax = "94",
-            fechaInicio='2017-12-12',
+            categoria_max = "94",
+            fecha_inicio='2017-12-12',
             costo=int(12.12),
-            fechaJunta='1995-11-11',
-            costoCredencial=12,
+            fecha_junta='1995-11-11',
+            costo_credencial=12,
             activo=True
         )
         e.save()
@@ -306,11 +306,11 @@ class LandingTestCase(TestCase):
             id=5,
             nombre="Torneo PRueba",
             categoria="1995",
-            categoriaMax = "1994",
-            fechaInicio='2017-12-12',
+            categoria_max = "1994",
+            fecha_inicio='2017-12-12',
             costo=int(12.12),
-            fechaJunta='1995-11-11',
-            costoCredencial=12,
+            fecha_junta='1995-11-11',
+            costo_credencial=12,
             activo=True
         )
 
@@ -318,11 +318,11 @@ class LandingTestCase(TestCase):
             id=6,
             nombre="Torneo PRueba",
             categoria="1995",
-            categoriaMax = "1994",
-            fechaInicio='2017-12-12',
+            categoria_max = "1994",
+            fecha_inicio='2017-12-12',
             costo=int(12.12),
-            fechaJunta='2019-11-11',
-            costoCredencial=12,
+            fecha_junta='2019-11-11',
+            costo_credencial=12,
             activo=True
         )
         resp = self.client.get('/coaches/pre_registro/5')

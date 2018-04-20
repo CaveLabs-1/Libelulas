@@ -11,8 +11,10 @@ from jugadora.forms import *
 from django.http import Http404
 import datetime
 
+#Desplegar la forma de pre registro y validar que se pueda 2 días antes de la junta de inicio
 def pre_registro(request, id_torneo):
     torneo = get_object_or_404(Torneo,id=id_torneo)
+    #Validamos que falten más de 2 días para la junta de inicio
     if datetime.date.today() >= torneo.unDiaAntesJunta():
         raise Http404("Ya no se permiten mas registro")
     if request.method == "POST":
@@ -26,6 +28,7 @@ def pre_registro(request, id_torneo):
         form = PreForm()
     return render(request, 'coaches/pre_registro.html', {'form': form, 'torneo': torneo})
 
+#Desplegar la forma de una jugadora para que un coach pueda registrarla
 def registrar_jugadora(request, codigo, id_equipo):
     lista_equipo = get_object_or_404(Equipo,id=id_equipo)
     registro = get_object_or_404(PreRegistro,codigo=codigo)
@@ -35,6 +38,7 @@ def registrar_jugadora(request, codigo, id_equipo):
             jugadora = form.save(commit=False)
             jugadora.activo = False
             jugadora.save()
+            #Agregar la jugadora al equipo
             e = Equipo.objects.get(id=id_equipo)
             e.jugadoras.add(jugadora)
             e.save()
@@ -46,12 +50,14 @@ def registrar_jugadora(request, codigo, id_equipo):
         form = jugadoraEquipoForm()
     return render(request, 'coaches/agregar_jugadora.html', {'form': form, 'lista_equipo':lista_equipo, 'equipo':id_equipo, 'codigo':codigo})
 
+#Desplegar la forma de un equipo para que el coach pueda registrarlo
 def registrar_equipo(request, codigo):
     registro = get_object_or_404(PreRegistro,codigo=codigo)
     if request.method == "POST":
         form = equipoForm(request.POST, request.FILES)
         if form.is_valid():
             equipo = form.save(commit=False)
+            #Agregar al equipo con un estatus inactivo
             equipo.activo = False
             equipo.save()
             registro.equipo = equipo
@@ -64,6 +70,7 @@ def registrar_equipo(request, codigo):
             form = equipoForm()
     return render(request, 'coaches/agregar_equipo.html', {'form': form})
 
+#Terminar solicitud de pre registro y redireccionar a la página de inicio
 def terminar_registro(request, codigo):
     registro = get_object_or_404(PreRegistro,codigo=codigo)
     registro.codigo = None
