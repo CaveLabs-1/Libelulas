@@ -201,6 +201,7 @@ def carga_partidos(request):
     if request.method == 'POST':
         id_jornada= int(request.POST.get('jornada'))
         jornada = get_object_or_404(Jornada, id=id_jornada)
+        torneo=jornada.torneo_id
         partidos = Partido.objects.filter(jornada=jornada)
         html = render_to_string('torneo/lista_partidos.html', {'partidos':partidos,'jornada':jornada,'id_jornada':id_jornada})
         return HttpResponse(html)
@@ -631,3 +632,7 @@ def ganador(request, id_torneo):
         equipos = torneo.equipos.all()
         form.fields["equipos"].queryset = equipos
     return render(request, 'torneo/ganador.html', {'form': form, 'torneo': torneo})
+  
+#Vista para poder acceder a una cedula con el cdigo del torneo y del partido
+def cambio_cedula_admin(request, id_torneo, id_partido):
+    return request(request, 'torneo/accesar_cedula.html')

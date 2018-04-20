@@ -53,7 +53,7 @@
             {% for stat in stats %}
               <tr>
                 <td>
-                  
+
                   {{ forloop.counter }}
                 </td>
                 <td>
@@ -89,7 +89,7 @@
         <hr/>
       </div>
       <div id="test2">
-        <h3>Calendadio por Jornadas</h3>
+        <h3>Calendario por Jornadas</h3>
         {% for jornada in jornadas %}
         <div class="col">
           <a href="#{{jornada.id}}" onclick="carga_partidos({{jornada.id}})"><h6>{{jornada.jornada}}</h6></a>
