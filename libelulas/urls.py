@@ -19,6 +19,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
+    #US1 Yo como administrador quiero iniciar sesión
+    #US2 Yo como administrador quiero cerrar sesión
     path('', include('django.contrib.auth.urls')),
     path('', include('landing.urls')),
     path('admin/', admin.site.urls),

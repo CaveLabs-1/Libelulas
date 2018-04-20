@@ -20,6 +20,8 @@ from weasyprint import HTML, CSS
 from django.template.loader import get_template
 from django.http import HttpResponse
 
+#US8 Yo como administrador quiero visualizar un torneo
+#US12 Yo como administrador quiero visualizar una convocatoria
 #Desplegar la lista de torneos
 def lista_torneos(request):
     lista_torneos = Torneo.objects.all()
@@ -30,6 +32,8 @@ def detalle_torneo(request, torneo_id):
     torneo = get_object_or_404(Torneo, id=torneo_id)
     return render(request, 'torneo/torneo_detail.html', {'torneo': torneo, 'equipos':torneo.equipos.all})
 
+#US7 Yo como administrador quiero registrar un torneo
+#US11 Yo como administrador quiero registrar una convocatoria
 #Crear un torneo
 def crear_torneo(request):
     lista_equipo = Equipo.objects.all()
@@ -51,6 +55,8 @@ def crear_torneo(request):
         form = torneoForm()
     return render(request, 'torneo/agregar_torneo.html', {'form': form, 'lista_equipo':lista_equipo})
 
+#US9 Yo como administrador quiero actualizar un torneo
+#US13 Yo como administrador quiero actualizar una convocatoria
 #Actualizar la información de un torneo
 def editar_torneo(request, torneo_id):
     instance = get_object_or_404(Torneo, id=torneo_id)
@@ -83,6 +89,8 @@ def editar_torneo(request, torneo_id):
             messages.warning(request, 'Hubo un error en la forma')
     return render(request, 'torneo/torneo_editar.html', {'form': form, 'torneo':instance})
 
+#US10 Yo como administrador quiero eliminar un torneo
+#US14 Yo como administrador quiero eliminar una convocatoria
 #Eliminar torneo
 def eliminar_torneo(request,id_torneo):
     torneo = get_object_or_404(Torneo, id=id_torneo)
@@ -632,7 +640,7 @@ def ganador(request, id_torneo):
         equipos = torneo.equipos.all()
         form.fields["equipos"].queryset = equipos
     return render(request, 'torneo/ganador.html', {'form': form, 'torneo': torneo})
-  
+
 #Vista para poder acceder a una cedula con el cdigo del torneo y del partido
 def cambio_cedula_admin(request, id_torneo, id_partido):
     return request(request, 'torneo/accesar_cedula.html')

@@ -7,7 +7,9 @@ from .views import *
 app_name = 'equipo'
 
 urlpatterns = [
+    #US15 Yo como administrador quiero registrar un equipo
     path('agregar_equipo/', views.agregar_equipo, name='agregar_equipo'),
+    #US16 Yo como administrador quiero visualizar un equipo
     path('', lista_equipos.as_view() , name='lista_equipos'),
     path ('<int:equipo_id>/', views.detalle_equipo, name='detalle_equipo'),
     path('editar_equipo/<int:pk>/', views.editar_equipo, name='editar_equipo'),

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block main %}
-
+<!-- US3 Yo como super-administrador quiero registrar un administrador -->
 <div class="container">
     <form id="forma" method="POST" action=".">
         {% csrf_token %}
@@ -50,4 +50,3 @@
     }) ;
 </script>
 {% endblock %}
-

@@ -9,12 +9,13 @@ from coaches.models import PreRegistro
 import uuid
 from django.core.mail import send_mail
 
-
+#US4 Yo como super-administrador quiero visualizar un administrador
 #Desplegar la lista de administradores
 def lista_administrador(request):
     lista = User.objects.all()
     return render(request, 'administrador/lista_administrador.html', {'lista': lista})
 
+#US3 Yo como super-administrador quiero registrar un administrador
 #Agregar un administrador sin password
 def agregar_administrador(request):
     if request.method == "POST":
@@ -51,6 +52,7 @@ def confirmar_contrasena(request, id_administrador):
         form = UpdatePasswordForm()
     return render(request, 'administrador/confirmar_contrasena.html', {'form': form, 'administrador': administrador})
 
+#US5 Yo como super-administrador quiero actualizar un administrador
 #Editar la información de un administrador, sin modificar la contraseña
 def editar_administrador(request, id_administrador):
     administrador = get_object_or_404(User, id=id_administrador)
@@ -68,6 +70,7 @@ def editar_administrador(request, id_administrador):
         form = UpdateUserForm(instance=administrador)
     return render(request, 'administrador/editar_administrador.html', {'form': form, 'administrador': administrador})
 
+#US6 Yo como super-administrador quiero eliminar un administrador
 #Eliminar un administrador
 def eliminar_administrador(request, id_administrador):
     administrador = get_object_or_404(User, id=id_administrador)

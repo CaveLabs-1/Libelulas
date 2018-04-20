@@ -19,6 +19,7 @@ from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
 from jugadora.models import Jugadora
 
+#US15 Yo como administrador quiero registrar un equipo
 def agregar_equipo(request):
     if request.method == "POST":
         form = equipoForm(request.POST, request.FILES)
@@ -33,7 +34,7 @@ def agregar_equipo(request):
             form = equipoForm()
     return render(request, 'equipo/agregar_equipo.html', {'form': form})
 
-
+#US16 Yo como administrador quiero visualizar un equipo
 class lista_equipos(ListView):
     model = Equipo
     queryset = Equipo.objects.filter(activo=True)

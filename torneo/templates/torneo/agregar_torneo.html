@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block main %}
+<!-- US7 Yo como administrador quiero registrar un torneo -->
+<!-- US11 Yo como administrador quiero registrar una convocatoria -->
+
 <div class="title-container">
   <h2>Agregar Torneo<h2>
 </div>
@@ -11,7 +14,8 @@
       <p>
         <label>
           {{ form.nombre.label_tag }}
-        </label> {{ form.nombre }}
+        </label>
+        {{ form.nombre }}
       </p>
       {{ form.nombre.errors }}
     </div>
@@ -19,16 +23,20 @@
       <p>
         <label>
           {{ form.categoria.label_tag }}
-        </label> {{ form.categoria }}
+        </label>
+        {{ form.categoria }}
       </p>
-      {{ form.categoria.errors }}</div>
+      {{ form.categoria.errors }}
+    </div>
     <div class="col s12 m2 l2" id="max">
       <p>
         <label>
           {{ form.categoria_max.label_tag }}
-        </label> {{ form.categoria_max }}
+        </label>
+        {{ form.categoria_max }}
       </p>
-      {{ form.categoria_max.errors }}</div>
+      {{ form.categoria_max.errors }}
+    </div>
     <div class="col s12 m2 l2">
         <p>
           <br>
@@ -37,22 +45,19 @@
             <span>Categoria Libre</span>
           </label>
         </p>
-      </div>  
-      
+      </div>
     <div class="col s12">
       <label>
           {{ form.fecha_inicio.label_tag }}
         </label>
       <input type="date" name="{{form.fecha_inicio.html_name}}" required="" class="datepicker" id="{{form.fecha_inicio.id_for_label}}" /> {{ form.fecha_inicio.errors }}
     </div>
-
       <div class="col s12">
             <p>
               <label>
                   {{ form.fecha_junta.label_tag }}
               </label>
             {{ form.fecha_junta }}
-
           </p>
             {{ form.fecha_junta.errors }}
         </div>
@@ -102,13 +107,8 @@
   </div>
 </form>
 {% endblock %}
-
-
-
-
 {% block scripts %}
-    {{ block.super }}
-    
+  {{ block.super }}
   <script>
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
@@ -121,13 +121,11 @@
   </script>
   <script>
     $(function() {
-    
       var checkbox = $("#chk");
       var hidden1 = $("#min");
       var hidden2 = $("#max");
       var hiddena = document.getElementById("id_categoria");
       var hiddenb = document.getElementById("id_categoria_max");
-      
       checkbox.change(function() {
         // Check to see if the checkbox is checked.
         // If it is, show the fields and populate the input.
@@ -139,25 +137,13 @@
           hidden2.hide();
           hiddenb.value = 100;
           // Populate the input.
-          
         } else {
           // Make sure that the hidden fields are indeed
           // hidden.
           hidden1.show();
           hidden2.show();
-          
-          // You may also want to clear the value of the 
-          // hidden fields here. Just in case somebody 
-          // shows the fields, enters data to them and then 
-          // unticks the checkbox.
-          //
-          // This would do the job:
-          //
-          // $("#hidden_field").val("");
         }
       });
     });
-  
- 
   </script>
 {% endblock %}

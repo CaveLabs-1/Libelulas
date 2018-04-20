@@ -4,10 +4,18 @@ from . import views
 app_name = 'torneo'
 
 urlpatterns = [
+    #US7 Yo como administrador quiero registrar un torneo
+    #US11 Yo como administrador quiero registrar una convocatoria
     path('crear_torneo/', views.crear_torneo, name='crear_torneo'),
+    #US8 Yo como administrador quiero visualizar un torneo
+    #US12 Yo como administrador quiero visualizar una convocatoria
     path( '' , views.lista_torneos, name='lista_torneos'),
     path('<int:torneo_id>/', views.detalle_torneo, name='detalle_torneo'),
+    #US9 Yo como administrador quiero actualizar un torneo
+    #US13 Yo como administrador quiero actualizar una convocatoria
     path('editar/<int:torneo_id>', views.editar_torneo, name='editar_torneo'),
+    #US10 Yo como administrador quiero eliminar un torneo
+    #US14 Yo como administrador quiero eliminar una convocatoria
     path('eliminar/<int:id_torneo>', views.eliminar_torneo, name='eliminar_torneo'),
     path('eliminar_equipo/<int:id_equipo>/<int:id_torneo>', views.eliminar_equipo, name='eliminar_equipo'),
     path('registrar_partido/<int:id_partido>', views.registrar_partido, name='registrar_partido'),

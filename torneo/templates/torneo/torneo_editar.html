@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block main %}
+<!-- US9 Yo como administrador quiero actualizar un torneo -->
+<!-- US13 Yo como administrador quiero actualizar una convocatoria -->
 
 <div class="title-container">
   <h2>Editar Torneo<h2>
@@ -48,7 +50,6 @@
         <p>
           <label>
               {{ form.fecha_inicio.label_tag }}
-
           </label>
           <input type="date" name="{{form.fecha_inicio.html_name}}" required="" value='{{ form.fecha_inicio.value|date:"Y-m-d" }}' id="{{form.fecha_inicio.id_for_label}}" class="datepicker">
       </p>
@@ -60,7 +61,6 @@
                   {{ form.fecha_junta.label_tag }}
               </label>
             <input type="date" name="{{form.fecha_junta.html_name}}" required="" value='{{ form.fecha_junta.value|date:"Y-m-d" }}' id="{{form.fecha_junta.id_for_label}}" class="datepicker">
-
           </p>
             {{ form.fecha_junta.errors }}
         </div>
@@ -89,7 +89,6 @@
             <label>
               {{ form.costo_credencial.label_tag }}
             </label>
-
               {{ form.costo_credencial }}
           </p>
           {{ form.costo_credencial.errors }}
@@ -113,18 +112,16 @@
     </div>
 </form>
 {% endblock %}
-
 {% block scripts %}
     {{ block.super }}
   <script>
     $(function() {
-    
       var checkbox = $("#chk");
       var hidden1 = $("#min");
       var hidden2 = $("#max");
       var hiddena = document.getElementById("id_categoria");
       var hiddenb = document.getElementById("id_categoria_max");
-      
+
       $( document ).ready(function() {
         if (hiddena.value == 0 && hiddenb.value == 100){
           hidden1.hide();
@@ -143,25 +140,13 @@
           hidden2.hide();
           hiddenb.value = 100;
           // Populate the input.
-          
         } else {
           // Make sure that the hidden fields are indeed
           // hidden.
           hidden1.show();
           hidden2.show();
-          
-          // You may also want to clear the value of the 
-          // hidden fields here. Just in case somebody 
-          // shows the fields, enters data to them and then 
-          // unticks the checkbox.
-          //
-          // This would do the job:
-          //
-          // $("#hidden_field").val("");
         }
       });
     });
-  
- 
   </script>
 {% endblock %}

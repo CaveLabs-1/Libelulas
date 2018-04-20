@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block main %}
+<!-- US8 Yo como administrador quiero visualizar un torneo -->
+<!-- US12 Yo como administrador quiero visualizar una convocatoria -->
 
 <div class="title-container">
   <h2 class="admin-title">Torneos</h2>
@@ -34,7 +36,6 @@
              {% else %}
                 <i class="medium material-icons icon-black">grade</i>
              {% endif %}
-         
          {% endif %}
       </div>
     </li>
@@ -49,15 +50,12 @@
   </div>
   <div id="modal_torneo" class="modal">
       <div class="modal-content">
-
       </div>
       <div class="modal-footer">
-
       </div>
   </div>
 </div>
 {% endblock %}
-
 {% block scripts %}
     {{ block.super }}
     <script type="text/javascript">
@@ -86,7 +84,7 @@
     jQuery.expr[':'].Contains = function(a, i, m) {
         return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
     };
-    
+
     $(function() {
         $('#searchbox').on('keyup', function() {
             var w = $(this).val();
@@ -94,7 +92,7 @@
                 $('#friendlist li').hide();
                 $('#friendlist li:Contains('+w+')').show();
             } else {
-                $('#friendlist li').show();                  
+                $('#friendlist li').show();
             }
         });
     });

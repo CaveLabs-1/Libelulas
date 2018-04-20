@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block main %}
+<!-- US16 Yo como administrador quiero visualizar un equipo -->
 
 <div class="title-container">
   <h2 class="admin-title">Equipos</h2>
@@ -32,11 +33,9 @@
   </a>
   </div>
 </div>
-
 {% endblock %}
 {% block scripts %}
 {{ block.super }}
-
 <script>
 
 jQuery.expr[':'].Contains = function(a, i, m) {
