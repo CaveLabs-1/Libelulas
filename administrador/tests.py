@@ -37,7 +37,7 @@ class UserTestCase(TestCase):
         self.client.post('/administrador/agregar_administrador/', {"first_name": "", "username": "croman", "email":"carlosromanrivera@hotmail.com"})
         self.assertEqual(User.objects.last().check_password("temporal"), True)
 
-    def test_PreRegistro(self):
+    def test_pre_registro(self):
 
         usuario1 = User.objects.create_user(username='testuser2', password='12345', is_superuser=True)
         usuario1.save()
