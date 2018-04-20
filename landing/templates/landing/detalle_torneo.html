@@ -32,6 +32,14 @@
         </ul>
       </div>
       <div id="test1">
+        {% if Torneo.anexo  %}
+            <i class="material-icons left black-text ">attach_file</i>
+            <span class="black-text">Anexo:</span>
+            <br>
+                <a href="{{ Torneo.anexo.url }}">Documento Anexo</a>
+        {% endif %}
+
+
         <h3>Tabla General</h3>
         </br>
         <table class='responsive-table'>

@@ -59,14 +59,16 @@
             <br>
             <span class="blue-text text-darken-2">{{ Torneo.fecha_junta }} </span>
           </div>
+                    {% if Torneo.anexo %}
+
             <div class="card-panel">
             <i class="material-icons left black-text ">attach_file</i>
             <span class="black-text">Anexo:</span>
-            {% if Torneo.anexo %}
             <br>
                 <a href="{{ Torneo.anexo.url }}">Documento Anexo</a>
-            {% endif %}
           </div>
+                    {% endif %}
+
           <div class="card-panel">
             <span class="black-text">Equipos:</span>
             <ul class="collection">
