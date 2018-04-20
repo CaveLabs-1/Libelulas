@@ -348,6 +348,10 @@ p {
   color: #67bbff;
 }
 
+.icon-white {
+  color: #fff;
+}
+
 .red-background {
   background-image: linear-gradient(to bottom, #ffb841, #F19800);
 }
@@ -420,16 +424,16 @@ h4 {
 }
 
 .datepicker::-webkit-calendar-picker-indicator {
-    display: none;
-    -webkit-appearance: none;
+  display: none;
+  -webkit-appearance: none;
 }
 
 .datepicker-date-display, .is-selected, .timepicker-digital-display, .clockpicker-tick:hover, .clockpicker-canvas line, .clockpicker-canvas-bearing, .clockpicker-canvas-bg, .tabs .indicator {
   background-color: #F19800 !important;
 }
 
-.datepicker-today, .datepicker-done, .dropdown-content li>a, .dropdown-content li>span, .timepicker-close, .tabs .tab a.active, .tabs .tab a{
-  color:#F19800 !important;
+.datepicker-today, .datepicker-done, .dropdown-content li>a, .dropdown-content li>span, .timepicker-close, .tabs .tab a.active, .tabs .tab a {
+  color: #F19800 !important;
 }
 
 .datepicker-table td.is-today {
@@ -440,53 +444,127 @@ h4 {
   background-color: #F19800;
 }
 
-.month-prev:focus{
+.month-prev:focus {
   background-color: #F19800;
 }
-.month-next:focus{
+
+.month-next:focus {
   background-color: #F19800;
 }
-input:focus{
- border-bottom: 1px solid #F19800 !important;
- box-shadow: 0 1px 0 0 #F19800 !important;
+
+input:focus {
+  border-bottom: 1px solid #F19800 !important;
+  box-shadow: 0 1px 0 0 #F19800 !important;
 }
 
 .timepicker-tick:hover {
   background: #F19800 !important;
 }
+
 .timepicker-canvas line {
   stroke: #F19800 !important;
 }
+
 .timepicker-canvas-bearing {
   fill: #F19800 !important;
 }
+
 .timepicker-canvas-bg {
   fill: #F19800 !important;
 }
 
-.equipo{
+.equipo {
   height: 50px;
   width: 50px;
 }
+
 .icon-yellow {
-  color: #ffd54f ;
-}
-.icon-black {
-  color: #757575 ;
+  color: #ffd54f;
 }
 
+.icon-black {
+  color: #757575;
+}
 
 .icon-orange {
   color: #F19800;
 }
 
-.delete-button{
-    color: #F19800;
+.delete-button {
+  color: #F19800;
+}
 
-
-#opcionesID{
-  display:flex;
+#opcionesID {
+  display: flex;
   align-items: center;
-  height:62px;
+  height: 62px;
   justify-content: center;
+}
+
+.jornadas {
+  color: #81889d;
+  margin-right: 12px !important;
+}
+
+.jornadas>a {
+  color: inherit;
+}
+
+.buttons-jornada {
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.jornadas-container {
+  padding-bottom: 12px;
+}
+
+.cont {
+  flex-direction: column;
+  align-self: flex-end;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.direction-reverse {
+  flex-direction: row-reverse;
+}
+
+.direction-column {
+  flex-direction: column;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.team-name-card-right {
+  margin-right: 12px
+}
+
+.team-name-card-left {
+  margin-left: 12px;
+}
+
+.submit>.icon-white {
+  margin-right: 6px;
+}
+
+.icons-registro>i {
+  margin-right: 6px
+}
+
+.icons-registro {
+  color: #81889d;
 }
