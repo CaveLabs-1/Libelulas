@@ -30,6 +30,9 @@
        
         <br>
       <a href='{% url "torneo:mandar_cedula" partido.id %}'><i class="material-icons">print</i>Cédula</a>
+         <br>
+      <a href='{% url "torneo:registrar_cedula" jornada.id partido.id %}'>EDITAR CEDULA</a>
+
 
     </div>
     <div class="col s5">
