@@ -29,11 +29,11 @@
       <div class="col s12 m2 l2" id="max">
         <p>
           <label>
-            {{ form.categoriaMax.label_tag }}
+            {{ form.categoria_max.label_tag }}
           </label>
-          {{ form.categoriaMax }}
+          {{ form.categoria_max }}
         </p>
-        {{ form.categoriaMax.errors }}
+        {{ form.categoria_max.errors }}
       </div>
       <div class="col s12 m2 l2">
         <p>
@@ -47,22 +47,22 @@
       <div class="col s12">
         <p>
           <label>
-              {{ form.fechaInicio.label_tag }}
+              {{ form.fecha_inicio.label_tag }}
 
           </label>
-          <input type="date" name="{{form.fechaInicio.html_name}}" required="" value='{{ form.fechaInicio.value|date:"Y-m-d" }}' id="{{form.fechaInicio.id_for_label}}" class="datepicker">
+          <input type="date" name="{{form.fecha_inicio.html_name}}" required="" value='{{ form.fecha_inicio.value|date:"Y-m-d" }}' id="{{form.fecha_inicio.id_for_label}}" class="datepicker">
       </p>
-        {{ form.fechaInicio.errors }}
+        {{ form.fecha_inicio.errors }}
       </div>
         <div class="col s12">
             <p>
               <label>
-                  {{ form.fechaJunta.label_tag }}
+                  {{ form.fecha_junta.label_tag }}
               </label>
-            <input type="date" name="{{form.fechaJunta.html_name}}" required="" value='{{ form.fechaJunta.value|date:"Y-m-d" }}' id="{{form.fechaJunta.id_for_label}}" class="datepicker">
+            <input type="date" name="{{form.fecha_junta.html_name}}" required="" value='{{ form.fecha_junta.value|date:"Y-m-d" }}' id="{{form.fecha_junta.id_for_label}}" class="datepicker">
 
           </p>
-            {{ form.fechaJunta.errors }}
+            {{ form.fecha_junta.errors }}
         </div>
       <div class="col s12" style="margin-top:24px">
         <div class="file-field input-field">
@@ -87,12 +87,12 @@
       <div class="col s12">
           <p>
             <label>
-              {{ form.costoCredencial.label_tag }}
+              {{ form.costo_credencial.label_tag }}
             </label>
 
-              {{ form.costoCredencial }}
+              {{ form.costo_credencial }}
           </p>
-          {{ form.costoCredencial.errors }}
+          {{ form.costo_credencial.errors }}
       </div>
       {% if torneo.activo %}
       <div class="col s12">
@@ -123,7 +123,7 @@
       var hidden1 = $("#min");
       var hidden2 = $("#max");
       var hiddena = document.getElementById("id_categoria");
-      var hiddenb = document.getElementById("id_categoriaMax");
+      var hiddenb = document.getElementById("id_categoria_max");
       
       $( document ).ready(function() {
         if (hiddena.value == 0 && hiddenb.value == 100){

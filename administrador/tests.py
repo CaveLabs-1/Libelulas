@@ -47,10 +47,10 @@ class UserTestCase(TestCase):
             id=2,
             nombre="Torneo PRueba",
             categoria="1995",
-            fechaInicio='2010-12-12',
+            fecha_inicio='2010-12-12',
             costo=int(12.12),
-            fechaJunta='1995-11-11',
-            costoCredencial=12
+            fecha_junta='1995-11-11',
+            costo_credencial=12
         )
 
         a =PreRegistro.objects.create(
@@ -109,11 +109,11 @@ class ValidarPreRegistroEquipoCase(TestCase):
             id=2,
             nombre="Torneo PRueba",
             categoria="1995",
-            categoriaMax="1997",
-            fechaInicio='2010-12-12',
+            categoria_max="1997",
+            fecha_inicio='2010-12-12',
             costo=int(12.12),
-            fechaJunta='1995-11-11',
-            costoCredencial=12,
+            fecha_junta='1995-11-11',
+            costo_credencial=12,
             activo=True
         )
         t1.save()
