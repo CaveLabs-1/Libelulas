@@ -39,7 +39,9 @@ table.right {
 table, th, td {
     border: 1px solid black;
 }
-    tr:nth-child(even) {background-color: #a9a9a9;}
+
+tr:nth-child(even) {background-color: #a9a9a9;}
+
 th {
     background-color: black;
     color: white;
@@ -54,9 +56,12 @@ th {
 size: A4 portrait;
 }
 
+
+
 body{
     font-size: 10px;
 }
+
 
 </style>
 <body>
@@ -66,7 +71,7 @@ body{
 
 
 <div class="row">
-    <h4>Arbitro:__________________________________</h4>
+    <h4>Arbitro: &nbsp;&nbsp;&nbsp;&nbsp;  __________________________________</h4>
 </div>
 <div class="row">
     <h4>Auxiliar 1: __________________________________</h4>
@@ -75,13 +80,43 @@ body{
     <h4>Auxiliar 2: __________________________________</h4>
 </div>
 <br>
-
-<div class="row">
-    <h3 style="text-align: center">Representante {{ partido.equipo_local.nombre }}: {{ partido.equipo_local.representante }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Representante {{ partido.equipo_visitante.nombre }} :   {{ partido.equipo_visitante.representante }}</h3>
+<div>
+    <table  class="left" id="t1">
+            <thead>
+                <tr>
+                    <th style="text-align: center">Representante  {{ partido.equipo_local.nombre}}</th>
+                </tr>
+            </thead>
+        <tbody>
+            <tr>
+                <td>
+                       <p style="text-align: center">{{ partido.equipo_local.representante }}&nbsp;</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table  class="right" id="t1">
+            <thead>
+                <tr>
+                    <th style="text-align: center">Representante  {{ partido.equipo_visitante.nombre}}</th>
+                </tr>
+            </thead>
+        <tbody>
+            <tr>
+                <td>
+                       <p style="text-align: center">{{ partido.equipo_visitante.representante }}&nbsp;</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
+    <br>
+
+
+
 <br>
-
-
+<br>
+<br>
 
 <div>
  <table  class="left" id="t1">
@@ -93,6 +128,7 @@ body{
                     <th>Goles</th>
                     <th>AM</th>
                     <th>EXP</th>
+                    <th>FairPlay</th>
                 </tr>
             </thead>
 
@@ -105,7 +141,8 @@ body{
                     <td><p>{{ jugadora.Nombre }} {{ jugadora.Apellido }}</p></td>
                     <td></td>
                     <td></td>
-                    <td></td>
+                    <td></td><td></td>
+
                      </tr>
                 {% endfor %}
 
@@ -120,6 +157,9 @@ body{
                     <th>Goles</th>
                     <th>AM</th>
                     <th>EXP</th>
+                    <th>FairPlay</th>
+
+
                 </tr>
             </thead>
 
@@ -130,6 +170,7 @@ body{
                     <td></td>
                     <td>{{ jugadora.Numero }}</td>
                     <td><p>{{ jugadora.Nombre }} {{ jugadora.Apellido }}</p></td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -156,9 +197,6 @@ body{
             <div class="col s4 align-wrapper"><br><hr></div>
             <div class="col s4 align-wrapper"><br><hr></div>
             <div class="col s4 align-wrapper"><br><hr></div>
-            <div class="col s4 align-wrapper"><br><hr></div>
-    <div class="col s4 align-wrapper"><br><hr></div>
-    <br>
     <br>
         <h3>Total de Goles: &nbsp;&nbsp;&nbsp;&nbsp;{{partido.equipo_local.nombre}}:________________  VS {{partido.equipo_visitante.nombre}}________________ </h3>
 <br><br>
