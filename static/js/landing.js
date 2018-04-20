@@ -33,6 +33,7 @@ if (partidosJugados && golesAnotados) {
   golesAnotados = golesAnotados.getAttribute('data-value');
   golesAnotadosE = golesAnotados.slice(0, golesAnotados.indexOf(' '));
   golesAnotadosJ = golesAnotados.slice(golesAnotados.lastIndexOf(' ')+1);
+  golesAnotadosJ === 'None' ? (golesAnotadosJ = 0) : null;
   window.onload = function onLoad() {
     var bar = new ProgressBar.Circle('#partidos', {
       color: '#009CDE',
@@ -77,7 +78,7 @@ if (partidosJugados && golesAnotados) {
 
         var value = golesAnotadosJ;
         if (value === 0) {
-          circle.setText('');
+          circle.setText('0');
         } else {
           circle.setText(value);
         }
