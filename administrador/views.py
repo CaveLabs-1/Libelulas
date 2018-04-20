@@ -111,7 +111,7 @@ def aceptar_PreRegistro(request, id_preregistro):
 def detalle_equipo(request, equipo_id):
     equipo = get_object_or_404(Equipo ,pk=equipo_id)
     jugadoras_equipo = Equipo.objects.get(id=equipo_id).jugadoras.filter(activo=False)
-    return render(request, 'administrador/detalle_equipo.html', {'equipo': equipo, 'jugadoras_equipo': jugadoras_equipo ,'validar':False
+    return render(request, 'administrador/detalle_equipo.html', {'equipo': equipo, 'jugadoras_equipo': jugadoras_equipo ,'validar':False})
 
 #Aceptar el pre registro de una jugadora
 def aceptar_jugadora(request, id_jugadora):
