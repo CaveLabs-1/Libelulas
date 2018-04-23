@@ -24,15 +24,15 @@
     </div>
     <div class="col s12 m9">
       <div class="input-field col s12">
-        <input disabled value="{{jugadora.Nombre}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+        <input disabled value="{{jugadora.nombre}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
         <label for="disabled">Nombre de Jugadora</label>
       </div>
       <div class="input-field col s12">
-        <input disabled value="{{jugadora.Nacimiento}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+        <input disabled value="{{jugadora.nacimiento}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
         <label for="disabled">Fecha de Nacimiento</label>
       </div>
       <div class="input-field col s12 m6">
-        <input disabled value="{{jugadora.Numero}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+        <input disabled value="{{jugadora.numero}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
         <label for="disabled">Numero de playera</label>
       </div>
       <div class="input-field col s12 m6">
@@ -46,17 +46,17 @@
         </div>
 
         <div class="input-field col s12 m6">
-            <input disabled value="{{jugadora.NumPoliza}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+            <input disabled value="{{jugadora.num_poliza}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
             <label for="disabled">Numero de Póliza</label>
         </div>
 
         <div class="input-field col s12 m6">
-            <input disabled value="{{jugadora.NUI}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+            <input disabled value="{{jugadora.nui}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
             <label for="disabled">NUI</label>
         </div>
 
       <div class="input-field col s12">
-        <input disabled value="{{jugadora.Notas}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
+        <input disabled value="{{jugadora.botas}}" id="disabled" type="text" style="color: #b4c0c6; border-bottom: 2px solid;">
         <label for="disabled">Notas</label>
       </div>
       <div class="input-field col s12">
@@ -64,20 +64,10 @@
         <label for="disabled">Equipo</label>
       </div>
         <div class="input-field col s12">
-                    <a href="{% url 'jugadora:ver_jugadoras' %}" class="cancel back">Regresar</a>
-
+            <a href="{% url 'jugadora:ver_jugadoras' %}" class="cancel back">Regresar</a>
       </div>
-
-
-
-
     </div>
   </div>
 </div>
-    </div>
 
-
-
-
-
-  {% endblock %}
+{% endblock %}

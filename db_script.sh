@@ -41,13 +41,13 @@ from equipo.models import Equipo;
 from django.core.files.uploadedfile import SimpleUploadedFile;
 
 a = Jugadora.objects.create(
-    Nombre = 'Nombre A',
-    Apellido = 'Apellido A',
-    Nacimiento = '1997-01-01',
-    Numero = 1,
-    Posicion = 1,
-    Notas = 'Ejemplo A Jugadora',
-    Imagen =  SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/jugadora1.jpg', 'rb').read(), content_type='image/jpeg')
+    nombre = 'Nombre A',
+    apellido = 'Apellido A',
+    nacimientos = '1997-01-01',
+    numero = 1,
+    posicion = 1,
+    notas = 'Ejemplo A Jugadora',
+    imagen =  SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/jugadora1.jpg', 'rb').read(), content_type='image/jpeg')
 
 );
 a.save();

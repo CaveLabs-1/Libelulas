@@ -59,7 +59,7 @@ def detalle_jugadora(request, id_equipo, id_jugadora):
     jugadora = get_object_or_404(Jugadora, pk=id_jugadora)
     today = date.today()
     equipo = Equipo.objects.get(id=id_equipo)
-    edad = today.year - jugadora.Nacimiento.year - ((today.month, today.day) < (jugadora.Nacimiento.month, jugadora.Nacimiento.day))
+    edad = today.year - jugadora.nacimiento.year - ((today.month, today.day) < (jugadora.nacimiento.month, jugadora.nacimiento.day))
     asistencia = Asistencia.objects.filter(jugadora_id=id_jugadora).filter(equipo_id=id_equipo).count()
     asistencia_equipo = Asistencia.objects.filter(equipo_id=id_equipo).count()
     if(asistencia == 0):
