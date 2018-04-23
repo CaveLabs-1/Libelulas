@@ -80,37 +80,39 @@ body{
     <h4>Auxiliar 2: __________________________________</h4>
 </div>
 <br>
+
+
+
+
 <div>
     <table  class="left" id="t1">
             <thead>
                 <tr>
-                    <th style="text-align: center">Representante  {{ partido.equipo_local.nombre}}</th>
+                    <td style="text-align: left;  background-color: white">Representante  {{ partido.equipo_local.nombre}}: {{ partido.equipo_local.representante }}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;  background-color: white">Capitán: ___________________</td>
                 </tr>
             </thead>
-        <tbody>
-            <tr>
-                <td>
-                       <p style="text-align: center">{{ partido.equipo_local.representante }}&nbsp;</p>
-                </td>
-            </tr>
-        </tbody>
+
     </table>
-    <table  class="right" id="t1">
+
+    <table  class="left" id="t1">
             <thead>
                 <tr>
-                    <th style="text-align: center">Representante  {{ partido.equipo_visitante.nombre}}</th>
+                    <td style="text-align: left; background-color: white">Representante  {{ partido.equipo_visitante.nombre}}: {{ partido.equipo_visitante.representante }}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;  background-color: white">Capitán: ___________________</td>
                 </tr>
             </thead>
-        <tbody>
-            <tr>
-                <td>
-                       <p style="text-align: center">{{ partido.equipo_visitante.representante }}&nbsp;</p>
-                </td>
-            </tr>
-        </tbody>
+
     </table>
+
+
+
 </div>
-    <br>
+
 
 
 
@@ -128,7 +130,6 @@ body{
                     <th>Goles</th>
                     <th>AM</th>
                     <th>EXP</th>
-                    <th>FairPlay</th>
                 </tr>
             </thead>
 
@@ -139,7 +140,6 @@ body{
                     <td></td>
                     <td>{{ jugadora.Numero }}</td>
                     <td><p>{{ jugadora.Nombre }} {{ jugadora.Apellido }}</p></td>
-                    <td></td>
                     <td></td>
                     <td></td><td></td>
 
@@ -157,7 +157,6 @@ body{
                     <th>Goles</th>
                     <th>AM</th>
                     <th>EXP</th>
-                    <th>FairPlay</th>
 
 
                 </tr>
@@ -170,7 +169,6 @@ body{
                     <td></td>
                     <td>{{ jugadora.Numero }}</td>
                     <td><p>{{ jugadora.Nombre }} {{ jugadora.Apellido }}</p></td>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -193,13 +191,16 @@ body{
 
 <div class="footer">
 
+        <h3>Total de Goles: &nbsp;&nbsp;&nbsp;&nbsp;{{partido.equipo_local.nombre}}:________________  VS {{partido.equipo_visitante.nombre}}________________ </h3>
+
+    <h3>Tarjeta Azul: (Fair Play):</h3>
+                <div class="col s4 align-wrapper"><br><hr></div>
+
     <h3>Cambios:</h3>
             <div class="col s4 align-wrapper"><br><hr></div>
             <div class="col s4 align-wrapper"><br><hr></div>
             <div class="col s4 align-wrapper"><br><hr></div>
-    <br>
-        <h3>Total de Goles: &nbsp;&nbsp;&nbsp;&nbsp;{{partido.equipo_local.nombre}}:________________  VS {{partido.equipo_visitante.nombre}}________________ </h3>
-<br><br>
+
 
     <h3>Incidentes:</h3>
             <div class="col s4 align-wrapper"><br><hr></div>
