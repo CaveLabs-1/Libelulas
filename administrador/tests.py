@@ -5,7 +5,6 @@ from torneo.models import *
 from equipo.models import Equipo
 from jugadora.models import Jugadora
 from coaches.models import PreRegistro
-from .forms import UserForm
 
 class UserTestCase(TestCase):
     def setUp(self):
