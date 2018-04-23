@@ -31,11 +31,11 @@ class TestJugadoraCase(TestCase):
 
         # Agregar jugadora con numero negativo
         form_data = {
-            'Nombre': 'Alejandro',
-            'Apellido': 'López',
-            'Nacimiento': '09/22/1995',
-            'Numero': '-1',
-            'Posicion': '3',
+            'nombre': 'Alejandro',
+            'apellido': 'López',
+            'nacimiento': '09/22/1995',
+            'numero': '-1',
+            'posicion': '3',
             'equipo': ''
             }
         form = jugadoraForm(data=form_data)
@@ -43,11 +43,11 @@ class TestJugadoraCase(TestCase):
 
         # Agregar jugadora con una posicion que no existe
         form_data = {
-            'Nombre': 'Alejandro',
-            'Apellido': 'López',
-            'Nacimiento': '09/22/1995',
-            'Numero': '-1',
-            'Posicion': '5',
+            'nombre': 'Alejandro',
+            'apellido': 'López',
+            'nacimiento': '09/22/1995',
+            'numero': '-1',
+            'posicion': '5',
             'equipo': ''
             }
         form = jugadoraForm(data=form_data)
@@ -55,11 +55,11 @@ class TestJugadoraCase(TestCase):
 
         # Agregar jugadora con una fecha invalida
         form_data = {
-            'Nombre': 'Alejandro',
-            'Apellido': 'López',
-            'Nacimiento': '13/38/1995',
-            'Numero': '1',
-            'Posicion': '5',
+            'nombre': 'Alejandro',
+            'apellido': 'López',
+            'nacimiento': '13/38/1995',
+            'numero': '1',
+            'posicion': '5',
             'equipo': ''
             }
         form = jugadoraForm(data=form_data)
@@ -67,11 +67,11 @@ class TestJugadoraCase(TestCase):
 
         # Agregar jugadora con digitos en el nombre y apellido
         form_data = {
-            'Nombre': '123',
-            'Apellido': '123',
-            'Nacimiento': '13/38/1995',
-            'Numero': '1',
-            'Posicion': '3',
+            'nombre': '123',
+            'apellido': '123',
+            'nacimiento': '13/38/1995',
+            'numero': '1',
+            'posicion': '3',
             'equipo': ''
             }
         form = jugadoraForm(data=form_data)
@@ -79,11 +79,11 @@ class TestJugadoraCase(TestCase):
 
         # Agregar jugadora con nombre y apellido mayor a 50
         form_data = {
-            'Nombre': 'Alejaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaandro',
-            'Apellido': 'Alejaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaandro',
-            'Nacimiento': '13/38/1995',
-            'Numero': '1',
-            'Posicion': '3',
+            'nombre': 'Alejaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaandro',
+            'apellido': 'Alejaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaandro',
+            'nacimiento': '13/38/1995',
+            'numero': '1',
+            'posicion': '3',
             'equipo': ''
             }
         form = jugadoraForm(data=form_data)
@@ -91,12 +91,12 @@ class TestJugadoraCase(TestCase):
 
         # Agregar jugadora sin imagen y Notas
         form_data = {
-            'Nombre': 'Alejandro',
-            'Apellido': 'López',
-            'Nacimiento': '1111-11-11',
-            'Numero': '1',
-            'Posicion': '3',
-            'Notas': 'Esto es una nota',
+            'nombre': 'Alejandro',
+            'apellido': 'López',
+            'nacimiento': '1111-11-11',
+            'numero': '1',
+            'posicion': '3',
+            'notas': 'Esto es una nota',
             }
         form = jugadoraForm(data=form_data)
         print(form.errors)
@@ -105,12 +105,12 @@ class TestJugadoraCase(TestCase):
 
         # Agregar jugadora con Imagen
         form_data = {
-            'Nombre': 'Alejandro',
-            'Apellido': 'López',
-            'Nacimiento': '1111-11-11',
-            'Numero': '1',
-            'Posicion': '3',
-            'Notas': 'Esto es una nota',
+            'nombre': 'Alejandro',
+            'apellido': 'López',
+            'nacimiento': '1111-11-11',
+            'numero': '1',
+            'posicion': '3',
+            'notas': 'Esto es una nota',
 
         }
         form = jugadoraForm(data=form_data)
@@ -118,12 +118,12 @@ class TestJugadoraCase(TestCase):
 
         # Agregar jugadora sin imagen pero con notas
         form_data = {
-            'Nombre': 'Alejandro',
-            'Apellido': 'López',
-            'Nacimiento': '1111-11-11',
-            'Numero': '1',
-            'Posicion': '3',
-            'Notas': 'Esto es una nota',
+            'nombre': 'Alejandro',
+            'apellido': 'López',
+            'nacimiento': '1111-11-11',
+            'numero': '1',
+            'posicion': '3',
+            'notas': 'Esto es una nota',
 
             }
         form = jugadoraForm(data=form_data)
@@ -133,23 +133,23 @@ class TestJugadoraCase(TestCase):
 
 
         j = Jugadora.objects.create(
-                Nombre = 'Alejandro',
-                Apellido = 'López',
-                Nacimiento = '1111-11-11',
-                Numero = '1',
-                Posicion = '3',
-                Notas = 'Esto es una nota',
+                nombre = 'Alejandro',
+                apellido = 'López',
+                nacimiento = '1111-11-11',
+                numero = '1',
+                posicion = '3',
+                notas = 'Esto es una nota',
 
                 )
 
         form_data = {
-            'Nombre': '',
-            'Apellido': 'López',
-            'Nacimiento': '1111-11-11',
-            'Numero': '1',
-            'Posicion': '3',
-            'Notas': 'Esto es una nota',
-            'Imagen': 'ejemplo.jpg',
+            'nombre': '',
+            'apellido': 'López',
+            'nacimiento': '1111-11-11',
+            'numero': '1',
+            'posicion': '3',
+            'notas': 'Esto es una nota',
+            'imagen': 'ejemplo.jpg',
 
             }
 
@@ -168,12 +168,12 @@ class TestJugadoraCase(TestCase):
 
         # Simular POST inválido
         form_data = {
-            'Nombre': 'Ale',
-            'Apellido': 'López',
-            'Nacimiento': '1111-11-11',
-            'Numero': '1',
-            'Posicion': '5',
-            'Notas': 'Esto es una nota',
+            'nombre': 'Ale',
+            'apellido': 'López',
+            'nacimiento': '1111-11-11',
+            'numero': '1',
+            'posicion': '5',
+            'notas': 'Esto es una nota',
 
             }
         response = self.client.post('/jugadora/editar/1', form_data)
@@ -182,36 +182,36 @@ class TestJugadoraCase(TestCase):
 
         # Simular POST correcto
         form_data = {
-            'Nombre': 'Ale',
-            'Apellido': 'López',
-            'Nacimiento': '1111-11-11',
-            'Numero': '1',
-            'Posicion': '4',
-            'Notas': 'Esto es una nota',
+            'nombre': 'Ale',
+            'apellido': 'López',
+            'nacimiento': '1111-11-11',
+            'numero': '1',
+            'posicion': '4',
+            'notas': 'Esto es una nota',
             'equipo':'1'
             }
         response = self.client.post('/jugadora/editar/1', form_data)
-        self.assertNotEqual(j.Posicion, 3)
+        self.assertNotEqual(j.posicion, 3)
 
     def testVerJugadora(self):
 
 
         j = Jugadora.objects.create(
-        Nombre = 'Alejandro',
-        Apellido = 'López',
-        Nacimiento = '1111-11-11',
-        Numero = '1',
-        Posicion = '3',
-        Notas = 'Esto es una nota',
+        nombre = 'Alejandro',
+        apellido = 'López',
+        nacimiento = '1111-11-11',
+        numero = '1',
+        posicion = '3',
+        notas = 'Esto es una nota',
 
         )
         j1 = Jugadora.objects.create(
-        Nombre = 'Ramon',
-        Apellido = 'Romero',
-        Nacimiento = '1111-11-11',
-        Numero = '2',
-        Posicion = '4',
-        Notas = 'Esto es una nota',
+        nombre = 'Ramon',
+        apellido = 'Romero',
+        nacimiento = '1111-11-11',
+        numero = '2',
+        posicion = '4',
+        notas = 'Esto es una nota',
 
         )
 
@@ -226,22 +226,22 @@ class TestJugadoraCase(TestCase):
     def testDeleteJugadora(self):
         j = Jugadora.objects.create(
             id=1,
-            Nombre='Ramon',
-            Apellido='Romero',
-            Nacimiento='1111-11-11',
-            Numero='2',
-            Posicion='4',
-            Notas='Esto es una nota',
+            nombre='Ramon',
+            apellido='Romero',
+            nacimiento='1111-11-11',
+            numero='2',
+            posicion='4',
+            notas='Esto es una nota',
         )
 
         j = Jugadora.objects.create(
             id=2,
-            Nombre='Ramon',
-            Apellido='Romero',
-            Nacimiento='1111-11-11',
-            Numero='2',
-            Posicion='4',
-            Notas='Esto es una nota',
+            nombre='Ramon',
+            apellido='Romero',
+            nacimiento='1111-11-11',
+            numero='2',
+            posicion='4',
+            notas='Esto es una nota',
         )
 
 
