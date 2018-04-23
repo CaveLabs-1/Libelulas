@@ -1,49 +1,60 @@
 <h4 class="center-align">Jornada {{jornada.jornada}}</h4>
-<h6><a href='{% url "torneo:mandar_codigoCedula" jornada.torneo.id jornada.id %}'><i class="material-icons icon-blue">print</i>Imprimir Claves de Acceso</a></h6>
-<a href='{% url "torneo:nuevo_partido" jornada.id %}' class="btn">Nuevo Partido</a>
+<div class="flex buttons-jornada direction-reverse">
+  <a href='{% url "torneo:mandar_codigoCedula" jornada.torneo.id jornada.id %}' class="submit flex">
+    <i class="material-icons icon-white">print</i>
+    <span>Imprimir Claves de Acceso</span>
+  </a>
+  <a href='{% url "torneo:nuevo_partido" jornada.id %}' class="cancel back">Nuevo Partido</a>
+</div>
 <br/>
 <br>
 {% for partido in partidos %}
-  <div class="row valign-wrapper">
-    <div class="col s5">
-      <div class="row ">
-        <div class="card-panel z-depth-1">
-          <div class="collection-item avatar">
+<div class="row valign-wrapper">
+  <div class="col s5">
+    <div class="row ">
+      <div class="card-panel z-depth-1">
+        <div class="collection-item avatar">
+          <div class="flex align-center">
             <img src="{{ partido.equipo_local.logo.url }}" alt="" class="circle valign equipo">
-            <span class="title">{{ partido.equipo_local.nombre }}</span>
-            <p>Representante: {{ partido.equipo_local.representante }}</p>
-            <p>Telefono: {{ partido.equipo_local.telefono }}</p>
-            <p>Color: {{ partido.equipo_local.get_colorLocal_display }}</p>
+            <span class="title team-name-card-left">{{ partido.equipo_local.nombre }}</span>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="col s2 center-align">
-      <h5 class="">VS.</h5>
-      <span>{{partido.fecha}}</span>
-      <span>Hora: {{partido.hora}}</span>
-      <br>
-      <span>Cancha: {{partido.cancha}}</span>
-      <br>
-      <br>
-      <a href='{% url "torneo:editar_partido" partido.id %}'><i class="material-icons icon-blue">mode_edit</i></a>
-       
-        <br>
-      <a href='{% url "torneo:mandar_cedula" partido.id %}'><i class="material-icons">print</i>Cédula</a>
-
-    </div>
-    <div class="col s5">
-      <div class="row right-align">
-        <div class="card-panel z-depth-1">
-          <div class="collection-item avatar">
-            <span class="title">{{ partido.equipo_visitante.nombre }}</span>
-            <img src="{{ partido.equipo_visitante.logo.url }}" alt="" class="circle valign equipo">
-            <p>Representante: {{ partido.equipo_visitante.representante }}</p>
-            <p>Telefono: {{ partido.equipo_visitante.telefono }}</p>
-            <p>Color: {{ partido.equipo_visitante.get_colorVisitante_display }}</p>
-          </div>
+          <p>Representante: {{ partido.equipo_local.representante }}</p>
+          <p>Telefono: {{ partido.equipo_local.telefono }}</p>
+          <p>Color: {{ partido.equipo_local.get_colorLocal_display }}</p>
         </div>
       </div>
     </div>
   </div>
+  <div class="col s2 center-align">
+    <h5 class="">VS.</h5>
+    <span>{{partido.fecha}}</span>
+    <span>Hora: {{partido.hora}}</span>
+    </br>
+    <span>Cancha: {{partido.cancha}}</span>
+    </br>
+    </br>
+    <a href='{% url "torneo:editar_partido" partido.id %}' class="flex align-center justify-center icons-registro"><i class="material-icons icon-blue">mode_edit</i>Editar Fecha</a>
+    </br>
+    <a href='{% url "torneo:mandar_cedula" partido.id %}' class="flex align-center justify-center icons-registro"><i class="material-icons icon-blue">print</i>Cédula</a>
+    </br>
+    <a href='{% url "torneo:registrar_cedula" jornada.id partido.id %}' class="flex justify-center">EDITAR CÉDULA</a>
+  </div>
+  <div class="col s5">
+    <div class="row right-align">
+      <div class="card-panel z-depth-1">
+        <div class="collection-item avatar">
+          <div class="flex direction-column align-end">
+            <div class="flex align-center">
+              <span class="title team-name-card-right">{{ partido.equipo_visitante.nombre }}</span>
+              <img src="{{ partido.equipo_visitante.logo.url }}" alt="" class="circle valign equipo">
+            </div>
+          </div>
+          <p>Representante: {{ partido.equipo_visitante.representante }}</p>
+          <p>Telefono: {{ partido.equipo_visitante.telefono }}</p>
+          <p>Color: {{ partido.equipo_visitante.get_colorVisitante_display }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endfor %}

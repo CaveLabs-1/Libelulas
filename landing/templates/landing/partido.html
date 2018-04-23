@@ -39,9 +39,9 @@
         {% for jugadora in jugadoras_local %}
         <a href="#" class="collection-item">
           <div class="item-container flex">
-            <strong class="num">{{jugadora.Numero}}</strong>
+            <strong class="num">{{jugadora.numero}}</strong>
             <div class="nombre">
-              <span class="nombre">{{jugadora.Nombre}} {{jugadora.Apellido}}</span>
+              <span class="nombre">{{jugadora.nombre}} {{jugadora.apellido}}</span>
             </div>
             <span class="pos">{{jugadora.get_Posicion_display|slice:":3"}}</span>
             <div class="icons">
@@ -81,72 +81,72 @@
       <div class="field">
         <div class="field-row portero">
           {% for jugadora in jugadoras_local %}
-            {% if jugadora.Posicion == 4 %}
+            {% if jugadora.posicion == 4 %}
             <div class="shirt shirt-local">
-              {{ jugadora.Numero }}
+              {{ jugadora.numero }}
             </div>
             {% endif %}
           {% endfor %}
         </div>
         <div class="field-row defensa">
           {% for jugadora in jugadoras_local %}
-            {% if jugadora.Posicion == 3 %}
+            {% if jugadora.posicion == 3 %}
             <div class="shirt shirt-local">
-              {{ jugadora.Numero }}
+              {{ jugadora.numero }}
             </div>
             {% endif %}
           {% endfor %}
         </div>
         <div class="field-row medio">
           {% for jugadora in jugadoras_local %}
-            {% if jugadora.Posicion == 2 %}
+            {% if jugadora.posicion == 2 %}
             <div class="shirt shirt-local">
-              {{ jugadora.Numero }}
+              {{ jugadora.numero }}
             </div>
             {% endif %}
           {% endfor %}
         </div>
         <div class="field-row delantero">
           {% for jugadora in jugadoras_local %}
-            {% if jugadora.Posicion == 1 %}
+            {% if jugadora.posicion == 1 %}
             <div class="shirt shirt-local">
-              {{ jugadora.Numero }}
+              {{ jugadora.numero }}
             </div>
             {% endif %}
           {% endfor %}
         </div>
         <div class="field-row delantero">
           {% for jugadora in jugadoras_visitante %}
-            {% if jugadora.Posicion == 1 %}
+            {% if jugadora.posicion == 1 %}
             <div class="shirt shirt-visitante">
-              {{ jugadora.Numero }}
+              {{ jugadora.numero }}
             </div>
             {% endif %}
           {% endfor %}
         </div>
         <div class="field-row medio">
           {% for jugadora in jugadoras_visitante %}
-            {% if jugadora.Posicion == 2 %}
+            {% if jugadora.posicion == 2 %}
             <div class="shirt shirt-visitante">
-              {{ jugadora.Numero }}
+              {{ jugadora.numero }}
             </div>
             {% endif %}
           {% endfor %}
         </div>
         <div class="field-row defensa">
           {% for jugadora in jugadoras_visitante %}
-            {% if jugadora.Posicion == 3 %}
+            {% if jugadora.posicion == 3 %}
             <div class="shirt shirt-visitante">
-              {{ jugadora.Numero }}
+              {{ jugadora.numero }}
             </div>
             {% endif %}
           {% endfor %}
         </div>
         <div class="field-row portero">
-          {% for jugadora in jugadoras_local %}
-            {% if jugadora.Posicion == 4 %}
+          {% for jugadora in jugadoras_visitante %}
+            {% if jugadora.posicion == 4 %}
             <div class="shirt shirt-visitante">
-              {{ jugadora.Numero }}
+              {{ jugadora.numero }}
             </div>
             {% endif %}
           {% endfor %}
@@ -165,9 +165,9 @@
         {% for jugadora in jugadoras_visitante %}
         <a href="#" class="collection-item">
           <div class="item-container flex">
-            <strong class="num">{{jugadora.Numero}}</strong>
+            <strong class="num">{{jugadora.numero}}</strong>
             <div class="nombre">
-              <span class="nombre">{{jugadora.Nombre}} {{jugadora.Apellido}}</span>
+              <span class="nombre">{{jugadora.nombre}} {{jugadora.apellido}}</span>
             </div>
             <span class="pos">{{jugadora.get_Posicion_display|slice:":3"}}</span>
             <div class="icons">

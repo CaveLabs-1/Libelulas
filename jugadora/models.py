@@ -3,7 +3,8 @@ from PIL import Image
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.core.validators import MinValueValidator, MaxValueValidator
-import sys, os
+import sys
+import os
 import datetime
 
 # Create your models here.
@@ -15,29 +16,28 @@ class Jugadora(models.Model):
         (3, 'Defensa'),
         (4, 'Portero'),
     )
-
-    Nombre = models.CharField(max_length=50, default='', verbose_name='Nombre')
-    Apellido = models.CharField(max_length=50, default='', verbose_name='Apellido')
-    Nacimiento = models.DateField(default='', verbose_name='Fecha de Nacimiento')
-    Numero = models.IntegerField(default='', verbose_name='Número de playera', validators=[MinValueValidator(0), MaxValueValidator(1000)])
-    Posicion = models.IntegerField(default='', choices=POSICION, verbose_name='Posición')
-    Notas = models.TextField(max_length=150, default='', verbose_name='Comentarios', null=True, blank=True)
-    Imagen = models.ImageField(upload_to='jugadora', verbose_name='Foto', null=True, blank=True)
-    FechaDeAfiliacion = models.DateField(default='', verbose_name='Fecha de Afiliacón')
-    NumPoliza  = models.CharField(max_length=50, default='', verbose_name='Numero de Póliza', null=True, blank=True)
-    NUI = models.CharField(max_length=50, default='', verbose_name='NUI', null=True, blank=True)
+    nombre = models.CharField(max_length=50, default='', verbose_name='Nombre')
+    apellido = models.CharField(max_length=50, default='', verbose_name='Apellido')
+    nacimiento = models.DateField(default='', verbose_name='Fecha de Nacimiento')
+    numero = models.IntegerField(default='', verbose_name='Número de playera', validators=[MinValueValidator(0), MaxValueValidator(1000)])
+    posicion = models.IntegerField(default='', choices=POSICION, verbose_name='Posición')
+    notas = models.TextField(max_length=150, default='', verbose_name='Comentarios', null=True, blank=True)
+    imagen = models.ImageField(upload_to='jugadora', verbose_name='Foto', null=True, blank=True)
+    fecha_de_afiliacion = models.DateField(default='', verbose_name='Fecha de Afiliacón')
+    num_poliza  = models.CharField(max_length=50, default='', verbose_name='Numero de Póliza', null=True, blank=True)
+    nui = models.CharField(max_length=50, default='', verbose_name='NUI', null=True, blank=True)
     activo = models.BooleanField(default = True)
 
     def __str__(self):
-        return self.Nombre + str(self.pk)
+        return self.nombre + str(self.pk)
 
     def save(self, *args, **kw):
 
-        if self.Imagen:
+        if self.imagen:
             # Opening the uploaded image
-            im = Image.open(self.Imagen)
+            im = Image.open(self.imagen)
 
-            nombre = (self.Imagen.name)
+            nombre = (self.imagen.name)
             fill_color = ''
             if im.mode in ('RGBA', 'LA'):
                 background = Image.new(im.mode[:-1], im.size, 0)
@@ -53,14 +53,14 @@ class Jugadora(models.Model):
             output.seek(0)
 
             # change the imagefield value to be the newley modifed image value
-            self.Imagen = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.Imagen.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
+            self.imagen = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.imagen.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
 
-        self.FechaDeAfiliacion = datetime.date.today()
+        self.fecha_de_afiliacion = datetime.date.today()
         super(Jugadora,self).save(*args, **kw)
         # super(Jugadora, self).save()
 
     def delete(self):
-        if self.Imagen:
-            if os.path.isfile(self.Imagen.path):
-                os.remove(self.Imagen.path)
+        if self.imagen:
+            if os.path.isfile(self.imagen.path):
+                os.remove(self.imagen.path)
         super().delete()

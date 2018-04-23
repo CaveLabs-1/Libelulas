@@ -86,8 +86,7 @@ class Equipo(models.Model):
     hora = models.TimeField(
         verbose_name='Hora de Juego',
         )
-    activo = models.BooleanField(default = True)
-
+    activo = models.BooleanField(default=True)
 
     def __str__(self):
         return self.nombre
@@ -102,23 +101,15 @@ class Equipo(models.Model):
 
         if self.logo:
             try:
-
-
                 # Opening the uploaded image
-
                 im = Image.open(self.logo)
 
                 nombre = (self.logo.name)
-
                 if im.mode in ('RGBA', 'LA'):
                     background = Image.new(im.mode[:-1], im.size, 0)
                     background.paste(im, im.split()[-1])
                     im = background
-
-
                 output = BytesIO()
-
-
 
                 # after modifications, save it to the output
                 im.save(output, format='JPEG', quality=70)
@@ -128,4 +119,4 @@ class Equipo(models.Model):
                 self.logo = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.logo.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
             except:
                 print("gg")
-        super(Equipo,self).save(*args, **kw)
+        super(Equipo, self).save(*args, **kw)

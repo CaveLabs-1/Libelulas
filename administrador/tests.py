@@ -37,7 +37,7 @@ class UserTestCase(TestCase):
         self.client.post('/administrador/agregar_administrador/', {"first_name": "", "username": "croman", "email":"carlosromanrivera@hotmail.com"})
         self.assertEqual(User.objects.last().check_password("temporal"), True)
 
-    def test_PreRegistro(self):
+    def test_pre_registro(self):
 
         usuario1 = User.objects.create_user(username='testuser2', password='12345', is_superuser=True)
         usuario1.save()
@@ -47,10 +47,10 @@ class UserTestCase(TestCase):
             id=2,
             nombre="Torneo PRueba",
             categoria="1995",
-            fechaInicio='2010-12-12',
+            fecha_inicio='2010-12-12',
             costo=int(12.12),
-            fechaJunta='1995-11-11',
-            costoCredencial=12
+            fecha_junta='1995-11-11',
+            costo_credencial=12
         )
 
         a =PreRegistro.objects.create(
@@ -109,11 +109,11 @@ class ValidarPreRegistroEquipoCase(TestCase):
             id=2,
             nombre="Torneo PRueba",
             categoria="1995",
-            categoriaMax="1997",
-            fechaInicio='2010-12-12',
+            categoria_max="1997",
+            fecha_inicio='2010-12-12',
             costo=int(12.12),
-            fechaJunta='1995-11-11',
-            costoCredencial=12,
+            fecha_junta='1995-11-11',
+            costo_credencial=12,
             activo=True
         )
         t1.save()

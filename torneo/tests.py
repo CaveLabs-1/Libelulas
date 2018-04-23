@@ -50,11 +50,11 @@ class TestTorneoCase(TestCase):
         form_data = {
             'nombre': 'Alejandro',
             'categoria': '1231',
-            'fechaInicio': '1111/11-11',
+            'fecha_inicio': '1111/11-11',
             'costo': '5',
-            'costoCredencial': '5',
+            'costo_credencial': '5',
             'equipos': {'5', '6'},
-            'fechaJunta': '1111-11-11',
+            'fecha_junta': '1111-11-11',
 
         }
         form = torneoForm(data=form_data)
@@ -64,10 +64,10 @@ class TestTorneoCase(TestCase):
         form_data = {
             'nombre': 'Alejandro',
             'categoria': '1231',
-            'fechaInicio': '1111/11-11',
+            'fecha_inicio': '1111/11-11',
             'costo': '5',
-            'costoCredencial': '5',
-            'fechaJunta': '1111-11-11',
+            'costo_credencial': '5',
+            'fecha_junta': '1111-11-11',
 
         }
         form = torneoForm(data=form_data)
@@ -77,11 +77,11 @@ class TestTorneoCase(TestCase):
         form_data = {
             'nombre': 'Alejandro',
             'categoria': '1231',
-            'fechaInicio': '1111-11-11',
+            'fecha_inicio': '1111-11-11',
             'costo': '5',
-            'costoCredencial': '5',
+            'costo_credencial': '5',
             'equipos': {'5','6'},
-            'fechaJunta': '1111-11-11',
+            'fecha_junta': '1111-11-11',
 
         }
         form = torneoForm(data=form_data)
@@ -119,10 +119,10 @@ class TestTorneoCase(TestCase):
             id=2,
             nombre="Torneo PRueba",
             categoria="1995",
-            fechaInicio='2010-12-12',
+            fecha_inicio='2010-12-12',
             costo=int(12.12),
-            fechaJunta='1995-11-11',
-            costoCredencial=12,
+            fecha_junta='1995-11-11',
+            costo_credencial=12,
             activo=True
         )
         e.save()
@@ -174,10 +174,10 @@ class TestTorneoCase(TestCase):
             id=2,
             nombre="Torneo PRueba",
             categoria="1995",
-            fechaInicio='2010-12-12',
+            fecha_inicio='2010-12-12',
             costo=int(12.12),
-            fechaJunta='1995-11-11',
-            costoCredencial=12,
+            fecha_junta='1995-11-11',
+            costo_credencial=12,
             activo=True
         )
         e.save()
@@ -233,10 +233,10 @@ class TestTorneoCase(TestCase):
             id=2,
             nombre="Torneo PRueba",
             categoria="1995",
-            fechaInicio='2010-12-12',
+            fecha_inicio='2010-12-12',
             costo=int(12.12),
-            fechaJunta='1995-11-11',
-            costoCredencial=12,
+            fecha_junta='1995-11-11',
+            costo_credencial=12,
             activo=True
         )
         e.save()
@@ -248,10 +248,10 @@ class TestTorneoCase(TestCase):
         form_data = {
             'nombre': 'Ale',
             'categoria': '1990',
-            'fechaInicio': '1111-11-11',
-            'fechaJunta': '1111-11-11',
+            'fecha_inicio': '1111-11-11',
+            'fecha_junta': '1111-11-11',
             'costo': 1,
-            'costoCredencial': 4,
+            'costo_credencial': 4,
             'equipos': {'alksdj', '6'}
         }
 
@@ -264,10 +264,10 @@ class TestTorneoCase(TestCase):
         form_data = {
             'nombre': 'Ale',
             'categoria': '1990',
-            'fechaInicio': '1111-11-11',
-            'fechaJunta': '1111-11-11',
+            'fecha_inicio': '1111-11-11',
+            'fecha_junta': '1111-11-11',
             'costo': 1,
-            'costoCredencial': 4,
+            'costo_credencial': 4,
         }
 
         self.assertTrue(t1.nombre=='Torneo PRueba')
@@ -278,10 +278,10 @@ class TestTorneoCase(TestCase):
         form_data = {
             'nombre': 'Ale',
             'categoria': '1990',
-            'fechaInicio': '1111-11-11',
-            'fechaJunta': '1111-11-11',
+            'fecha_inicio': '1111-11-11',
+            'fecha_junta': '1111-11-11',
             'costo': 1,
-            'costoCredencial': 4,
+            'costo_credencial': 4,
             'equipos': {'5', '6'}
         }
 
@@ -327,10 +327,10 @@ class TestTorneoCase(TestCase):
             id=2,
             nombre="Torneo PRueba",
             categoria="1995",
-            fechaInicio='2010-12-12',
+            fecha_inicio='2010-12-12',
             costo=int(12.12),
-            fechaJunta='1995-11-11',
-            costoCredencial=12,
+            fecha_junta='1995-11-11',
+            costo_credencial=12,
             activo=True
         )
         e.save()
@@ -373,10 +373,10 @@ class TestTorneoCase(TestCase):
              id=2,
              nombre="Torneo PRueba",
              categoria="1995",
-             fechaInicio='2010-12-12',
+             fecha_inicio='2010-12-12',
              costo=int(12.12),
-             fechaJunta='1995-11-11',
-             costoCredencial=12
+             fecha_junta='1995-11-11',
+             costo_credencial=12
          )
 
          self.assertTrue(Torneo.objects.all().count() == 1)
@@ -425,10 +425,10 @@ class EditarPartidoTest(TestCase):
             id=2,
             nombre="Torneo PRueba",
             categoria="1995",
-            fechaInicio='2010-12-12',
+            fecha_inicio='2010-12-12',
             costo=int(12.12),
-            fechaJunta='1995-11-11',
-            costoCredencial=12,
+            fecha_junta='1995-11-11',
+            costo_credencial=12,
             activo=True
         )
         e.save()
@@ -495,10 +495,10 @@ class EditarPartidoTest(TestCase):
             id=5,
             nombre="Torneo PRueba133",
             categoria="1995",
-            fechaInicio='2010-12-12',
+            fecha_inicio='2010-12-12',
             costo=int(12.12),
-            fechaJunta='1995-11-11',
-            costoCredencial=12,
+            fecha_junta='1995-11-11',
+            costo_credencial=12,
             activo=True
         )
         e.save()
