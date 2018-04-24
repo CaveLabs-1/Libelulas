@@ -72,9 +72,9 @@ def detalle_jugadora(request, id_equipo, id_jugadora):
         golesE = 0
     else:
         golesE = goles/goles_equipo
-    tarjetas_rojas = TarjetasRojas.objects.filter(jugadora_id=id_jugadora).count()
-    tarjetas_amarillas = TarjetasAmarillas.objects.filter(jugadora_id=id_jugadora).aggregate(Sum('cantidad'))['cantidad__sum']
-    tarjetas_azul = Tarjetas_azules.objects.filter(jugadora_id=id_jugadora).count()
+    tarjetas_rojas = TarjetasRojas.objects.filter(jugadora_id=id_jugadora).filter(jugadora__equipo=id_equipo).count()
+    tarjetas_amarillas = TarjetasAmarillas.objects.filter(jugadora_id=id_jugadora).filter(jugadora__equipo=id_equipo).aggregate(Sum('cantidad'))['cantidad__sum']
+    tarjetas_azul = Tarjetas_azules.objects.filter(jugadora_id=id_jugadora).filter(jugadora__equipo=id_equipo).count()
     return render(request, 'landing/detalle_jugadora.html', {
                                                                 'jugadora': jugadora,
                                                                 'equipo': equipo,
