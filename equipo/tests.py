@@ -1652,7 +1652,7 @@ class TestCrearEquipo(TestCase):
         self.client.post(reverse('equipo:agregar_equipo'), data)
         self.assertEqual(Equipo.objects.count(), 0)
 
-    
+
     def test_no_hora_equipo(self):
         self.assertEqual(Equipo.objects.count(), 0)
         form_data = {

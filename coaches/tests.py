@@ -8,6 +8,7 @@ from jugadora.models import Jugadora;
 from equipo.models import Equipo;
 from django.core.files.uploadedfile import SimpleUploadedFile;
 from django.urls import reverse
+from freezegun import freeze_time
 
 class TestPreRegistroCase(TestCase):
 
@@ -17,13 +18,13 @@ class TestPreRegistroCase(TestCase):
         login = self.client.login(username='testuser1', password='12345')
 
         a = Jugadora.objects.create(
-            Nombre = 'Nombre A',
-            Apellido = 'Apellido A',
-            Nacimiento = '1997-01-01',
-            Numero = 1,
-            Posicion = 1,
-            Notas = 'Ejemplo A Jugadora',
-            Imagen =  SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/jugadora1.jpg', 'rb').read(), content_type='image/jpeg')
+            nombre = 'Nombre A',
+            apellido = 'Apellido A',
+            nacimiento = '1997-01-01',
+            numero = 1,
+            posicion = 1,
+            notas = 'Ejemplo A Jugadora',
+            imagen =  SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/jugadora1.jpg', 'rb').read(), content_type='image/jpeg')
 
         );
         a.save();
@@ -31,9 +32,9 @@ class TestPreRegistroCase(TestCase):
             id=2,
             nombre="Torneo PRueba",
             categoria="1995",
-            fecha_inicio='2010-12-12',
+            fecha_inicio='2019-12-12',
             costo=int(12.12),
-            fecha_junta='1995-11-11',
+            fecha_junta='2019-11-11',
             costo_credencial=12,
             activo=True
         )
@@ -51,6 +52,7 @@ class TestPreRegistroCase(TestCase):
         response = self.client.get(reverse('coaches:pre_registro',kwargs={'id_torneo':torneo.id}))
         self.assertEqual(response.status_code, 200)
 
+    @freeze_time("2018-05-01")
     def test_registro_pre_registro(self):
         torneo = Torneo.objects.get(id=2)
         self.client.post(reverse('coaches:pre_registro',kwargs={'id_torneo':torneo.id}), {"nombre": "Carlos", "correo": "croman@hotmail.com", "notas":"Esto es una prueba"})
@@ -64,13 +66,13 @@ class TestPreRegistroJugadoraCase(TestCase):
         login = self.client.login(username='testuser1', password='12345')
 
         a = Jugadora.objects.create(
-            Nombre = 'Nombre A',
-            Apellido = 'Apellido A',
-            Nacimiento = '1997-01-01',
-            Numero = 1,
-            Posicion = 1,
-            Notas = 'Ejemplo A Jugadora',
-            Imagen =  SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/jugadora1.jpg', 'rb').read(), content_type='image/jpeg')
+            nombre = 'Nombre A',
+            apellido = 'Apellido A',
+            nacimiento = '1997-01-01',
+            numero = 1,
+            posicion = 1,
+            notas = 'Ejemplo A Jugadora',
+            imagen =  SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/jugadora1.jpg', 'rb').read(), content_type='image/jpeg')
 
         );
         a.save();
@@ -103,29 +105,29 @@ class TestPreRegistroJugadoraCase(TestCase):
         self.client.logout()
         ea = Equipo.objects.create(
             nombre = 'Equipo A',
-           representante = 'Juan A',
-           telefono = '4426483003',
-           correo = 'rr100@live.com.mx',
-           logo =  SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/balon1.jpg', 'rb').read(), content_type='image/jpeg'),
-           colorLocal  = 1,
-           colorVisitante = 2,
-           cancha = 'Estadio Azteca',
-           dia = 1,
-           hora = '13:05',
-           activo = False
-           )
+            representante = 'Juan A',
+            telefono = '4426483003',
+            correo = 'rr100@live.com.mx',
+            logo =  SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/balon1.jpg', 'rb').read(), content_type='image/jpeg'),
+            colorLocal  = 1,
+            colorVisitante = 2,
+            cancha = 'Estadio Azteca',
+            dia = 1,
+            hora = '13:05',
+            activo = False
+            )
         ea.save();
         registro = PreRegistro.objects.get(codigo="abc")
         response = self.client.get(reverse('coaches:registrar_jugadora',kwargs={'id_equipo':ea.id,'codigo':registro.codigo}))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(0, ea.jugadoras.all().count())
         data = {
-            'Nombre': 'Ale',
-            'Apellido': 'López',
-            'Nacimiento': '1111-11-11',
-            'Numero': '1',
-            'Posicion': '4',
-            'Notas': 'Esto es una nota',
+            'nombre': 'Ale',
+            'apellido': 'López',
+            'nacimiento': '1111-11-11',
+            'numero': '1',
+            'posicion': '4',
+            'notas': 'Esto es una nota',
             'equipo':'1',
             'activo':False
         }
@@ -154,11 +156,11 @@ class TestPreRegistroJugadoraCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(0, ea.jugadoras.all().count())
         data = {
-            'Apellido': 'López',
-            'Nacimiento': '1111-11-11',
-            'Numero': '1',
-            'Posicion': '4',
-            'Notas': 'Esto es una nota',
+            'apellido': 'López',
+            'nacimiento': '1111-11-11',
+            'numero': '1',
+            'posicion': '4',
+            'notas': 'Esto es una nota',
             'equipo':'1',
             'activo':False
         }
