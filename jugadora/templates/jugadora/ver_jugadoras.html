@@ -14,11 +14,11 @@
   </div>
    <input id="searchbox" type="text" placeholder="Búsqueda" />
   <ul id="friendlist" class="collection">
-   
+
     {% for jugadora in jugadoras %}
     <li class="collection-item avatar">
       {% if jugadora.Imagen %}
-        <img src="{{ jugadora.Imagen.url }}" alt="" class="circle" />
+        <img src="{{ jugadora.imagen.url }}" alt="" class="circle" />
       {% else %}
         <img src="{% static 'static_media/default.jpg' %}" alt="" class="circle" />
       {% endif %}
@@ -26,7 +26,7 @@
       <p><strong>Fecha de nacimiento:</strong> {{ jugadora.nacimiento }}</p>
       <div class="flex">
         <p><strong>Número de playera:</strong> {{ jugadora.numero }}</p>&nbsp;&nbsp;
-        <p><strong>Posición:</strong> {{ jugadora.get_Posicion_display }}</p>
+        <p><strong>Posición:</strong> {{ jugadora.get_posicion_display }}</p>
       </div>
       <div class="secondary-content">
         <a href="#" data-target="delete" data-form="{% url 'jugadora:eliminar_jugadora' jugadora.id %}" class="delete-button">
@@ -63,7 +63,7 @@ $(function() {
             $('#friendlist li').hide();
             $('#friendlist li:Contains('+w+')').show();
         } else {
-            $('#friendlist li').show();                  
+            $('#friendlist li').show();
         }
     });
 });
