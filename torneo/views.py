@@ -244,7 +244,7 @@ def mandar_Cedula(request, partido_id):
     response['Content-Disposition'] = 'filename="home_page.pdf"'
     return response
 
-#Interfaz en la que se puede acceder a una cierta cédula
+# El usuario no registrado ingresa el id del torneo y del partido para acceder a su cédula.
 def accesar_cedula(request):
     if request.method == 'POST':
           form = AccesarCedula(data=request.POST)
@@ -252,12 +252,12 @@ def accesar_cedula(request):
               id_partido = form.cleaned_data['id_partido']
               id_torneo = form.cleaned_data['id_torneo']
               partido = get_object_or_404(Partido, id=id_partido)
+              # Redirige al usuario a la cédula.
               return HttpResponseRedirect(reverse('torneo:registrar_cedula',kwargs={'id_torneo':id_torneo, 'id_partido':id_partido}))
     form = AccesarCedula()
     return render(request, 'torneo/accesar_cedula.html', {'form':form})
 
-#Registrar los datos de un partido. Las asistencias, marcador y arbitro.
-#Actualizar los datos de las estadísitcas del torneo.
+  # Procesa la información de la cédula. Registra el partido y actualiza las estadísticas.
 def registrar_cedula(request, id_torneo, id_partido):
     if request.method == 'POST':
         form = CedulaForm(data=request.POST)
@@ -353,16 +353,19 @@ def registrar_cedula(request, id_torneo, id_partido):
             return HttpResponse(form.errors.as_text())
     else:
         form = CedulaForm()
+        # Información de la forma de la cédula.
         partido = Partido.objects.get(id=id_partido)
+        # Obten la información del equipo y las jugadoras del equipo local.
         equipo_local_id = Partido.objects.get(id=id_partido).equipo_local_id
         equipo_local = Equipo.objects.get(pk=equipo_local_id)
         jugadoras_locales = equipo_local.jugadoras.all()
         cant_jugadoras_locales = jugadoras_locales.count()
+        # Obten la información del equipo y las jugadoras del equipo visitante.
         equipo_visitante_id = Partido.objects.get(id=id_partido).equipo_visitante_id
         equipo_visitante = Equipo.objects.get(pk=equipo_visitante_id)
         jugadoras_visitantes = equipo_visitante.jugadoras.all()
-        print(jugadoras_visitantes)
         cant_jugadoras_visitantes = jugadoras_visitantes.count()
+        # Ocupamos el equipo con el mayor número de jugadoras para llenar la tabla correctamente.
         if cant_jugadoras_locales >= cant_jugadoras_visitantes:
             maximo = cant_jugadoras_locales
         else:
@@ -370,29 +373,51 @@ def registrar_cedula(request, id_torneo, id_partido):
         jugadoras = dict()
         cont = 0
         asistencia = 0
+        # Vamos un diccionario de n * 2 campos. Siendo n el número de jugadoras que posee el equipo con más jugadoras.
+        # Este diccionario será utilizado para pintar la tabla en el template.
+        # Cada registro con índice impar es una jugadora local. Cada registro con índice par es jugadora visitante.
         for i in range(0,maximo):
+            # Si aún hay jugadoras por desplegar.
             if i < cant_jugadoras_locales:
+                # Checamos si ya hay asistencia registrada para esa jugadora y renderear la asistencia en el template.
                 asistencia = Asistencia.objects.filter(partido=id_partido,jugadora=jugadoras_locales[i].id,equipo=equipo_local_id)
                 if asistencia:
                     asistencia = 1
                 else:
                     asistencia = 0
-                jugadoras[cont] = {'id':jugadoras_locales[i].id,'nombre':jugadoras_locales[i].Nombre + " " + jugadoras_locales[i].Apellido, 'numero':jugadoras_locales[i].Numero, 'equipo':equipo_local_id, 'asistencia':asistencia}
+                jugadoras[cont] = {'id':jugadoras_locales[i].id,'nombre':jugadoras_locales[i].nombre + " " + jugadoras_locales[i].apellido, 'equipo':equipo_local_id, 'asistencia':asistencia, 'asistencia_torneo':asistencia_torneo(jugadoras_locales[i].id, id_torneo)}
+            # Si ya no hay jugadora por asignar, dejamos el campo en blanco.
             else:
                 jugadoras[cont] = {'id':'nada'}
             cont = cont + 1
+            # Realizamos lo mismo, pero ahora para jugadoras visitantes.
             if i < cant_jugadoras_visitantes:
                 asistencia = Asistencia.objects.filter(partido=id_partido,jugadora=jugadoras_visitantes[i].id,equipo=equipo_visitante_id)
                 if asistencia:
                     asistencia = 1
                 else:
                     asistencia = 0
-                jugadoras[cont] = {'id':jugadoras_visitantes[i].id, 'nombre':jugadoras_visitantes[i].Nombre + " " + jugadoras_visitantes[i].Apellido, 'numero':jugadoras_visitantes[i].Numero, 'equipo':equipo_visitante_id, 'asistencia':asistencia}
+                jugadoras[cont] = {'id':jugadoras_visitantes[i].id, 'nombre':jugadoras_visitantes[i].nombre + " " + jugadoras_visitantes[i].apellido, 'equipo':equipo_visitante_id, 'asistencia':asistencia, 'asistencia_torneo':asistencia_torneo(jugadoras_visitantes[i].id, id_torneo)}
             else:
                 jugadoras[cont] = {'id':'nada'}
             cont = cont + 1
         informacion = {'id_torneo':id_torneo,'id_partido':id_partido,'partido':partido,'equipo_local':equipo_local,'equipo_visitante':equipo_visitante,'jugadoras':jugadoras,'form':form}
         return render(request, 'torneo/registrar_cedula.html', informacion)
+
+def asistencia_torneo(id_jugadora, id_torneo):
+    # Cantidad de partidos que el equipo jugará en el torneo.
+    jornadas = Jornada.objects.filter(torneo=id_torneo)
+    # Partidos en lo que ha participado la jugadora del actual torneo.
+    partidos_jugados = 0
+    asistencias = Asistencia.objects.filter(jugadora=id_jugadora)
+    for asistencia in asistencias:
+        partido = Partido.objects.get(id=asistencia.partido)
+        for jornada in jornadas:
+            if jornada.id == partido.jornada_id:
+                partidos_jugados = partidos_jugados + 1
+                break
+    porcentaje = (partidos_jugados * 100) / jornadas.count()
+    return porcentaje
 
 #Registrar la asistencia de una jugadora en un partido
 def registrar_asistencia(request):
@@ -404,17 +429,17 @@ def registrar_asistencia(request):
         id_jugadora = request.POST.get('id_jugadora')
         jugadora = get_object_or_404(Jugadora, id=id_jugadora)
         estado = True if request.POST.get('estado') == 'true' else False
-        status = "Hubo un error al actualizar la asistencia."
+        respuesta = "Hubo un error al actualizar la asistencia."
         #Si asistió la jugadora, se registra la asistencia
         if estado:
             asistencia = Asistencia.objects.create(partido=partido, jugadora=jugadora, equipo=equipo)
             asistencia.save()
-            status = "Se registró la asistencia."
+            respuesta = "Se registró la asistencia."
         else:
             asistencia = Asistencia.objects.get(partido=partido, jugadora=jugadora, equipo=equipo)
             asistencia.delete()
-            status = "Se eliminó la asistencia."
-    return HttpResponse(status)
+            respuesta = "Se eliminó la asistencia."
+    return HttpResponse(respuesta)
 
 #Registrar los eventos ocurridos en un partido, goles y tarjetas.
 def registrar_eventos(request, id_partido):
