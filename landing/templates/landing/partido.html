@@ -43,7 +43,7 @@
             <div class="nombre">
               <span class="nombre">{{jugadora.nombre}} {{jugadora.apellido}}</span>
             </div>
-            <span class="pos">{{jugadora.get_Posicion_display|slice:":3"}}</span>
+            <span class="pos">{{jugadora.get_posicion_display|slice:":3"}}</span>
             <div class="icons">
               {% for tr in tarjetas_rojas_local %}
                 {% if jugadora.id == tr.jugadora_id %}
@@ -154,7 +154,7 @@
       </div>
       <div class="informacion">
         <p><strong>Árbitro: </strong>{{partido.arbitro}}</p>
-        <p><strong>Notas: </strong> {{ partido.Notas }} </p>
+        <p><strong>Notas: </strong> {{ partido.notas }} </p>
       </div>
     </div>
     <div class="team-container">
@@ -169,7 +169,7 @@
             <div class="nombre">
               <span class="nombre">{{jugadora.nombre}} {{jugadora.apellido}}</span>
             </div>
-            <span class="pos">{{jugadora.get_Posicion_display|slice:":3"}}</span>
+            <span class="pos">{{jugadora.get_posicion_display|slice:":3"}}</span>
             <div class="icons">
               {% for tr in tarjetas_rojas_visitante %}
                 {% if jugadora.id == tr.jugadora_id %}
