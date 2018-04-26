@@ -99,7 +99,8 @@ def eliminar_equipo(request, id_equipo, id_torneo):
     torneo = get_object_or_404(Torneo, id=id_torneo)
     equipo = get_object_or_404(Equipo, id=id_equipo)
     if equipo in torneo.equipos.all():
-        torneo.equipos.remove(equipo)
+        registro = Estadisticas.objects.get(torneo=torneo,equipo=equipo)
+        registro.delete()
         messages.success(request, 'Equipo eliminado exitosamente')
         return HttpResponseRedirect(reverse('torneo:detalle_torneo',kwargs={'torneo_id':id_torneo}))
 
@@ -657,7 +658,7 @@ def ganador(request, id_torneo):
         equipos = torneo.equipos.all()
         form.fields["equipos"].queryset = equipos
     return render(request, 'torneo/ganador.html', {'form': form, 'torneo': torneo})
-  
+
 #Vista para poder acceder a una cedula con el cdigo del torneo y del partido
 def cambio_cedula_admin(request, id_torneo, id_partido):
     return request(request, 'torneo/accesar_cedula.html')

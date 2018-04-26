@@ -3,15 +3,15 @@
   {% for jugadora in jugadoras_equipo %}
   <li class="collection-item avatar">
     {% if jugadora.Imagen %}
-      <img src="{{ jugadora.Imagen.url }}" alt="" class="circle" />
+      <img src="{{ jugadora.imagen.url }}" alt="" class="circle" />
     {% else %}
       <img src="{% static 'static_media/default.jpg' %}" alt="" class="circle" />
     {% endif %}
-    <span class="title">{{ jugadora.Nombre}} {{ jugadora.Apellido }}</span>
-    <p><strong>Fecha de nacimiento:</strong> {{ jugadora.Nacimiento }}</p>
+    <span class="title">{{ jugadora.nombre}} {{ jugadora.apellido }}</span>
+    <p><strong>Fecha de nacimiento:</strong> {{ jugadora.nacimiento }}</p>
     <div class="flex">
-      <p><strong>Número:</strong> {{ jugadora.Numero }}</p>&nbsp;&nbsp;
-      <p><strong>Posición:</strong> {{ jugadora.get_Posicion_display }}</p>
+      <p><strong>Número:</strong> {{ jugadora.numero }}</p>&nbsp;&nbsp;
+      <p><strong>Posición:</strong> {{ jugadora.get_posicion_display }}</p>
     </div>
     {% if validar %}
     <div class="secondary-content">
