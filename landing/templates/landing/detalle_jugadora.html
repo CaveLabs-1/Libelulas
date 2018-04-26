@@ -9,8 +9,8 @@
   <div class="cover"></div>
   <div class="container">
     <div class="image-column">
-      {% if jugadora.Imagen %}
-        <img src={{jugadora.Imagen.url}} alt="{{jugadora.nombre}} imagen" class="circle"/>
+      {% if jugadora.imagen %}
+        <img src={{jugadora.imagen.url}} alt="{{jugadora.nombre}} imagen" class="circle"/>
       {% else %}
         <img src="{% static 'static_media/default.jpg' %}" alt="{{jugadora.nombre}} imagen" class="circle"/>
       {% endif %}
@@ -80,7 +80,7 @@
     </div>
     <div class="card">
       <span class="card-title"><strong>COMENTARIOS DEL COACH</strong></span>
-      <p>{{jugadora.Comentarios}}</p>
+      <p>{{jugadora.comentarios}}</p>
     </div>
   </div>
 </div>
