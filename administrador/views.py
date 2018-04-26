@@ -8,6 +8,7 @@ from equipo.models import *
 from coaches.models import PreRegistro
 import uuid
 from django.core.mail import send_mail
+from django.core.validators import validate_email
 
 def lista_administrador(request):
     lista = User.objects.all()
@@ -22,7 +23,6 @@ def agregar_administrador(request):
             administrador.first_name = informacion.first_name
             administrador.username = informacion.username
             administrador.email = informacion.email
-            administrador.set_password('temporal')
             administrador.save()
             messages.success(request, 'Administrador agregado exitosamente')
             return HttpResponseRedirect(reverse('administrador:confirmar_contrasena', kwargs={'id_administrador':administrador.id}))

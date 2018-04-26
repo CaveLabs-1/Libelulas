@@ -1,5 +1,7 @@
 from django import forms
 from .models import User
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
 
 class UserForm(forms.ModelForm):
 
@@ -8,9 +10,15 @@ class UserForm(forms.ModelForm):
         fields = ('first_name', 'username', 'email')
 
     def clean_email(self):
+
         if User.objects.filter(email__iexact=self.cleaned_data['email']):
             raise forms.ValidationError("Este email ya se encuentra en uso.")
-        return self.cleaned_data['email']
+
+        try:
+            validate_email(self.cleaned_data['email'])
+            return self.cleaned_data['email']
+        except ValidationError:
+            raise forms.ValidationError("Este email no es válido.")
 
 class UpdateUserForm(forms.ModelForm):
 
@@ -19,9 +27,15 @@ class UpdateUserForm(forms.ModelForm):
         fields = ('first_name', 'email')
 
     def clean_email(self):
-        if User.objects.filter(email__iexact=self.cleaned_data['email']).exclude(pk=self.instance.pk):
+
+        if User.objects.filter(email__iexact=self.cleaned_data['email']):
             raise forms.ValidationError("Este email ya se encuentra en uso.")
-        return self.cleaned_data['email']
+
+        try:
+            validate_email(self.cleaned_data['email'])
+            return self.cleaned_data['email']
+        except django.core.exceptions.ValidationError:
+            raise forms.ValidationError("Este email no es válido.")
 
 class UpdatePasswordForm(forms.ModelForm):
 

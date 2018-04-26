@@ -53,7 +53,7 @@
                   <td>
                     <label>
                       <input type="checkbox" jugadora="{{values.id}}" partido="{{id_partido}}" equipo="{{values.equipo}}" {% if values.asistencia == 1 %}checked{% endif %}>
-                      <span>{{values.nombre}}</span>
+                      <span>{{values.nombre}} (Asistencia: {{values.asistencia_torneo}}%)</span>
                     </label>
                   </td>
                 {% else %}
@@ -65,7 +65,7 @@
                   <td>
                     <label>
                       <input type="checkbox" jugadora="{{values.id}}" partido="{{id_partido}}" equipo="{{values.equipo}}" {% if values.asistencia == 1 %}checked{% endif %}>
-                      <span>{{values.nombre}}</span>
+                      <span>{{values.nombre}} (Asistencia: {{values.asistencia_torneo}}%)</span>
                     </label>
                   </td>
                 </tr>
@@ -101,41 +101,42 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/js/materialize.min.js"></script>
 <script src=" https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js "></script>
+<script type="text/javascript" src="{% static '/index.js' %}"></script>
 <script type="text/javascript">
-    $(document).ready(function(){
-        var csrftoken = $.cookie('csrftoken');
-        function csrfSafeMethod(method) {
-        // these HTTP methods do not require CSRF protection
-            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+  $(document).ready(function(){
+    document.getElementById("navbar").style.display = "none" ;
+    var csrftoken = $.cookie('csrftoken');
+    function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    $.ajaxSetup({
+      beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+          xhr.setRequestHeader("X-CSRFToken", csrftoken);
         }
-        $.ajaxSetup({
-            beforeSend: function(xhr, settings) {
-                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                }
-            }
-        });
-        $('select').formSelect();
-        $('input[type=checkbox]').change(function(e) {
-          var url = '{% url "torneo:registrar_asistencia" %}';
-          var id_partido = $(this).attr('partido') ;
-          var id_jugadora = $(this).attr('jugadora') ;
-          var id_equipo = $(this).attr('equipo') ;
-          var estado = $(this).is(":checked") ;
-          var contexto = {"id_partido":id_partido, "id_jugadora":id_jugadora, "id_equipo":id_equipo, "estado":estado} ;
-          $.ajax({
-            type: 'POST',
-            url: url,
-            data: contexto,
-            success: function () {
-              // Por ahora no ocupamos retroalimentación de cada asistencia.
-            },
-            error: function (xhr, status, error) {
-              alert(xhr.responseText);
-            }
-         });
-        });
+      }
     });
-
+    $('select').formSelect();
+    $('input[type=checkbox]').change(function(e) {
+      var url = '{% url "torneo:registrar_asistencia" %}';
+      var id_partido = $(this).attr('partido') ;
+      var id_jugadora = $(this).attr('jugadora') ;
+      var id_equipo = $(this).attr('equipo') ;
+      var estado = $(this).is(":checked") ;
+      var contexto = {"id_partido":id_partido, "id_jugadora":id_jugadora, "id_equipo":id_equipo, "estado":estado} ;
+      $.ajax({
+        type: 'POST',
+        url: url,
+        data: contexto,
+        success: function () {
+          // Por ahora no ocupamos retroalimentación de cada asistencia.
+        },
+        error: function (xhr, status, error) {
+          alert(xhr.responseText);
+        }
+     });
+    });
+  });
 </script>
 {% endblock %}
