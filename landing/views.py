@@ -21,8 +21,7 @@ from torneo.models import Torneo
 
 def verTorneos (request):
     torneos= Torneo.objects.filter(activo=True)
-    equipos = Torneo.objects.filter(activo=True).values('equipos__nombre', 'equipos__logo', 'id', 'equipos__id')
-    return render(request,'landing/torneos.html',{'torneos':torneos, 'equipos': equipos})
+    return render(request,'landing/torneos.html',{'torneos':torneos})
 
 def ver_organizadores(request):
     return render(request, 'landing/organizadores.html')
