@@ -108,7 +108,7 @@
 
 .match .team {
   height: 64px;
-  width: 64px;
+  width: 64px !important;
 }
 
 .match .team {
