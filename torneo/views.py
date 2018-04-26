@@ -276,10 +276,10 @@ def registrar_cedula(request, id_torneo, id_partido):
             update.save()
             messages.success(request, 'Cédula registrada exitosamente.')
             # Obtener estadísticas del equipo local.
-            equipo_local = update.equipo_local_id
+            equipo_local = update.equipo_local
             estadisticas_local = Estadisticas.objects.get(torneo=id_torneo, equipo=equipo_local)
             # Obtener estadísticas del equipo visitante.
-            equipo_visitante = update.equipo_visitante_id
+            equipo_visitante = update.equipo_visitante
             estadisticas_visitante = Estadisticas.objects.get(torneo=id_torneo, equipo=equipo_visitante)
             # Si es actualización, primero elimina las estadísticas registradas previamente.
             if update.registrado == True:
@@ -421,7 +421,7 @@ def asistencia_torneo(id_jugadora, id_torneo):
         porcentaje = (partidos_jugados * 100) / jornadas.count()
     except ZeroDivisionError:
         porcentaje = 0
-        
+
     return porcentaje
 
 #Registrar la asistencia de una jugadora en un partido
