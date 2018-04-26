@@ -70,15 +70,13 @@
           <div class="card-panel">
             <span class="black-text">Equipos:</span>
             <ul class="collection">
-            {% for equipo in equipos %}
-            {% if equipo.id == Torneo.id %}
+            {% for equipo in Torneo.equipos.all %}
             <li class="collection-item avatar">
-              <a href="{% url 'landing:detalle_equipo' equipo.equipos__id %}">
-                <img src="/media/{{equipo.equipos__logo}}" class="circle"/>
-                <p><strong>{{equipo.equipos__nombre}}</strong></p>
+              <a href="{% url 'landing:detalle_equipo' equipo.id %}">
+                <img src="/media/{{equipo.logo}}" class="circle"/>
+                <p><strong>{{equipo.nombre}}</strong></p>
               </a>
             </li>
-            {% endif %}
             {% endfor %}
           </ul>
           </div>

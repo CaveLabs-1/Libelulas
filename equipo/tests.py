@@ -38,7 +38,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -53,7 +53,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -78,7 +78,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -93,7 +93,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -114,7 +114,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -129,7 +129,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -150,7 +150,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -165,7 +165,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -186,7 +186,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -201,7 +201,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -222,7 +222,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -237,7 +237,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -258,7 +258,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -273,7 +273,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -294,7 +294,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -309,7 +309,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -330,7 +330,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -345,7 +345,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -366,7 +366,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -381,7 +381,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -403,7 +403,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -418,7 +418,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -439,7 +439,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -454,7 +454,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -475,7 +475,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -489,7 +489,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -510,7 +510,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -525,7 +525,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -546,7 +546,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -561,7 +561,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -582,7 +582,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -597,7 +597,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -618,7 +618,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -633,7 +633,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -654,7 +654,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -669,7 +669,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -690,7 +690,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -705,7 +705,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -726,7 +726,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -741,7 +741,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -762,7 +762,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -777,7 +777,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -798,7 +798,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -813,7 +813,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -834,7 +834,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -849,7 +849,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -870,7 +870,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -885,7 +885,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -906,7 +906,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '-1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -921,7 +921,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '-1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -942,7 +942,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '0',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -957,7 +957,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '0',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -978,7 +978,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '12',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -993,7 +993,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '12',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -1014,7 +1014,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': 'a',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -1029,7 +1029,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': 'a',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -1050,7 +1050,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '$',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -1065,7 +1065,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '$',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -1086,7 +1086,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -1101,7 +1101,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -1122,7 +1122,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '-2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -1137,7 +1137,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '-2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -1158,7 +1158,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '0',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -1173,7 +1173,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '0',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -1194,7 +1194,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '2',
             'colorVisitante': '12',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -1209,7 +1209,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '12',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -1230,7 +1230,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': 'a',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -1245,7 +1245,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': 'a',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -1266,7 +1266,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '$',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -1281,7 +1281,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '$',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -1302,7 +1302,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': '',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -1317,7 +1317,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': '',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -1338,7 +1338,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': '1234',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -1353,7 +1353,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': '1234',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -1374,7 +1374,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'a'*129,
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -1389,7 +1389,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'a'*129,
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -1410,7 +1410,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': '%#<>$%^&*.,/\\""()(&$!',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -1425,7 +1425,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': '%#<>$%^&*.,/\\""()(&$!',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -1511,7 +1511,7 @@ class TestCrearEquipo(TestCase):
     def test_dia_cero_equipo(self):
         self.assertEqual(Equipo.objects.count(), 0)
         form_data = {
-            'nombre': 'Real Madrid F.C.',
+            'nombre': 'Real B Madrid F.C.',
             'representante': 'Florentino Pérez',
             'telefono': '+5144227654321',
             'correo': 'florentinop@realmadrid.com',
@@ -1526,7 +1526,7 @@ class TestCrearEquipo(TestCase):
         }
 
         data = {
-            'nombre': 'Real Madrid Futboll Club',
+            'nombre': 'Real B Madrid Futboll Club',
             'representante': 'Florentino Pérez',
             'telefono': '+5144227654321',
             'correo': 'florentinop@realmadrid.com',
@@ -1539,10 +1539,10 @@ class TestCrearEquipo(TestCase):
         }
         form = equipoForm(form_data, file_data)
         #Pruebo que la forma sea correcta
-        self.assertFalse(form.is_valid())
+        self.assertTrue(form.is_valid())
         #Pruebo que se guarde el equipo
         self.client.post(reverse('equipo:agregar_equipo'), data)
-        self.assertEqual(Equipo.objects.count(), 0)
+        self.assertEqual(Equipo.objects.count(), 1)
 
     def test_dia_mayor_de_siete_equipo(self):
         self.assertEqual(Equipo.objects.count(), 0)
@@ -1652,7 +1652,7 @@ class TestCrearEquipo(TestCase):
         self.client.post(reverse('equipo:agregar_equipo'), data)
         self.assertEqual(Equipo.objects.count(), 0)
 
-    
+
     def test_no_hora_equipo(self):
         self.assertEqual(Equipo.objects.count(), 0)
         form_data = {
@@ -1663,7 +1663,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': ''
         }
         file_data = {
@@ -1678,7 +1678,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -1699,7 +1699,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '-12:04'
         }
         file_data = {
@@ -1714,7 +1714,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '-12:04',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -1735,7 +1735,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': 'once am'
         }
         file_data = {
@@ -1750,7 +1750,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': 'once am',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -1771,7 +1771,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '10:54 am'
         }
         file_data = {
@@ -1786,7 +1786,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '10:54 am',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -1807,7 +1807,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '27:12'
         }
         file_data = {
@@ -1822,7 +1822,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '27:12',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -1843,7 +1843,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:60'
         }
         file_data = {
@@ -1858,7 +1858,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:60',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -1879,7 +1879,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:61'
         }
         file_data = {
@@ -1894,7 +1894,7 @@ class TestCrearEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:61',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -1997,7 +1997,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2011,7 +2011,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2032,7 +2032,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2046,7 +2046,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2067,7 +2067,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2081,7 +2081,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2102,7 +2102,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2116,7 +2116,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2137,7 +2137,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2151,7 +2151,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2174,7 +2174,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'logo': logo,
             'hora': '13:05'
         }
@@ -2189,7 +2189,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2210,7 +2210,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2224,7 +2224,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2245,7 +2245,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2259,7 +2259,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2281,7 +2281,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2295,7 +2295,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2316,7 +2316,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2330,7 +2330,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2351,7 +2351,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2365,7 +2365,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2387,7 +2387,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2401,7 +2401,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2422,7 +2422,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2436,7 +2436,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2457,7 +2457,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2471,7 +2471,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2492,7 +2492,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2506,7 +2506,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2527,7 +2527,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2541,7 +2541,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2562,7 +2562,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2576,7 +2576,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2597,7 +2597,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2611,7 +2611,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2632,7 +2632,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2646,7 +2646,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2667,7 +2667,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2681,7 +2681,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2702,7 +2702,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2716,7 +2716,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2737,7 +2737,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2751,7 +2751,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2772,7 +2772,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2786,7 +2786,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2807,7 +2807,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2821,7 +2821,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2842,7 +2842,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2856,7 +2856,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2877,7 +2877,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2891,7 +2891,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2912,7 +2912,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2926,7 +2926,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2947,7 +2947,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '3',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2961,7 +2961,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '3',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -2982,7 +2982,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -2996,7 +2996,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -3017,7 +3017,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '-1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -3031,7 +3031,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '-1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -3052,7 +3052,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '0',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -3066,7 +3066,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '0',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -3087,7 +3087,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '12',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -3101,7 +3101,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '12',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -3122,7 +3122,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': 'a',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -3136,7 +3136,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': 'a',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -3157,7 +3157,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '$',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -3171,7 +3171,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '$',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -3192,7 +3192,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '5',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -3206,7 +3206,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '5',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -3227,7 +3227,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -3241,7 +3241,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -3262,7 +3262,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '-2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -3276,7 +3276,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '-2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -3297,7 +3297,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '0',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -3311,7 +3311,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '0',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -3332,7 +3332,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '2',
             'colorVisitante': '12',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -3346,7 +3346,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '12',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -3367,7 +3367,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': 'a',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -3381,7 +3381,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': 'a',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -3402,7 +3402,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '$',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -3416,7 +3416,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '$',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -3437,7 +3437,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Estadio Azteca',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -3451,7 +3451,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Estadio Azteca',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -3472,7 +3472,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': '',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -3486,7 +3486,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': '',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -3507,7 +3507,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': '1234',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -3521,7 +3521,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': '1234',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -3542,7 +3542,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'a'*129,
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -3556,7 +3556,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'a'*129,
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -3577,7 +3577,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': '%#<>$%^&*.,/\\""()(&$!',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -3591,7 +3591,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': '%#<>$%^&*.,/\\""()(&$!',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -3710,7 +3710,7 @@ class TestEditarEquipo(TestCase):
     def test_dia_cero_equipo(self):
         team = self.equipo1()
         form_data = {
-            'nombre': 'Real Madrid F.C.',
+            'nombre': 'Real B Madrid F.C.',
             'representante': 'Florentino Pérez',
             'telefono': '+5144227654321',
             'correo': 'florentinop@realmadrid.com',
@@ -3724,7 +3724,7 @@ class TestEditarEquipo(TestCase):
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
         data = {
-            'nombre': 'Real Madrid F.C.',
+            'nombre': 'Real B Madrid F.C.',
             'representante': 'Florentino Pérez',
             'telefono': '+5144227654321',
             'correo': 'florentinop@realmadrid.com',
@@ -3737,10 +3737,10 @@ class TestEditarEquipo(TestCase):
         }
         form = equipoForm(form_data, file_data, team)
         #Pruebo que la forma sea correcta
-        self.assertFalse(form.is_valid())
+        self.assertTrue(form.is_valid())
         #Pruebo que se guarde el equipo
         self.client.post(reverse('equipo:editar_equipo', kwargs={'pk':1}), data)
-        self.assertEqual(Equipo.objects.get(id = 1).dia, 7)
+        self.assertEqual(Equipo.objects.get(id = 1).dia, 0)
 
     def test_dia_mayor_de_siete_equipo(self):
         team = self.equipo1()
@@ -3858,7 +3858,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:05'
         }
         file_data = {
@@ -3893,7 +3893,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '11:11'
         }
         file_data = {
@@ -3907,7 +3907,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '11:11',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -3929,7 +3929,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': ''
         }
         file_data = {
@@ -3943,7 +3943,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -3964,7 +3964,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '-12:04'
         }
         file_data = {
@@ -3978,7 +3978,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '-12:04',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -3999,7 +3999,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': 'once am'
         }
         file_data = {
@@ -4013,7 +4013,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': 'once am',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -4034,7 +4034,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '10:54 am'
         }
         file_data = {
@@ -4048,7 +4048,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '10:54 am',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -4069,7 +4069,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '27:12'
         }
         file_data = {
@@ -4083,7 +4083,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '27:12',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -4104,7 +4104,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:60'
         }
         file_data = {
@@ -4118,7 +4118,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:60',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }
@@ -4139,7 +4139,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:61'
         }
         file_data = {
@@ -4153,7 +4153,7 @@ class TestEditarEquipo(TestCase):
             'colorLocal': '1',
             'colorVisitante': '2',
             'cancha': 'Santiago Bernabéu',
-            'dia': '7',
+            'dia': '6',
             'hora': '13:61',
             'logo': SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/default.jpg', 'rb').read(), content_type='image/jpeg')
         }

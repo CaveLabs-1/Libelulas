@@ -49,7 +49,8 @@ class TestTorneoCase(TestCase):
         #Error en la forma
         form_data = {
             'nombre': 'Alejandro',
-            'categoria': '1231',
+            'categoria': '10',
+            'categoria_max': '17',
             'fecha_inicio': '1111/11-11',
             'costo': '5',
             'costo_credencial': '5',
@@ -63,7 +64,8 @@ class TestTorneoCase(TestCase):
         # Campo Faltante
         form_data = {
             'nombre': 'Alejandro',
-            'categoria': '1231',
+            'categoria': '10',
+            'categoria_max': '17',
             'fecha_inicio': '1111/11-11',
             'costo': '5',
             'costo_credencial': '5',
@@ -76,7 +78,8 @@ class TestTorneoCase(TestCase):
         # Forma Correcta
         form_data = {
             'nombre': 'Alejandro',
-            'categoria': '1231',
+            'categoria': '15',
+            'categoria_max': '17',
             'fecha_inicio': '1111-11-11',
             'costo': '5',
             'costo_credencial': '5',
@@ -118,7 +121,8 @@ class TestTorneoCase(TestCase):
         t1 = Torneo.objects.create(
             id=2,
             nombre="Torneo PRueba",
-            categoria="1995",
+            categoria="10",
+            categoria_max="17",
             fecha_inicio='2010-12-12',
             costo=int(12.12),
             fecha_junta='1995-11-11',
@@ -173,7 +177,8 @@ class TestTorneoCase(TestCase):
         t1 = Torneo.objects.create(
             id=2,
             nombre="Torneo PRueba",
-            categoria="1995",
+            categoria="10",
+            categoria_max="17",
             fecha_inicio='2010-12-12',
             costo=int(12.12),
             fecha_junta='1995-11-11',
@@ -232,7 +237,8 @@ class TestTorneoCase(TestCase):
         t1 = Torneo.objects.create(
             id=2,
             nombre="Torneo PRueba",
-            categoria="1995",
+            categoria="10",
+            categoria_max="17",
             fecha_inicio='2010-12-12',
             costo=int(12.12),
             fecha_junta='1995-11-11',
@@ -247,7 +253,8 @@ class TestTorneoCase(TestCase):
         #Forma Invalidad
         form_data = {
             'nombre': 'Ale',
-            'categoria': '1990',
+            'categoria': '10',
+            'categoria_max': '17',
             'fecha_inicio': '1111-11-11',
             'fecha_junta': '1111-11-11',
             'costo': 1,
@@ -263,7 +270,7 @@ class TestTorneoCase(TestCase):
         #Forma Incompleta
         form_data = {
             'nombre': 'Ale',
-            'categoria': '1990',
+            'categoria': '10',
             'fecha_inicio': '1111-11-11',
             'fecha_junta': '1111-11-11',
             'costo': 1,
@@ -277,7 +284,8 @@ class TestTorneoCase(TestCase):
         #Forma Correcta
         form_data = {
             'nombre': 'Ale',
-            'categoria': '1990',
+            'categoria': '10',
+            'categoria_max': '17',
             'fecha_inicio': '1111-11-11',
             'fecha_junta': '1111-11-11',
             'costo': 1,
@@ -326,7 +334,8 @@ class TestTorneoCase(TestCase):
         t1 = Torneo.objects.create(
             id=2,
             nombre="Torneo PRueba",
-            categoria="1995",
+            categoria="10",
+            categoria_max="17",
             fecha_inicio='2010-12-12',
             costo=int(12.12),
             fecha_junta='1995-11-11',
@@ -372,7 +381,8 @@ class TestTorneoCase(TestCase):
          t1=Torneo.objects.create(
              id=2,
              nombre="Torneo PRueba",
-             categoria="1995",
+             categoria="10",
+             categoria_max="17",
              fecha_inicio='2010-12-12',
              costo=int(12.12),
              fecha_junta='1995-11-11',
@@ -424,7 +434,8 @@ class EditarPartidoTest(TestCase):
         t1=Torneo.objects.create(
             id=2,
             nombre="Torneo PRueba",
-            categoria="1995",
+            categoria="10",
+            categoria_max="17",
             fecha_inicio='2010-12-12',
             costo=int(12.12),
             fecha_junta='1995-11-11',
@@ -494,7 +505,8 @@ class EditarPartidoTest(TestCase):
         t1 = Torneo.objects.create(
             id=5,
             nombre="Torneo PRueba133",
-            categoria="1995",
+            categoria="10",
+            categoria_max="17",
             fecha_inicio='2010-12-12',
             costo=int(12.12),
             fecha_junta='1995-11-11',
@@ -513,4 +525,3 @@ class EditarPartidoTest(TestCase):
         # Existe el partido
         resp2 = self.client.get('/torneo/mandar_Cedula/' + str(t1.jornada_set.all().first().partido_set.all().first()))
         self.assertTrue(resp2.status_code == 200)
-

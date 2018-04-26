@@ -1,0 +1,21 @@
+.col {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+p {
+  color: rgba(3, 27, 78, .6);
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+h1 {
+  color: #031b4e;
+  margin-bottom: 0
+}
+
+.button {
+  align-self: flex-start;
+}

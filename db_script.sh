@@ -43,64 +43,73 @@ from django.core.files.uploadedfile import SimpleUploadedFile;
 a = Jugadora.objects.create(
     nombre = 'Nombre A',
     apellido = 'Apellido A',
-    nacimientos = '1997-01-01',
+    nacimiento = '1997-01-01',
     numero = 1,
     posicion = 1,
     notas = 'Ejemplo A Jugadora',
-    imagen =  SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/jugadora1.jpg', 'rb').read(), content_type='image/jpeg')
+    imagen =  SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/jugadora1.jpg', 'rb').read(), content_type='image/jpeg'),
+    fecha_de_afiliacion = '2000-01-01',
+    num_poliza  = "5533535",
+    nui = "39329924924",
+    activo = True,
+
 
 );
 a.save();
 
 
 b = Jugadora.objects.create(
-    Nombre = 'Nombre B',
-    Apellido = 'Apellido B',
-    Nacimiento = '1997-02-01',
-    Numero = 2,
-    Posicion = 2,
-    Notas = 'Ejemplo B Jugadora',
-    Imagen =  SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/jugadora2.jpg', 'rb').read(), content_type='image/jpeg')
+    nombre = 'Nombre B',
+    apellido = 'Apellido B',
+    nacimiento = '1997-02-01',
+    numero = 12,
+    posicion = 2,
+    notas = 'Ejemplo B Jugadora',
+    imagen =  SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/jugadora2.jpg', 'rb').read(), content_type='image/jpeg'),
+    fecha_de_afiliacion = '2001-01-01',
+    num_poliza  = "5533535",
+    nui = "33334546457",
+    activo = True,
+
 
 );
 b.save();
 
 
 c = Jugadora.objects.create(
-    Nombre = 'Nombre C',
-    Apellido = 'Apellido C',
-    Nacimiento = '1997-03-01',
-    Numero = 3,
-    Posicion = 3,
-    Notas = 'Ejemplo C Jugadora',
-    Imagen =  SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/jugadora3.jpg', 'rb').read(), content_type='image/jpeg')
+    nombre = 'Nombre C',
+    apellido = 'Apellido C',
+    nacimiento = '1995-01-01',
+    numero = 4,
+    posicion = 1,
+    notas = 'Ejemplo C Jugadora',
+    imagen =  SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/jugadora3.jpg', 'rb').read(), content_type='image/jpeg'),
+    fecha_de_afiliacion = '2000-01-01',
+    num_poliza  = "5533535",
+    nui = "393299234924",
+    activo = True,
 
-);
-c.save();
-
-
-c = Jugadora.objects.create(
-    Nombre = 'Nombre C',
-    Apellido = 'Apellido C',
-    Nacimiento = '1997-03-01',
-    Numero = 3,
-    Posicion = 3,
-    Notas = 'Ejemplo C Jugadora',
-    Imagen =  SimpleUploadedFile(name='test_image.jpg', content=open(sys.path[0]+'/static/static_media/jugadora3.jpg', 'rb').read(), content_type='image/jpeg')
 
 );
 c.save();
 
 
 d = Jugadora.objects.create(
-    Nombre = 'Nombre Def',
-    Apellido = 'Apellido Def',
-    Nacimiento = '1998-03-01',
-    Numero = 4,
-    Posicion = 1,
-    Notas = 'Ejemplo Default Jugadora',
+    nombre = 'Nombre Def',
+    apellido = 'Apellido D',
+    nacimiento = '1990-01-01',
+    numero = 44,
+    posicion = 1,
+    notas = 'Ejemplo Def Jugadora',
+    fecha_de_afiliacion = '2001-01-01',
+    num_poliza  = "5533535",
+    nui = "39329924924",
+    activo = True,
+
+
 );
 d.save();
+
 
 print ('creacion Equipos*********');
 
