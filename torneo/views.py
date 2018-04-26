@@ -417,7 +417,10 @@ def asistencia_torneo(id_jugadora, id_torneo):
             if jornada.id == partido.jornada_id:
                 partidos_jugados = partidos_jugados + 1
                 break
-    porcentaje = (partidos_jugados * 100) / jornadas.count()
+    try:
+        porcentaje = (partidos_jugados * 100) / jornadas.count()
+    except (InvalidOperation,DivisionByZero):
+        porcentaje = 0
     return porcentaje
 
 #Registrar la asistencia de una jugadora en un partido
