@@ -11,7 +11,7 @@
     {% for Torneo in lista_torneos %}
     <li class="collection-item avatar fix">
       <span class="title"><a href="{% url 'torneo:detalle_torneo' Torneo.id %}">{{ Torneo.nombre }}</a></span>
-      <p>Fecha: {{ Torneo.fechaInicio }}</p>
+      <p>Fecha: {{ Torneo.fecha_inicio }}</p>
       <div class="secondary-content">
         {% if Torneo.activo %}
         <a href="#modal_torneo" class="boton-eliminar modal-trigger" data-id="{{Torneo.id}}" data-nombre="{{Torneo.nombre}}">

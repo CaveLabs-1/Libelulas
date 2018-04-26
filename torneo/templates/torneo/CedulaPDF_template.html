@@ -2,19 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-     <meta charset="utf-8">
         <title>Plan Libélula Desarrollo Integral</title>
         <!--Import Google Icon Font-->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!--Import materialize.css-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/css/materialize.min.css">
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 </head>
 
-<STYLE>
+<style>
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -36,15 +32,16 @@ table.right {
 }
 
 
-</STYLE>
-<style>
+
     table {
     border-collapse: collapse;
 }
 table, th, td {
     border: 1px solid black;
 }
-    tr:nth-child(even) {background-color: #a9a9a9;}
+
+tr:nth-child(even) {background-color: #a9a9a9;}
+
 th {
     background-color: black;
     color: white;
@@ -54,34 +51,74 @@ th {
 }
     table, h1,h2, th, tr, td, body{
         font-family: 'Roboto', sans-serif;
-        font-size: 10px;
     }
     @page {
 size: A4 portrait;
-}</style>
+}
+
+
+
+body{
+    font-size: 10px;
+}
+
+
+</style>
 <body>
-<h3>Plan Libelula Desarollo Integral</h3>
-<h3 style="text-align: center">{{ partido.equipo_local.nombre }}&nbsp;&nbsp;&nbsp;&nbsp;VS&nbsp;&nbsp;&nbsp;&nbsp;   {{ partido.equipo_visitante.nombre }}</h3>
+<h1>Plan Libélula Desarollo Integral</h1><bt></bt>
+<h2 style="text-align: center">{{ partido.equipo_local.nombre }}&nbsp;&nbsp;&nbsp;&nbsp;VS&nbsp;&nbsp;&nbsp;&nbsp;   {{ partido.equipo_visitante.nombre }}</h2><br>
 
 
 
 <div class="row">
-    <h2>Arbitro:&nbsp;&nbsp;&nbsp;&nbsp;_________________________________________________________________________________</h2>
+    <h4>Arbitro: &nbsp;&nbsp;&nbsp;&nbsp;  __________________________________</h4>
 </div>
 <div class="row">
-    <h2>Auxiliar 1: _______________________________________________________________________________</h2>
+    <h4>Auxiliar 1: __________________________________</h4>
 </div>
 <div class="row">
-    <h2>Auxiliar 2: _______________________________________________________________________________</h2>
-</div>
-<br>
-
-<div class="row">
-    <h3 style="text-align: center">Representante {{ partido.equipo_local.nombre }}: {{ partido.equipo_local.representante }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Representante {{ partido.equipo_visitante.nombre }} :   {{ partido.equipo_visitante.representante }}</h3>
+    <h4>Auxiliar 2: __________________________________</h4>
 </div>
 <br>
 
 
+
+
+<div>
+    <table  class="left" id="t1">
+            <thead>
+                <tr>
+                    <td style="text-align: left;  background-color: white">Representante  {{ partido.equipo_local.nombre}}: {{ partido.equipo_local.representante }}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;  background-color: white">Capitán: ___________________</td>
+                </tr>
+            </thead>
+
+    </table>
+
+    <table  class="left" id="t1">
+            <thead>
+                <tr>
+                    <td style="text-align: left; background-color: white">Representante  {{ partido.equipo_visitante.nombre}}: {{ partido.equipo_visitante.representante }}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;  background-color: white">Capitán: ___________________</td>
+                </tr>
+            </thead>
+
+    </table>
+
+
+
+</div>
+
+
+
+
+<br>
+<br>
+<br>
 
 <div>
  <table  class="left" id="t1">
@@ -104,8 +141,8 @@ size: A4 portrait;
                     <td>{{ jugadora.Numero }}</td>
                     <td><p>{{ jugadora.Nombre }} {{ jugadora.Apellido }}</p></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
+                    <td></td><td></td>
+
                      </tr>
                 {% endfor %}
 
@@ -120,6 +157,8 @@ size: A4 portrait;
                     <th>Goles</th>
                     <th>AM</th>
                     <th>EXP</th>
+
+
                 </tr>
             </thead>
 
@@ -152,16 +191,16 @@ size: A4 portrait;
 
 <div class="footer">
 
+        <h3>Total de Goles: &nbsp;&nbsp;&nbsp;&nbsp;{{partido.equipo_local.nombre}}:________________  VS {{partido.equipo_visitante.nombre}}________________ </h3>
+
+    <h3>Tarjeta Azul: (Fair Play):</h3>
+                <div class="col s4 align-wrapper"><br><hr></div>
+
     <h3>Cambios:</h3>
             <div class="col s4 align-wrapper"><br><hr></div>
             <div class="col s4 align-wrapper"><br><hr></div>
             <div class="col s4 align-wrapper"><br><hr></div>
-            <div class="col s4 align-wrapper"><br><hr></div>
-    <div class="col s4 align-wrapper"><br><hr></div>
-    <br>
-    <br>
-        <h3>Total de Goles: &nbsp;&nbsp;&nbsp;&nbsp;{{partido.equipo_local.nombre}}:________________  VS {{partido.equipo_visitante.nombre}}________________ </h3>
-<br><br>
+
 
     <h3>Incidentes:</h3>
             <div class="col s4 align-wrapper"><br><hr></div>

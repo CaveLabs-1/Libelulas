@@ -1,7 +1,8 @@
 let nav = document.getElementById('navbar');
 let mobileNav = document.getElementById('mobile-nav');
 window.addEventListener('scroll', function (e) {
-  if (document.documentElement.scrollTop || document.body.scrollTop > window.innerHeight) {
+  if (document.documentElement.scrollTop
+    || document.body.scrollTop > window.innerHeight) {
     mobileNav.classList.add('colored');
     mobileNav.classList.remove('transparent');
     nav.classList.add('colored');
@@ -14,6 +15,16 @@ window.addEventListener('scroll', function (e) {
   }
 });
 
+let listaGoles = document.getElementsByClassName('gol-container');
+if (listaGoles) {
+  for(let i = 0; i < listaGoles.length; i++) {
+    let el = listaGoles[i];
+    for(let j = 0; j < el.getAttribute('data-value'); j++) {
+      el.innerHTML += '<div class="gol"></div>'
+    }
+  }
+}
+
 let partidosJugados = document.getElementById('partidos');
 let golesAnotados = document.getElementById('golesAnotados');
 if (partidosJugados && golesAnotados) {
@@ -23,6 +34,7 @@ if (partidosJugados && golesAnotados) {
   golesAnotados = golesAnotados.getAttribute('data-value');
   golesAnotadosE = golesAnotados.slice(0, golesAnotados.indexOf(' '));
   golesAnotadosJ = golesAnotados.slice(golesAnotados.lastIndexOf(' ')+1);
+  golesAnotadosJ === 'None' ? (golesAnotadosJ = 0) : null;
   window.onload = function onLoad() {
     var bar = new ProgressBar.Circle('#partidos', {
       color: '#009CDE',
@@ -67,7 +79,7 @@ if (partidosJugados && golesAnotados) {
 
         var value = golesAnotadosJ;
         if (value === 0) {
-          circle.setText('');
+          circle.setText('0');
         } else {
           circle.setText(value);
         }

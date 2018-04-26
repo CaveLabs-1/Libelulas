@@ -5,11 +5,15 @@
   <h2 class="admin-title center">Registrar Cédula</h2>
 </div>
 <br>
+<div>
+  <h5 class="admin-title center">{{partido.equipo_local.nombre}} {{partido.goles_local}} - {{partido.goles_visitante}} {{partido.equipo_visitante.nombre}}</h5>
+</div>
+<br>
 <div class="container">
   <div class="row">
     <div class="col s12 l5 input-field">
       <select id="evento">
-        <option value="" disabled selected>Seleccione..</option>
+        <option value="" disabled selected>Seleccione ...</option>
         <option value="1">Gol</option>
         <option value="2">Tarjeta Amarilla</option>
         <option value="3">Tarjeta Roja</option>
@@ -19,9 +23,9 @@
     </div>
     <div class="col s12 l5 input-field">
       <select id="jugadora">
-        <option value="" disabled selected>Seleccione..</option>
+        <option value="" disabled selected>Seleccione ...</option>
         {% for asistencia in asistencias %}
-          <option value="{{asistencia.jugadora.id}}">{{asistencia.jugadora.Nombre}} {{asistencia.jugadora.Apellido}}</option>
+          <option value="{{asistencia.jugadora.id}}">{{partido.equipo_local.nombre}}: {{asistencia.jugadora.numero}}:  {{asistencia.jugadora.nombre}} {{asistencia.jugadora.apellido}}</option>
         {% endfor %}
       </select>
       <label>Jugadora</label>
@@ -33,7 +37,15 @@
   </div>
   <div class="col s12">
     <div class="container-button">
-      <button onclick="agregar_evento()" class="submit">Guardar</button>
+    {% if user.is_authenticated %}
+        <a href="{% url 'torneo:lista_torneos' %}" class="cancel back">Terminar</a>
+
+
+        {% else %}
+        <a href="{% url 'landing:detalle_partido' torneo.id partido.id%}" class="cancel back">Terminar</a>
+
+        {% endif %}
+      <button onclick="agregar_evento()" class="submit">Agregar</button>
     </div>
   </div>
 </div>
@@ -84,9 +96,14 @@
                 cantidad:cantidad
             })
             .done(function( data ) {
-                $('#eventos').html(data);
+              if(data['estatus'] == 'OK'){
+                $('#eventos').html(data['html']);
                 $('#cantidad').val(0);
                 $('select').formSelect();
+              }
+              else{
+                location.reload();
+              }
             });
 
             return false;

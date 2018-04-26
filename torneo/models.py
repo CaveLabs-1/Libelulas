@@ -13,16 +13,17 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Torneo(models.Model):
     nombre = models.CharField(max_length=100, verbose_name="Nombre del Torneo")
     categoria = models.IntegerField(verbose_name="Edad (Años) desde:", default=0, validators=[ MaxValueValidator(100), MinValueValidator(0)])
-    categoriaMax = models.IntegerField(verbose_name="Edad (Años) hasta:", default=0,validators=[ MaxValueValidator(100),MinValueValidator(0)] )
-    fechaInicio = models.DateField(verbose_name="Fecha Inicio")
+    categoria_max = models.IntegerField(verbose_name="Edad (Años) hasta:", default=0,validators=[ MaxValueValidator(100),MinValueValidator(0)] )
+    fecha_inicio = models.DateField(verbose_name="Fecha Inicio")
     anexo = models.FileField(upload_to='media/torneo', blank=True, null=True, verbose_name="Documento Anexo")
     costo = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Costo Inscripcion", validators=[MinValueValidator(0)])
-    costoCredencial = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Costo de Credencial", validators=[MinValueValidator(0)])
-    equipos = models.ManyToManyField(Equipo ,through='Estadisticas')
+    costo_credencial = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Costo de Credencial", validators=[MinValueValidator(0)])
+    equipos = models.ManyToManyField(Equipo ,blank=True ,through='Estadisticas')
     activo = models.BooleanField(default = True)
     ganador = models.BooleanField(default = False)
-    fechaJunta = models.DateField(verbose_name="Fecha de la siguiente junta")
+    fecha_junta = models.DateField(verbose_name="Fecha de la siguiente junta")
 
+    #Eliminar el archivo anexo
     def delete(self):
         if self.anexo:
             if os.path.isfile(self.anexo.path):
@@ -30,7 +31,7 @@ class Torneo(models.Model):
         super().delete()
 
     def unDiaAntesJunta(self):
-        return self.fechaJunta - timedelta(days=1)
+        return self.fecha_junta - timedelta(days=1)
 
 class Estadisticas(models.Model):
     torneo = models.ForeignKey(Torneo, on_delete = models.CASCADE)
@@ -70,12 +71,12 @@ class Partido(models.Model):
     def __str__(self):
         return str(self.id)
 
-class Tarjetas_amarillas(models.Model):
+class TarjetasAmarillas(models.Model):
     partido = models.ForeignKey(Partido, on_delete = models.CASCADE)
     jugadora = models.ForeignKey(Jugadora, on_delete = models.CASCADE)
     cantidad = models.IntegerField(default = 0)
 
-class Tarjetas_rojas(models.Model):
+class TarjetasRojas(models.Model):
     partido = models.ForeignKey(Partido, on_delete = models.CASCADE)
     jugadora = models.ForeignKey(Jugadora, on_delete = models.CASCADE)
     directa = models.BooleanField(default=False)

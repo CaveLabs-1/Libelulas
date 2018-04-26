@@ -10,35 +10,35 @@ class jugadoraForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(jugadoraForm, self).__init__(*args, **kwargs)
-        self.fields['Imagen'].widget.attrs['class'] = 'inputfile'
-        self.fields['Nacimiento'].widget.input_type = 'date'
-        self.fields['Numero'].widget.attrs['min'] = '0'
-        self.fields['Numero'].widget.attrs['max'] = '1000'
-        self.fields['Imagen'].widget.attrs['onchange'] = 'loadFile(event)'
+        self.fields['imagen'].widget.attrs['class'] = 'inputfile'
+        self.fields['nacimiento'].widget.input_type = 'date'
+        self.fields['numero'].widget.attrs['min'] = '0'
+        self.fields['numero'].widget.attrs['max'] = '1000'
+        self.fields['imagen'].widget.attrs['onchange'] = 'loadFile(event)'
         self.fields['equipo'].required = False
-        self.fields['Nacimiento'].widget.attrs['class'] = 'datepicker'
+        self.fields['nacimiento'].widget.attrs['class'] = 'datepicker'
 
     class Meta:
         model = Jugadora
-        fields = ('Nombre', 'Apellido', 'Nacimiento', 'Numero', 'Posicion', 'NumPoliza', 'NUI', 'Notas', 'Imagen')
+        fields = ('nombre', 'apellido', 'nacimiento', 'numero', 'posicion', 'num_poliza', 'nui', 'notas', 'imagen')
         widgets = {
-            'Imagen': forms.FileInput(),
+            'imagen': forms.FileInput(),
         }
 
 class jugadoraEquipoForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(jugadoraEquipoForm, self).__init__(*args, **kwargs)
-        self.fields['Imagen'].widget.attrs['class'] = 'inputfile'
-        self.fields['Nacimiento'].widget.input_type = 'date'
-        self.fields['Numero'].widget.attrs['min'] = '0'
-        self.fields['Numero'].widget.attrs['max'] = '1000'
-        self.fields['Imagen'].widget.attrs['onchange'] = 'loadFile(event)'
-        self.fields['Nacimiento'].widget.attrs['class'] = 'datepicker'
+        self.fields['imagen'].widget.attrs['class'] = 'inputfile'
+        self.fields['nacimiento'].widget.input_type = 'date'
+        self.fields['numero'].widget.attrs['min'] = '0'
+        self.fields['numero'].widget.attrs['max'] = '1000'
+        self.fields['imagen'].widget.attrs['onchange'] = 'loadFile(event)'
+        self.fields['nacimiento'].widget.attrs['class'] = 'datepicker'
 
     class Meta:
         model = Jugadora
-        fields = ('Nombre', 'Apellido', 'Nacimiento', 'Numero', 'Posicion', 'NumPoliza', 'NUI', 'Notas', 'Imagen')
+        fields = ('nombre', 'apellido', 'nacimiento', 'numero', 'posicion', 'num_poliza', 'nui', 'notas', 'imagen')
         widgets = {
-            'Imagen': forms.FileInput(),
+            'imagen': forms.FileInput(),
         }

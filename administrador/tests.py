@@ -7,6 +7,11 @@ from jugadora.models import Jugadora
 from coaches.models import PreRegistro
 
 class UserTestCase(TestCase):
+    def setUp(self):
+        usuario1 = User.objects.create_user(username='testuser3', password='12345',is_superuser=True)
+        usuario1.save()
+        login = self.client.login(username='testuser3', password='12345')
+
     def test_create_user_correct_username(self):
         self.client.post('/administrador/agregar_administrador/', {"first_name": "Carlos", "username": "croman", "email":"carlosromanrivera@hotmail.com"})
         self.assertEqual(User.objects.last().username, "croman")
@@ -37,7 +42,7 @@ class UserTestCase(TestCase):
         self.client.post('/administrador/agregar_administrador/', {"first_name": "", "username": "croman", "email":"carlosromanrivera@hotmail.com"})
         self.assertEqual(User.objects.last().check_password("temporal"), True)
 
-    def test_PreRegistro(self):
+    def test_pre_registro(self):
 
         usuario1 = User.objects.create_user(username='testuser2', password='12345', is_superuser=True)
         usuario1.save()
@@ -47,23 +52,23 @@ class UserTestCase(TestCase):
             id=2,
             nombre="Torneo PRueba",
             categoria="1995",
-            fechaInicio='2010-12-12',
+            fecha_inicio='2010-12-12',
             costo=int(12.12),
-            fechaJunta='1995-11-11',
-            costoCredencial=12
+            fecha_junta='1995-11-11',
+            costo_credencial=12
         )
 
         a =PreRegistro.objects.create(
-            Nombre="Ale",
-            Correo="Notas",
-            Notas="Aqui va las notas",
+            nombre="Ale",
+            correo="Notas",
+            notas="Aqui va las notas",
             torneo=t1
         )
 
         b = PreRegistro.objects.create(
-            Nombre="Ale",
-            Correo="gmail",
-            Notas="Aqui va las notas",
+            nombre="Ale",
+            correo="gmail",
+            notas="Aqui va las notas",
             torneo=t1
         )
 
@@ -109,11 +114,11 @@ class ValidarPreRegistroEquipoCase(TestCase):
             id=2,
             nombre="Torneo PRueba",
             categoria="1995",
-            categoriaMax="1997",
-            fechaInicio='2010-12-12',
+            categoria_max="1997",
+            fecha_inicio='2010-12-12',
             costo=int(12.12),
-            fechaJunta='1995-11-11',
-            costoCredencial=12,
+            fecha_junta='1995-11-11',
+            costo_credencial=12,
             activo=True
         )
         t1.save()
@@ -144,12 +149,12 @@ class ValidarPreRegistroEquipoCase(TestCase):
         a.save()
         d = Jugadora.objects.create(
             id = 1,
-            Nombre = 'Nombre Def',
-            Apellido = 'Apellido Def',
-            Nacimiento = '1998-03-01',
-            Numero = 4,
-            Posicion = 1,
-            Notas = 'Ejemplo Default Jugadora',
+            nombre = 'Nombre Def',
+            apellido = 'Apellido Def',
+            nacimiento = '1998-03-01',
+            numero = 4,
+            posicion = 1,
+            notas = 'Ejemplo Default Jugadora',
             activo = False
         );
         d.save();

@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/css/materialize.min.css">
+  <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}" />
+  <link rel="stylesheet" href="{% static 'css/landing.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/error.css' %}" />
+  <title>503</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="content flex">
+      <div class="col">
+        <h1>503</h1>
+        <p>Lo sentimos el servidor no puede responder tu petición.</p>
+        <a href="/">
+          <div class="secondary-button button">
+            Regresar al inicio
+          </div>
+        </a>
+      </div>
+      <div class="col" id="bodymovin" data-value="{% static 'static_media/warning.json' %}">
+      </div>
+    </div>
+  </div>
+  <script src="{% static '/js/lottie.js' %}"></script>
+  <script>
+    var animation = bodymovin.loadAnimation({
+      container: document.getElementById('bodymovin'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: '/static/static_media/warning.json'
+    })
+  </script>
+</body>
+</html>
