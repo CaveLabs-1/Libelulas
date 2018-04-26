@@ -277,10 +277,11 @@ def registrar_cedula(request, id_torneo, id_partido):
             messages.success(request, 'Cédula registrada exitosamente.')
             # Obtener estadísticas del equipo local.
             equipo_local = update.equipo_local
-            estadisticas_local = Estadisticas.objects.get(torneo=id_torneo, equipo=equipo_local)
+            torneo = get_object_or_404(Torneo, id=id_torneo)
+            estadisticas_local = Estadisticas.objects.get(torneo=torneo, equipo=equipo_local)
             # Obtener estadísticas del equipo visitante.
             equipo_visitante = update.equipo_visitante
-            estadisticas_visitante = Estadisticas.objects.get(torneo=id_torneo, equipo=equipo_visitante)
+            estadisticas_visitante = Estadisticas.objects.get(torneo=torneo, equipo=equipo_visitante)
             # Si es actualización, primero elimina las estadísticas registradas previamente.
             if update.registrado == True:
                 estadisticas_local.goles_favor = estadisticas_local.goles_favor - goles_local_anterior
