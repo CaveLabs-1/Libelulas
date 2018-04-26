@@ -119,8 +119,7 @@ def detalle_partido(request, id_torneo, id_partido):
                                                     'goles_local': goles_local,
                                                     'goles_visitante': goles_visitante,
                                                     'tarjetas_azul_local': tarjetas_azul_local,
-                                                    'tarjetas_azul_visitante': tarjetas_azul_visitante,
-                                                     })
+                                                    'tarjetas_azul_visitante': tarjetas_azul_visitante})
 
 def ver_torneos(request):
     torneos = Torneo.objects.all().order_by("-fecha_inicio")

@@ -36,50 +36,59 @@
         <h6>{{equipo_local.nombre}}</h6>
       </div>
       <ul class="collection">
-        {% for jugadora in jugadoras_local %}
-        <a href="#" class="collection-item">
-          <div class="item-container flex">
-            <strong class="num">{{jugadora.numero}}</strong>
-            <div class="nombre">
-              <span class="nombre">{{jugadora.nombre}} {{jugadora.apellido}}</span>
-            </div>
-            <span class="pos">{{jugadora.get_posicion_display|slice:":3"}}</span>
-            <div class="icons">
-              {% for tr in tarjetas_rojas_local %}
-                {% if jugadora.id == tr.jugadora_id %}
-                  <div class="tarjeta tr"></div>
+        {% if jugadoras_local %}
+          {% for jugadora in jugadoras_local %}
+          <a href="#" class="collection-item">
+            <div class="item-container flex">
+              <strong class="num">{{jugadora.numero}}</strong>
+              <div class="nombre">
+                <span class="nombre">{{jugadora.nombre}} {{jugadora.apellido}}</span>
+              </div>
+              <span class="pos">{{jugadora.get_posicion_display|slice:":3"}}</span>
+              <div class="icons">
+                {% if tarjetas_rojas_local %}
+                  {% for tr in tarjetas_rojas_local %}
+                    {% if jugadora.id == tr.jugadora_id %}
+                      <div class="tarjeta tr"></div>
+                    {% endif %}
+                  {% endfor %}
                 {% endif %}
-              {% endfor %}
-              {% for tam in tarjetas_amarillas_local %}
-                {% if jugadora.id == tam.jugadora_id %}
-                <div class="tarjeta tam">
-                  {% if tam.cantidad > 1 %}
-                  {{tam.cantidad}}
+                {% if tarjetas_amarillas_local %}
+                {% for tam in tarjetas_amarillas_local %}
+                  {% if jugadora.id == tam.jugadora_id %}
+                  <div class="tarjeta tam">
+                    {% if tam.cantidad > 1 %}
+                    {{tam.cantidad}}
+                    {% endif %}
+                  </div>
                   {% endif %}
-                </div>
-                {% endif %}
-              {% endfor %}
-              {% for gol in goles_local %}
-                {% if jugadora.id == gol.jugadora_id %}
-                {% for g in gol.cantidad %}
-                  <div class="gol-container" data-value="{{gol.cantidad}}"></div>
                 {% endfor %}
                 {% endif %}
-              {% endfor %}
-              {% for ta in tarjetas_azul_local %}
-                {% if jugadora.id == ta.jugadora_id %}
-                <div class="tarjeta ta"></div>
+                {% if goles_local %}
+                {% for gol in goles_local %}
+                  {% if jugadora.id == gol.jugadora_id %}
+                    <div class="gol-container" data-value="{{gol.cantidad}}"></div>
+                  {% endif %}
+                {% endfor %}
                 {% endif %}
-              {% endfor %}
+                {% if tarjetas_azul_local %}
+                {% for ta in tarjetas_azul_local %}
+                  {% if jugadora.id == ta.jugadora_id %}
+                  <div class="tarjeta ta"></div>
+                  {% endif %}
+                {% endfor %}
+                {% endif %}
+              </div>
             </div>
-          </div>
-        </a>
-        {% endfor %}
+          </a>
+          {% endfor %}
+        {% endif %}
       </ul>
     </div>
     <div class="center-container">
       <div class="field">
         <div class="field-row portero">
+          {% if jugadoras_local %}
           {% for jugadora in jugadoras_local %}
             {% if jugadora.posicion == 4 %}
             <div class="shirt shirt-local">
@@ -87,8 +96,10 @@
             </div>
             {% endif %}
           {% endfor %}
+          {% endif %}
         </div>
         <div class="field-row defensa">
+          {% if jugadoras_local %}
           {% for jugadora in jugadoras_local %}
             {% if jugadora.posicion == 3 %}
             <div class="shirt shirt-local">
@@ -96,8 +107,10 @@
             </div>
             {% endif %}
           {% endfor %}
+          {% endif %}
         </div>
         <div class="field-row medio">
+          {% if jugadoras_local %}
           {% for jugadora in jugadoras_local %}
             {% if jugadora.posicion == 2 %}
             <div class="shirt shirt-local">
@@ -105,8 +118,10 @@
             </div>
             {% endif %}
           {% endfor %}
+          {% endif %}
         </div>
         <div class="field-row delantero">
+          {% if jugadoras_local %}
           {% for jugadora in jugadoras_local %}
             {% if jugadora.posicion == 1 %}
             <div class="shirt shirt-local">
@@ -114,8 +129,10 @@
             </div>
             {% endif %}
           {% endfor %}
+          {% endif %}
         </div>
         <div class="field-row delantero">
+          {% if jugadoras_visitante %}
           {% for jugadora in jugadoras_visitante %}
             {% if jugadora.posicion == 1 %}
             <div class="shirt shirt-visitante">
@@ -123,8 +140,10 @@
             </div>
             {% endif %}
           {% endfor %}
+          {% endif %}
         </div>
         <div class="field-row medio">
+          {% if jugadoras_visitante %}
           {% for jugadora in jugadoras_visitante %}
             {% if jugadora.posicion == 2 %}
             <div class="shirt shirt-visitante">
@@ -132,8 +151,10 @@
             </div>
             {% endif %}
           {% endfor %}
+          {% endif %}
         </div>
         <div class="field-row defensa">
+          {% if jugadoras_visitante %}
           {% for jugadora in jugadoras_visitante %}
             {% if jugadora.posicion == 3 %}
             <div class="shirt shirt-visitante">
@@ -141,8 +162,10 @@
             </div>
             {% endif %}
           {% endfor %}
+          {% endif %}
         </div>
         <div class="field-row portero">
+          {% if jugadoras_visitante %}
           {% for jugadora in jugadoras_visitante %}
             {% if jugadora.posicion == 4 %}
             <div class="shirt shirt-visitante">
@@ -150,6 +173,7 @@
             </div>
             {% endif %}
           {% endfor %}
+          {% endif %}
         </div>
       </div>
       <div class="informacion">
@@ -162,6 +186,7 @@
         <h6>{{equipo_visitante.nombre}}</h6>
       </div>
       <ul class="collection">
+        {% if jugadoras_visitante %}
         {% for jugadora in jugadoras_visitante %}
         <a href="#" class="collection-item">
           <div class="item-container flex">
@@ -171,30 +196,39 @@
             </div>
             <span class="pos">{{jugadora.get_posicion_display|slice:":3"}}</span>
             <div class="icons">
+              {% if tarjetas_rojas_visitante %}
               {% for tr in tarjetas_rojas_visitante %}
                 {% if jugadora.id == tr.jugadora_id %}
                   <div class="tarjeta tr"></div>
                 {% endif %}
               {% endfor %}
+              {% endif %}
+              {% if tarjetas_amarillas_visitante %}
               {% for tam in tarjetas_amarillas_visitante %}
                 {% if jugadora.id == tam.jugadora_id %}
                 <div class="tarjeta tam"></div>
                 {% endif %}
               {% endfor %}
+              {% endif %}
+              {% if goles_visitante %}
               {% for gol in goles_visitante %}
                 {% if jugadora.id == gol.jugadora_id %}
                   <div class="gol-container" data-value="{{gol.cantidad}}"></div>
                 {% endif %}
               {% endfor %}
+              {% endif %}
+              {% if tarjetas_azul_visitante %}
               {% for ta in tarjetas_azul_visitante %}
                 {% if jugadora.id == ta.jugadora_id %}
                 <div class="tarjeta ta"></div>
                 {% endif %}
               {% endfor %}
+              {% endif %}
             </div>
           </div>
         </a>
         {% endfor %}
+        {% endif %}
       </ul>
     </div>
   </div>
