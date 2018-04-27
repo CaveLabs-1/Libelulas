@@ -33,9 +33,13 @@
     <span>Cancha: {{partido.cancha}}</span>
     </br>
     </br>
-    <a href='{% url "torneo:editar_partido" partido.id %}' class="flex align-center justify-center icons-registro"><i class="material-icons icon-blue">mode_edit</i>Editar Fecha</a>
+    <a href='{% url "torneo:editar_partido" partido.id %}' class="flex align-center justify-center icons-registro">
+        <i class="material-icons icon-blue">mode_edit</i>Editar Fecha
+    </a>
     </br>
-    <a href='{% url "torneo:mandar_cedula" partido.id %}' class="flex align-center justify-center icons-registro"><i class="material-icons icon-blue">print</i>Cédula</a>
+    <a href='{% url "torneo:mandar_cedula" partido.id %}' class="flex align-center justify-center icons-registro">
+        <i class="material-icons icon-blue">print</i>Cédula
+    </a>
     </br>
     <a href='{% url "torneo:registrar_cedula" jornada.id partido.id %}' class="flex justify-center">EDITAR CÉDULA</a>
   </div>

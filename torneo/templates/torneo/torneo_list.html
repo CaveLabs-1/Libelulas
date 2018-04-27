@@ -14,10 +14,12 @@
       <p>Fecha: {{ Torneo.fecha_inicio }}</p>
       <div class="secondary-content">
         {% if Torneo.activo %}
-        <a href="#modal_torneo" class="boton-eliminar modal-trigger" data-id="{{Torneo.id}}" data-nombre="{{Torneo.nombre}}">
+        <a href="#modal_torneo" class="boton-eliminar modal-trigger" data-id="{{Torneo.id}}"
+           data-nombre="{{Torneo.nombre}}">
           <i class="medium material-icons icon-orange">delete</i>
         </a>
-        <a class="modal-trigger boton-cerrar" href="#modal_torneo" data-id="{{Torneo.id}}" data-nombre="{{Torneo.nombre}}">
+        <a class="modal-trigger boton-cerrar" href="#modal_torneo" data-id="{{Torneo.id}}"
+           data-nombre="{{Torneo.nombre}}">
            <i class="medium material-icons icon-green">done_all</i>
          </a>
         <a href="{% url 'torneo:editar_torneo' Torneo.id %}">
@@ -69,7 +71,8 @@
             var id = $(this).attr("data-id") ;
             var nombre = $(this).attr("data-nombre") ;
             $(".modal-content").html("<h4>¿Desea eliminar el torneo <strong>" + nombre + "</strong>?</h4>") ;
-            var botones = '<a href="#cancelar" class="modal-action modal-close cancel cancel-delete">Cancelar</a>  <a href="eliminar/' + id + '" class="modal-action modal-close delete-color confirmar-eliminar">Aceptar</a>' ;
+            var botones = '<a href="#cancelar" class="modal-action modal-close cancel cancel-delete">Cancelar</a>  ' +
+                '<a href="eliminar/' + id + '" class="modal-action modal-close delete-color confirmar-eliminar">Aceptar</a>' ;
             $(".modal-footer").html(botones) ;
         });
 
@@ -77,7 +80,8 @@
             var id = $(this).attr("data-id") ;
             var nombre = $(this).attr("data-nombre") ;
             $(".modal-content").html("<h4>¿Desea cerrar el registro del torneo <strong>" + nombre + "</strong>?</h4>") ;
-            var botones = '<a href="#cancelar" class="modal-action modal-close cancel cancel-delete">Cancelar</a>  <a href="cerrar_registro/' + id + '" class="modal-action modal-close delete-color confirmar-eliminar">Aceptar</a>' ;
+            var botones = '<a href="#cancelar" class="modal-action modal-close cancel cancel-delete">Cancelar</a>  ' +
+                '<a href="cerrar_registro/' + id + '" class="modal-action modal-close delete-color confirmar-eliminar">Aceptar</a>' ;
             $(".modal-footer").html(botones) ;
         });
     </script>

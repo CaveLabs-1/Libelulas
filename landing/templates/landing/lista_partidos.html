@@ -22,7 +22,9 @@
       <span>Cancha: {{partido.cancha}}</span>
       <br>
       {% if partido.fecha < datetime %}
-      <a href="{% url 'landing:detalle_partido' jornada.torneo.id partido %}"><div class="button secondary-button">Ver Mas</div></a>
+      <a href="{% url 'landing:detalle_partido' jornada.torneo.id partido %}">
+          <div class="button secondary-button">Ver Mas</div>
+      </a>
       {% endif %}
       <br>
     </div>

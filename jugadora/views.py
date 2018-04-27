@@ -9,9 +9,9 @@ from equipo.models import Equipo
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
 
-# Create your views here.
 
 
+#Desplegar forma para agregar jugadora
 def agregar_jugadora(request, equipo_id=''):
     lista_equipo = ''
 
@@ -36,6 +36,7 @@ def agregar_jugadora(request, equipo_id=''):
     return render(request, 'jugadora/agregar_jugadora.html', {'form': form, 'lista_equipo':lista_equipo, 'equipo':equipo_id})
 
 
+#Desplegar forma para editar jugadora
 def editar_jugadora(request, jugadora_id):
     instance = get_object_or_404(Jugadora, id=jugadora_id)
     try:
@@ -65,11 +66,13 @@ def editar_jugadora(request, jugadora_id):
     return render(request, 'jugadora/editar_jugadora.html', {'form': form, 'jugadora': instance })
 
 
+#Desplegar lista de jugadoras activas
 def ver_jugadoras(request):
     jugadoras = Jugadora.objects.filter(activo=True)
     return render(request, 'jugadora/ver_jugadoras.html', {'jugadoras': jugadoras})
 
 
+#Eliminar una jugadora
 class eliminar_jugadora(DeleteView):
     model = Jugadora
 
@@ -84,6 +87,7 @@ class eliminar_jugadora(DeleteView):
         return super(eliminar_jugadora, self).delete(request, *args, **kwargs)
 
 
+#Desplegar detalles de una jugadora
 def detalle_jugadora(request, pk):
     jugadora = get_object_or_404(Jugadora, pk=pk)
     EquipoNombre = 'No pertenece a ningún equipo'

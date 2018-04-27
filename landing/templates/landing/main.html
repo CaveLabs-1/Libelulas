@@ -11,7 +11,7 @@
     <div class="text">
       <h1>PLAN LIBÉLULA DESARROLLO INTEGRAL</h1>
       <h6>PLIDI es una estrategia pensada para el desarrollo
-        de la mujer brindándoles herramientas como la
+        de la mujer, brindándoles herramientas como la
         educación emocional, la disciplina del deporte y los
         hábitos de cuidar su alimentación.</h6>
         <div class="cta-container">
@@ -23,8 +23,10 @@
   </div>
 </div>
 <div class="content">
+
  <div class="container">
-   <h2>Próximos juegos</h2>
+   {% if partidos %}
+     <h2>Próximos juegos</h2>
    <div class="card-container">
        {% for p in partidos %}
      <div class="card match">
@@ -45,33 +47,47 @@
      </div>
         {% endfor %}
    </div>
+
    <div class="cta-container">
      <div class="button secondary-button"><a href="{% url 'landing:ver_torneos' %}">Ver todos los torneos</a></div>
    </div>
+ {% endif %}
    <div class="mision-vision">
      <div class="column">
        <div class="container">
          <img class="icon" src="{% static 'static_media/mission.svg' %}" alt="mission-icon" />
          <h4>Misión</h4>
-         <p>Enseñar y guiar a niñas y/o jóvencitas a manejar sus emociones y capacidades con el objetivo de modificar y crear una nueva generación que lleve a la sociedad mexicana a un nuevo nivel.</p>
+         <p>Enseñar y guiar a niñas y/o jovencitas a manejar sus emociones y capacidades con el objetivo de modificar y crear una nueva generación que lleve a la sociedad mexicana a un nuevo nivel.</p>
        </div>
      </div>
      <div class="column">
        <div class="container">
          <img class="icon vision" src="{% static 'static_media/star.svg' %}" alt="vision-icon" />
          <h4>Visión</h4>
-         <p>Formar niñas y/o jovencitas que generen acciones trascendentes en el desarrollo social y/o deportivo, la confianza en sí misma, el valor de la palabra, el compromiso, la honestidad y la ayuda al prójimo</p>
+         <p>Formar niñas y/o jovencitas que generen acciones trascendentes en el desarrollo social y deportivo, la confianza en sí misma, el valor de la palabra, el compromiso, la honestidad y la ayuda al prójimo.</p>
        </div>
      </div>
    </div>
    <div class="centered-text">
-     <h3>Beneficios de estar afiliado a FEmexFut</h3>
-     <p>El principal beneficio que ofrece la Femexfut al estar afiliados los o las futbolistas es jugar protegidos en cuanto a las lesiones que se pudieran dar en los partidos de fútbol, también tener participación en eliminatorias estatales para poder representar al estado en campeonatos nacionales donde al ganar este derecho se les proporciona hospedaje y alimentación. También cuentan con el registro en la pagina de la Femexfut donde aparece liga - equipo y jugador. Hay un apartado en donde se encuentran todos los datos del jugador o jugadora.</p>
-     <div class="button secondary-button">
-       <a href="{% static 'static_media/Beneficios.pdf' %}" target="_blank">
+     <h3>Beneficios de estar afiliado a FemexFut</h3>
+
+       <p>Plan Libélula tiene el compromiso con el deporte queretano, por lo anterior, la Liga de Futbol Libélulas Femenil se ha formalizado ante la Asociación de Futbol del Estado de Querétaro y la Federación Mexicana de Fútbol.
+
+La afiliación de jugadoras las hace partícipes de la comunidad del Fútbol en el sector amateur y su participación es regulada bajo estos organismos.
+
+Pertenecer a estos organismos permite registrar el seguimiento de participación en los diferentes eventos estatales, regionales y nacionales así como el respaldo y la cobertura de un seguro de gastos médicos.</p>
+       <div class="flex button-container">
+       <div class="button secondary-button">
+       <a href="{% static 'static_media/carta.jpg' %}" target="_blank">
          Ver documento oficial
        </a>
      </div>
+     <div class="button secondary-button">
+       <a href="http://amateur.femexfut.org.mx/#/FutbolentuEstado/" target="_blank">
+         Visitar página Femexfut
+       </a>
+     </div>
+    </div>
    </div>
  </div>
 </div>
