@@ -12,7 +12,7 @@
     </thead>
     {% for gol in goles %}
     <tr>
-      <td>{{ gol.jugadora }}</td>
+      <td>{{ gol.jugadora.nombre }}</td>
       <td>{{ gol.cantidad }}</td>
       <td>
         <a href="#" data-target="delete" data-form="" class="delete-button">
@@ -39,7 +39,7 @@
     </thead>
     {% for tarjeta in amarillas %}
     <tr>
-      <td>{{ tarjeta.jugadora }}</td>
+      <td>{{ tarjeta.jugadora.nombre }}</td>
       <td>{{ tarjeta.cantidad }}</td>
       <td>
         <a href="#" data-target="delete" data-form="" class="delete-button">
@@ -66,7 +66,7 @@
     </thead>
     {% for tarjeta in rojas %}
     <tr>
-      <td>{{ tarjeta.jugadora }}</td>
+      <td>{{ tarjeta.jugadora.nombre }}</td>
       <td>
         {% if tarjeta.directa %}
           Sí
@@ -98,7 +98,7 @@
     </thead>
     {% for tarjeta in azules %}
     <tr>
-      <td>{{ tarjeta.jugadora }}</td>
+      <td>{{ tarjeta.jugadora.nombre }}</td>
       <td>
         <a href="#" data-target="delete" data-form="" class="delete-button" onclick="elimina_evento({{tarjeta.id}},4)">
           <i class="small material-icons icon-orange">delete</i>
