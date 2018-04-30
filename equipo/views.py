@@ -13,7 +13,7 @@ from jugadora.models import Jugadora
 
 # Create your views here.
 
-
+#Desplegar la forma para registrar un equipo
 def agregar_equipo(request):
     if request.method == "POST":
         form = equipoForm(request.POST, request.FILES)
@@ -29,6 +29,7 @@ def agregar_equipo(request):
     return render(request, 'equipo/agregar_equipo.html', {'form': form})
 
 
+#Desplegar lista de equipos
 class lista_equipos(ListView):
     model = Equipo
     queryset = Equipo.objects.filter(activo=True)
@@ -37,12 +38,13 @@ class lista_equipos(ListView):
         context = super().get_context_data(**kwargs)
         return context
 
-
+#Desplegar los detalles de un equipo
 def detalle_equipo(request, equipo_id):
     equipo = get_object_or_404(Equipo, pk=equipo_id)
     jugadoras_equipo = Equipo.objects.get(id=equipo_id).jugadoras.filter(activo=True)
     return render(request, 'equipo/equipo_detail.html', {'equipo': equipo, 'jugadoras_equipo': jugadoras_equipo })
 
+#Desplegar la forma para editar un equipo
 def editar_equipo(request, pk):
     instance = get_object_or_404(Equipo, id=pk)
     form = equipoForm(instance=instance)
@@ -58,6 +60,8 @@ def editar_equipo(request, pk):
     return render(request, 'equipo/equipo_update.html', {'form': form, 'equipo' : instance})
 
 
+
+#Eliminar un equipo
 class borrar_equipo(DeleteView):
     model = Equipo
 
@@ -67,6 +71,7 @@ class borrar_equipo(DeleteView):
     success_url = reverse_lazy('equipo:lista_equipos')
 
 
+#Eliminar una jugadora
 def eliminar_jugadora(request, equipo_id, idJugadora):
     j = Jugadora.objects.get(id=idJugadora)
     Equipo.objects.get(id=equipo_id).jugadoras.remove(j)
@@ -74,5 +79,6 @@ def eliminar_jugadora(request, equipo_id, idJugadora):
     return HttpResponseRedirect(reverse_lazy('equipo:lista_equipos'))
 
 
+#Desplegar pagina de inicio
 def welcome(request):
     return render(request, 'equipo/welcome.html')

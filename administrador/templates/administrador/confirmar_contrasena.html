@@ -8,7 +8,8 @@
         <div class="container">
             <div class="row">
                 <div class="input-field col s12 m6 l6">
-                    <input type="password" name="{{form.password.html_name}}" id="{{form.password.id_for_label}}" class="validate" required>
+                    <input type="password" name="{{form.password.html_name}}" id="{{form.password.id_for_label}}"
+                           class="validate" required>
                     <label for="{{form.password.id_for_label}}">Contraseña:</label>
                     {{form.password.errors}}
                 </div>
@@ -20,7 +21,8 @@
             </div>
             <div id="botones" class="row">
                 <div id="regresar" class="col s6 m6 l6 center">
-                    <a href="{% url 'administrador:editar_administrador' administrador.id %}"><button class="cancel" type="button">Cancelar</button></a>
+                    <a href="{% url 'administrador:editar_administrador' administrador.id %}">
+                        <button class="cancel" type="button">Cancelar</button></a>
                 </div>
                 <div id="enviar" class="col s6 m6 l6 center">
                     <button id="enviar_forma" class="submit" type="submit">Enviar</button>

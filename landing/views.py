@@ -12,30 +12,34 @@ import datetime
 from datetime import date
 
 
-# Create your views here.
 
 from torneo.models import Torneo
 
 
-# Create your views here.
 
+#Visualiza lista de torneos
 def verTorneos (request):
     torneos= Torneo.objects.filter(activo=True)
     return render(request,'landing/torneos.html',{'torneos':torneos})
 
+#Visualizar organizadores
 def ver_organizadores(request):
     return render(request, 'landing/organizadores.html')
 
+#Visualizar lista de equipos
 def ver_equipos(request):
     equipos = Equipo.objects.all().filter(activo=True)
     return render(request, 'landing/lista_equipos.html', {'equipos': equipos})
 
+#Visualizar sección social
 def social(request):
     return render(request, 'landing/social.html')
 
+#Visualizar galeria
 def galeria(request):
     return render(request, 'landing/galeria.html')
 
+#Visualizar detalles y estadísticas de los equipos
 def detalle_equipo(request, pk):
     equipo = get_object_or_404(Equipo, pk=pk)
     jugadoras_equipo = Equipo.objects.get(id=pk).jugadoras.all()
@@ -54,6 +58,7 @@ def detalle_equipo(request, pk):
                                                             'torneos_ganados': torneos_ganados,
                                                             })
 
+#Visualizar detalles y estadísticas de las jugadoras
 def detalle_jugadora(request, id_equipo, id_jugadora):
     jugadora = get_object_or_404(Jugadora, pk=id_jugadora)
     today = date.today()
@@ -89,6 +94,7 @@ def detalle_jugadora(request, id_equipo, id_jugadora):
                                                                 'tarjetas_azul': tarjetas_azul,
                                                             })
 
+#Visualizar detalles y estadísticas de los partidos
 def detalle_partido(request, id_torneo, id_partido):
     torneo = get_object_or_404(Torneo, pk=id_torneo)
     partido = get_object_or_404(Partido, pk=id_partido)
@@ -121,10 +127,12 @@ def detalle_partido(request, id_torneo, id_partido):
                                                     'tarjetas_azul_local': tarjetas_azul_local,
                                                     'tarjetas_azul_visitante': tarjetas_azul_visitante})
 
+#Visualizar lista de torneos
 def ver_torneos(request):
     torneos = Torneo.objects.all().order_by("-fecha_inicio")
     return render(request, 'landing/lista_torneos.html', {'torneos': torneos})
 
+#Visualizar detalles y estadísticas de los torneos
 def detalle_torneo(request, pk):
     torneo = get_object_or_404(Torneo, pk=pk)
     jornadas = Jornada.objects.filter(torneo=torneo)
@@ -164,6 +172,7 @@ def detalle_torneo(request, pk):
                                                                 'trEquipo': trEquipo
                                                                 })
 
+#Visualizar lista de partidos
 def carga_partidos(request):
     if request.method == 'POST':
         id_jornada= int(request.POST.get('jornada'))
@@ -172,6 +181,7 @@ def carga_partidos(request):
         html = render_to_string('landing/lista_partidos.html', {'partidos':partidos,'jornada':jornada, 'datetime':datetime.date.today()})
         return HttpResponse(html)
 
+#Visualizar partidos en la landing page
 def landing(request):
     start_date = datetime.date.today()
     end_date = start_date+ datetime.timedelta(366)

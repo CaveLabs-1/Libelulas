@@ -57,7 +57,8 @@
                   {{ forloop.counter }}
                 </td>
                 <td>
-                  <img src="{{ stat.equipo.logo.url }}" alt="" class="circle" height="32" width="32" style="vertical-align:middle"><a href="{% url 'landing:detalle_equipo' stat.equipo.id %}">{{stat.equipo.nombre}}</a>
+                  <img src="{{ stat.equipo.logo.url }}" alt="" class="circle" height="32" width="32" style="vertical-align:middle">
+                    <a href="{% url 'landing:detalle_equipo' stat.equipo.id %}">{{stat.equipo.nombre}}</a>
                   {% if stat.win %}
                   <i class="small material-icons icon-yellow" style="vertical-align:middle">grade</i>
                   {% endif %}

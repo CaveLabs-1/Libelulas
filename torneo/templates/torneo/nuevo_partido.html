@@ -13,7 +13,8 @@
         <label>
           {{ form.fecha.label_tag }}
         </label>
-        <input type="date" name="{{form.fecha.html_name}}" class="datepicker" id="{{form.fecha.id_for_label}}" value="{{ form.fecha.value|date:"Y-m-d" }}" required/>
+        <input type="date" name="{{form.fecha.html_name}}" class="datepicker" id="{{form.fecha.id_for_label}}"
+               value="{{ form.fecha.value|date:"Y-m-d" }}" required/>
         <span class="helper-text">Fecha debe estar entre {{jornada.fecha_inicio}} y {{jornada.fecha_fin}}</span>
       </p>
       {{ form.fecha.errors }}
@@ -23,7 +24,8 @@
         <label>
           {{ form.hora.label_tag }}
         </label>
-        <input type="text" name="{{form.hora.html_name}}" class="timepicker" id="{{form.hora.id_for_label}}" value="{{ form.hora.value}}" required/>
+        <input type="text" name="{{form.hora.html_name}}" class="timepicker" id="{{form.hora.id_for_label}}"
+               value="{{ form.hora.value}}" required/>
       </p>
       {{ form.hora.errors }}
     </div>
