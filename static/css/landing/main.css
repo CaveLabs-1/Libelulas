@@ -182,8 +182,10 @@
   line-height: 160%;
 }
 
-.centered-text>.button {
+.button-container {
   margin-top: 24px;
+  justify-content:space-between;
+  width: 35em;
 }
 
 @media (min-width: 500px) and (max-width: 530px) {
