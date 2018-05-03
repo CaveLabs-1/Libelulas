@@ -9,7 +9,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['planlibelula.com','165.227.29.111']
 
-
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
