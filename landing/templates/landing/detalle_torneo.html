@@ -219,7 +219,7 @@
               {% else %}
               <li class="collection-item avatar align-items">
                 <a href="{% url 'landing:detalle_jugadora' gol.jugadora__equipo gol.jugadora__id %}">
-                  {% if gol.jugadora__Imagen %}
+                  {% if gol.jugadora_.imagen %}
                   <img src="/media/{{ gol.jugadora__imagen }}" alt="{{gol.jugadora__nombre}} imagen" class="circle" /> {% else %}
                   <img src="{% static 'static_media/default.jpg' %}" alt="{{gol.jugadora__nombre}} imagen" class="circle" /> {% endif %}
                   <span>{{gol.jugadora__nombre}} {{gol.jugadora__apellido}}</span>
