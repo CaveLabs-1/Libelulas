@@ -9,10 +9,10 @@
   {% csrf_token %}
   <div class="image-column">
     <div class="image-circle upload">
-        {% if jugadora.Imagen == '' %}
+        {% if jugadora.imagen == '' %}
             <img class="upload-change" src="{% static 'static_media/default.jpg' %}" alt="" />
         {% else %}
-            <img class="upload-change" src="{{ jugadora.Imagen.url }}" alt="{{ jugadora.Imagen.url }}" />
+            <img class="upload-change" src="{{ jugadora.imagen.url }}" alt="{{ jugadora.imagen.url }}" />
         {% endif %}
 
 

@@ -19,6 +19,15 @@
   padding: 0;
 }
 
+.info-column {
+  padding-left: 3em;
+}
+
+.image-column {
+  display: flex;
+  align-items: center;
+}
+
 .campeonatos-ganados > .campeonato {
   display: flex;
   align-items: center;
@@ -97,6 +106,11 @@ a > .big {
     flex-direction: column;
     align-items: center;
   }
+}
+
+.info-column {
+  text-align: center;
+  padding-left: 0;
 }
 
 .header > .image-header {
