@@ -8,6 +8,15 @@
   margin-right: 12px;
 }
 
+.info-column {
+  padding-left: 3em;
+}
+
+.image-column {
+  display: flex;
+  align-items: center;
+}
+
 .circle-icon > img {
   max-height: 50%;
 }
@@ -134,6 +143,7 @@
   }
   .info-column {
     text-align: center;
+    padding-left: 0;
   }
 
   .tarjeta {
