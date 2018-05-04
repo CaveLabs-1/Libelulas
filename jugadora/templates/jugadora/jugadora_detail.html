@@ -16,8 +16,8 @@
   </div>
   <div class="row" id="informacion">
     <div class="col s12 m3">
-        {% if jugadora.Imagen %}
-            <img class="logo-equipo" src="{{jugadora.Imagen.url}}">
+        {% if jugadora.imagen %}
+            <img class="logo-equipo" src="{{jugadora.imagen.url}}">
         {% else %}
             <img class="logo-equipo" src="{% static 'static_media/default.jpg' %}">
         {% endif %}
