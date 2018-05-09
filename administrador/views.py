@@ -45,8 +45,8 @@ def confirmar_contrasena(request, id_administrador):
             #Cambiar la contraseña del administrador
             administrador.set_password(actualizar.password)
             administrador.save()
-            messages.success(request, 'Contraseña actualizada exitosamente.')
-            url = reverse('administrador:editar_administrador', kwargs={'id_administrador':id_administrador})
+            messages.success(request, 'Administradores actualizados exitosamente.')
+            url = reverse('administrador:lista_administrador')
             return HttpResponseRedirect(url)
     else:
         form = UpdatePasswordForm()

@@ -66,8 +66,8 @@
     <ul class="collection">
       {% for jugadora in jugadoras_equipo %}
       <li class="collection-item avatar">
-        {% if jugadora.Imagen %}
-          <img src="{{ jugadora.Imagen.url }}" alt="" class="circle" />
+        {% if jugadora.imagen %}
+          <img src="{{ jugadora.imagen.url }}" alt="" class="circle" />
         {% else %}
           <img src="{% static 'static_media/default.jpg' %}" alt="" class="circle" />
         {% endif %}
