@@ -33,12 +33,12 @@ class Jugadora(models.Model):
 
     def save(self, *args, **kw):
         
-        if self.Imagen:
+        if self.imagen:
             try:
                 # Opening the uploaded image
-                im = Image.open(self.Imagen)
+                im = Image.open(self.imagen)
     
-                nombre = (self.Imagen.name)
+                nombre = (self.imagen.name)
                 fill_color = ''
                 if im.mode in ('RGBA', 'LA'):
                     background = Image.new(im.mode[:-1], im.size, 0)
@@ -54,7 +54,7 @@ class Jugadora(models.Model):
                 output.seek(0)
     
                 # change the imagefield value to be the newley modifed image value
-                self.Imagen = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.Imagen.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
+                self.imagen = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.Imagen.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
             except:
                 print("gg")
         self.fecha_de_afiliacion = datetime.date.today()
