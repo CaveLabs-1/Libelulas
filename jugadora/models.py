@@ -57,6 +57,7 @@ class Jugadora(models.Model):
                 self.Imagen = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.Imagen.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
             except:
                 print("gg")
+        self.fecha_de_afiliacion = datetime.date.today()
         super(Jugadora,self).save(*args, **kw)
     
 
