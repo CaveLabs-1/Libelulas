@@ -27,7 +27,7 @@
     </div>
     {{ form.imagen.errors }}
   </div>
-  <div class="form-column">
+ <div class="form-column">
       <p>
         <label>
           {{ form.nombre.label_tag }}
@@ -63,7 +63,33 @@
         {{ form.posicion }}
       </p>
       {{ form.posicion.errors }}
+
       <p>
+        <label>
+          {{ form.fecha_de_afiliacion.label_tag }}
+        </label>
+          <input type="date" name="{{form.fecha_de_afiliacion.html_name}}" required="" value='{{form.fecha_de_afiliacion.value|date:"Y-m-d"}}'   id="{{form.fecha_de_afiliacion.id_for_label}}" class="datepicker">
+      </p>
+      {{ form.fecha_de_afiliacion.errors }}
+
+       <p>
+        <label>
+          {{ form.num_poliza.label_tag }}
+        </label>
+        {{ form.num_poliza }}
+      </p>
+      {{ form.num_poliza.errors }}
+
+
+      <p>
+        <label>
+          {{ form.nui.label_tag }}
+        </label>
+        {{ form.nui }}
+      </p>
+      {{ form.nui.errors }}
+
+ <p>
           <label>
               {{ form.equipo.label_tag }}
           </label>
@@ -84,3 +110,4 @@
   </div>
 </form>
 {% endblock %}
+
