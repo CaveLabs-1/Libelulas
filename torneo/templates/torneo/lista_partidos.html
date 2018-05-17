@@ -36,12 +36,17 @@
     <a href='{% url "torneo:editar_partido" partido.id %}' class="flex align-center justify-center icons-registro">
         <i class="material-icons icon-blue">mode_edit</i>Editar Fecha
     </a>
-    </br>
     <a href='{% url "torneo:mandar_cedula" partido.id %}' class="flex align-center justify-center icons-registro">
-        <i class="material-icons icon-blue">print</i>Cédula
+        <i class="material-icons icon-blue">print</i>Imprimir Cédula
     </a>
-    </br>
-    <a href='{% url "torneo:registrar_cedula" jornada.id partido.id %}' class="flex justify-center">EDITAR CÉDULA</a>
+      <a href='{% url "torneo:registrar_cedula" jornada.id partido.id %}' class="submit flex">
+    <span>EDITAR CÉDULA</span>
+  </a>
+
+
+
+
+
   </div>
   <div class="col s5">
     <div class="row right-align">
