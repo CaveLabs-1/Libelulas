@@ -17,10 +17,13 @@ class jugadoraForm(ModelForm):
         self.fields['imagen'].widget.attrs['onchange'] = 'loadFile(event)'
         self.fields['equipo'].required = False
         self.fields['nacimiento'].widget.attrs['class'] = 'datepicker'
+        self.fields['fecha_de_afiliacion'].widget.input_type = 'date'
+
+
 
     class Meta:
         model = Jugadora
-        fields = ('nombre', 'apellido', 'nacimiento', 'numero', 'posicion', 'num_poliza', 'nui', 'notas', 'imagen')
+        fields = ('nombre', 'apellido', 'nacimiento', 'fecha_de_afiliacion', 'numero', 'posicion', 'num_poliza', 'nui', 'notas', 'imagen')
         widgets = {
             'imagen': forms.FileInput(),
         }
@@ -35,10 +38,11 @@ class jugadoraEquipoForm(ModelForm):
         self.fields['numero'].widget.attrs['max'] = '1000'
         self.fields['imagen'].widget.attrs['onchange'] = 'loadFile(event)'
         self.fields['nacimiento'].widget.attrs['class'] = 'datepicker'
+        self.fields['fecha_de_afiliacion'].widget.attrs['class'] = 'datepicker'
 
     class Meta:
         model = Jugadora
-        fields = ('nombre', 'apellido', 'nacimiento', 'numero', 'posicion', 'num_poliza', 'nui', 'notas', 'imagen')
+        fields = ('nombre', 'apellido', 'nacimiento', 'fecha_de_afiliacion' , 'numero', 'posicion', 'num_poliza', 'nui', 'notas', 'imagen')
         widgets = {
             'imagen': forms.FileInput(),
         }

@@ -65,11 +65,20 @@
 
       <p>
         <label>
+          {{ form.fecha_de_afiliacion.label_tag }}
+        </label>
+        {{ form.fecha_de_afiliacion }}
+      </p>
+      {{ form.fecha_de_afiliacion.errors }}
+
+       <p>
+        <label>
           {{ form.num_poliza.label_tag }}
         </label>
         {{ form.num_poliza }}
       </p>
       {{ form.num_poliza.errors }}
+
 
       <p>
         <label>
