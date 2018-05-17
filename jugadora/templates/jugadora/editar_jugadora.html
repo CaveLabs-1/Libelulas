@@ -46,7 +46,7 @@
         <label>
           {{ form.nacimiento.label_tag }}
         </label>
-        {{ form.nacimiento }}
+          <input type="date" name="{{form.nacimiento.html_name}}" required="" value='{{form.nacimiento.value|date:"Y-m-d"}}'   id="{{form.nacimiento.id_for_label}}" class="datepicker">
       </p>
       {{ form.nacimiento.errors }}
       <p>
@@ -68,7 +68,7 @@
         <label>
           {{ form.fecha_de_afiliacion.label_tag }}
         </label>
-        {{ form.fecha_de_afiliacion }}
+          <input type="date" name="{{form.fecha_de_afiliacion.html_name}}" required="" value='{{form.fecha_de_afiliacion.value|date:"Y-m-d"}}'   id="{{form.fecha_de_afiliacion.id_for_label}}" class="datepicker">
       </p>
       {{ form.fecha_de_afiliacion.errors }}
 
@@ -89,27 +89,13 @@
       </p>
       {{ form.nui.errors }}
 
-      {% if equipo == '' %}
-          <p>
-              <label>
-                  {{ form.equipo.label_tag }}
-              </label>
-              {{ form.equipo }}
-          </p>
+ <p>
+          <label>
+              {{ form.equipo.label_tag }}
+          </label>
+          {{ form.equipo }}
+      </p>
            {{ form.equipo.errors }}
-      {% else %}
-          <p>
-              <label>
-                   {{ form.equipo.label_tag }}
-              </label>
-              <select name="{{ form.equipo.name }}" required id="{{ form.equipo.id_for_label }}">
-                <option value="{{ lista_equipo.pk }}" selected>{{ lista_equipo.nombre }}</option>
-              </select>
-          </p>
-
-
-      {% endif %}
-
       <p>
         <label>
           {{ form.notas.label_tag }}
@@ -117,17 +103,11 @@
         {{ form.notas }}
       </p>
       {{ form.notas.errors }}
-
-
-
     <div class="container-button">
-      {% if equipo %}
-      <a href="{% url 'equipo:detalle_equipo' equipo %}"><button class="cancel" type="button">Cancelar</button></a>
-      {% else %}
-      <a href="{% url 'jugadora:ver_jugadoras' %}"><button class="cancel" type="button">Cancelar</button></a>
-      {% endif %}
-      <button class="submit" type="submit">Guardar</button>
+      <a href="{% url 'jugadora:ver_jugadoras' %}" class="cancel">Cancelar</a>
+      <button class="submit" type="submit">Enviar</button>
     </div>
   </div>
 </form>
 {% endblock %}
+
