@@ -262,7 +262,11 @@ def accesar_cedula(request):
 def registrar_cedula(request, id_torneo, id_partido):
     if request.method == 'POST':
         form = CedulaForm(data=request.POST)
+
+
         if form.is_valid():
+
+
             # Obtener instancia del partido a actualizar.
             update = Partido.objects.get(id=id_partido)
             # Guarda los datos del partido original. Los usaremos en caso de que sea actualización y no registro.
@@ -277,12 +281,18 @@ def registrar_cedula(request, id_torneo, id_partido):
             messages.success(request, 'Cédula registrada exitosamente.')
             # Obtener estadísticas del equipo local.
             equipo_local = update.equipo_local
-            torneo = get_object_or_404(Torneo, id=id_torneo)
+            #esta recuperando la jornada no torneo
+            partido=get_object_or_404(Partido, id=id_partido)
+            key=partido.jornada.torneo.id
+            torneo = get_object_or_404(Torneo, id=key)
             estadisticas_local = Estadisticas.objects.get(torneo=torneo, equipo=equipo_local)
             # Obtener estadísticas del equipo visitante.
             equipo_visitante = update.equipo_visitante
             estadisticas_visitante = Estadisticas.objects.get(torneo=torneo, equipo=equipo_visitante)
             # Si es actualización, primero elimina las estadísticas registradas previamente.
+
+
+
             if update.registrado == True:
                 estadisticas_local.goles_favor = estadisticas_local.goles_favor - goles_local_anterior
                 estadisticas_local.goles_contra = estadisticas_local.goles_contra - goles_visitante_anterior
@@ -350,6 +360,8 @@ def registrar_cedula(request, id_torneo, id_partido):
             # Guardar Cambios
             estadisticas_local.save()
             estadisticas_visitante.save()
+
+
             return HttpResponseRedirect(reverse('torneo:registrar_eventos',kwargs={'id_partido':id_partido}))
         else:
             return HttpResponse(form.errors.as_text())
