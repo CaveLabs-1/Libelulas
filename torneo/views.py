@@ -480,10 +480,10 @@ def registrar_eventos(request, id_partido):
         tarjetas_rojas = TarjetasRojas.objects.filter(partido=partido, jugadora=jugadora).count()
         tarjetas_azules = Tarjetas_azules.objects.filter(partido=partido, jugadora=jugadora).count()
         #Obtener la suma total de goles registrados del equipo local
-        goles_local = Goles.objects.values('cantidad').filter(equipo=partido.equipo_local).aggregate(cantidad=Sum('cantidad'))
+        goles_local = Goles.objects.values('cantidad').filter(partido=partido).filter(equipo=partido.equipo_local).aggregate(cantidad=Sum('cantidad'))
         if goles_local['cantidad'] is None: goles_local['cantidad'] = 0
         #Obtener la suma total de goles registrados del equipo visitante
-        goles_visitante = Goles.objects.values('cantidad').filter(equipo=partido.equipo_visitante).aggregate(cantidad=Sum('cantidad'))
+        goles_visitante = Goles.objects.values('cantidad').filter(partido=partido).filter(equipo=partido.equipo_visitante).aggregate(cantidad=Sum('cantidad'))
         if goles_visitante['cantidad'] is None: goles_visitante['cantidad'] = 0
 
         #Si el evento es un gol
