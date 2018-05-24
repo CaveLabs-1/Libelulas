@@ -495,13 +495,13 @@ def registrar_eventos(request, id_partido):
                 if registro.equipo == partido.equipo_local:
                     #Si la cantidad no sobre pasa la cantidad de goles registrados
                     if goles_local['cantidad'] + cantidad <= partido.goles_local:
-                        gol = gol = Goles.objects.create(partido=partido, jugadora=jugadora, cantidad=cantidad, equipo=registro.equipo)
+                        gol = Goles.objects.create(partido=partido, jugadora=jugadora, cantidad=cantidad, equipo=registro.equipo)
                         gol.save()
                 #Si la jugadora pertenece al equipo visitante
                 elif registro.equipo == partido.equipo_visitante:
                     #Si la cantidad no sobre pasa la cantidad de goles registrados
                     if goles_visitante['cantidad'] + cantidad <= partido.goles_visitante:
-                        gol = gol = Goles.objects.create(partido=partido, jugadora=jugadora, cantidad=cantidad, equipo=registro.equipo)
+                        gol = Goles.objects.create(partido=partido, jugadora=jugadora, cantidad=cantidad, equipo=registro.equipo)
                         gol.save()
             else:
                 messages.warning(request, 'Cantidad Inválida de goles')
