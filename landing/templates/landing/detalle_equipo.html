@@ -30,16 +30,14 @@
           {% if forloop.first %}
               <li class="collection-item avatar big align-items">
                 <a href="{% url 'landing:detalle_jugadora' equipo.id goles.jugadora__id %}">
-                <div>
                   {% if goles.jugadora__imagen %}
                     <img src="/media/{{goles.jugadora__imagen}}" alt="{{goles.jugadora__nombre}} imagen" class="circle big"/>
                   {% else %}
                     <img src="{% static 'static_media/default.jpg' %}" alt="{{goles.jugadora__nombre}} imagen" class="circle big"/>
                   {% endif %}
-                </div>
-                <div>
-                  <h6><strong>{{ goles.jugadora__nombre }} {{ goles.jugadora__apellido }}</strong></h6></div>
-                  <div><h6 class="secondary-content top">{{ goles.goles}}</h6></div>
+
+                  <h6><strong>{{ goles.jugadora__nombre }} {{ goles.jugadora__apellido }}</strong></h6>
+                  <h6 class="secondary-content top">{{ goles.goles}}</h6>
                 </a>
               </li>
             {% else %}
