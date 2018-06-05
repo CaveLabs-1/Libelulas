@@ -110,8 +110,8 @@
               <li class="collection-item avatar big align-items">
                 <a href="{% url 'landing:detalle_equipo' gol.equipo__id %}">
                   <img src="/media/{{gol.equipo__logo}}" alt="{{gol.equipo__nombre}} logo" class="circle big" />
-                  <h6><strong>{{ gol.equipo__nombre }}</strong></h6>
-                  <h6 class="secondary-content top">{{ gol.goles}}</h6>
+                  <h9><strong>{{ gol.equipo__nombre }}</strong></h9>
+                  <h9 class="secondary-content top">{{ gol.goles}}</h9>
                 </a>
               </li>
               {% else %}
@@ -134,8 +134,8 @@
               <li class="collection-item avatar big align-items">
                 <a href="{% url 'landing:detalle_equipo' ta.jugadora__equipo__id %}">
                   <img src="/media/{{ta.jugadora__equipo__logo}}" alt="{{ta.jugadora__equipo__nombre}} logo" class="circle big" />
-                  <h6><strong>{{ ta.jugadora__equipo__nombre }}</strong></h6>
-                  <h6 class="secondary-content top">{{ ta.total}}</h6>
+                  <h9><strong>{{ ta.jugadora__equipo__nombre }}</strong></h9>
+                  <h9 class="secondary-content top">{{ ta.total}}</h9>
                 </a>
               </li>
               {% else %}
@@ -158,8 +158,8 @@
               <li class="collection-item avatar big align-items">
                 <a href="{% url 'landing:detalle_equipo' ta.jugadora__equipo__id %}">
                   <img src="/media/{{ta.jugadora__equipo__logo}}" alt="{{ta.jugadora__equipo__nombre}} logo" class="circle big" />
-                  <h6><strong>{{ ta.jugadora__equipo__nombre }}</strong></h6>
-                  <h6 class="secondary-content top">{{ ta.total}}</h6>
+                  <h9><strong>{{ ta.jugadora__equipo__nombre }}</strong></h9>
+                  <h9 class="secondary-content top">{{ ta.total}}</h9>
                 </a>
               </li>
               {% else %}
@@ -182,8 +182,8 @@
               <li class="collection-item avatar big align-items">
                 <a href="{% url 'landing:detalle_equipo' ta.jugadora__equipo__id %}">
                   <img src="/media/{{ta.jugadora__equipo__logo}}" alt="{{ta.jugadora__equipo__nombre}} logo" class="circle big" />
-                  <h6><strong>{{ ta.jugadora__equipo__nombre }}</strong></h6>
-                  <h6 class="secondary-content top">{{ ta.total}}</h6>
+                  <h9><strong>{{ ta.jugadora__equipo__nombre }}</strong></h9>
+                  <h9 class="secondary-content top">{{ ta.total}}</h9>
                 </a>
               </li>
               {% else %}
@@ -212,8 +212,8 @@
                     {% if gol.jugadora__imagen %}
                   <img src="/media/{{gol.jugadora__imagen}}" alt="{{goles.jugadora__nombre}} imagen" class="circle big" /> {% else %}
                   <img src="{% static 'static_media/default.jpg' %}" alt="{{goles.jugadora__nombre}} imagen" class="circle big" /> {% endif %}
-                      <h8><strong>{{ gol.jugadora__nombre }} {{ gol.jugadora__apellido }}</strong></h8>
-                  <h6 class="secondary-content top">{{ gol.goles}}</h6>
+                      <h9><strong>{{ gol.jugadora__nombre }} {{ gol.jugadora__apellido }}</strong></h9>
+                  <h9 class="secondary-content top">{{ gol.goles}}</h9>
                 </a>
               </li>
               {% else %}
@@ -238,8 +238,8 @@
                   {% if ta.jugadora__imagen %}
                   <img src="/media/{{ta.jugadora__imagen}}" alt="{{ta.jugadora__nombre}} imagen" class="circle big" /> {% else %}
                   <img src="{% static 'static_media/default.jpg' %}" alt="{{ta.jugadora__nombre}} imagen" class="circle big" /> {% endif %}
-                  <h6><strong>{{ ta.jugadora__nombre }} {{ ta.jugadora__apellido }}</strong></h6>
-                  <h6 class="secondary-content top">{{ ta.total}}</h6>
+                  <h9><strong>{{ ta.jugadora__nombre }} {{ ta.jugadora__apellido }}</strong></h9>
+                  <h9 class="secondary-content top">{{ ta.total}}</h9>
                 </a>
               </li>
               {% else %}
@@ -264,8 +264,8 @@
                   {% if ta.jugadora__imagen %}
                   <img src="/media/{{ta.jugadora__imagen}}" alt="{{ta.jugadora__nombre}} imagen" class="circle big" /> {% else %}
                   <img src="{% static 'static_media/default.jpg' %}" alt="{{ta.jugadora__nombre}} imagen" class="circle big" /> {% endif %}
-                  <h6><strong>{{ ta.jugadora__nombre }} {{ ta.jugadora__apellido }}</strong></h6>
-                  <h6 class="secondary-content top">{{ ta.total}}</h6>
+                  <h9><strong>{{ ta.jugadora__nombre }} {{ ta.jugadora__apellido }}</strong></h9>
+                  <h9 class="secondary-content top">{{ ta.total}}</h9>
                 </a>
               </li>
               {% else %}
@@ -291,8 +291,8 @@
                   {% if ta.jugadora__imagen %}
                   <img src="/media/{{ta.jugadora__imagen}}" alt="{{ta.jugadora__nombre}} imagen" class="circle big" /> {% else %}
                   <img src="{% static 'static_media/default.jpg' %}" alt="{{ta.jugadora__nombre}} imagen" class="circle big" /> {% endif %}
-                  <h6><strong>{{ ta.jugadora__nombre }} {{ ta.jugadora__apellido }}</strong></h6>
-                  <h6 class="secondary-content top">{{ ta.total}}</h6>
+                  <h9><strong>{{ ta.jugadora__nombre }} {{ ta.jugadora__apellido }}</strong></h9>
+                  <h9 class="secondary-content top">{{ ta.total}}</h9>
                 </a>
               </li>
               {% else %}

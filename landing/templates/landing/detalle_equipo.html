@@ -36,8 +36,8 @@
                     <img src="{% static 'static_media/default.jpg' %}" alt="{{goles.jugadora__nombre}} imagen" class="circle big"/>
                   {% endif %}
 
-                  <h6><strong>{{ goles.jugadora__nombre }} {{ goles.jugadora__apellido }}</strong></h6>
-                  <h6 class="secondary-content top">{{ goles.goles}}</h6>
+                  <h9><strong>{{ goles.jugadora__nombre }} {{ goles.jugadora__apellido }}</strong></h9>
+                  <h9 class="secondary-content top">{{ goles.goles}}</h9>
                 </a>
               </li>
             {% else %}
@@ -68,8 +68,8 @@
                   {% else %}
                     <img src="{% static 'static_media/default.jpg' %}" alt="{{ta.jugadora__nombre}} imagen" class="circle big"/>
                   {% endif %}
-                  <h6><strong>{{ta.jugadora__nombre}} {{ta.jugadora__apellido}}</strong></h6>
-                  <h6 class="secondary-content top">{{ta.ta}}</h6>
+                  <h9><strong>{{ta.jugadora__nombre}} {{ta.jugadora__apellido}}</strong></h9>
+                  <h9 class="secondary-content top">{{ta.ta}}</h9>
                 </a>
               </li>
             {% else %}
@@ -100,8 +100,8 @@
                   {% else %}
                     <img src="{% static 'static_media/default.jpg' %}" alt="{{tam.jugadora__nombre}} imagen" class="circle big"/>
                   {% endif %}
-                  <h6><strong>{{tam.jugadora__nombre}} {{tam.jugadora__apellido}}</strong></h6>
-                  <h6 class="secondary-content top">{{tam.tam}}</h6>
+                  <h9><strong>{{tam.jugadora__nombre}} {{tam.jugadora__apellido}}</strong></h9>
+                  <h9 class="secondary-content top">{{tam.tam}}</h9>
                 </a>
               </li>
             {% else %}
@@ -132,8 +132,8 @@
                   {% else %}
                     <img src="{% static 'static_media/default.jpg' %}" alt="{{tr.jugadora__nombre}} imagen" class="circle big"/>
                   {% endif %}
-                  <h6><strong>{{tr.jugadora__nombre}} {{tr.jugadora__apellido}}</strong></h6>
-                  <h6 class="secondary-content top">{{tr.tr}}</h6>
+                  <h9><strong>{{tr.jugadora__nombre}} {{tr.jugadora__apellido}}</strong></h9>
+                  <h9 class="secondary-content top">{{tr.tr}}</h9>
                 </a>
               </li>
             {% else %}
@@ -182,7 +182,7 @@
             {% endif %}
           </div>
           <div class="card-content">
-            <h6 class="title"><strong>{{jugadora.nombre}} {{jugadora.apellido}}</strong></h6>
+            <h9 class="title"><strong>{{jugadora.nombre}} {{jugadora.apellido}}</strong></h9>
             <p>#{{jugadora.numero}}</p>
             <p>{{jugadora.get_posicion_display}}</p>
           </div>
