@@ -209,11 +209,13 @@
               {% for gol in goles %} {% if forloop.first %}
               <li class="collection-item avatar big align-items">
                 <a href="{% url 'landing:detalle_jugadora' gol.jugadora__equipo gol.jugadora__id %}">
-                  {% if gol.jugadora__imagen %}
+                  <div>
+                    {% if gol.jugadora__imagen %}
                   <img src="/media/{{gol.jugadora__imagen}}" alt="{{goles.jugadora__nombre}} imagen" class="circle big" /> {% else %}
                   <img src="{% static 'static_media/default.jpg' %}" alt="{{goles.jugadora__nombre}} imagen" class="circle big" /> {% endif %}
-                  <h6><strong>{{ gol.jugadora__nombre }} {{ gol.jugadora__apellido }}</strong></h6>
-                  <h6 class="secondary-content top">{{ gol.goles}}</h6>
+                  </div>
+                      <div><h6><strong>{{ gol.jugadora__nombre }} {{ gol.jugadora__apellido }}</strong></h6></div>
+                  <div><h6 class="secondary-content top">{{ gol.goles}}</h6></div>
                 </a>
               </li>
               {% else %}
