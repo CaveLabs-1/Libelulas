@@ -173,9 +173,10 @@ def detalle_torneo(request, pk):
                                                                 })
 
 #Visualizar lista de partidos
-def carga_partidos(request, id_j):
+def carga_partidos(request):
     if request.method == 'POST':
-        jornada = get_object_or_404(Jornada, id=id_j)
+        id_jornada= int(request.POST.get('jornada'))
+        jornada = get_object_or_404(Jornada, id=id_jornada)
         partidos = Partido.objects.filter(jornada=jornada)
         html = render_to_string('landing/lista_partidos.html', {'partidos':partidos,'jornada':jornada, 'datetime':datetime.date.today()})
         return HttpResponse(html)
