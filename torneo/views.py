@@ -353,10 +353,10 @@ def registrar_cedula(request, id_torneo, id_partido):
             else:
                 # Actualizar Estadísiticas Local (Empate)
                 estadisticas_local.puntos = estadisticas_local.puntos + 1
-                estadisticas_local.empatados = estadisticas_local.ganados + 1
+                estadisticas_local.empatados = estadisticas_local.empatados + 1
                 # Actualizar Estadísiticas Visitante (Empate)
                 estadisticas_visitante.puntos = estadisticas_visitante.puntos + 1
-                estadisticas_visitante.empatados = estadisticas_local.ganados + 1
+                estadisticas_visitante.empatados = estadisticas_visitante.empatados + 1
             # Guardar Cambios
             estadisticas_local.save()
             estadisticas_visitante.save()
